@@ -10,9 +10,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-        <button class="btn btn-primary"> button </button>
-    </div>
+  
     </form>
 </body>
 </html>
