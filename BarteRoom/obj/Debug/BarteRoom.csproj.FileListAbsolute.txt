@@ -1,5 +1,0 @@
-C:\Users\P4L\GitHub\BarteRoom\BarteRoom\bin\BarteRoom.dll
-C:\Users\P4L\GitHub\BarteRoom\BarteRoom\bin\BarteRoom.pdb
-C:\Users\P4L\GitHub\BarteRoom\BarteRoom\obj\Debug\BarteRoom.csprojResolveAssemblyReference.cache
-C:\Users\P4L\GitHub\BarteRoom\BarteRoom\obj\Debug\BarteRoom.dll
-C:\Users\P4L\GitHub\BarteRoom\BarteRoom\obj\Debug\BarteRoom.pdb
