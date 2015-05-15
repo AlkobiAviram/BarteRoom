@@ -151,22 +151,17 @@
          
           <!-- ===================================================Login Modal=======================================================  -->
          <div class="modal fade" id="login" role="dialog">
-             <div clsas="modal-dialog ">
+             <div class="modal-dialog ">
                  <div class="modal-content">
                      <div class="modal-header">
                          <h3>Login</h3>
                      </div>
                      <div class="modal-body">
-                         <div class="input-group">
-                             username
-                             <input />
-                             password
-                             <input />
-                         </div>
-
+                        
+                       
                      </div>
                      <div class="modal-footer">
-                         footer!!
+                        
                         <button class="btn btn-info" data-dismiss="modal"> Close </button>
                      </div>
                  </div>
