@@ -1,7 +1,16 @@
 ﻿body {
 
-
+   // background-color:green;
 }
 
 
+.row-css-custom{
 
+    margin:20px;
+    
+}
+
+.jumbo-css-custom{
+
+    min-height: 250px;
+}
