@@ -36,8 +36,8 @@
                   <ul class="nav navbar-nav">
                     <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
                     <li><a href="#">About Us</a></li>
-                     <li><a href="#">Link 1</a></li>
-                     <li><a href="#">Link 2</a></li>
+                     <li><a href="#login" data-toggle="modal">Login</a></li>
+                     <li><a href="#">Register</a></li>
                     <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">My Account <span class="caret"></span></a>
                       <ul class="dropdown-menu" role="menu">
@@ -58,6 +58,7 @@
      
      <form id="form1" runat="server">
         
+       <!-- ==============================================Main container===========================================  -->
          <div class="container">
             <div class="row row-css-custom">
 
@@ -145,6 +146,34 @@
 
 
         </div>
+         <!-- ===================================================Main container=======================================================  -->
+         
+         
+          <!-- ===================================================Login Modal=======================================================  -->
+         <div class="modal fade" id="login" role="dialog">
+             <div clsas="modal-dialog ">
+                 <div class="modal-content">
+                     <div class="modal-header">
+                         <h3>Login</h3>
+                     </div>
+                     <div class="modal-body">
+                         <div class="input-group">
+                             username
+                             <input />
+                             password
+                             <input />
+                         </div>
+
+                     </div>
+                     <div class="modal-footer">
+                         footer!!
+                        <button class="btn btn-info" data-dismiss="modal"> Close </button>
+                     </div>
+                 </div>
+             </div>
+         </div>
+         <!-- ===================================================Login Modal=======================================================  -->
+
 
           <div class="navbar navbar-default navbar-fixed-bottom "> 
                  <div class="container">

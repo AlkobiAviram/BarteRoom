@@ -13,4 +13,24 @@
 .jumbo-css-custom{
 
     min-height: 250px;
+    background-color:#CC3333;
+}
+
+
+#login{
+
+    //top:10%;
+    //left:70%;
+   // outline:none;
+
+}
+
+#login.modal-dialog{
+
+    width:200px;
+}
+
+.modal-dialog{
+
+    width:200px;
 }
