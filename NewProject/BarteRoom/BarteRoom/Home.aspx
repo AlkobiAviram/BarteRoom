@@ -8,7 +8,7 @@
     <link href="Content/bootstrap.css"  rel="stylesheet" />
     <link href="Content/style.css"  rel="stylesheet" />
    
-    <title></title>
+    <title>BarteRoom</title>
 </head>
 <body>
      <script type="text/javascript" src="Scripts/jquery-1.9.1.js"> </script>
@@ -54,12 +54,15 @@
         </header>
     
      
-    
+   
      
      <form id="form1" runat="server">
         
        <!-- ==============================================Main container===========================================  -->
          <div class="container">
+
+           
+
             <div class="row row-css-custom">
 
                 <div class="col-md-3" >
@@ -158,6 +161,11 @@
                      </div>
                      <div class="modal-body">
                         
+                         <div class="input-group">
+                          <span class="input-group-addon" id="basic-addon1">@</span>
+                          <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+                        </div>
+
                        
                      </div>
                      <div class="modal-footer">
