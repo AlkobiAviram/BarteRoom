@@ -14,9 +14,9 @@
      <script type="text/javascript" src="Scripts/jquery-1.9.1.js"> </script>
     <script type="text/javascript" src="Scripts/bootstrap.min.js"> </script>
   
-
-    <header>
-         <nav class="navbar navbar-default">
+  <form id="form1" runat="server">
+        <header>
+            <nav class="navbar navbar-default">
               <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
@@ -41,7 +41,9 @@
                     <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">My Account <span class="caret"></span></a>
                       <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Edit your Barter list</a></li>
+                        <li><a href="#">Add an Item </a></li>
+                        <li><a href="#">Another action </a></li>
                         <li><a href="#">Another action</a></li>
                    
                       </ul>
@@ -53,21 +55,14 @@
             </nav>
         </header>
     
-     
-   
-     
-     <form id="form1" runat="server">
-        
        <!-- ==============================================Main container===========================================  -->
          <div class="container">
-
-           
 
             <div class="row row-css-custom">
 
                 <div class="col-md-3" >
                    <div class="jumbotron jumbo-css-custom">
-                       <h3>find a barter partner now!</h3>
+                       <h3>Some content</h3>
                   </div>
                  
                 </div>
@@ -114,7 +109,7 @@
                 </div>
                  <div class="col-md-3">
                    <div class="jumbotron jumbo-css-custom">
-                       <h3>Best Deal of your life?</h3>
+                       <h3>Some content</h3>
                   </div>
                 </div>    
 
@@ -124,21 +119,21 @@
                  <div class="col-md-4">
                      <div class="jumbotron">
                          <h3>
-                             somthing!!
+                             something!!
                          </h3>
                      </div>
                  </div>
                   <div class="col-md-4">
                        <div class="jumbotron">
                          <h3>
-                             somthing differnt!!
+                             something differnt!!
                          </h3>
                      </div>
                  </div>
                   <div class="col-md-4">
                        <div class="jumbotron">
                          <h3>
-                             somthing else!!
+                             somtehing else!!
                          </h3>
                      </div>
                  </div>
@@ -152,7 +147,7 @@
          <!-- ===================================================Main container=======================================================  -->
          
          
-          <!-- ===================================================Login Modal=======================================================  -->
+         <!-- ===================================================Login Modal=======================================================  -->
          <div class="modal fade" id="login" role="dialog">
              <div class="modal-dialog ">
                  <div class="modal-content">
@@ -160,10 +155,15 @@
                          <h3>Login</h3>
                      </div>
                      <div class="modal-body">
-                        
+                         <span>Username</span>
                          <div class="input-group">
-                          <span class="input-group-addon" id="basic-addon1">@</span>
-                          <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+                          <span class="input-group-addon" id="basic-addon1"></span>
+                          <input type="text" class="form-control" placeholder="Enter your username" aria-describedby="basic-addon1">
+                        </div>
+                          <span>password</span>
+                         <div class="input-group">
+                          <span class="input-group-addon" id="basic-addon1"></span>
+                          <input type="text" class="form-control" placeholder="Enter your Password" aria-describedby="basic-addon1">
                         </div>
 
                        
