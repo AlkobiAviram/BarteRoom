@@ -4,3 +4,9 @@ C:\Users\User\Documents\GitHub\BarteRoom\NewProject\BarteRoom\BarteRoom\bin\Bart
 C:\Users\User\Documents\GitHub\BarteRoom\NewProject\BarteRoom\BarteRoom\obj\Debug\BarteRoom.csprojResolveAssemblyReference.cache
 C:\Users\User\Documents\GitHub\BarteRoom\NewProject\BarteRoom\BarteRoom\obj\Debug\BarteRoom.dll
 C:\Users\User\Documents\GitHub\BarteRoom\NewProject\BarteRoom\BarteRoom\obj\Debug\BarteRoom.pdb
+C:\Users\gili\Documents\GitHub\BarteRoom\NewProject\BarteRoom\BarteRoom\bin\BarteRoom.dll.config
+C:\Users\gili\Documents\GitHub\BarteRoom\NewProject\BarteRoom\BarteRoom\bin\BarteRoom.dll
+C:\Users\gili\Documents\GitHub\BarteRoom\NewProject\BarteRoom\BarteRoom\bin\BarteRoom.pdb
+C:\Users\gili\Documents\GitHub\BarteRoom\NewProject\BarteRoom\BarteRoom\obj\Debug\BarteRoom.csprojResolveAssemblyReference.cache
+C:\Users\gili\Documents\GitHub\BarteRoom\NewProject\BarteRoom\BarteRoom\obj\Debug\BarteRoom.dll
+C:\Users\gili\Documents\GitHub\BarteRoom\NewProject\BarteRoom\BarteRoom\obj\Debug\BarteRoom.pdb
