@@ -12,3 +12,7 @@ C:\Users\gili\Documents\GitHub\BarteRoom\NewProject\BarteRoom\BarteRoom\obj\Debu
 C:\Users\gili\Documents\GitHub\BarteRoom\NewProject\BarteRoom\BarteRoom\obj\Debug\BarteRoom.pdb
 C:\Users\בית1\Desktop\BarteRoom\NewProject\BarteRoom\BarteRoom\obj\Debug\BarteRoom.csprojResolveAssemblyReference.cache
 C:\Users\בית1\Desktop\BarteRoom\NewProject\BarteRoom\BarteRoom\obj\Debug\BarteRoom.dll
+C:\Users\בית1\Desktop\BarteRoom\NewProject\BarteRoom\BarteRoom\bin\BarteRoom.dll.config
+C:\Users\בית1\Desktop\BarteRoom\NewProject\BarteRoom\BarteRoom\bin\BarteRoom.dll
+C:\Users\בית1\Desktop\BarteRoom\NewProject\BarteRoom\BarteRoom\bin\BarteRoom.pdb
+C:\Users\בית1\Desktop\BarteRoom\NewProject\BarteRoom\BarteRoom\obj\Debug\BarteRoom.pdb

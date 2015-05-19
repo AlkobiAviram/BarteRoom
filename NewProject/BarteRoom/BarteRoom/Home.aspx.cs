@@ -9,21 +9,31 @@ namespace BarteRoom
 {
     public partial class Home : System.Web.UI.Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            String user_name = loginUserNameTxtBox.Value;
-            String password = loginPasswordTxtBox.Value;
-            Logic lg = new Logic();
-            if (lg.Login(user_name, password))
-            {
+            loginButton.Click += new EventHandler(this.GreetingBtn_Click);
 
-            }
-            else
-            {
-
-            }
         }
 
 
+        private void run()
+        {
+
+        }
+
+
+
+        protected void LoginButton_Click(object sender, EventArgs e)
+        {
+            Response.Write("good");
+     
+        }
+
+
+        protected void LoginCloseButton_Click(object sender, EventArgs e)
+        {
+      
+        }
     }
 }
