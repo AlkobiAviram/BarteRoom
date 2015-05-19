@@ -153,7 +153,7 @@
          
          
          <!-- ===================================================Login Modal=======================================================  -->
-         <div class="modal fade" id="login" role="dialog">
+         <div class="modal fade" id="login" role="dialog" >
              <div class="modal-dialog ">
                  <div class="modal-content">
                      <div class="modal-header">
@@ -162,13 +162,13 @@
                      <div class="modal-body">
                          <span>Username</span>
                          <div class="input-group">
-                          <span class="input-group-addon" id="basic-addon1"></span>
-                          <input type="text" class="form-control" placeholder="Enter your username" aria-describedby="basic-addon1">
+                          <span class="input-group-addon" id="basic_addon1"></span>
+                          <input type="text" class="form-control" placeholder="Enter your username" aria-describedby="basic-addon1" id="loginUserNameTxtBox" runat="server">
                         </div>
                           <span>password</span>
                          <div class="input-group">
-                          <span class="input-group-addon" id="basic-addon1"></span>
-                          <input type="text" class="form-control" placeholder="Enter your Password" aria-describedby="basic-addon1">
+                          <span class="input-group-addon" id="basic_addon1"></span>
+                          <input type="text" class="form-control" placeholder="Enter your Password" aria-describedby="basic-addon1" id="loginPasswordTxtBox" runat="server">
                         </div>
 
                        

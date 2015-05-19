@@ -11,7 +11,19 @@ namespace BarteRoom
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            String user_name = loginUserNameTxtBox.Value;
+            String password = loginPasswordTxtBox.Value;
+            Logic lg = new Logic();
+            if (lg.Login(user_name, password))
+            {
+
+            }
+            else
+            {
+
+            }
         }
+
+
     }
 }
