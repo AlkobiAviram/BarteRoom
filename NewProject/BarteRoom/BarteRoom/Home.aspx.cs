@@ -30,6 +30,7 @@ namespace BarteRoom
             if (logic.Login(usrName, password))
             {
                 Session[usrName] = usrName;
+                Response.Redirect("BarterList.aspx");
             }
         }
 
