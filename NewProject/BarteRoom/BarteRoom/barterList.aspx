@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="barter list.aspx.cs" Inherits="BarteRoom.Home" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="BarterList.aspx.cs" Inherits="BarteRoom.Home" %>
 
 <!DOCTYPE html>
 
