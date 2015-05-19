@@ -132,6 +132,7 @@
                        <div class="jumbotron">
                          <h3>
                              something differnt!!
+                          
                          </h3>
                      </div>
                  </div>
@@ -174,8 +175,8 @@
                        
                      </div>
                      <div class="modal-footer">
-                         <button class="btn btn-info"  onclick="LoginButton_Click()" id="loginButton" data-dismiss="modal" runat="server"> Login </button>
-                         <button class="btn btn-info"  onclick="LoginButton_Click()" id="loginCloseButton" data-dismiss="modal" runat="server"> Close </button>
+                         <asp:Button class="btn btn-info" ID="Button1" runat="server" OnClick="Button1_Click" Text="Login" />
+                         <asp:Button class="btn btn-info" ID="Button2" runat="server" OnClick="Button2_Click" Text="Cancel" />
                      </div>
                  </div>
              </div>

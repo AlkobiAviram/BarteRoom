@@ -83,7 +83,7 @@ namespace BarteRoom
         public bool loginCheck(String usr, String pass)
         {
             string password = "";
-            query = "select pass from users where usr = '" + usr + "';";
+            query = "select password from users where usr = '" + usr + "';";
 
             try
             {

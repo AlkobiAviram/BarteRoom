@@ -40,21 +40,21 @@ namespace BarteRoom {
         protected global::System.Web.UI.HtmlControls.HtmlInputText loginPasswordTxtBox;
         
         /// <summary>
-        /// loginButton control.
+        /// Button1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton loginButton;
+        protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
-        /// loginCloseButton control.
+        /// Button2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton loginCloseButton;
+        protected global::System.Web.UI.WebControls.Button Button2;
     }
 }

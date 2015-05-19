@@ -10,29 +10,32 @@ namespace BarteRoom
     public partial class Home : System.Web.UI.Page
     {
 
+        private Logic logic;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
-
-        private void run()
+        protected void Button1_Click(object sender, EventArgs e)
         {
+            String usrName;
+            String password;
 
+            usrName = loginUserNameTxtBox.Value;
+            password = loginPasswordTxtBox.Value;
+
+            logic = new Logic();
+  
+            if (logic.Login(usrName, password))
+            {
+                Session[usrName] = usrName;
+            }
         }
 
-
-
-        protected void LoginButton_Click(object sender, EventArgs e)
+        protected void Button2_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("good");
-     
-        }
 
-
-        protected void LoginCloseButton_Click(object sender, EventArgs e)
-        {
-      
         }
     }
 }
