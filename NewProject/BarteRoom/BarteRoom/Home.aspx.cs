@@ -12,7 +12,6 @@ namespace BarteRoom
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            loginButton.Click += new EventHandler(this.GreetingBtn_Click);
 
         }
 
@@ -26,7 +25,7 @@ namespace BarteRoom
 
         protected void LoginButton_Click(object sender, EventArgs e)
         {
-            Response.Write("good");
+            Console.WriteLine("good");
      
         }
 

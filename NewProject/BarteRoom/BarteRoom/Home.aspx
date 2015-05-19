@@ -174,12 +174,13 @@
                        
                      </div>
                      <div class="modal-footer">
-                        <button class="btn btn-info"  OnClick="LoginButton_Click" id="loginButton" data-dismiss="modal" runat="server"> Login </button>
-                        <button class="btn btn-info"  OnClick="LoginCloseButton_Click" id="loginCloseButton" data-dismiss="modal" runat="server"> Close </button>
+                         <button class="btn btn-info"  onclick="LoginButton_Click()" id="loginButton" data-dismiss="modal" runat="server"> Login </button>
+                         <button class="btn btn-info"  onclick="LoginButton_Click()" id="loginCloseButton" data-dismiss="modal" runat="server"> Close </button>
                      </div>
                  </div>
              </div>
          </div>
+      loginBu
          <!-- ===================================================Login Modal=======================================================  -->
 
          <!-- ===================================================Register Modal=======================================================  -->
