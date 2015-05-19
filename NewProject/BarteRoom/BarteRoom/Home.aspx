@@ -37,7 +37,7 @@
                     <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
                     <li><a href="#">About Us</a></li>
                      <li><a href="#login" data-toggle="modal">Login</a></li>
-                     <li><a href="#">Register</a></li>
+                     <li><a href="#register" data-toggle="modal">Register</a></li>
                     <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">My Account <span class="caret"></span></a>
                       <ul class="dropdown-menu" role="menu">
@@ -61,10 +61,15 @@
             <div class="row row-css-custom">
 
                 <div class="col-md-3" >
-                   <div class="jumbotron jumbo-css-custom">
-                       <h3>Some content</h3>
-                  </div>
-                 
+                  <div class="list-group links-css-custom" >
+                      <a href="#" class="list-group-item active">
+                        Barter Info Center
+                      </a>
+                      <a href="#" class="list-group-item">dummy</a>
+                      <a href="#" class="list-group-item">dummy</a>
+                      <a href="#" class="list-group-item">dummy</a>
+                      <a href="#" class="list-group-item">dummy</a>
+                    </div>
                 </div>
                  <div class="col-md-6">
                      
@@ -108,14 +113,14 @@
 
                 </div>
                  <div class="col-md-3">
-                   <div class="jumbotron jumbo-css-custom">
+                     <div class="jumbotron jumbo-css-custom">
                        <h3>Some content</h3>
                   </div>
                 </div>    
-
             </div>
 
-              <div class="row row-css-custom">
+             <!-- ==============================================buttom row===========================================  -->
+             <div class="row row-css-custom">
                  <div class="col-md-4">
                      <div class="jumbotron">
                          <h3>
@@ -138,7 +143,7 @@
                      </div>
                  </div>
              </div>
-          
+           <!-- ==============================================buttom row===========================================  -->
              
             
 
@@ -176,6 +181,54 @@
              </div>
          </div>
          <!-- ===================================================Login Modal=======================================================  -->
+
+         <!-- ===================================================Register Modal=======================================================  -->
+         <div class="modal fade" id="register" role="dialog">
+             <div class="modal-dialog ">
+                 <div class="modal-content">
+                     <div class="modal-header">
+                         <h3>Register</h3>
+                     </div>
+                     <div class="modal-body">
+                         
+                         <span>Username</span>
+                         <div class="input-group">
+                          <span class="input-group-addon" id="basic-addon1"></span>
+                          <input type="text" class="form-control" placeholder="Enter your username" aria-describedby="basic-addon1">
+                        </div>
+                          <span>password</span>
+                         <div class="input-group">
+                          <span class="input-group-addon" id="basic-addon1"></span>
+                          <input type="password" class="form-control" placeholder="Enter your Password" aria-describedby="basic-addon1">
+                        </div
+
+                          <span>first name</span>
+                         <div class="input-group">
+                          <span class="input-group-addon" id="basic-addon1"></span>
+                          <input type="text" class="form-control" placeholder="Enter your first name" aria-describedby="basic-addon1">
+                        </div>
+
+                           <span>last name</span>
+                         <div class="input-group">
+                          <span class="input-group-addon" id="basic-addon1"></span>
+                          <input type="text" class="form-control" placeholder="Enter your last name" aria-describedby="basic-addon1">
+                        </div>
+
+                           <span>email</span>
+                         <div class="input-group">
+                          <span class="input-group-addon" id="basic-addon1"></span>
+                          <input type="email" class="form-control" placeholder="Enter your email" aria-describedby="basic-addon1">
+                        </div>
+ 
+                     </div>
+                     <div class="modal-footer">
+                        
+                        <button class="btn btn-info" data-dismiss="modal"> Close </button>
+                     </div>
+                 </div>
+             </div>
+         </div>
+         <!-- ===================================================Register Modal=======================================================  -->
 
 
           <div class="navbar navbar-default navbar-fixed-bottom "> 
