@@ -161,22 +161,24 @@
                          <h3>Login</h3>
                      </div>
                      <div class="modal-body">
+                          <asp:RequiredFieldValidator ID="LoginUsernameRequired" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="loginUserNameTxtBox" ValidationGroup="LoginGroup"></asp:RequiredFieldValidator>
                          <span>Username</span>
                          <div class="input-group">
                           <span class="input-group-addon" id="basic_addon1"></span>
-                          <input type="text" class="form-control" placeholder="Enter your username" aria-describedby="basic-addon1" id="loginUserNameTxtBox" runat="server">
+                          <input type="text" class="form-control" placeholder="Enter your username" aria-describedby="basic-addon1" id="loginUserNameTxtBox" runat="server"/>
                         </div>
-                          <span>password</span>
+                         <asp:RequiredFieldValidator ID="LoginPasswordRequired" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="loginPasswordTxtBox" ValidationGroup="LoginGroup"></asp:RequiredFieldValidator>
+                          <span>Password</span>
                          <div class="input-group">
-                          <span class="input-group-addon" id="basic_addon1"></span>
-                          <input type="text" class="form-control" placeholder="Enter your Password" aria-describedby="basic-addon1" id="loginPasswordTxtBox" runat="server">
+                          <span class="input-group-addon" id="basic_addon2"></span>
+                          <input type="Password" class="form-control" placeholder="Enter your Password" aria-describedby="basic-addon1" id="loginPasswordTxtBox" runat="server"/>
                         </div>
 
                        
                      </div>
                      <div class="modal-footer">
-                         <asp:Button class="btn btn-info" ID="Button1" runat="server" OnClick="Button1_Click" Text="Login" />
-                         <asp:Button class="btn btn-info" ID="Button2" runat="server" OnClick="Button2_Click" Text="Cancel" />
+                         <asp:Button class="btn btn-info" ID="Login" runat="server" OnClick="Login_Click" Text="Login" ValidationGroup="LoginGroup"/>
+                         <button class="btn btn-info" data-dismiss="modal"> Cancel </button>
                      </div>
                  </div>
              </div>
@@ -193,39 +195,53 @@
                      </div>
                      <div class="modal-body">
                          
+                     <asp:RequiredFieldValidator ID="UsernameRequired" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="SignUpUsernameTxtBox" ValidationGroup="SignUpGroup"></asp:RequiredFieldValidator>
                          <span>Username</span>
                          <div class="input-group">
-                          <span class="input-group-addon" id="basic-addon1"></span>
-                          <input type="text" class="form-control" placeholder="Enter your username" aria-describedby="basic-addon1">
-                        </div>
-                          <span>password</span>
-                         <div class="input-group">
-                          <span class="input-group-addon" id="basic-addon1"></span>
-                          <input type="password" class="form-control" placeholder="Enter your Password" aria-describedby="basic-addon1">
-                        </div
+                          <span class="input-group-addon" id="basic-addon3"></span>
+                          <input type="text" class="form-control" placeholder="Enter your username" aria-describedby="basic-addon1" id="SignUpUsernameTxtBox" runat="server"/>
+                        </div>               
 
-                          <span>first name</span>
+                         <asp:RequiredFieldValidator ID="FirstRequired" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="SignUpFirstTxtBox" ValidationGroup="SignUpGroup"></asp:RequiredFieldValidator>
+                          <span>First name</span>
                          <div class="input-group">
-                          <span class="input-group-addon" id="basic-addon1"></span>
-                          <input type="text" class="form-control" placeholder="Enter your first name" aria-describedby="basic-addon1">
+                          <span class="input-group-addon" id="basic-addon4"></span>
+                          <input type="text" class="form-control" placeholder="Enter your first name" aria-describedby="basic-addon1" id="SignUpFirstTxtBox" runat="server"/>
                         </div>
 
-                           <span>last name</span>
+                         <asp:RequiredFieldValidator ID="LastRequired" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="SignUpLastTxtBox" ValidationGroup="SignUpGroup"></asp:RequiredFieldValidator>
+                           <span>Last name</span>
                          <div class="input-group">
-                          <span class="input-group-addon" id="basic-addon1"></span>
-                          <input type="text" class="form-control" placeholder="Enter your last name" aria-describedby="basic-addon1">
+                          <span class="input-group-addon" id="basic-addon5"></span>
+                          <input type="text" class="form-control" placeholder="Enter your last name" aria-describedby="basic-addon1" id="SignUpLastTxtBox" runat="server"/>
                         </div>
 
-                           <span>email</span>
+                         <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="SignUpPasswordTxtBox" ValidationGroup="SignUpGroup"></asp:RequiredFieldValidator>
+                         <span>Password</span>
+                         <asp:RegularExpressionValidator ID="PasswordExpression" runat="server" ControlToValidate="SignUpPasswordTxtBox" ValidationExpression="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{9,}$" ErrorMessage="*" ForeColor="Red" />
                          <div class="input-group">
-                          <span class="input-group-addon" id="basic-addon1"></span>
-                          <input type="email" class="form-control" placeholder="Enter your email" aria-describedby="basic-addon1">
+                          <span class="input-group-addon" id="basic-addon6"></span>
+                          <input type="Password" class="form-control" placeholder="Min 8 characters atleast 1 Alphabet and 1 Number" aria-describedby="basic-addon1" id="SignUpPasswordTxtBox" runat="server"/>
+                        </div>                         
+                        <asp:RequiredFieldValidator ID="ConfirmRequired" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="SignUpConfirmTxtBox" ValidationGroup="SignUpGroup"></asp:RequiredFieldValidator>
+                         <span>Confirm Password</span>
+                         <asp:CompareValidator ID="ComparePasswords" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="SignUpPasswordTxtBox" ControlToCompare="SignUpConfirmTxtBox" ValidationGroup="SignUpGroup"></asp:CompareValidator>
+                         <div class="input-group">
+                          <span class="input-group-addon" id="basic-addon7"></span>
+                          <input type="Password" class="form-control" placeholder="Confirm Password" aria-describedby="basic-addon1" id="SignUpConfirmTxtBox" runat="server"/>
+                        </div>
+
+                         <asp:RequiredFieldValidator ID="EmailRequired" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="SignUpEmailTxtBox" ValidationGroup="SignUpGroup"></asp:RequiredFieldValidator>
+                           <span>E-mail</span>
+                         <div class="input-group">
+                          <span class="input-group-addon" id="basic-addon8"></span>
+                          <input type="email" class="form-control" placeholder="Enter your email" aria-describedby="basic-addon1" id="SignUpEmailTxtBox" runat="server"/>
                         </div>
  
                      </div>
                      <div class="modal-footer">
-                        
-                        <button class="btn btn-info" data-dismiss="modal"> Close </button>
+                         <asp:Button class="btn btn-info" ID="SignUp" runat="server" OnClick="SignUp_Click" Text="SignUp" ValidationGroup ="SignUpGroup"/>
+                         <button class="btn btn-info" data-dismiss="modal"> Close </button>
                      </div>
                  </div>
              </div>

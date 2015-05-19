@@ -54,6 +54,31 @@ namespace BarteRoom
             return true;
         }
 
+        //check if usr already exists
+        public bool isExists(string usr)
+        {
+            int tmp = 0;
+
+            try
+            {
+                connect.Open();
+
+                query = "select COUNT(*) from users where usr = '" + usr + "';";
+                command = new SqlCommand(query, connect);
+
+                tmp = Convert.ToInt32(command.ExecuteScalar().ToString());
+                connect.Close();
+            }
+
+            catch (Exception e) { }
+
+            if (tmp == 1)
+                return true;
+
+            else
+                return false;
+        }
+
         
         //return the full name of a specific user 
         public String getFullName(String usr)
