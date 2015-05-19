@@ -75,5 +75,74 @@ namespace BarteRoom
 
             return Name;
         }
+
+
+        /*
+         *check if the password matches to the correct user
+        */
+        public bool loginCheck(String usr, String pass)
+        {
+            string password = "";
+            query = "select pass from users where usr = '" + usr + "';";
+
+            try
+            {
+                connect.Open();
+
+                
+                command = new SqlCommand(query, connect);
+
+                password = command.ExecuteScalar().ToString();
+                connect.Close();
+            }
+
+            catch (Exception e) { }
+
+            if (password.Equals(pass))
+                return true;
+
+            else
+                return false;
+        }
+
+        //upload product image
+        public void uploadPic(string usr, byte[] image)
+        {
+            query = "update BarteList set image = @IMG where usr = '" + usr + "';";
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+                command.Parameters.AddWithValue("@IMG", image);
+                command.ExecuteNonQuery();
+                connect.Close();
+            }
+
+            catch (Exception ex) { }
+        }
+
+
+        //return the E-mail of the correct user
+        public string getEmail(string usr)
+        {
+            string email = "";
+            query = "select email from users where usr = '" + usr + "';";
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+
+                email = Convert.ToString(command.ExecuteScalar().ToString());
+                connect.Close();
+            }
+
+            catch (Exception e) { }
+
+            return email;
+        }
     }
 }
