@@ -16,7 +16,7 @@
   
   <form id="form1" runat="server">
         <header>
-            <nav class="navbar navbar-default">
+            <nav class="navbar navbar-default ">
               <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
@@ -63,7 +63,7 @@
 
                 <div class="col-md-3" >
                   <div class="list-group links-css-custom" >
-                      <a href="#" class="list-group-item active">
+                      <a href="#" class="list-group-item active ">
                         Barter Info Center
                       </a>
                       <a href="#" class="list-group-item">dummy</a>
