@@ -27,21 +27,22 @@
                     <span class="icon-bar"></span>
                   </button>
                                
-                    <a class="navbar-brand" href="#">BarteRoom</a>
+                    <a class="navbar-brand" href="/Home.aspx">BarteRoom</a>
+                    <!--img src="img/img4.jpg" class="img-responsive" /-->
                
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
+                    <li class="active"> <a href="/Home.aspx"> Home <span class="sr-only">(current)</span></a></li>
                     <li><a href="#">About Us</a></li>
                      <li><a href="#login" data-toggle="modal">Login</a></li>
                      <li><a href="#register" data-toggle="modal">Register</a></li>
                     <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">My Account <span class="caret"></span></a>
                       <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Edit your Barter list</a></li>
+                        <li><a href="/BarterList.aspx">Edit your Barter list</a></li>
                         <li><a href="#">Add an Item </a></li>
                         <li><a href="#">Another action </a></li>
                         <li><a href="#">Another action</a></li>
@@ -254,7 +255,7 @@
                  <div class="container">
                     <p class="navbar-text"> About Us </p>
                      <p class="navbar-text"> Copyrights </p>
-                     <p class="navbar-text"> Site is Powered by nadav mor </p>
+                     <p class="navbar-text"> Site is Powered by BarteRoom team </p>
                   </div>
           </div>
     </form>
