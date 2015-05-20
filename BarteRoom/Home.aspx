@@ -9,7 +9,7 @@
     <link href="Content/style.css"  rel="stylesheet" />
    
 
-    <title>!!!BarteRoom!!!</title>
+    <title>!!!BarteRoom!!! for se course</title>
 
 </head>
 <body>
