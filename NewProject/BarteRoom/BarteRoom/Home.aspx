@@ -8,7 +8,7 @@
     <link href="Content/bootstrap.css"  rel="stylesheet" />
     <link href="Content/style.css"  rel="stylesheet" />
    
-    <title>BarteRoom</title>
+    <title>BarteRoom!!!</title>
 </head>
 <body>
      <script type="text/javascript" src="Scripts/jquery-1.9.1.js"> </script>
