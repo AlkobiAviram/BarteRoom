@@ -218,7 +218,7 @@
 
                          <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="SignUpPasswordTxtBox" ValidationGroup="SignUpGroup"></asp:RequiredFieldValidator>
                          <span>Password</span>
-                         <asp:RegularExpressionValidator ID="PasswordExpression" runat="server" ControlToValidate="SignUpPasswordTxtBox" ValidationExpression="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{9,}$" ErrorMessage="*" ForeColor="Red" />
+                         <asp:RegularExpressionValidator ID="PasswordExpression" runat="server" ControlToValidate="SignUpPasswordTxtBox" ValidationExpression="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" ErrorMessage="*" ForeColor="Red" />
                          <div class="input-group">
                           <span class="input-group-addon" id="basic-addon6"></span>
                           <input type="Password" class="form-control" placeholder="Min 8 characters atleast 1 Alphabet and 1 Number" aria-describedby="basic-addon1" id="SignUpPasswordTxtBox" runat="server"/>
@@ -243,6 +243,7 @@
                          <asp:Button class="btn btn-info" ID="SignUp" runat="server" OnClick="SignUp_Click" Text="SignUp" ValidationGroup ="SignUpGroup"/>
                          <button class="btn btn-info" data-dismiss="modal"> Close </button>
                      </div>
+                     <asp:Label ID="comments" runat="server" Text="" ForeColor="Red" Visible="false"></asp:Label>
                  </div>
              </div>
          </div>

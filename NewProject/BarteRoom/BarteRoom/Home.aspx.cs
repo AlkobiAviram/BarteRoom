@@ -36,6 +36,8 @@ namespace BarteRoom
 
         protected void SignUp_Click(object sender, EventArgs e)
         {
+            int state;
+
             String usr = SignUpUsernameTxtBox.Value;
             String first = SignUpFirstTxtBox.Value;
             String last = SignUpLastTxtBox.Value;
@@ -45,7 +47,22 @@ namespace BarteRoom
 
             logic = new Logic();
 
-            logic.SignUp(usr, first, last, password, confirm, email);
+            state = logic.SignUp(usr, first, last, password, confirm, email);
+
+            if (state == 1)
+            {
+                comments.Text = "Username already exists";
+                comments.Visible = true;
+            }
+
+            else if (state == 2)
+            {
+                comments.Text = "SignUp is fail please try again";
+                comments.Visible = true;
+            }
+
+            else
+                comments.Visible = false;
         }
     }
 }
