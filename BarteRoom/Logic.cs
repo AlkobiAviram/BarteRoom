@@ -31,6 +31,7 @@ namespace BarteRoom
         public int SignUp(String usr, String first, String last, String password, String confirm, String email){
 
             String fullName = first + " " + last;
+            
             data = new DB();
 
             if (data.isExists(usr))

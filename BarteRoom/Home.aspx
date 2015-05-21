@@ -45,15 +45,17 @@
                      <li><a href="#login" data-toggle="modal">Login</a></li>
                      <li><a href="#register" data-toggle="modal">Register</a></li>
                     <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">My Account <span class="caret"></span></a>
+                        <asp:LinkButton ID="MyAccount" runat="server" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">My Account<span class="caret"></span></asp:LinkButton>
                       <ul class="dropdown-menu" role="menu">
                         <li><a href="/BarterList.aspx">Edit your Barter list</a></li>
                         <li><a href="#">Add an Item </a></li>
                         <li><a href="#">Another action </a></li>
                         <li><a href="#">Another action</a></li>
-                   
+                          <li><asp:LinkButton ID="LogOut" runat="server" OnClick="LogOut_Click">LogOut</asp:LinkButton></li>
                       </ul>
+                        
                     </li>
+
                   </ul>
                   
                 </div><!-- /.navbar-collapse -->

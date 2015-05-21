@@ -26,7 +26,7 @@ namespace BarteRoom
         //constructor - initialize the connection to the Database
         public DB()
         {
-            connect = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+            connect = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectToDb"].ConnectionString);
         }
 
 
@@ -129,7 +129,7 @@ namespace BarteRoom
             else
                 return false;
         }
-
+        /*
         //upload product image
         public void uploadPic(string usr, byte[] image)
         {
@@ -147,7 +147,7 @@ namespace BarteRoom
 
             catch (Exception ex) { }
         }
-
+        */
 
         //return the E-mail of the correct user
         public string getEmail(string usr)

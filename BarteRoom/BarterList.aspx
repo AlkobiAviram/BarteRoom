@@ -34,8 +34,7 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
-                      <li><a href="#login" data-toggle="modal">LogOut</a></li>
-                    <li class="active"><a href="/Home.aspx">Home <span class="sr-only">(current)</span></a></li>
+                    <li><a href="/Home.aspx">Home <span class="sr-only">(current)</span></a></li>
                     <li><a href="#">Suport</a></li>
                      
                     <li class="dropdown">
@@ -45,7 +44,8 @@
                         <li><a href="#">Add an Item </a></li>
                         <li><a href="#">Another action </a></li>
                         <li><a href="#">Another action</a></li>
-                   
+                        <li><asp:LinkButton ID="LogOut2" runat="server">LogOut</asp:LinkButton></li>
+                            
                       </ul>
                     </li>
                   </ul>

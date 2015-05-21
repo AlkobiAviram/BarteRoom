@@ -14,7 +14,15 @@ namespace BarteRoom
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (Session["usr"] == null)
+            {
+                MyAccount.Visible = false;
+            }
+
+            else if (MyAccount != null)
+            {
+                MyAccount.Visible = true;
+            }
         }
 
         protected void Login_Click(object sender, EventArgs e)
@@ -29,8 +37,9 @@ namespace BarteRoom
   
             if (logic.Login(usrName, password))
             {
-                Session[usrName] = usrName;
-                Response.Redirect("BarterList.aspx");
+                Session["usr"] = usrName;
+                Response.Redirect("Home.aspx");
+                //Response.Redirect("BarterList.aspx");
             }
         }
 
@@ -63,6 +72,12 @@ namespace BarteRoom
 
             else
                 comments.Visible = false;
+        }
+
+        protected void LogOut_Click(object sender, EventArgs e)
+        {
+            Session["usr"] = null;
+            Response.Redirect("Home.aspx");
         }
     }
 }

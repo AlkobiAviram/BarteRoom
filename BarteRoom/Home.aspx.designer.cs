@@ -22,6 +22,24 @@ namespace BarteRoom {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// MyAccount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton MyAccount;
+        
+        /// <summary>
+        /// LogOut control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LogOut;
+        
+        /// <summary>
         /// LoginUsernameRequired control.
         /// </summary>
         /// <remarks>
