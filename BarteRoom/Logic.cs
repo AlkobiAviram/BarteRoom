@@ -89,5 +89,17 @@ namespace BarteRoom
 
             smtp.Send(mail);
         }
+
+        public String getName(String usr)
+        {
+            String fullname;
+            String[] name;
+            data = new DB();
+
+            fullname = data.getFullName(usr);
+            name = fullname.Split(' ');
+
+            return name[0];
+        }
     }
 }

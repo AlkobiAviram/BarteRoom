@@ -14,6 +14,7 @@ namespace BarteRoom
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            String name;
             manage.Visible = false;
 
             if (Session["usr"] == null)
@@ -30,16 +31,21 @@ namespace BarteRoom
 
             else
             {
+                logic = new Logic();
+  
+                name = logic.getName(Session["usr"].ToString());
                 MyAccount.Visible = true;
+        
                 log.Visible = false;
                 reg.Visible = false;
                 firsTxt.Visible = false;
                 lastTxt.Visible = false;
+                MyAccount.Text = name + caret.Text;
 
                 SendFirstRequired.Visible = false;
                 SendLastRequired.Visible = false;
 
-                logic = new Logic();
+                
                 
                 if (logic.isManager(Session["usr"].ToString()))
                 {

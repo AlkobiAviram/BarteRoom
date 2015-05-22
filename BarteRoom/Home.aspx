@@ -44,7 +44,7 @@
                     <li class="active"> <a href="/Home.aspx"> Home <span class="sr-only">(current)</span></a></li>
 
                         <li class="dropdown">
-                        <asp:LinkButton ID="MyAccount" runat="server" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">My Account<span class="caret"></span></asp:LinkButton>
+                        <asp:LinkButton ID="MyAccount" runat="server" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">My Account<asp:HyperLink ID="caret" runat="server"><span class="caret"></span></asp:HyperLink></asp:LinkButton>
                       <ul class="dropdown-menu" role="menu">
                         <li><a href="/BarterList.aspx">Edit your Barter list</a></li>
                         <li><a href="#">Add an Item </a></li>
