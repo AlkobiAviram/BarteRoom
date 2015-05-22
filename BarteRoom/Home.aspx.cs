@@ -14,14 +14,38 @@ namespace BarteRoom
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            manage.Visible = false;
+
             if (Session["usr"] == null)
             {
                 MyAccount.Visible = false;
+                log.Visible = true;
+                reg.Visible = true;
+                firsTxt.Visible = true;
+                lastTxt.Visible = true;
+
+                SendFirstRequired.Visible = true;
+                SendLastRequired.Visible = true;
             }
 
-            else if (MyAccount != null)
+            else
             {
                 MyAccount.Visible = true;
+                log.Visible = false;
+                reg.Visible = false;
+                firsTxt.Visible = false;
+                lastTxt.Visible = false;
+
+                SendFirstRequired.Visible = false;
+                SendLastRequired.Visible = false;
+
+                logic = new Logic();
+                
+                if (logic.isManager(Session["usr"].ToString()))
+                {
+                    manage.Visible = true;
+                }
+                 
             }
         }
 
@@ -39,7 +63,6 @@ namespace BarteRoom
             {
                 Session["usr"] = usrName;
                 Response.Redirect("Home.aspx");
-                //Response.Redirect("BarterList.aspx");
             }
         }
 
@@ -62,6 +85,7 @@ namespace BarteRoom
             {
                 comments.Text = "Username already exists";
                 comments.Visible = true;
+                
             }
 
             else if (state == 2)
@@ -78,6 +102,40 @@ namespace BarteRoom
         {
             Session["usr"] = null;
             Response.Redirect("Home.aspx");
+        }
+
+        protected void Send_Click(object sender, EventArgs e)
+        {
+            String usr;
+            String first;
+            String last;
+            String subject;
+            String message;
+
+            if (Session["usr"] == null)
+            {
+                first = firsTxt.Text;
+                last = lastTxt.Text;
+                subject = SubTxt.Value;
+                message = messageTxt.Text;
+
+                logic = new Logic();
+
+                logic.sendEmail("", first, last, subject, message, 0);
+            }
+
+            else
+            {
+                usr = Session["usr"].ToString();
+                first = "";
+                last = "";
+                subject = SubTxt.Value;
+                message = messageTxt.Text;
+
+                logic = new Logic();
+
+                logic.sendEmail(usr, first, last, subject, message, 1);
+            }
         }
     }
 }

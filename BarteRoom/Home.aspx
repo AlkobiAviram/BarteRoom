@@ -40,11 +40,10 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
+                      <li><asp:HyperLink ID="manage" NavigateUrl="Manager.aspx" data-toggle="modal" runat="server">Manager Page</asp:HyperLink></li>
                     <li class="active"> <a href="/Home.aspx"> Home <span class="sr-only">(current)</span></a></li>
-                    <li><a href="#">About Us</a></li>
-                     <li><a href="#login" data-toggle="modal">Login</a></li>
-                     <li><a href="#register" data-toggle="modal">Register</a></li>
-                    <li class="dropdown">
+
+                        <li class="dropdown">
                         <asp:LinkButton ID="MyAccount" runat="server" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">My Account<span class="caret"></span></asp:LinkButton>
                       <ul class="dropdown-menu" role="menu">
                         <li><a href="/BarterList.aspx">Edit your Barter list</a></li>
@@ -55,6 +54,12 @@
                       </ul>
                         
                     </li>
+
+                     <li><asp:HyperLink ID="log" NavigateUrl="#login" data-toggle="modal" runat="server">Login</asp:HyperLink></li>
+                     <li><asp:HyperLink ID="reg" NavigateUrl="#register" data-toggle="modal" runat="server">Register</asp:HyperLink></li>
+                      <li><a href="#">About Us</a></li>
+                      <li><asp:HyperLink ID="contactUs" NavigateUrl="#contact" data-toggle="modal" runat="server">Contact Us</asp:HyperLink></li>
+                  
 
                   </ul>
                   
@@ -169,17 +174,18 @@
                          <h3>Login</h3>
                      </div>
                      <div class="modal-body">
-                          <asp:RequiredFieldValidator ID="LoginUsernameRequired" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="loginUserNameTxtBox" ValidationGroup="LoginGroup"></asp:RequiredFieldValidator>
-                         <span>Username</span>
+                         
+                         <span><asp:ValidationSummary ID="LoginValidationSummary" runat="server" ForeColor="Red" ValidationGroup="LoginGroup" /></span>
+                         <span>UserName</span>
                          <div class="input-group">
                           <span class="input-group-addon" id="basic_addon1"></span>
-                          <input type="text" class="form-control" placeholder="Enter your username" aria-describedby="basic-addon1" id="loginUserNameTxtBox" runat="server"/>
+                          <input type="text" class="form-control" placeholder="Enter Your UserName" aria-describedby="basic-addon1" id="loginUserNameTxtBox" runat="server"/>
                         </div>
-                         <asp:RequiredFieldValidator ID="LoginPasswordRequired" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="loginPasswordTxtBox" ValidationGroup="LoginGroup"></asp:RequiredFieldValidator>
-                          <span>Password</span>
+                          
+                         <span>Password</span>
                          <div class="input-group">
                           <span class="input-group-addon" id="basic_addon2"></span>
-                          <input type="Password" class="form-control" placeholder="Enter your Password" aria-describedby="basic-addon1" id="loginPasswordTxtBox" runat="server"/>
+                          <input type="Password" class="form-control" placeholder="Enter Your Password" aria-describedby="basic-addon1" id="loginPasswordTxtBox" runat="server"/>
                         </div>
 
                        
@@ -187,6 +193,11 @@
                      <div class="modal-footer">
                          <asp:Button class="btn btn-info" ID="Login" runat="server" OnClick="Login_Click" Text="Login" ValidationGroup="LoginGroup"/>
                          <button class="btn btn-info" data-dismiss="modal"> Cancel </button>
+
+                         <!-- ===================================================Login Validations=======================================================  -->
+                          <asp:RequiredFieldValidator ID="LoginUsernameRequired" runat="server" ErrorMessage="UserName Required" ForeColor="Red" ControlToValidate="loginUserNameTxtBox" ValidationGroup="LoginGroup" Display="None"></asp:RequiredFieldValidator>
+                          <asp:RequiredFieldValidator ID="LoginPasswordRequired" runat="server" ErrorMessage="Password Required" ForeColor="Red" ControlToValidate="loginPasswordTxtBox" ValidationGroup="LoginGroup" Display="None"></asp:RequiredFieldValidator>
+
                      </div>
                  </div>
              </div>
@@ -203,53 +214,61 @@
                      </div>
                      <div class="modal-body">
                          
-                     <asp:RequiredFieldValidator ID="UsernameRequired" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="SignUpUsernameTxtBox" ValidationGroup="SignUpGroup"></asp:RequiredFieldValidator>
-                         <span>Username</span>
+                    
+                        <span><asp:ValidationSummary ID="SignUpValidationSummary" runat="server" ValidationGroup="SignUpGroup" ForeColor="Red" /></span>
+                   
+                         <span>UserName</span>
                          <div class="input-group">
                           <span class="input-group-addon" id="basic-addon3"></span>
-                          <input type="text" class="form-control" placeholder="Enter your username" aria-describedby="basic-addon1" id="SignUpUsernameTxtBox" runat="server"/>
+                          <input type="text" class="form-control" placeholder="Enter UserName" aria-describedby="basic-addon1" id="SignUpUsernameTxtBox" runat="server"/>
                         </div>               
-
-                         <asp:RequiredFieldValidator ID="FirstRequired" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="SignUpFirstTxtBox" ValidationGroup="SignUpGroup"></asp:RequiredFieldValidator>
-                          <span>First name</span>
+                 
+                         <span>First Name</span>
                          <div class="input-group">
                           <span class="input-group-addon" id="basic-addon4"></span>
-                          <input type="text" class="form-control" placeholder="Enter your first name" aria-describedby="basic-addon1" id="SignUpFirstTxtBox" runat="server"/>
+                          <input type="text" class="form-control" placeholder="Enter Your First Name" aria-describedby="basic-addon1" id="SignUpFirstTxtBox" runat="server"/>
                         </div>
-
-                         <asp:RequiredFieldValidator ID="LastRequired" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="SignUpLastTxtBox" ValidationGroup="SignUpGroup"></asp:RequiredFieldValidator>
-                           <span>Last name</span>
+  
+                          <span>Last Name</span>                
                          <div class="input-group">
                           <span class="input-group-addon" id="basic-addon5"></span>
-                          <input type="text" class="form-control" placeholder="Enter your last name" aria-describedby="basic-addon1" id="SignUpLastTxtBox" runat="server"/>
+                          <input type="text" class="form-control" placeholder="Enter Your Last Name" aria-describedby="basic-addon1" id="SignUpLastTxtBox" runat="server"/>
                         </div>
 
-                         <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="SignUpPasswordTxtBox" ValidationGroup="SignUpGroup"></asp:RequiredFieldValidator>
-                         <span>Password</span>
-                         <asp:RegularExpressionValidator ID="PasswordExpression" runat="server" ControlToValidate="SignUpPasswordTxtBox" ValidationExpression="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" ErrorMessage="*" ForeColor="Red" />
+                        <span>Password</span>
                          <div class="input-group">
                           <span class="input-group-addon" id="basic-addon6"></span>
-                          <input type="Password" class="form-control" placeholder="Min 8 characters atleast 1 Alphabet and 1 Number" aria-describedby="basic-addon1" id="SignUpPasswordTxtBox" runat="server"/>
+                          <input type="Password" class="form-control" placeholder="Enter Password" aria-describedby="basic-addon1" id="SignUpPasswordTxtBox" runat="server"/>
                         </div>                         
-                        <asp:RequiredFieldValidator ID="ConfirmRequired" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="SignUpConfirmTxtBox" ValidationGroup="SignUpGroup"></asp:RequiredFieldValidator>
-                         <span>Confirm Password</span>
-                         <asp:CompareValidator ID="ComparePasswords" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="SignUpPasswordTxtBox" ControlToCompare="SignUpConfirmTxtBox" ValidationGroup="SignUpGroup"></asp:CompareValidator>
+                       
+                        <span>Confirm Password</span>
                          <div class="input-group">
                           <span class="input-group-addon" id="basic-addon7"></span>
                           <input type="Password" class="form-control" placeholder="Confirm Password" aria-describedby="basic-addon1" id="SignUpConfirmTxtBox" runat="server"/>
                         </div>
 
-                         <asp:RequiredFieldValidator ID="EmailRequired" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="SignUpEmailTxtBox" ValidationGroup="SignUpGroup"></asp:RequiredFieldValidator>
-                           <span>E-mail</span>
+                          <span>E-mail</span>
                          <div class="input-group">
                           <span class="input-group-addon" id="basic-addon8"></span>
-                          <input type="email" class="form-control" placeholder="Enter your email" aria-describedby="basic-addon1" id="SignUpEmailTxtBox" runat="server"/>
+                          <input type="email" class="form-control" placeholder="Enter Your E-mail" aria-describedby="basic-addon1" id="SignUpEmailTxtBox" runat="server"/>
                         </div>
  
                      </div>
                      <div class="modal-footer">
                          <asp:Button class="btn btn-info" ID="SignUp" runat="server" OnClick="SignUp_Click" Text="SignUp" ValidationGroup ="SignUpGroup"/>
                          <button class="btn btn-info" data-dismiss="modal"> Close </button>
+
+                          <!-- ===================================================Register Validations=======================================================  -->
+                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="UserName Required" ForeColor="Red" ControlToValidate="SignUpUsernameTxtBox" ValidationGroup="SignUpGroup" Display="None"></asp:RequiredFieldValidator>
+                         <asp:RequiredFieldValidator ID="FirstRequired" runat="server" ErrorMessage="First Name Required" ForeColor="Red" ControlToValidate="SignUpFirstTxtBox" ValidationGroup="SignUpGroup" Display="None"></asp:RequiredFieldValidator>
+                          <asp:RequiredFieldValidator ID="LastRequired" runat="server" ErrorMessage="Last Name Required" ForeColor="Red" ControlToValidate="SignUpLastTxtBox" ValidationGroup="SignUpGroup" Display="None"></asp:RequiredFieldValidator>
+                          <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ErrorMessage="Password Required" ForeColor="Red" ControlToValidate="SignUpPasswordTxtBox" ValidationGroup="SignUpGroup" Display="None"></asp:RequiredFieldValidator>
+                          <asp:RegularExpressionValidator ID="PasswordExpression" runat="server" ControlToValidate="SignUpPasswordTxtBox" ValidationExpression="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" ErrorMessage="Password must be Min 8 characters, atleast 1 Alphabet and 1 Number" ForeColor="Red" Display="None" ValidationGroup="SignUpGroup"/>
+                          <asp:RequiredFieldValidator ID="ConfirmRequired" runat="server" ErrorMessage="Confirm Password Required" ForeColor="Red" ControlToValidate="SignUpConfirmTxtBox" ValidationGroup="SignUpGroup" Display="None"></asp:RequiredFieldValidator>
+                          <asp:CompareValidator ID="ComparePasswords" runat="server" ErrorMessage="Password and Confirm are not equals" ForeColor="Red" ControlToValidate="SignUpPasswordTxtBox" ControlToCompare="SignUpConfirmTxtBox" ValidationGroup="SignUpGroup" Display="None"></asp:CompareValidator>
+                          <asp:RequiredFieldValidator ID="EmailRequired" runat="server" ErrorMessage="E-mail Required" ForeColor="Red" ControlToValidate="SignUpEmailTxtBox" ValidationGroup="SignUpGroup" Display="None"></asp:RequiredFieldValidator>
+
+
                      </div>
                      <asp:Label ID="comments" runat="server" Text="" ForeColor="Red" Visible="false"></asp:Label>
                  </div>
@@ -257,6 +276,51 @@
          </div>
          <!-- ===================================================Register Modal=======================================================  -->
 
+         <!-- ===================================================Contact Modal========================================================  -->
+    <div class="modal fade" id="contact" role="dialog" >
+             <div class="modal-dialog ">
+                 <div class="modal-content">
+                     <div class="modal-header">
+                         <h3>Send Us a Message</h3>
+                     </div>
+                     <div class="modal-body">
+                       
+                         <span><asp:ValidationSummary ID="SendValidationSummary" runat="server" ValidationGroup="SendGroup" ForeColor="Red"/></span>
+                    
+                          <div class="input-group">
+                          <span class="input-group-addon" id="basic_addon2"></span>
+                             <asp:TextBox ID="firsTxt" class="form-control" runat="server" placeholder="First Name" aria-describedby="basic-addon1"></asp:TextBox>
+                              <asp:TextBox ID="lastTxt" class="form-control" runat="server" placeholder="Last Name" aria-describedby="basic-addon1"></asp:TextBox>
+                        </div>
+                        
+                        <br />
+
+                         <div class="input-group">
+                          <span class="input-group-addon" id="basic_addon1"></span>
+                          <input type="text" class="form-control" placeholder="Subject" aria-describedby="basic-addon1" id="SubTxt" runat="server" style="border-width: medium; border-style: solid;" />
+                        </div>
+                             
+                        
+                         <div class="input-group">
+                          <span class="input-group-addon" id="basic_addon2"></span>
+                             <asp:TextBox ID="messageTxt" class="form-control" runat="server" placeholder="Enter your message here" aria-describedby="basic-addon1" TextMode="MultiLine" Height="100"></asp:TextBox>
+                        </div>
+      
+                     </div>
+                     <div class="modal-footer">
+                         <asp:Button class="btn btn-info" ID="Send" runat="server" OnClick="Send_Click" Text="Send" ValidationGroup="SendGroup"/>
+                         <button class="btn btn-info" data-dismiss="modal"> Cancel </button>
+
+                         <!--=================================================Contact validations=========================================================== -->
+                        <asp:RequiredFieldValidator ID="SendFirstRequired" runat="server" ErrorMessage="Please enter your firs name" ForeColor="Red" ControlToValidate="firsTxt" ValidationGroup="SendGroup" Display="None"></asp:RequiredFieldValidator>
+                         <asp:RequiredFieldValidator ID="SendLastRequired" runat="server" ErrorMessage="Please enter your last name" ForeColor="Red" ControlToValidate="lastTxt" ValidationGroup="SendGroup" Display="None"></asp:RequiredFieldValidator>
+                         <asp:RequiredFieldValidator ID="SendSubjectRequired" runat="server" ErrorMessage="Please enter Subject" ForeColor="Red" ControlToValidate="SubTxt" ValidationGroup="SendGroup" Display="None"></asp:RequiredFieldValidator>
+                         <asp:RequiredFieldValidator ID="SendMessageRequired" runat="server" ErrorMessage="Please enter Message" ForeColor="Red" ControlToValidate="messageTxt" ValidationGroup="SendGroup" Display="None"></asp:RequiredFieldValidator>
+                     </div>
+                 </div>
+             </div>
+         </div>
+         <!-- ===================================================Contact Modal========================================================  -->
 
           <div class="navbar navbar-default navbar-fixed-bottom "> 
                  <div class="container">

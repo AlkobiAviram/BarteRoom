@@ -1,21 +1,23 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="BarterList.aspx.cs" Inherits="BarteRoom.Home" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="BarterList.aspx.cs" Inherits="BarteRoom.BarterList" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 
-    <link href="Content/bootstrap.css"  rel="stylesheet" />
+     <link href="Content/bootstrap.css"  rel="stylesheet" />
     <link href="Content/style.css"  rel="stylesheet" />
-   
+
     <title>My Barter List</title>
 </head>
 <body>
+
      <script type="text/javascript" src="Scripts/jquery-1.9.1.js"> </script>
     <script type="text/javascript" src="Scripts/bootstrap.min.js"> </script>
-  
-  <form id="form2" runat="server">
-        <header>
+
+
+    <form id="form1" runat="server">
+           <header>
             <nav class="navbar navbar-default ">
               <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -44,7 +46,7 @@
                         <li><a href="#">Add an Item </a></li>
                         <li><a href="#">Another action </a></li>
                         <li><a href="#">Another action</a></li>
-                        <li><asp:LinkButton ID="LogOut2" runat="server">LogOut</asp:LinkButton></li>
+                        <li><asp:LinkButton ID="LogOut" runat="server" OnClick="LogOut_Click">LogOut</asp:LinkButton></li>
                             
                       </ul>
                     </li>
@@ -54,7 +56,7 @@
               </div><!-- /.container-fluid -->
             </nav>
         </header>
-
+      
       <!-- ==============================================Main container===========================================  -->
          <div class="container">
 

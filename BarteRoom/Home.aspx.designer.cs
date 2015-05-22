@@ -22,6 +22,15 @@ namespace BarteRoom {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// manage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink manage;
+        
+        /// <summary>
         /// MyAccount control.
         /// </summary>
         /// <remarks>
@@ -40,13 +49,40 @@ namespace BarteRoom {
         protected global::System.Web.UI.WebControls.LinkButton LogOut;
         
         /// <summary>
-        /// LoginUsernameRequired control.
+        /// log control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator LoginUsernameRequired;
+        protected global::System.Web.UI.WebControls.HyperLink log;
+        
+        /// <summary>
+        /// reg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink reg;
+        
+        /// <summary>
+        /// contactUs control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink contactUs;
+        
+        /// <summary>
+        /// LoginValidationSummary control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary LoginValidationSummary;
         
         /// <summary>
         /// loginUserNameTxtBox control.
@@ -56,15 +92,6 @@ namespace BarteRoom {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText loginUserNameTxtBox;
-        
-        /// <summary>
-        /// LoginPasswordRequired control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator LoginPasswordRequired;
         
         /// <summary>
         /// loginPasswordTxtBox control.
@@ -85,13 +112,31 @@ namespace BarteRoom {
         protected global::System.Web.UI.WebControls.Button Login;
         
         /// <summary>
-        /// UsernameRequired control.
+        /// LoginUsernameRequired control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator UsernameRequired;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator LoginUsernameRequired;
+        
+        /// <summary>
+        /// LoginPasswordRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator LoginPasswordRequired;
+        
+        /// <summary>
+        /// SignUpValidationSummary control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary SignUpValidationSummary;
         
         /// <summary>
         /// SignUpUsernameTxtBox control.
@@ -103,15 +148,6 @@ namespace BarteRoom {
         protected global::System.Web.UI.HtmlControls.HtmlInputText SignUpUsernameTxtBox;
         
         /// <summary>
-        /// FirstRequired control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator FirstRequired;
-        
-        /// <summary>
         /// SignUpFirstTxtBox control.
         /// </summary>
         /// <remarks>
@@ -119,15 +155,6 @@ namespace BarteRoom {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText SignUpFirstTxtBox;
-        
-        /// <summary>
-        /// LastRequired control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator LastRequired;
         
         /// <summary>
         /// SignUpLastTxtBox control.
@@ -139,24 +166,6 @@ namespace BarteRoom {
         protected global::System.Web.UI.HtmlControls.HtmlInputText SignUpLastTxtBox;
         
         /// <summary>
-        /// PasswordRequired control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator PasswordRequired;
-        
-        /// <summary>
-        /// PasswordExpression control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator PasswordExpression;
-        
-        /// <summary>
         /// SignUpPasswordTxtBox control.
         /// </summary>
         /// <remarks>
@@ -166,24 +175,6 @@ namespace BarteRoom {
         protected global::System.Web.UI.HtmlControls.HtmlInputPassword SignUpPasswordTxtBox;
         
         /// <summary>
-        /// ConfirmRequired control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator ConfirmRequired;
-        
-        /// <summary>
-        /// ComparePasswords control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CompareValidator ComparePasswords;
-        
-        /// <summary>
         /// SignUpConfirmTxtBox control.
         /// </summary>
         /// <remarks>
@@ -191,15 +182,6 @@ namespace BarteRoom {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputPassword SignUpConfirmTxtBox;
-        
-        /// <summary>
-        /// EmailRequired control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator EmailRequired;
         
         /// <summary>
         /// SignUpEmailTxtBox control.
@@ -220,6 +202,78 @@ namespace BarteRoom {
         protected global::System.Web.UI.WebControls.Button SignUp;
         
         /// <summary>
+        /// RequiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        
+        /// <summary>
+        /// FirstRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator FirstRequired;
+        
+        /// <summary>
+        /// LastRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator LastRequired;
+        
+        /// <summary>
+        /// PasswordRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator PasswordRequired;
+        
+        /// <summary>
+        /// PasswordExpression control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator PasswordExpression;
+        
+        /// <summary>
+        /// ConfirmRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ConfirmRequired;
+        
+        /// <summary>
+        /// ComparePasswords control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator ComparePasswords;
+        
+        /// <summary>
+        /// EmailRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator EmailRequired;
+        
+        /// <summary>
         /// comments control.
         /// </summary>
         /// <remarks>
@@ -227,5 +281,95 @@ namespace BarteRoom {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label comments;
+        
+        /// <summary>
+        /// SendValidationSummary control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary SendValidationSummary;
+        
+        /// <summary>
+        /// firsTxt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox firsTxt;
+        
+        /// <summary>
+        /// lastTxt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox lastTxt;
+        
+        /// <summary>
+        /// SubTxt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText SubTxt;
+        
+        /// <summary>
+        /// messageTxt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox messageTxt;
+        
+        /// <summary>
+        /// Send control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Send;
+        
+        /// <summary>
+        /// SendFirstRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator SendFirstRequired;
+        
+        /// <summary>
+        /// SendLastRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator SendLastRequired;
+        
+        /// <summary>
+        /// SendSubjectRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator SendSubjectRequired;
+        
+        /// <summary>
+        /// SendMessageRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator SendMessageRequired;
     }
 }

@@ -169,5 +169,29 @@ namespace BarteRoom
 
             return email;
         }
+
+        public bool isManager(String usr)
+        {
+            int tmp = 0;
+
+            try
+            {
+                connect.Open();
+
+                query = "select COUNT(*) from users where usr = '" + usr + "' AND manager = 1;";
+                command = new SqlCommand(query, connect);
+
+                tmp = Convert.ToInt32(command.ExecuteScalar().ToString());
+                connect.Close();
+            }
+
+            catch (Exception e) { }
+
+            if (tmp == 1)
+                return true;
+
+            else
+                return false;
+        }
     }
 }
