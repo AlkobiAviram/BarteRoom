@@ -35,8 +35,38 @@ namespace BarteRoom
         */
         public int SignUp(String usr, String first, String last, String password, String confirm, String email)
         {
+            int j = 0;
+            String First = "";
+            String Last = "";
 
-            String fullName = first + " " + last;
+            foreach (char i in first)
+            {
+                if (j == 0)
+                {
+                    First += Char.ToUpper(i).ToString();
+                }
+                else
+                {
+                    First += i;
+                }
+
+                j++;
+            }
+            j = 0;
+            foreach (char i in last)
+            {
+                if (j == 0)
+                {
+                    Last += Char.ToUpper(i).ToString();
+                }
+                else
+                {
+                    Last += i;
+                }
+
+                j++;
+            }
+            String fullName = First + " " + Last;
 
             data = new DB();
 

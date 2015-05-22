@@ -40,9 +40,9 @@
                     <li><a href="#">Suport</a></li>
                      
                     <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">My Account <span class="caret"></span></a>
+                     <asp:LinkButton ID="MyAccount" runat="server" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">My Account<asp:HyperLink ID="caret" runat="server"><span class="caret"></span></asp:HyperLink></asp:LinkButton>
                       <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Edit your Barter list</a></li>
+                        <li><a href="#">Edit My Barter list</a></li>
                         <li><a href="#">Add an Item </a></li>
                         <li><a href="#">Another action </a></li>
                         <li><a href="#">Another action</a></li>

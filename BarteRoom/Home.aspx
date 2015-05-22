@@ -43,10 +43,15 @@
                       <li><asp:HyperLink ID="manage" NavigateUrl="Manager.aspx" data-toggle="modal" runat="server">Manager Page</asp:HyperLink></li>
                     <li class="active"> <a href="/Home.aspx"> Home <span class="sr-only">(current)</span></a></li>
 
-                        <li class="dropdown">
+                     <li><asp:HyperLink ID="log" NavigateUrl="#login" data-toggle="modal" runat="server">Login</asp:HyperLink></li>
+                     <li><asp:HyperLink ID="reg" NavigateUrl="#register" data-toggle="modal" runat="server">Register</asp:HyperLink></li>
+                      <li><a href="#">About Us</a></li>
+                      <li><asp:HyperLink ID="contactUs" NavigateUrl="#contact" data-toggle="modal" runat="server">Contact Us</asp:HyperLink></li>
+                  
+                       <li class="dropdown">
                         <asp:LinkButton ID="MyAccount" runat="server" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">My Account<asp:HyperLink ID="caret" runat="server"><span class="caret"></span></asp:HyperLink></asp:LinkButton>
                       <ul class="dropdown-menu" role="menu">
-                        <li><a href="/BarterList.aspx">Edit your Barter list</a></li>
+                        <li><a href="/BarterList.aspx">Edit My Barter list</a></li>
                         <li><a href="#">Add an Item </a></li>
                         <li><a href="#">Another action </a></li>
                         <li><a href="#">Another action</a></li>
@@ -54,12 +59,6 @@
                       </ul>
                         
                     </li>
-
-                     <li><asp:HyperLink ID="log" NavigateUrl="#login" data-toggle="modal" runat="server">Login</asp:HyperLink></li>
-                     <li><asp:HyperLink ID="reg" NavigateUrl="#register" data-toggle="modal" runat="server">Register</asp:HyperLink></li>
-                      <li><a href="#">About Us</a></li>
-                      <li><asp:HyperLink ID="contactUs" NavigateUrl="#contact" data-toggle="modal" runat="server">Contact Us</asp:HyperLink></li>
-                  
 
                   </ul>
                   
@@ -220,9 +219,9 @@
                          <span>UserName</span>
                          <div class="input-group">
                           <span class="input-group-addon" id="basic-addon3"></span>
-                          <input type="text" class="form-control" placeholder="Enter UserName" aria-describedby="basic-addon1" id="SignUpUsernameTxtBox" runat="server"/>
+                        <input type="text" class="form-control" placeholder="Enter UserName" aria-describedby="basic-addon1" id="SignUpUsernameTxtBox" runat="server"/>
                         </div>               
-                 
+                
                          <span>First Name</span>
                          <div class="input-group">
                           <span class="input-group-addon" id="basic-addon4"></span>
@@ -264,6 +263,8 @@
                           <asp:RequiredFieldValidator ID="LastRequired" runat="server" ErrorMessage="Last Name Required" ForeColor="Red" ControlToValidate="SignUpLastTxtBox" ValidationGroup="SignUpGroup" Display="None"></asp:RequiredFieldValidator>
                           <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ErrorMessage="Password Required" ForeColor="Red" ControlToValidate="SignUpPasswordTxtBox" ValidationGroup="SignUpGroup" Display="None"></asp:RequiredFieldValidator>
                           <asp:RegularExpressionValidator ID="PasswordExpression" runat="server" ControlToValidate="SignUpPasswordTxtBox" ValidationExpression="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" ErrorMessage="Password must be Min 8 characters, atleast 1 Alphabet and 1 Number" ForeColor="Red" Display="None" ValidationGroup="SignUpGroup"/>
+                         <asp:RegularExpressionValidator ID="FirstExpression" runat="server" ControlToValidate="SignUpFirstTxtBox" ValidationExpression="^[a-zA-Z ]*$" ErrorMessage="Invalid character in First Name" ForeColor="Red" Display="None" ValidationGroup="SignUpGroup"/>
+                         <asp:RegularExpressionValidator ID="LastExpression" runat="server" ControlToValidate="SignUpLastTxtBox" ValidationExpression="^^[a-zA-Z ]*$" ErrorMessage="Invalid character in Last Name" ForeColor="Red" Display="None" ValidationGroup="SignUpGroup"/>
                           <asp:RequiredFieldValidator ID="ConfirmRequired" runat="server" ErrorMessage="Confirm Password Required" ForeColor="Red" ControlToValidate="SignUpConfirmTxtBox" ValidationGroup="SignUpGroup" Display="None"></asp:RequiredFieldValidator>
                           <asp:CompareValidator ID="ComparePasswords" runat="server" ErrorMessage="Password and Confirm are not equals" ForeColor="Red" ControlToValidate="SignUpPasswordTxtBox" ControlToCompare="SignUpConfirmTxtBox" ValidationGroup="SignUpGroup" Display="None"></asp:CompareValidator>
                           <asp:RequiredFieldValidator ID="EmailRequired" runat="server" ErrorMessage="E-mail Required" ForeColor="Red" ControlToValidate="SignUpEmailTxtBox" ValidationGroup="SignUpGroup" Display="None"></asp:RequiredFieldValidator>

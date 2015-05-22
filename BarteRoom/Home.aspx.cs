@@ -14,7 +14,6 @@ namespace BarteRoom
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            String name;
             manage.Visible = false;
 
             if (Session["usr"] == null)
@@ -32,15 +31,14 @@ namespace BarteRoom
             else
             {
                 logic = new Logic();
-  
-                name = logic.getName(Session["usr"].ToString());
+
                 MyAccount.Visible = true;
         
                 log.Visible = false;
                 reg.Visible = false;
                 firsTxt.Visible = false;
                 lastTxt.Visible = false;
-                MyAccount.Text = name + caret.Text;
+                MyAccount.Text = Session["name"].ToString() + caret.Text;
 
                 SendFirstRequired.Visible = false;
                 SendLastRequired.Visible = false;
@@ -68,6 +66,7 @@ namespace BarteRoom
             if (logic.Login(usrName, password))
             {
                 Session["usr"] = usrName;
+                Session["name"] = logic.getName(usrName);
                 Response.Redirect("Home.aspx");
             }
         }
@@ -107,6 +106,7 @@ namespace BarteRoom
         protected void LogOut_Click(object sender, EventArgs e)
         {
             Session["usr"] = null;
+            Session["name"] = null;
             Response.Redirect("Home.aspx");
         }
 
@@ -142,6 +142,11 @@ namespace BarteRoom
 
                 logic.sendEmail(usr, first, last, subject, message, 1);
             }
+        }
+
+        protected void Username_Changed(object sender, EventArgs e)
+        {
+
         }
     }
 }
