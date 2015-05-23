@@ -148,13 +148,13 @@ namespace BarteRoom {
         protected global::System.Web.UI.WebControls.ValidationSummary SignUpValidationSummary;
         
         /// <summary>
-        /// SignUpUsernameTxtBox control.
+        /// SignUpUsernameTxt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText SignUpUsernameTxtBox;
+        protected global::System.Web.UI.WebControls.TextBox SignUpUsernameTxt;
         
         /// <summary>
         /// SignUpFirstTxtBox control.
@@ -211,13 +211,13 @@ namespace BarteRoom {
         protected global::System.Web.UI.WebControls.Button SignUp;
         
         /// <summary>
-        /// RequiredFieldValidator1 control.
+        /// UserNameRequired control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator UserNameRequired;
         
         /// <summary>
         /// FirstRequired control.

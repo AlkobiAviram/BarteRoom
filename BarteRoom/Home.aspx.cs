@@ -75,7 +75,7 @@ namespace BarteRoom
         {
             int state;
 
-            String usr = SignUpUsernameTxtBox.Value;
+            String usr = SignUpUsernameTxt.Text;
             String first = SignUpFirstTxtBox.Value;
             String last = SignUpLastTxtBox.Value;
             String password = SignUpPasswordTxtBox.Value;
@@ -144,9 +144,22 @@ namespace BarteRoom
             }
         }
 
-        protected void Username_Changed(object sender, EventArgs e)
+        protected void SignUpUsernameTxt_TextChanged(object sender, EventArgs e)
         {
+            logic = new Logic();
 
+            if (logic.isExist(SignUpUsernameTxt.Text))
+            {
+                comments.Visible = true;
+             
+            }
+
+            else
+            {
+                
+            }
         }
+
+    
     }
 }

@@ -41,13 +41,18 @@ namespace BarteRoom
 
             foreach (char i in first)
             {
-                if (j == 0)
+                if (j == 0 && !Char.IsUpper(i))
                 {
                     First += Char.ToUpper(i).ToString();
                 }
                 else
                 {
-                    First += i;
+                    if (j != 0 && Char.IsUpper(i))
+                    {
+                        First += Char.ToLower(i).ToString();
+                    }
+                    else
+                        First += i;
                 }
 
                 j++;
@@ -55,13 +60,18 @@ namespace BarteRoom
             j = 0;
             foreach (char i in last)
             {
-                if (j == 0)
+                if (j == 0 && !Char.IsUpper(i))
                 {
                     Last += Char.ToUpper(i).ToString();
                 }
                 else
                 {
-                    Last += i;
+                    if (j != 0 && Char.IsUpper(i))
+                    {
+                        Last += Char.ToLower(i).ToString();
+                    }
+                    else
+                        Last += i;
                 }
 
                 j++;
@@ -130,6 +140,13 @@ namespace BarteRoom
             name = fullname.Split(' ');
 
             return name[0];
+        }
+
+        public bool isExist(String usr)
+        {
+            data = new DB();
+
+            return data.isExists(usr); 
         }
     }
 }

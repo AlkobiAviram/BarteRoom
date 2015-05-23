@@ -252,6 +252,12 @@ th {
   .label {
     border: 1px solid #000;
   }
+
+    .btn > .arrow-right,
+  .dropup > .btn > .arrow-right {
+    border-left-color: #000 !important;
+  }
+
   .table {
     border-collapse: collapse !important;
   }
@@ -3421,6 +3427,8 @@ tbody.collapse.in {
   border-right: 4px solid transparent;
   border-left: 4px solid transparent;
 }
+
+
 .dropup,
 .dropdown {
   position: relative;
@@ -3649,8 +3657,9 @@ tbody.collapse.in {
   border-bottom-width: 0;
 }
 .dropup .btn-lg .caret {
-  border-width: 0 5px 5px;
+  border-width: 0 15px 15px;
 }
+
 .btn-group-vertical > .btn,
 .btn-group-vertical > .btn-group,
 .btn-group-vertical > .btn-group > .btn {

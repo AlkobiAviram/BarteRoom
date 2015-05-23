@@ -18,8 +18,10 @@
 <body>
      <script type="text/javascript" src="Scripts/jquery-1.9.1.js"> </script>
     <script type="text/javascript" src="Scripts/bootstrap.min.js"> </script>
-  
+
+
   <form id="form1" runat="server">
+
         <header>
             <nav class="navbar navbar-default ">
               <div class="container-fluid">
@@ -41,23 +43,23 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
                       <li><asp:HyperLink ID="manage" NavigateUrl="Manager.aspx" data-toggle="modal" runat="server">Manager Page</asp:HyperLink></li>
-                    <li class="active"> <a href="/Home.aspx"> Home <span class="sr-only">(current)</span></a></li>
-
+                    <li class="active"> <a href="/Home.aspx">Home<span class="sr-only">(current)</span></a></li>
+                      
                      <li><asp:HyperLink ID="log" NavigateUrl="#login" data-toggle="modal" runat="server">Login</asp:HyperLink></li>
                      <li><asp:HyperLink ID="reg" NavigateUrl="#register" data-toggle="modal" runat="server">Register</asp:HyperLink></li>
                       <li><a href="#">About Us</a></li>
                       <li><asp:HyperLink ID="contactUs" NavigateUrl="#contact" data-toggle="modal" runat="server">Contact Us</asp:HyperLink></li>
-                  
+     
                        <li class="dropdown">
                         <asp:LinkButton ID="MyAccount" runat="server" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">My Account<asp:HyperLink ID="caret" runat="server"><span class="caret"></span></asp:HyperLink></asp:LinkButton>
                       <ul class="dropdown-menu" role="menu">
-                        <li><a href="/BarterList.aspx">Edit My Barter list</a></li>
+                        <li><a href="/BarterList.aspx">My Barter list</a></li>
                         <li><a href="#">Add an Item </a></li>
                         <li><a href="#">Another action </a></li>
                         <li><a href="#">Another action</a></li>
                           <li><asp:LinkButton ID="LogOut" runat="server" OnClick="LogOut_Click">LogOut</asp:LinkButton></li>
                       </ul>
-                        
+                         
                     </li>
 
                   </ul>
@@ -158,7 +160,7 @@
              </div>
            <!-- ==============================================buttom row===========================================  -->
              
-            
+             
 
 
         </div>
@@ -219,8 +221,8 @@
                          <span>UserName</span>
                          <div class="input-group">
                           <span class="input-group-addon" id="basic-addon3"></span>
-                        <input type="text" class="form-control" placeholder="Enter UserName" aria-describedby="basic-addon1" id="SignUpUsernameTxtBox" runat="server"/>
-                        </div>               
+                              <asp:TextBox ID="SignUpUsernameTxt" runat="server" class="form-control" placeholder="Enter UserName" aria-describedby="basic-addon1" AutoPostBack="true" OnTextChanged="SignUpUsernameTxt_TextChanged"></asp:TextBox>
+                         </div>               
                 
                          <span>First Name</span>
                          <div class="input-group">
@@ -258,7 +260,7 @@
                          <button class="btn btn-info" data-dismiss="modal"> Close </button>
 
                           <!-- ===================================================Register Validations=======================================================  -->
-                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="UserName Required" ForeColor="Red" ControlToValidate="SignUpUsernameTxtBox" ValidationGroup="SignUpGroup" Display="None"></asp:RequiredFieldValidator>
+                         <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ErrorMessage="UserName Required" ForeColor="Red" ControlToValidate="SignUpUsernameTxt" ValidationGroup="SignUpGroup" Display="None"></asp:RequiredFieldValidator>
                          <asp:RequiredFieldValidator ID="FirstRequired" runat="server" ErrorMessage="First Name Required" ForeColor="Red" ControlToValidate="SignUpFirstTxtBox" ValidationGroup="SignUpGroup" Display="None"></asp:RequiredFieldValidator>
                           <asp:RequiredFieldValidator ID="LastRequired" runat="server" ErrorMessage="Last Name Required" ForeColor="Red" ControlToValidate="SignUpLastTxtBox" ValidationGroup="SignUpGroup" Display="None"></asp:RequiredFieldValidator>
                           <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ErrorMessage="Password Required" ForeColor="Red" ControlToValidate="SignUpPasswordTxtBox" ValidationGroup="SignUpGroup" Display="None"></asp:RequiredFieldValidator>
@@ -271,7 +273,7 @@
 
 
                      </div>
-                     <asp:Label ID="comments" runat="server" Text="" ForeColor="Red" Visible="false"></asp:Label>
+                     <asp:Label ID="comments" runat="server" Text="user exists" ForeColor="Red" Visible="false"></asp:Label>
                  </div>
              </div>
          </div>
@@ -330,6 +332,7 @@
                      <p class="navbar-text"> Site is Powered by BarteRoom team </p>
                   </div>
           </div>
+
     </form>
 </body>
 </html>
