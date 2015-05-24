@@ -7,7 +7,7 @@
 
     <link href="Content/bootstrap.css"  rel="stylesheet" />
     <link href="Content/style.css"  rel="stylesheet" />
-   
+
 
 
     <title>nadav's title!!!!!!</title>
@@ -21,6 +21,13 @@
 
 
   <form id="form1" runat="server">
+
+
+<div id="dialog" style="display: none">
+    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+</div>
+
+
 
         <header>
             <nav class="navbar navbar-default ">
@@ -221,7 +228,7 @@
                          <span>UserName</span>
                          <div class="input-group">
                           <span class="input-group-addon" id="basic-addon3"></span>
-                              <asp:TextBox ID="SignUpUsernameTxt" runat="server" class="form-control" placeholder="Enter UserName" aria-describedby="basic-addon1" AutoPostBack="true" OnTextChanged="SignUpUsernameTxt_TextChanged"></asp:TextBox>
+                              <asp:TextBox ID="SignUpUsernameTxt" runat="server" class="form-control" placeholder="Enter UserName" aria-describedby="basic-addon1"></asp:TextBox>
                          </div>               
                 
                          <span>First Name</span>
@@ -273,7 +280,7 @@
 
 
                      </div>
-                     <asp:Label ID="comments" runat="server" Text="user exists" ForeColor="Red" Visible="false"></asp:Label>
+                     
                  </div>
              </div>
          </div>
@@ -332,6 +339,27 @@
                      <p class="navbar-text"> Site is Powered by BarteRoom team </p>
                   </div>
           </div>
+
+     <script type="text/javascript">
+            function userExists() {
+
+                alert("This User Name Already Exists!");
+          }
+    </script>
+
+        <script type="text/javascript">
+            function loginUserNotExist() {
+
+                alert("Incorrect User Name!");
+            }
+    </script>
+
+          <script type="text/javascript">
+              function loginFail() {
+
+                  window.alert("Incorrect Password!");
+              }
+    </script>
 
     </form>
 </body>

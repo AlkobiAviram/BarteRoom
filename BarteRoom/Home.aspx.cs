@@ -15,7 +15,7 @@ namespace BarteRoom
         protected void Page_Load(object sender, EventArgs e)
         {
             manage.Visible = false;
-
+            
             if (Session["usr"] == null)
             {
                 MyAccount.Visible = false;
@@ -62,13 +62,22 @@ namespace BarteRoom
             password = loginPasswordTxtBox.Value;
 
             logic = new Logic();
-  
+
+            if (!logic.isExist(usrName))
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "loginUserNotExist", "loginUserNotExist();", true);
+                return;
+            }
+
             if (logic.Login(usrName, password))
             {
                 Session["usr"] = usrName;
                 Session["name"] = logic.getName(usrName);
                 Response.Redirect("Home.aspx");
             }
+
+            else
+                ScriptManager.RegisterStartupScript(this, GetType(), "loginFail", "loginFail();", true);
         }
 
         protected void SignUp_Click(object sender, EventArgs e)
@@ -88,19 +97,20 @@ namespace BarteRoom
 
             if (state == 1)
             {
-                comments.Text = "Username already exists";
-                comments.Visible = true;
-                
+                ScriptManager.RegisterStartupScript(this, GetType(), "userExists", "userExists();", true); 
             }
 
             else if (state == 2)
             {
-                comments.Text = "SignUp is fail please try again";
-                comments.Visible = true;
+
             }
 
             else
-                comments.Visible = false;
+            {
+                Session["usr"] = usr;
+                Session["name"] = logic.getName(usr);
+                Response.Redirect("Home.aspx"); 
+            }
         }
 
         protected void LogOut_Click(object sender, EventArgs e)
@@ -141,22 +151,6 @@ namespace BarteRoom
                 logic = new Logic();
 
                 logic.sendEmail(usr, first, last, subject, message, 1);
-            }
-        }
-
-        protected void SignUpUsernameTxt_TextChanged(object sender, EventArgs e)
-        {
-            logic = new Logic();
-
-            if (logic.isExist(SignUpUsernameTxt.Text))
-            {
-                comments.Visible = true;
-             
-            }
-
-            else
-            {
-                
             }
         }
 
