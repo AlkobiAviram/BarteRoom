@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="BarteRoom.Home" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="BarteRoom.Aboutus" %>
 
 <!DOCTYPE html>
 
@@ -51,8 +51,6 @@
                   <ul class="nav navbar-nav">
                       <li><asp:HyperLink ID="manage" NavigateUrl="Manager.aspx" data-toggle="modal" runat="server">Manager Page</asp:HyperLink></li>
                     <li class="active"> <a href="/Home.aspx">Home<span class="sr-only">(current)</span></a></li>
-                    <li> <a href="/Aboutus.aspx">About Us<span class="sr-only">(current)</span></a></li>
-                      
                      <li><asp:HyperLink ID="log" NavigateUrl="#login" data-toggle="modal" runat="server">Login</asp:HyperLink></li>
                      <li><asp:HyperLink ID="reg" NavigateUrl="#register" data-toggle="modal" runat="server">Register</asp:HyperLink></li>
                       <li><a href="#">About Us</a></li>

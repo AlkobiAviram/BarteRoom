@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace BarteRoom
 {
-    public partial class Home : System.Web.UI.Page
+    public partial class Aboutus : System.Web.UI.Page
     {
 
         private Logic logic;

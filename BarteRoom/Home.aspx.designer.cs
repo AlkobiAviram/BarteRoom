@@ -10,7 +10,7 @@
 namespace BarteRoom {
     
     
-    public partial class Home {
+    public partial class Aboutus {
         
         /// <summary>
         /// form1 control.
