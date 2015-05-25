@@ -7,7 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace BarteRoom
 {
-    public partial class Manager : System.Web.UI.Page
+    public partial class Manager1 : System.Web.UI.Page
     {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

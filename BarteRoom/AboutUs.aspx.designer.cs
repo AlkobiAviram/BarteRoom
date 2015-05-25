@@ -11,7 +11,7 @@ namespace BarteRoom
 {
 
 
-    public partial class BarterList1
+    public partial class AboutUs
     {
     }
 }
