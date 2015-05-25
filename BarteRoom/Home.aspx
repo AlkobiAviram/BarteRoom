@@ -51,6 +51,7 @@
                   <ul class="nav navbar-nav">
                       <li><asp:HyperLink ID="manage" NavigateUrl="Manager.aspx" data-toggle="modal" runat="server">Manager Page</asp:HyperLink></li>
                     <li class="active"> <a href="/Home.aspx">Home<span class="sr-only">(current)</span></a></li>
+                    <li> <a href="/Aboutus.aspx">About Us<span class="sr-only">(current)</span></a></li>
                       
                      <li><asp:HyperLink ID="log" NavigateUrl="#login" data-toggle="modal" runat="server">Login</asp:HyperLink></li>
                      <li><asp:HyperLink ID="reg" NavigateUrl="#register" data-toggle="modal" runat="server">Register</asp:HyperLink></li>
@@ -81,7 +82,7 @@
 
             <div class="row row-css-custom">
 
-                <div class="col-md-3" >
+                <div class="col-md-6" >
                   <div class="list-group links-css-custom" >
                       <a href="#" class="list-group-item active ">
                         Barter Info Center
@@ -92,7 +93,16 @@
                       <a href="#" class="list-group-item">dummy</a>
                     </div>
                 </div>
+                
                  <div class="col-md-6">
+                     <div class="jumbotron jumbo-css-custom">
+                       <h3>Some content</h3>
+                  </div>
+                </div>    
+            </div>
+
+             <div class="row row-css-custom">
+                 <div class="col-md-10 col-md-offset-1">
                      
                      <div id="Home_Carousel" class="carousel slide">
                          <ol class="carousel-indicators">
@@ -121,24 +131,15 @@
                                  </div>
                              </div>
                          </div>
-
                          <a class="carousel-control left" href="#Home_Carousel" data-slide="prev">
                              <span class="prev"></span>
                          </a>
-
                           <a class="carousel-control right" href="#Home_Carousel" data-slide="next">
                              <span class="next"></span>
                          </a>
-
                      </div>   
-
                 </div>
-                 <div class="col-md-3">
-                     <div class="jumbotron jumbo-css-custom">
-                       <h3>Some content</h3>
-                  </div>
-                </div>    
-            </div>
+             </div>
 
              <!-- ==============================================buttom row===========================================  -->
              <div class="row row-css-custom">
@@ -210,7 +211,7 @@
                  </div>
              </div>
          </div>
-      loginBu
+      
          <!-- ===================================================Login Modal=======================================================  -->
 
          <!-- ===================================================Register Modal=======================================================  -->
