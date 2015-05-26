@@ -7,47 +7,44 @@
 
             <div class="row row-css-custom">
 
-                <div class="col-md-3" >
-                  <div class="list-group links-css-custom" >
-                      <a href="#" class="list-group-item active">
-                        Add Item To List
-                      </a>
-                      <a href="#" class="list-group-item">Remove Item</a>
-                      <a href="#" class="list-group-item">Edit Item</a>
-                      <a href="#" class="list-group-item">dummy</a>
-                      <a href="#" class="list-group-item">dummy</a>
-                    </div>
-                </div>
-                 <div class="col-md-6">
-              
-                        <ul class="list-group">
-                          <li class="alert alert-success">
-                            <span class="badge" role="alert">14</span>
-                            Name1
-                          </li>
-                             <li class="alert alert-success">
-                            <span class="badge" role="alert">14</span>
-                            Name1
-                          </li>
-                             <li class="alert alert-success">
-                            <span class="badge" role="alert">14</span>
-                            Name1
-                          </li>
-                             <li class="alert alert-success">
-                            <span class="badge" role="alert">14</span>
-                            Name1
-                          </li>
-                        </ul>
-
+            
+                <div class="col-md-8">
+                     
+                     <h2>My Barter Offers</h2>  
+                    
+                    <div class="jumbotron jumbo-item-list">
+                        <h3> Item Name </h3>
+                        <hr />
+                        <p>Description</p>
                        
-
-                       </div>
-                       <div class="col-md-3">
-                          <div>
-                                <img src="img/img4.jpg" class="img-responsive" />
-                          </div>
-                       </div>    
-                 </div>   
-            </div>
+                        <span><button class="btn btn-primary">Add Item</button> <i class="glyphicon glyphicon-plus"></i> </span>
+                        <span><button class="btn btn-danger">Remove Item</button> <i class="glyphicon glyphicon-remove"></i> </span>
+                        <span><button class="btn btn-info">Edit Item</button> <i class="glyphicon glyphicon-wrench"></i> </span>
+                    </div>
+                     <div class="jumbotron jumbo-item-list">
+                        <h3> Item Name </h3>
+                         <hr />
+                        <p>Description</p>
+                       
+                        <span><button class="btn btn-primary">Add Item</button> <i class="glyphicon glyphicon-plus"></i> </span>
+                        <span><button class="btn btn-danger">Remove Item</button> <i class="glyphicon glyphicon-remove"></i> </span>
+                        <span><button class="btn btn-info">Edit Item</button> <i class="glyphicon glyphicon-wrench"></i> </span>
+                    </div>
+                     <div class="jumbotron jumbo-item-list">
+                        <h3> Item Name </h3>
+                         <hr />
+                        <p>Description</p>
+                       
+                        <span><button class="btn btn-primary">Add Item</button> <i class="glyphicon glyphicon-plus"></i> </span>
+                        <span><button class="btn btn-danger">Remove Item</button> <i class="glyphicon glyphicon-remove"></i> </span>
+                        <span><button class="btn btn-info">Edit Item</button> <i class="glyphicon glyphicon-wrench"></i> </span>
+                    </div>
+                   
+                    
+                </div> 
+                   
+                       
+            </div>   
+         </div>
 
 </asp:Content>
