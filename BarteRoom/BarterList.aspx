@@ -3,48 +3,37 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-         <div class="container">
+  
 
-            <div class="row row-css-custom">
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectToDb %>" SelectCommand="SELECT usr, name, class, comments, description FROM items WHERE (usr = @currentUser)">
+        <SelectParameters>
+            <asp:SessionParameter Name="currentUser" SessionField="usr" Type="String" />
+        </SelectParameters>
+    </asp:SqlDataSource>
+    
+  
 
-            
-                <div class="col-md-8">
-                     
-                     <h2>My Barter Offers</h2>  
-                    
-                    <div class="jumbotron jumbo-item-list">
-                        <h3> Item Name </h3>
-                        <hr />
-                        <p>Description</p>
-                       
-                        <span><button class="btn btn-primary">Add Item</button> <i class="glyphicon glyphicon-plus"></i> </span>
-                        <span><button class="btn btn-danger">Remove Item</button> <i class="glyphicon glyphicon-remove"></i> </span>
-                        <span><button class="btn btn-info">Edit Item</button> <i class="glyphicon glyphicon-wrench"></i> </span>
-                    </div>
-                     <div class="jumbotron jumbo-item-list">
-                        <h3> Item Name </h3>
-                         <hr />
-                        <p>Description</p>
-                       
-                        <span><button class="btn btn-primary">Add Item</button> <i class="glyphicon glyphicon-plus"></i> </span>
-                        <span><button class="btn btn-danger">Remove Item</button> <i class="glyphicon glyphicon-remove"></i> </span>
-                        <span><button class="btn btn-info">Edit Item</button> <i class="glyphicon glyphicon-wrench"></i> </span>
-                    </div>
-                     <div class="jumbotron jumbo-item-list">
-                        <h3> Item Name </h3>
-                         <hr />
-                        <p>Description</p>
-                       
-                        <span><button class="btn btn-primary">Add Item</button> <i class="glyphicon glyphicon-plus"></i> </span>
-                        <span><button class="btn btn-danger">Remove Item</button> <i class="glyphicon glyphicon-remove"></i> </span>
-                        <span><button class="btn btn-info">Edit Item</button> <i class="glyphicon glyphicon-wrench"></i> </span>
-                    </div>
-                   
-                    
-                </div> 
-                   
-                       
-            </div>   
-         </div>
+    <asp:DataList ID="DataList1" runat="server" DataKeyField="usr" DataSourceID="SqlDataSource1">
+        <ItemTemplate>
+            usr:
+            <asp:Label ID="usrLabel" runat="server" Text='<%# Eval("usr") %>' />
+            <br />
+            name:
+            <asp:Label ID="nameLabel" runat="server" Text='<%# Eval("name") %>' />
+            <br />
+            class:
+            <asp:Label ID="classLabel" runat="server" Text='<%# Eval("class") %>' />
+            <br />
+            comments:
+            <asp:Label ID="commentsLabel" runat="server" Text='<%# Eval("comments") %>' />
+            <br />
+            description:
+            <asp:Label ID="descriptionLabel" runat="server" Text='<%# Eval("description") %>' />
+            <br />
+<br />
+        </ItemTemplate>
+    </asp:DataList>
+    
+  
 
 </asp:Content>
