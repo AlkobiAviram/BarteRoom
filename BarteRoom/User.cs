@@ -28,5 +28,6 @@ namespace BarteRoom
             itemList=lg.fillUsrItemList(this.usr);
         }
 
+
     }
 }

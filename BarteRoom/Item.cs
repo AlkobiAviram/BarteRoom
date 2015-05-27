@@ -23,6 +23,30 @@ namespace BarteRoom
             this.description = description;
             this.pic_name = pic_name;
         }
+        public String getUsr()
+        {
+            return this.usr;
+        }
+        public String getName()
+        {
+            return this.name;
+        }
+        public String getClass()
+        {
+            return this.clss;
+        }
+        public String getComments()
+        {
+            return this.comments;
+        }
+        public String getDescription()
+        {
+            return this.description;
+        }
+        public byte[] getPic()
+        {
+            return this.pic_name;
+        }
 
     }
 }

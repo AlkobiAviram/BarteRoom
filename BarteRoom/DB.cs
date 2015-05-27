@@ -222,5 +222,57 @@ namespace BarteRoom
 
             return all_Items;
         }
+
+
+
+        public bool addItem(Item item)
+        {
+            query = "insert into items values('" + item.getUsr() + "','" + item.getName() + "','" + item.getClass() + "','" + item.getComments() + "'," + item.getDescription()+ ");";
+
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+
+                command.ExecuteNonQuery();
+                connect.Close();
+            }
+
+            catch (Exception e) { return false; }
+            uploadPic(item.getUsr(), item.getPic());
+            return true;
+        }
+
+
+
+
+        public bool removeItem(Item item)
+        {
+            query = "delete from items where " + "usr="+"'"+item.getUsr()+"'"
+                                                +" and name="+"'"+item.getName()+"'"
+                                                +" and class="+"'"+item.getClass()+"'"
+                                                +" and comments="+"'"+item.getComments()+"'"
+                                                +" and description="+"'"+item.getDescription()+"'"
+                                                +" and pic="+item.getUsr()+";";
+
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+
+                command.ExecuteNonQuery();
+                connect.Close();
+            }
+
+            catch (Exception e) { return false; }
+            return true;
+        }
+        
+
+
     }
 }

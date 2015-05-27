@@ -13,7 +13,9 @@ namespace BarteRoom
     {
         private DB data;
 
-        public Logic() { }
+        public Logic() {
+
+        }
 
         public bool Login(String usr, String pass)
         {
@@ -33,11 +35,10 @@ namespace BarteRoom
          *if the adding failure from other resone return 2
          *else if the adding success return 0
         */
-        public int SignUp(String usr, String first, String last, String password, String confirm, String email)
+        public int SignUp(String usr, String first, String password, String confirm, String email)
         {
             int j = 0;
             String First = "";
-            String Last = "";
 
             foreach (char i in first)
             {
@@ -57,26 +58,9 @@ namespace BarteRoom
 
                 j++;
             }
-            j = 0;
-            foreach (char i in last)
-            {
-                if (j == 0 && !Char.IsUpper(i))
-                {
-                    Last += Char.ToUpper(i).ToString();
-                }
-                else
-                {
-                    if (j != 0 && Char.IsUpper(i))
-                    {
-                        Last += Char.ToLower(i).ToString();
-                    }
-                    else
-                        Last += i;
-                }
-
-                j++;
-            }
-            String fullName = First + " " + Last;
+          
+   
+            String fullName = First;
 
             data = new DB();
 
@@ -103,7 +87,7 @@ namespace BarteRoom
                 return false;
         }
 
-        public void sendEmail(String usr, String first, String last, String sub, String msg, int flag)
+        public void sendEmail(String usr, String first, String sub, String msg, int flag)
         {
             String email = "barterroom@gmail.com";
             String message = msg;
@@ -111,7 +95,7 @@ namespace BarteRoom
 
             if (flag == 0)
             {
-                message = "Message from: " + first + " " + last + "\n\n" + msg;
+                message = "Message from: " + first + "\n\n" + msg;
             }
 
             else if (flag == 1)
@@ -151,6 +135,7 @@ namespace BarteRoom
 
         public void uploadPic(string usr, byte[] image)
         {
+            data = new DB();
             data.uploadPic(usr, image);
         }
 
@@ -160,5 +145,24 @@ namespace BarteRoom
 
             return data.fillUsrItemList(usr);
         }
+        public void addItem(Item item)
+        {
+            data = new DB();
+            data.addItem(item);
+
+        }
+        public void removeItem(Item item)
+        {
+            data = new DB();
+            data.removeItem(item);
+
+        }
+        public void editItem(Item item)
+        {
+            data = new DB();
+           // data.editItem(item);
+
+        }
+
     }
 }
