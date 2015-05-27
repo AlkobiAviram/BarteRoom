@@ -12,7 +12,7 @@ namespace BarteRoom
         private String clss;
         private String comments;
         private String description;
-        private Byte[] pic_name;
+        private byte[] pic_name;
 
         public Item(String usr, String name, String clss, String comments, String description, Byte[] pic_name)
         {
