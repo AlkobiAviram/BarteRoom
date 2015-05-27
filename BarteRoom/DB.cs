@@ -227,7 +227,9 @@ namespace BarteRoom
 
         public bool addItem(Item item)
         {
-            query = "insert into items values('" + item.getUsr() + "','" + item.getName() + "','" + item.getClass() + "','" + item.getComments() + "'," + item.getDescription()+ ");";
+            Guid newGuid = Guid.NewGuid();
+
+            query = "insert into items values('" + item.getUsr() + "','" + item.getName() + "','" + item.getClass() + "','" + item.getComments() + "'," + item.getDescription()+ " @id);";
 
 
             try
@@ -235,7 +237,7 @@ namespace BarteRoom
                 connect.Open();
 
                 command = new SqlCommand(query, connect);
-
+                command.Parameters.AddWithValue("@id", newGuid.ToString());
                 command.ExecuteNonQuery();
                 connect.Close();
             }
