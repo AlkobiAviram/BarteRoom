@@ -227,9 +227,8 @@ namespace BarteRoom
 
         public bool addItem(Item item)
         {
-            Guid newGuid = Guid.NewGuid();
 
-            query = "insert into items values('" + item.getUsr() + "','" + item.getName() + "','" + item.getClass() + "','" + item.getComments() + "','" + item.getDescription()+"',NULL,@id);";
+            query = "insert into items values('" + item.getUsr() + "','" + item.getName() + "','" + item.getClass() + "','" + item.getComments() + "','" + item.getDescription()+"',NULL,'"+item.getId()+"');";
 
 
             try
@@ -237,7 +236,6 @@ namespace BarteRoom
                 connect.Open();
 
                 command = new SqlCommand(query, connect);
-                command.Parameters.AddWithValue("@id", newGuid.ToString());
                 command.ExecuteNonQuery();
                 connect.Close();
             }
@@ -253,14 +251,10 @@ namespace BarteRoom
 
 
 
-        public bool removeItem(Item item)
+        public bool removeItem(String id)
         {
-            query = "delete from items where " + "usr="+"'"+item.getUsr()+"'"
-                                                +" and name="+"'"+item.getName()+"'"
-                                                +" and class="+"'"+item.getClass()+"'"
-                                                +" and comments="+"'"+item.getComments()+"'"
-                                                +" and description="+"'"+item.getDescription()+"'"
-                                                +" and pic="+item.getUsr()+";";
+            query = "delete from items where id='" + id + "';";
+                 
 
 
             try

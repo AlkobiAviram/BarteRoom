@@ -13,7 +13,7 @@ namespace BarteRoom
         private String comments;
         private String description;
         private byte[] pic_name;
-
+        private String id;
         public Item(String usr, String name, String clss, String comments, String description, Byte[] pic_name)
         {
             this.usr = usr;
@@ -22,6 +22,8 @@ namespace BarteRoom
             this.comments = comments;
             this.description = description;
             this.pic_name = pic_name;
+            Guid newGuid = Guid.NewGuid();
+            this.id = newGuid.ToString(); ;
         }
         public String getUsr()
         {
@@ -47,6 +49,9 @@ namespace BarteRoom
         {
             return this.pic_name;
         }
-
+        public String getId()
+        {
+            return this.id;
+        }
     }
 }

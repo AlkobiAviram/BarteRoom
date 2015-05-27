@@ -151,10 +151,10 @@ namespace BarteRoom
             data.addItem(item);
 
         }
-        public void removeItem(Item item)
+        public void removeItem(String id)
         {
             data = new DB();
-            data.removeItem(item);
+            data.removeItem(id);
 
         }
         public void editItem(Item item)

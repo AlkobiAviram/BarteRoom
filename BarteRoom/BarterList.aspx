@@ -5,24 +5,22 @@
 
   
 
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectToDb %>" SelectCommand="SELECT usr, name, class, comments, description FROM items WHERE (usr = @currentUser)">
+    <asp:SqlDataSource ID="SQL_for_items" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectToDb %>" SelectCommand="SELECT [name], [class], [comments], [description], [pic] , [id] FROM [items] WHERE ([usr] = @usr)" OldValuesParameterFormatString="original_{0}">
         <SelectParameters>
-            <asp:SessionParameter Name="currentUser" SessionField="usr" Type="String" />
+            <asp:SessionParameter DefaultValue="String" Name="usr" SessionField="usr" Type="String" />
         </SelectParameters>
     </asp:SqlDataSource>
     
   
 
-    <asp:GridView ID="GridView1" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="usr" DataSourceID="SqlDataSource1">
+    <asp:GridView ID="GridView1" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="SQL_for_items" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
         <Columns>
-            <asp:BoundField DataField="usr" HeaderText="usr" ReadOnly="True" SortExpression="usr" />
             <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" />
             <asp:BoundField DataField="class" HeaderText="class" SortExpression="class" />
             <asp:BoundField DataField="comments" HeaderText="comments" SortExpression="comments" />
             <asp:BoundField DataField="description" HeaderText="description" SortExpression="description" />
-            <asp:ButtonField CommandName="Delete" Text="delete" />
-            <asp:ButtonField CommandName="Edit" Text="Edit" />
-            <asp:ButtonField CommandName="Update" Text="update" />
+            <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" />
+            <asp:CommandField DeleteText="Delete" ShowDeleteButton="True" ShowEditButton="True"></asp:CommandField> 
         </Columns>
         <RowStyle BorderStyle="Solid" />
     </asp:GridView>

@@ -13,13 +13,13 @@ namespace BarteRoom {
     public partial class BarterList1 {
         
         /// <summary>
-        /// SqlDataSource1 control.
+        /// SQL_for_items control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+        protected global::System.Web.UI.WebControls.SqlDataSource SQL_for_items;
         
         /// <summary>
         /// GridView1 control.
