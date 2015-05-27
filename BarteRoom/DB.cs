@@ -196,7 +196,31 @@ namespace BarteRoom
 
         public LinkedList<Item> fillUsrItemList(String usr)
         {
+            LinkedList<Item> all_Items = new LinkedList<Item>();
 
+                query = "select * from items where usr = '" + usr + "';";
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+                rdr = command.ExecuteReader();
+
+
+            }
+
+            catch (Exception e) { }
+
+            while (rdr.Read())
+            {
+                Item item = new Item(rdr[0].ToString(), rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), rdr[4].ToString(), (byte[])rdr[5]);
+                all_Items.AddLast(item);
+            }
+
+            connect.Close();
+
+            return all_Items;
         }
     }
 }
