@@ -85,14 +85,13 @@ namespace BarteRoom
 
             String usr = SignUpUsernameTxt.Text;
             String first = SignUpFirstTxtBox.Value;
-            String last = SignUpLastTxtBox.Value;
             String password = SignUpPasswordTxtBox.Value;
             String confirm = SignUpConfirmTxtBox.Value;
             String email = SignUpEmailTxtBox.Value;
 
             logic = new Logic();
 
-            state = logic.SignUp(usr, first, last, password, confirm, email);
+            state = logic.SignUp(usr, first, password, confirm, email);
 
             if (state == 1)
             {
@@ -136,7 +135,7 @@ namespace BarteRoom
 
                 logic = new Logic();
 
-                logic.sendEmail("", first, last, subject, message, 0);
+                logic.sendEmail("", first, subject, message, 0);
             }
 
             else
@@ -149,7 +148,7 @@ namespace BarteRoom
 
                 logic = new Logic();
 
-                logic.sendEmail(usr, first, last, subject, message, 1);
+                logic.sendEmail(usr, first, subject, message, 1);
             }
         }
     }

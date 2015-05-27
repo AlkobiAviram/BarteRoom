@@ -130,12 +130,6 @@
                           <span class="input-group-addon" id="basic-addon4"></span>
                           <input type="text" class="form-control" placeholder="Enter Your First Name" aria-describedby="basic-addon1" id="SignUpFirstTxtBox" runat="server"/>
                         </div>
-  
-                          <span>Last Name</span>                
-                         <div class="input-group">
-                          <span class="input-group-addon" id="basic-addon5"></span>
-                          <input type="text" class="form-control" placeholder="Enter Your Last Name" aria-describedby="basic-addon1" id="SignUpLastTxtBox" runat="server"/>
-                        </div>
 
                         <span>Password</span>
                          <div class="input-group">
@@ -163,11 +157,9 @@
                           <!-- ===================================================Register Validations=======================================================  -->
                          <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ErrorMessage="UserName Required" ForeColor="Red" ControlToValidate="SignUpUsernameTxt" ValidationGroup="SignUpGroup" Display="None"></asp:RequiredFieldValidator>
                          <asp:RequiredFieldValidator ID="FirstRequired" runat="server" ErrorMessage="First Name Required" ForeColor="Red" ControlToValidate="SignUpFirstTxtBox" ValidationGroup="SignUpGroup" Display="None"></asp:RequiredFieldValidator>
-                          <asp:RequiredFieldValidator ID="LastRequired" runat="server" ErrorMessage="Last Name Required" ForeColor="Red" ControlToValidate="SignUpLastTxtBox" ValidationGroup="SignUpGroup" Display="None"></asp:RequiredFieldValidator>
                           <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ErrorMessage="Password Required" ForeColor="Red" ControlToValidate="SignUpPasswordTxtBox" ValidationGroup="SignUpGroup" Display="None"></asp:RequiredFieldValidator>
                           <asp:RegularExpressionValidator ID="PasswordExpression" runat="server" ControlToValidate="SignUpPasswordTxtBox" ValidationExpression="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" ErrorMessage="Password must be Min 8 characters, atleast 1 Alphabet and 1 Number" ForeColor="Red" Display="None" ValidationGroup="SignUpGroup"/>
                          <asp:RegularExpressionValidator ID="FirstExpression" runat="server" ControlToValidate="SignUpFirstTxtBox" ValidationExpression="^[a-zA-Z ]*$" ErrorMessage="Invalid character in First Name" ForeColor="Red" Display="None" ValidationGroup="SignUpGroup"/>
-                         <asp:RegularExpressionValidator ID="LastExpression" runat="server" ControlToValidate="SignUpLastTxtBox" ValidationExpression="^^[a-zA-Z ]*$" ErrorMessage="Invalid character in Last Name" ForeColor="Red" Display="None" ValidationGroup="SignUpGroup"/>
                           <asp:RequiredFieldValidator ID="ConfirmRequired" runat="server" ErrorMessage="Confirm Password Required" ForeColor="Red" ControlToValidate="SignUpConfirmTxtBox" ValidationGroup="SignUpGroup" Display="None"></asp:RequiredFieldValidator>
                           <asp:CompareValidator ID="ComparePasswords" runat="server" ErrorMessage="Password and Confirm are not equals" ForeColor="Red" ControlToValidate="SignUpPasswordTxtBox" ControlToCompare="SignUpConfirmTxtBox" ValidationGroup="SignUpGroup" Display="None"></asp:CompareValidator>
                           <asp:RequiredFieldValidator ID="EmailRequired" runat="server" ErrorMessage="E-mail Required" ForeColor="Red" ControlToValidate="SignUpEmailTxtBox" ValidationGroup="SignUpGroup" Display="None"></asp:RequiredFieldValidator>

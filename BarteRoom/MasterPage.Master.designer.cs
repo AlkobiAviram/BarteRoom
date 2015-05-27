@@ -175,15 +175,6 @@ namespace BarteRoom {
         protected global::System.Web.UI.HtmlControls.HtmlInputText SignUpFirstTxtBox;
         
         /// <summary>
-        /// SignUpLastTxtBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText SignUpLastTxtBox;
-        
-        /// <summary>
         /// SignUpPasswordTxtBox control.
         /// </summary>
         /// <remarks>
@@ -238,15 +229,6 @@ namespace BarteRoom {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator FirstRequired;
         
         /// <summary>
-        /// LastRequired control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator LastRequired;
-        
-        /// <summary>
         /// PasswordRequired control.
         /// </summary>
         /// <remarks>
@@ -272,15 +254,6 @@ namespace BarteRoom {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator FirstExpression;
-        
-        /// <summary>
-        /// LastExpression control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator LastExpression;
         
         /// <summary>
         /// ConfirmRequired control.
