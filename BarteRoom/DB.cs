@@ -129,11 +129,11 @@ namespace BarteRoom
             else
                 return false;
         }
-        /*
-        //upload product image
+        
+        //upload image
         public void uploadPic(string usr, byte[] image)
         {
-            query = "update BarteList set image = @IMG where usr = '" + usr + "';";
+            query = "update items set image = @IMG where usr = '" + usr + "';";
 
             try
             {
@@ -147,7 +147,7 @@ namespace BarteRoom
 
             catch (Exception ex) { }
         }
-        */
+        
 
         //return the E-mail of the correct user
         public string getEmail(string usr)
@@ -192,6 +192,11 @@ namespace BarteRoom
 
             else
                 return false;
+        }
+
+        public LinkedList<Item> fillUsrItemList(String usr)
+        {
+
         }
     }
 }

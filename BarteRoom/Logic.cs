@@ -148,5 +148,17 @@ namespace BarteRoom
 
             return data.isExists(usr); 
         }
+
+        public void uploadPic(string usr, byte[] image)
+        {
+            data.uploadPic(usr, image);
+        }
+
+        public LinkedList<Item> fillUsrItemList(String usr)
+        {
+            data = new DB();
+
+            return data.fillUsrItemList(usr);
+        }
     }
 }
