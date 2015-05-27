@@ -52,10 +52,10 @@
                         <asp:LinkButton ID="MyAccount" runat="server" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">My Account<asp:HyperLink ID="caret" runat="server"><span class="caret"></span></asp:HyperLink></asp:LinkButton>
                       <ul class="dropdown-menu" role="menu">
                         <li><a href="/BarterList.aspx">My Barter list</a></li>
-                        <li><a href="#">Add an Item </a></li>
+                        <li><a href="/AddItem.aspx">Add an Item</a></li>
                         <li><a href="#">Another action </a></li>
                         <li><a href="#">Another action</a></li>
-                          <li><asp:LinkButton ID="LogOut" runat="server" OnClick="LogOut_Click">LogOut</asp:LinkButton></li>
+                        <li><asp:LinkButton ID="LogOut" runat="server" OnClick="LogOut_Click">LogOut</asp:LinkButton></li>
                       </ul>
                          
                     </li>

@@ -229,7 +229,7 @@ namespace BarteRoom
         {
             Guid newGuid = Guid.NewGuid();
 
-            query = "insert into items values('" + item.getUsr() + "','" + item.getName() + "','" + item.getClass() + "','" + item.getComments() + "'," + item.getDescription()+ " @id);";
+            query = "insert into items values('" + item.getUsr() + "','" + item.getName() + "','" + item.getClass() + "','" + item.getComments() + "','" + item.getDescription()+"',NULL,@id);";
 
 
             try
@@ -242,8 +242,11 @@ namespace BarteRoom
                 connect.Close();
             }
 
-            catch (Exception e) { return false; }
-            uploadPic(item.getUsr(), item.getPic());
+           catch (Exception e) {
+               return false;
+            }
+            //uploadPic(item.getUsr(), item.getPic());
+
             return true;
         }
 
