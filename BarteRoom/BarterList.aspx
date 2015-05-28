@@ -6,6 +6,9 @@
   
 
     <asp:GridView ID="GridView1" runat="server" AllowSorting="True" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnRowDataBound="GridView1_RowDataBound" AllowPaging="True" DataSourceID="ObjectDataSource1">
+        <Columns>
+            <asp:CommandField ShowDeleteButton="True" />
+        </Columns>
         <RowStyle BorderStyle="Solid" />
       
       
@@ -13,7 +16,10 @@
     
   
 
-    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="getDataSource" TypeName="BarteRoom.Logic">
+    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" DeleteMethod="removeItem" SelectMethod="getDataSource" TypeName="BarteRoom.Logic">
+        <DeleteParameters>
+            <asp:QueryStringParameter Name="id" QueryStringField="select id from items where id=id" Type="String" />
+        </DeleteParameters>
         <SelectParameters>
             <asp:SessionParameter Name="usr" SessionField="usr" Type="String" />
         </SelectParameters>
