@@ -9,22 +9,16 @@
             <div class="row row-css-custom">
 
                 <div class="col-md-6" >
-                  <div class="list-group links-css-custom" >
-                      <a href="#" class="list-group-item active ">
-                        Barter Info Center
-                      </a>
-                      <a href="#" class="list-group-item">dummy</a>
-                      <a href="#" class="list-group-item">dummy</a>
-                      <a href="#" class="list-group-item">dummy</a>
-                      <a href="#" class="list-group-item">dummy</a>
-                    </div>
+                   <div>
+                       <img src='img/arrow2.jpg' class='img-responsive' id="Square">
+                   </div>
                 </div>
                 
-                 <div class="col-md-6">
-                     <div class="jumbotron jumbo-css-custom">
-                       <h3>Some content</h3>
-                  </div>
-                </div>    
+                <div class="col-md-6" >
+                   <div>
+                       <img src='img/arrow1.jpg' class='img-responsive' id="Square2">
+                   </div>
+                </div>  
             </div>
 
              <div class="row row-css-custom">
