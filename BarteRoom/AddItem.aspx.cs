@@ -30,6 +30,8 @@ namespace BarteRoom
             {
                 lg = new Logic();
                 lg.addItem(new Item(Session["usr"].ToString(), name, clas, comments, description, null));
+                Response.Redirect("BarterList.aspx");
+
             }
             else
             {

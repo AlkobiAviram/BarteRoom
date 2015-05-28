@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data;
 
 namespace BarteRoom
 {
@@ -14,6 +15,10 @@ namespace BarteRoom
         private int manager;
         LinkedList<Item> itemList;
         Logic lg;
+        public User(String usr)
+        {
+            this.usr=usr;
+        }
         public User(String usr, String password, String fullName, String email, int manager)
         {
             this.usr = usr;
@@ -27,6 +32,8 @@ namespace BarteRoom
         public void fillUsrItemList(){
             itemList=lg.fillUsrItemList(this.usr);
         }
+
+    
 
 
     }

@@ -214,7 +214,13 @@ namespace BarteRoom
 
             while (rdr.Read())
             {
-                Item item = new Item(rdr[0].ToString(), rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), rdr[4].ToString(), (byte[])rdr[5]);
+                Item item;
+                if(rdr[5]==System.DBNull.Value)
+                     item = new Item(rdr[0].ToString(), rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), rdr[4].ToString(), null);
+                else
+                    item = new Item(rdr[0].ToString(), rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), rdr[4].ToString(), (byte[])rdr[5]);
+
+
                 all_Items.AddLast(item);
             }
 

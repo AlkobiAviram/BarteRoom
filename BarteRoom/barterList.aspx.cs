@@ -11,11 +11,17 @@ namespace BarteRoom
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-                
+           
+
+         
+
+
         }
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+
         }
         protected void GridView1_RowCommand(Object sender, GridViewCommandEventArgs e)
         {
@@ -34,8 +40,23 @@ namespace BarteRoom
                 Logic lg = new Logic();
                 lg.removeItem(id);
             }
-        }    
+        }
 
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+
+        }
+
+        protected void SQL_for_items_Deleting(object sender, SqlDataSourceCommandEventArgs e)
+        {
+
+        }
+        private void BindGridViewData()
+        {
+
+           // GridView1.DataSource = EmployeeDataAccessLayer.GetAllEmployees();
+            //GridView1.DataBind();
+        }
 
 
 

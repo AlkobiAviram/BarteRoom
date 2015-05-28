@@ -6,6 +6,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Net.Mail;
 using System.Net;
+using System.Data;
+
+
 
 namespace BarteRoom
 {
@@ -163,6 +166,32 @@ namespace BarteRoom
            // data.editItem(item);
 
         }
+        public DataSet getDataSource(String usr)
+        {
+            LinkedList<Item> itemList = fillUsrItemList(usr);
+            DataSet ds1 = new DataSet();
+            DataTable dtable = new DataTable();
+            DataColumn dt = new DataColumn("Name");
+            DataColumn dt1 = new DataColumn("Comments");
+            DataColumn dt2 = new DataColumn("Description");
+            DataColumn dt3 = new DataColumn("Image");
 
+
+
+            dtable.Columns.Add(dt);
+            dtable.Columns.Add(dt1);
+            dtable.Columns.Add(dt2);
+            dtable.Columns.Add(dt3);
+            ds1.Tables.Add(dtable);
+
+            foreach (Item i in itemList)
+            {
+                object[] RowValues = { i.getName(), i.getComments(), i.getDescription(), i.getPic() };
+                DataRow dRow;
+                dRow = dtable.Rows.Add(RowValues);
+                dtable.AcceptChanges();
+            }
+            return ds1;
+        }
     }
 }
