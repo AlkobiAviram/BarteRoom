@@ -53,3 +53,35 @@ a:hover {
     width:400px;
     height:400px;
 }
+
+
+#Square{
+    width:200px;
+    height:200px;
+	background-color:#E0E0E0;
+}
+
+#Square2{
+	
+	width:200px;
+    height:200px;
+	background-color:#E0E0E0;	
+}
+
+.animate{
+	
+	transition: 2s ease-in-out;
+	-webkit-transition: 2s ease-in-out;
+}
+
+#Square.animate{
+
+	transform: translate(5em , 0);
+	-webkit-transform: translate(10em , 0);
+	
+}
+#Square2.animate{
+
+	transform: translate(-10em , 0);
+	-webkit-transform: translate(-10em , 0);
+}
