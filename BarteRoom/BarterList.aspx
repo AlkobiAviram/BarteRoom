@@ -5,9 +5,9 @@
 
   
 
-    <asp:GridView ID="GridView1" runat="server" AllowSorting="True" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnRowDataBound="GridView1_RowDataBound" AllowPaging="True" DataSourceID="ObjectDataSource1">
+    <asp:GridView ID="GridView1" runat="server" AllowSorting="True" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnRowDataBound="GridView1_RowDataBound" AllowPaging="True" DataSourceID="ItemsDataSource" DataKeyNames="id">
         <Columns>
-            <asp:CommandField ShowDeleteButton="True" />
+            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
         </Columns>
         <RowStyle BorderStyle="Solid" />
       
@@ -16,14 +16,29 @@
     
   
 
-    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" DeleteMethod="removeItem" SelectMethod="getDataSource" TypeName="BarteRoom.Logic">
+ 
+    
+  
+
+    <asp:ObjectDataSource ID="ItemsDataSource" runat="server" DeleteMethod="removeItem" SelectMethod="getDataSource" TypeName="BarteRoom.Logic" UpdateMethod="editItem">
         <DeleteParameters>
-            <asp:QueryStringParameter Name="id" QueryStringField="select id from items where id=id" Type="String" />
+            <asp:Parameter Name="id" Type="String" />
         </DeleteParameters>
         <SelectParameters>
             <asp:SessionParameter Name="usr" SessionField="usr" Type="String" />
         </SelectParameters>
+        <UpdateParameters>
+            <asp:Parameter Name="name" Type="String" />
+            <asp:Parameter Name="comments" Type="String" />
+            <asp:Parameter Name="description" Type="String" />
+            <asp:Parameter Name="pic" Type="Object" />
+            <asp:Parameter Name="id" Type="String" />
+        </UpdateParameters>
     </asp:ObjectDataSource>
+    
+  
+
+ 
     
   
 

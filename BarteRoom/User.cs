@@ -32,7 +32,7 @@ namespace BarteRoom
         public void fillUsrItemList(){
             itemList=lg.fillUsrItemList(this.usr);
         }
-
+   
     
 
 

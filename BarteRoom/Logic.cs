@@ -15,7 +15,8 @@ namespace BarteRoom
     public class Logic
     {
         private DB data;
-
+        private LinkedList<Item> itemList;
+        private DataTable dtable;
         public Logic() {
 
         }
@@ -160,38 +161,16 @@ namespace BarteRoom
             data.removeItem(id);
 
         }
-        public void editItem(Item item)
+        public void editItem(String name, String comments, String description, byte[] pic, String id)
         {
             data = new DB();
-           // data.editItem(item);
+            data.editItem(name,comments,description, pic, id);
 
         }
         public DataTable getDataSource(String usr)
         {
-            LinkedList<Item> itemList = fillUsrItemList(usr);
-            DataTable dtable = new DataTable();
-            DataColumn dt = new DataColumn("Name");
-            DataColumn dt1 = new DataColumn("Comments");
-            DataColumn dt2 = new DataColumn("Description");
-            DataColumn dt3 = new DataColumn("Image");
-            DataColumn dt4 = new DataColumn("id");
-
-
-            dtable.Columns.Add(dt);
-            dtable.Columns.Add(dt1);
-            dtable.Columns.Add(dt2);
-            dtable.Columns.Add(dt3);
-            dtable.Columns.Add(dt4);
-
-
-            foreach (Item i in itemList)
-            {
-                object[] RowValues = { i.getName(), i.getComments(), i.getDescription(), i.getPic() ,i.getId()};
-                DataRow dRow;
-                dRow = dtable.Rows.Add(RowValues);
-                dtable.AcceptChanges();
-            }
-            return dtable;
+            data = new DB();
+            return data.getDataSource(usr);
         }
     }
 }
