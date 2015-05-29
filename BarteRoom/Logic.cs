@@ -172,5 +172,22 @@ namespace BarteRoom
             data = new DB();
             return data.getDataSource(usr);
         }
+
+        public int numOf(int user_manager)
+        {
+            data = new DB();
+
+            if (user_manager == 1)
+            {
+                return data.numOf(1);
+            }
+
+            else if(user_manager == 0)
+            {
+                return data.numOf(0);
+            }
+
+            return -1;
+        }
     }
 }

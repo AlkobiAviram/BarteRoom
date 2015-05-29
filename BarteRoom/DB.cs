@@ -365,7 +365,35 @@ namespace BarteRoom
 
         }
 
+        public int numOf(int user_manager)
+        {
+            int numOf = 0;
 
+            if (user_manager == 1)
+            {
+                query = "select COUNT(*) from users where manager = 1;";
+            }
+
+            else if (user_manager == 0)
+            {
+                query = "select COUNT(*) from users where manager = 0;";
+            }
+
+            try
+            {
+                connect.Open();
+
+                
+                command = new SqlCommand(query, connect);
+
+                numOf = Convert.ToInt32(command.ExecuteScalar().ToString());
+                connect.Close();
+            }
+
+            catch (Exception e) { }
+
+            return numOf;
+        }
 
     }
 
