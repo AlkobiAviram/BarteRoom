@@ -73,7 +73,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Password" SortExpression="password">
                             <EditItemTemplate>
-                                  <asp:RequiredFieldValidator ID="editPassRequired" runat="server" ErrorMessage="E-mail Required" ControlToValidate="TextBox1" ForeColor="Red" ValidationGroup="editGroup" Display="None"></asp:RequiredFieldValidator>
+                                  <asp:RequiredFieldValidator ID="editPassRequired" runat="server" ErrorMessage="Password Required" ControlToValidate="TextBox1" ForeColor="Red" ValidationGroup="editGroup" Display="None"></asp:RequiredFieldValidator>
                                 <asp:TextBox ID="TextBox1" class="form-control" runat="server" Text='<%# Bind("password") %>'></asp:TextBox>
                             </EditItemTemplate>
                             <ItemTemplate>
@@ -86,7 +86,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Name" SortExpression="fullName">
                             <EditItemTemplate>
-                                 <asp:RequiredFieldValidator ID="editNameRequired" runat="server" ErrorMessage="E-mail Required" ControlToValidate="TextBox2" ForeColor="Red" ValidationGroup="editGroup" Display="None"></asp:RequiredFieldValidator>
+                                 <asp:RequiredFieldValidator ID="editNameRequired" runat="server" ErrorMessage="Name Required" ControlToValidate="TextBox2" ForeColor="Red" ValidationGroup="editGroup" Display="None"></asp:RequiredFieldValidator>
                                 <asp:TextBox ID="TextBox2" class="form-control" runat="server" Text='<%# Bind("fullName") %>'></asp:TextBox>
                             </EditItemTemplate>
                             <ItemTemplate>
