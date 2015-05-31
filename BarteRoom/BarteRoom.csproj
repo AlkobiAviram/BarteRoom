@@ -66,7 +66,6 @@
     <Content Include="Manager.aspx" />
     <Content Include="MasterPage.Master" />
     <Content Include="AddItem.aspx" />
-    <Content Include="ItemView.aspx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -107,6 +106,7 @@
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\myjs.js" />
     <Content Include="Scripts\npm.js" />
+    <Content Include="viewItem.aspx" />
     <Content Include="Web.config" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
   </ItemGroup>
@@ -158,12 +158,12 @@
     <Compile Include="AddItem.aspx.designer.cs">
       <DependentUpon>AddItem.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ItemView.aspx.cs">
-      <DependentUpon>ItemView.aspx</DependentUpon>
+    <Compile Include="viewItem.aspx.cs">
+      <DependentUpon>viewItem.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ItemView.aspx.designer.cs">
-      <DependentUpon>ItemView.aspx</DependentUpon>
+    <Compile Include="viewItem.aspx.designer.cs">
+      <DependentUpon>viewItem.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup />
