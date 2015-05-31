@@ -13,22 +13,31 @@ namespace BarteRoom {
     public partial class BarterList2 {
         
         /// <summary>
-        /// SQL_for_classes control.
+        /// loginPasswordTxtBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SQL_for_classes;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText loginPasswordTxtBox;
         
         /// <summary>
-        /// class_check_box control.
+        /// Password1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList class_check_box;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Password1;
+        
+        /// <summary>
+        /// Password2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Password2;
         
         /// <summary>
         /// commit_cmd control.
@@ -40,6 +49,15 @@ namespace BarteRoom {
         protected global::System.Web.UI.WebControls.Button commit_cmd;
         
         /// <summary>
+        /// FileUpload1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
+        
+        /// <summary>
         /// name_textBox control.
         /// </summary>
         /// <remarks>
@@ -49,21 +67,21 @@ namespace BarteRoom {
         protected global::System.Web.UI.WebControls.TextBox name_textBox;
         
         /// <summary>
-        /// comments_textBox control.
+        /// TextBox1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox comments_textBox;
+        protected global::System.Web.UI.WebControls.TextBox TextBox1;
         
         /// <summary>
-        /// description_textBox control.
+        /// TextBox2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox description_textBox;
+        protected global::System.Web.UI.WebControls.TextBox TextBox2;
     }
 }
