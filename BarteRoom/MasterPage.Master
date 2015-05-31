@@ -46,7 +46,7 @@
                     <li class="active"> <a href="/Home.aspx">Home<span class="sr-only">(current)</span></a></li>
                      <li><asp:HyperLink ID="log" NavigateUrl="#login" data-toggle="modal" runat="server">Login</asp:HyperLink></li>
                      <li><asp:HyperLink ID="reg" NavigateUrl="#register" data-toggle="modal" runat="server">Register</asp:HyperLink></li>
-                      <li><a href="/AboutUs.aspx">About Us</a></li>
+                      <li><a href="/AboutUs.aspx">About</a></li>
                       <li><asp:HyperLink ID="contactUs" NavigateUrl="#contact" data-toggle="modal" runat="server">Contact Us</asp:HyperLink></li>
      
                        <li class="dropdown">
@@ -224,7 +224,7 @@
 
                  <div class="navbar navbar-default navbar-fixed-bottom "> 
                  <div class="container">
-                    <p class="navbar-text"> About Us </p>
+                    <p class="navbar-text"> About Us</p>
                      <p class="navbar-text"> Copyrights </p>
                      <p class="navbar-text"> Site is Powered by BarteRoom team </p>
                   </div>
