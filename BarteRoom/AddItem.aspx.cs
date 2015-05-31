@@ -21,7 +21,7 @@ namespace BarteRoom
 
         protected void class_check_box_SelectedIndexChanged(object sender, EventArgs e)
         {
-            clas=class_check_box.SelectedValue;
+            
         }
 
         protected void commit_cmd_Click(object sender, EventArgs e)
@@ -47,13 +47,13 @@ namespace BarteRoom
 
         protected void comments_textBox_TextChanged(object sender, EventArgs e)
         {
-            comments = comments_textBox.Text;
+           
 
         }
 
         protected void description_textBox_TextChanged(object sender, EventArgs e)
         {
-            description = description_textBox.Text;
+            
         }
 
     }
