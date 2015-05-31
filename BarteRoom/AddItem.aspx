@@ -16,6 +16,8 @@
     </asp:CheckBoxList>
 
 
+
+
     <asp:Button ID="commit_cmd" class="btn btn-info" runat="server" Text="OK" Width="42px" OnClick="commit_cmd_Click" CssClass="nav-pills" />
     <asp:TextBox ID="name_textBox" runat="server" OnTextChanged="name_textBox_TextChanged">name</asp:TextBox>
     <asp:TextBox ID="comments_textBox" runat="server" OnTextChanged="comments_textBox_TextChanged">comments</asp:TextBox>

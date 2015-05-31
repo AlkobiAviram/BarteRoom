@@ -1,15 +1,16 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="BarterList.aspx.cs" Inherits="BarteRoom.BarterList1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+      <link href="StyleSheet1.css" rel="stylesheet" type="text/css" /> 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
   
 
-    <asp:GridView ID="GridView1" runat="server" AllowSorting="True" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnRowDataBound="GridView1_RowDataBound" AllowPaging="True" DataSourceID="ItemsDataSource" DataKeyNames="id">
+    <asp:GridView ID="GridView1" CssClass="table table-bordered table-responsive table-striped"  runat="server" AllowSorting="True" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnRowDataBound="GridView1_RowDataBound" AllowPaging="True" DataSourceID="ItemsDataSource" DataKeyNames="id">
         <Columns>
             <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
         </Columns>
-        <RowStyle BorderStyle="Solid" />
+        
       
       
     </asp:GridView>
