@@ -43,11 +43,20 @@ namespace BarteRoom
                 {
 
 
-                    byte[] pic = image_upload.FileBytes;
-                    lg = new Logic();
-                    lg.addItem(new Item(Session["usr"].ToString(), textBox_name.Value.ToString(), classes_list.SelectedValue.ToString(), textBox_comments.Value.ToString(), textBox_description.Value.ToString(), pic));
-                    Response.Redirect("BarterList.aspx");
 
+                    //String path = "BarteRoom/img/" + Path.GetFileName(image_upload.PostedFile.FileName);
+
+
+           
+                   
+                    lg = new Logic();
+                    Item newItem = new Item(Session["usr"].ToString(), textBox_name.Value.ToString(), classes_list.SelectedValue.ToString(), textBox_comments.Value.ToString(), textBox_description.Value.ToString());
+                    String path = Server.MapPath("~/img/" + image_upload.FileName);
+                    image_upload.PostedFile.SaveAs(path);       
+                    lg.addImage(newItem.getId(), path);
+                    lg.addItem(newItem);
+                    Response.Redirect("BarterList.aspx");
+                   
                 }
                 catch (Exception ex)
                 {

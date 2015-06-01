@@ -136,19 +136,19 @@ namespace BarteRoom
 
             return data.isExists(usr); 
         }
-
+/*
         public void uploadPic(string usr, byte[] image)
         {
-            data = new DB();
-            data.uploadPic(usr, image);
+          data = new DB();
+           data.uploadPic(usr, image);
         }
+        */
+     //   public LinkedList<Item> fillUsrItemList(String usr)
+     //   {
+     //       data = new DB();
 
-        public LinkedList<Item> fillUsrItemList(String usr)
-        {
-            data = new DB();
-
-            return data.fillUsrItemList(usr);
-        }
+      //      return data.fillUsrItemList(usr);
+      //  }
         public void addItem(Item item)
         {
             data = new DB();
@@ -189,5 +189,13 @@ namespace BarteRoom
 
             return -1;
         }
+
+        public void addImage(String id, String path)
+        {
+            data = new DB();
+            data.addImage(id, path);
+        }
+
+
     }
 }

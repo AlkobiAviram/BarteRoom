@@ -29,9 +29,9 @@ namespace BarteRoom
         
             lg = new Logic();
         }
-        public void fillUsrItemList(){
-            itemList=lg.fillUsrItemList(this.usr);
-        }
+   //     public void fillUsrItemList(){
+     //       itemList=lg.fillUsrItemList(this.usr);
+     //   }
    
     
 

@@ -1,12 +1,9 @@
-﻿/*
- *BarterRoom - DataBase handler class  
- * Date: 17/05/2015
-*/
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 using System.Windows;
 using System.Data.SqlClient;
 using System.Configuration;
@@ -129,7 +126,7 @@ namespace BarteRoom
             else
                 return false;
         }
-
+        /*
         //upload image
         public void uploadPic(string usr, byte[] image)
         {
@@ -147,7 +144,7 @@ namespace BarteRoom
 
             catch (Exception ex) { }
         }
-
+        */
 
         //return the E-mail of the correct user
         public string getEmail(string usr)
@@ -193,7 +190,7 @@ namespace BarteRoom
             else
                 return false;
         }
-
+/*
         public LinkedList<Item> fillUsrItemList(String usr)
         {
             LinkedList<Item> all_Items = new LinkedList<Item>();
@@ -229,7 +226,7 @@ namespace BarteRoom
             return all_Items;
         }
 
-
+*/
 
         public DataTable getDataSource(String usr)
         {
@@ -267,22 +264,15 @@ namespace BarteRoom
             while (rdr.Read())
             {
                 object[] RowValues = { "", "", "", "", "" };
-                if (rdr["pic"] == System.DBNull.Value)
-                {
                     RowValues[0] = rdr[1].ToString();
                     RowValues[1] = rdr[3].ToString();
                     RowValues[2] = rdr[4].ToString();
-                    RowValues[3] = null;
-                    RowValues[4] = rdr[6].ToString();
-                }
-                else
-                {
-                    RowValues[0] = rdr[1].ToString();
-                    RowValues[1] = rdr[3].ToString();
-                    RowValues[2] = rdr[4].ToString();
-                    RowValues[3] = (byte[])rdr[5];
-                    RowValues[4] = rdr[6].ToString();
-                }
+                    RowValues[3] = getImagePath(rdr[5].ToString());
+                    RowValues[4] = rdr[5].ToString();
+                
+            
+           
+                
                 DataRow dRow;
                 dRow = dtable.Rows.Add(RowValues);
                 dtable.AcceptChanges();
@@ -293,14 +283,32 @@ namespace BarteRoom
         }
 
 
+        public String getImagePath(String id)
+        {
+            string path = "";
+            query = "select path from images where id = '" + id + "';";
 
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+
+                path = Convert.ToString(command.ExecuteScalar().ToString());
+                connect.Close();
+            }
+
+            catch (Exception e) { }
+
+            return path;
+        }
 
 
 
         public bool addItem(Item item)
         {
 
-            query = "insert into items values('" + item.getUsr() + "','" + item.getName() + "','" + item.getClass() + "','" + item.getComments() + "','" + item.getDescription() + "'," + item.getPic().ToString() + ",'" + item.getId() + "');";
+            query = "insert into items values('" + item.getUsr() + "','" + item.getName() + "','" + item.getClass() + "','" + item.getComments() + "','" + item.getDescription() + "','" + item.getId() + "');";
 
 
             try
@@ -321,9 +329,25 @@ namespace BarteRoom
             return true;
         }
 
+        public bool addImage(String id, String path)
+        {
+            query = "insert into images values('" + id + "','" + path + "');";
 
 
 
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+
+                command.ExecuteNonQuery();
+                connect.Close();
+            }
+            catch (Exception e) { return false; }
+            return true;
+
+        }
         public bool removeItem(String id)
         {
             query = "DELETE FROM items WHERE id='" + id + "';";
