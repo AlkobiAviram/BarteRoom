@@ -393,10 +393,10 @@ namespace BarteRoom
         }
 
 
-        public bool editItem(String name, String comments, String description, byte[] pic, String id)
+        public bool editItem(String name, String comments, String description, String id)
         {
-            query = "UPDATE items"
-                    + "SET name='" + name + "'," + "comments='" + comments + "'," + "description='" + description + "'," + "pic=" + pic + " "
+            query = "UPDATE items "
+                    + "SET name='" + name + "'," + "comments='" + comments + "'," + "description='" + description + "' "
                     + "WHERE id='" + id + "';";
 
 

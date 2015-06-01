@@ -161,10 +161,10 @@ namespace BarteRoom
             data.removeItem(id);
 
         }
-        public void editItem(String name, String comments, String description, byte[] pic, String id)
+        public void editItem(String name, String comments, String description, String id)
         {
             data = new DB();
-            data.editItem(name,comments,description, pic, id);
+            data.editItem(name,comments,description,id);
 
         }
         public DataTable getDataSource(String usr)

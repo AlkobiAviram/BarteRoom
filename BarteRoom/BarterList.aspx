@@ -5,9 +5,10 @@
 
   
 
-    <asp:GridView ID="GridView1" CssClass="table table-bordered table-responsive table-striped"  runat="server" AllowSorting="True" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnRowDataBound="GridView1_RowDataBound" AllowPaging="True" DataSourceID="ItemsDataSource" DataKeyNames="id" AutoGenerateColumns="False">
+    <asp:GridView ID="GridView1" CssClass="table table-bordered table-responsive table-striped"  runat="server" AllowSorting="True"  AllowPaging="True"  AutoGenerateColumns="False" GridLines="None" OnRowCommand="GridView1_RowCommand" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowDeleted="GridView1_RowDeleted" OnRowDeleting="GridView1_RowDeleting" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating" OnRowUpdated="GridView1_RowUpdated" OnSelectedIndexChanging="GridView1_SelectedIndexChanging" >
         <Columns>
-            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
+            <asp:CommandField ShowEditButton="True" />
+            <asp:CommandField ShowDeleteButton="True" />
           
             <asp:ImageField DataImageUrlField ="Image" NullDisplayText="no image" >
                 <ControlStyle Height="250px" Width="250px" />
@@ -29,26 +30,4 @@
     
   
 
-    <asp:ObjectDataSource ID="ItemsDataSource" runat="server" DeleteMethod="removeItem" SelectMethod="getDataSource" TypeName="BarteRoom.Logic" UpdateMethod="editItem">
-        <DeleteParameters>
-            <asp:Parameter Name="id" Type="String" />
-        </DeleteParameters>
-        <SelectParameters>
-            <asp:SessionParameter Name="usr" SessionField="usr" Type="String" />
-        </SelectParameters>
-        <UpdateParameters>
-            <asp:Parameter Name="name" Type="String" />
-            <asp:Parameter Name="comments" Type="String" />
-            <asp:Parameter Name="description" Type="String" />
-            <asp:Parameter Name="pic" Type="Object" />
-            <asp:Parameter Name="id" Type="String" />
-        </UpdateParameters>
-    </asp:ObjectDataSource>
-    
-  
-
- 
-    
-  
-
-</asp:Content>
+    </asp:Content>
