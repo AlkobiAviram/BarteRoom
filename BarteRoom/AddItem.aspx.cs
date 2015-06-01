@@ -4,56 +4,86 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using System.IO;
+using System.Data;
 namespace BarteRoom
 {
     public partial class BarterList2 : System.Web.UI.Page
     {
-        private String name="";
-        private String clas="";
-        private String comments="";
-        private String description="";
+
         private Logic lg;
         protected void Page_Load(object sender, EventArgs e)
         {
 
+
         }
 
-        protected void class_check_box_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
+
 
         protected void commit_cmd_Click(object sender, EventArgs e)
         {
-            if (true)
+            Boolean fileOK = false;
+            if (image_upload.HasFile)
             {
-                lg = new Logic();
-                lg.addItem(new Item(Session["usr"].ToString(), name, clas, comments, description, null));
-                Response.Redirect("BarterList.aspx");
-
+                String fileExtension =
+                    System.IO.Path.GetExtension(image_upload.FileName).ToLower();
+                String[] allowedExtensions = { ".gif", ".png", ".jpeg", ".jpg" };
+                for (int i = 0; i < allowedExtensions.Length; i++)
+                {
+                    if (fileExtension == allowedExtensions[i])
+                    {
+                        fileOK = true;
+                    }
+                }
             }
-            else
+
+            if (fileOK)
             {
+                try
+                {
 
+
+                    byte[] pic = image_upload.FileBytes;
+                    lg = new Logic();
+                    lg.addItem(new Item(Session["usr"].ToString(), textBox_name.Value.ToString(), classes_list.SelectedValue.ToString(), textBox_comments.Value.ToString(), textBox_description.Value.ToString(), pic));
+                    Response.Redirect("BarterList.aspx");
+
+                }
+                catch (Exception ex)
+                {
+                }
             }
 
-        }
 
-        protected void name_textBox_TextChanged(object sender, EventArgs e)
-        {
-            name = name_textBox.Text;
-        }
-
-        protected void comments_textBox_TextChanged(object sender, EventArgs e)
-        {
-           
 
         }
-
-        protected void description_textBox_TextChanged(object sender, EventArgs e)
+        private DataTable buildDT(byte[] pic)
         {
-            
+            DataTable dt = new DataTable();
+            DataColumn dc = new DataColumn("pic");
+            dc.DataType = System.Type.GetType("System.Byte[]"); //Type byte[] to store image bytes.
+            dc.AllowDBNull = true;
+
+            dt.Columns.Add(dc);
+            DataRow dr = dt.NewRow();
+            dr["pic"] = pic;
+            dt.Rows.Add(dr);
+
+            return dt;
+        }
+
+
+
+        protected void image_upload_cmd_Click(object sender, EventArgs e)
+        {
+
+
+        }
+        protected void image_upload_Load(object sender, EventArgs e)
+        {
+
+
+
         }
 
     }

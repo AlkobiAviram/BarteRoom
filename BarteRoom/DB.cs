@@ -37,7 +37,7 @@ namespace BarteRoom
         */
         public bool addNewUser(String usr, String password, String fullName, String email, int manager)
         {
-            query = "insert into Users values('" + usr + "','" + password + "','" + fullName + "','" + email + "'," + manager + ");"; 
+            query = "insert into Users values('" + usr + "','" + password + "','" + fullName + "','" + email + "'," + manager + ");";
 
             try
             {
@@ -79,7 +79,7 @@ namespace BarteRoom
                 return false;
         }
 
-        
+
         //return the full name of a specific user 
         public String getFullName(String usr)
         {
@@ -89,7 +89,7 @@ namespace BarteRoom
             try
             {
                 connect.Open();
-               
+
                 command = new SqlCommand(query, connect);
 
                 Name = command.ExecuteScalar().ToString();
@@ -114,7 +114,7 @@ namespace BarteRoom
             {
                 connect.Open();
 
-                
+
                 command = new SqlCommand(query, connect);
 
                 password = command.ExecuteScalar().ToString();
@@ -129,7 +129,7 @@ namespace BarteRoom
             else
                 return false;
         }
-        
+
         //upload image
         public void uploadPic(string usr, byte[] image)
         {
@@ -147,7 +147,7 @@ namespace BarteRoom
 
             catch (Exception ex) { }
         }
-        
+
 
         //return the E-mail of the correct user
         public string getEmail(string usr)
@@ -198,58 +198,6 @@ namespace BarteRoom
         {
             LinkedList<Item> all_Items = new LinkedList<Item>();
 
-                query = "select * from items where usr = '" + usr + "';";
-
-            try
-            {
-                connect.Open();
-
-                command = new SqlCommand(query, connect);
-                rdr = command.ExecuteReader();
-
-
-            }
-
-            catch (Exception e) { }
-
-            while (rdr.Read())
-            {
-                Item item;
-                if(rdr[5]==System.DBNull.Value)
-                     item = new Item(rdr[0].ToString(), rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), rdr[4].ToString(), null);
-                else
-                    item = new Item(rdr[0].ToString(), rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), rdr[4].ToString(), (byte[])rdr[5]);
-
-
-                all_Items.AddLast(item);
-            }
-
-            connect.Close();
-
-            return all_Items;
-        }
-
-
-
-        public DataTable getDataSource(String usr)
-        {
-            
-            DataTable dtable = new DataTable();
-            DataColumn dt = new DataColumn("Name");
-            DataColumn dt1 = new DataColumn("Comments");
-            DataColumn dt2 = new DataColumn("Description");
-            DataColumn dt3 = new DataColumn("Image");
-            DataColumn dt4 = new DataColumn("id");
-
-
-            dtable.Columns.Add(dt);
-            dtable.Columns.Add(dt1);
-            dtable.Columns.Add(dt2);
-            dtable.Columns.Add(dt3);
-            dtable.Columns.Add(dt4);
-
-
-      
             query = "select * from items where usr = '" + usr + "';";
 
             try
@@ -266,15 +214,69 @@ namespace BarteRoom
 
             while (rdr.Read())
             {
-                object[] RowValues={"","","","",""};
-                if(rdr["pic"]==System.DBNull.Value){
-                    RowValues[0]= rdr[1].ToString();
-                    RowValues[1]= rdr[3].ToString();
-                    RowValues[2]= rdr[4].ToString();
-                    RowValues[3]= null;
-                    RowValues[4]= rdr[6].ToString();
+                Item item;
+                if (rdr[5] == System.DBNull.Value)
+                    item = new Item(rdr[0].ToString(), rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), rdr[4].ToString(), null);
+                else
+                    item = new Item(rdr[0].ToString(), rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), rdr[4].ToString(), (byte[])rdr[5]);
+
+
+                all_Items.AddLast(item);
+            }
+
+            connect.Close();
+
+            return all_Items;
+        }
+
+
+
+        public DataTable getDataSource(String usr)
+        {
+
+            DataTable dtable = new DataTable();
+            DataColumn dt = new DataColumn("Name");
+            DataColumn dt1 = new DataColumn("Comments");
+            DataColumn dt2 = new DataColumn("Description");
+            DataColumn dt3 = new DataColumn("Image");
+            DataColumn dt4 = new DataColumn("id");
+
+
+            dtable.Columns.Add(dt);
+            dtable.Columns.Add(dt1);
+            dtable.Columns.Add(dt2);
+            dtable.Columns.Add(dt3);
+            dtable.Columns.Add(dt4);
+
+
+
+            query = "select * from items where usr = '" + usr + "';";
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+                rdr = command.ExecuteReader();
+
+
+            }
+
+            catch (Exception e) { }
+
+            while (rdr.Read())
+            {
+                object[] RowValues = { "", "", "", "", "" };
+                if (rdr["pic"] == System.DBNull.Value)
+                {
+                    RowValues[0] = rdr[1].ToString();
+                    RowValues[1] = rdr[3].ToString();
+                    RowValues[2] = rdr[4].ToString();
+                    RowValues[3] = null;
+                    RowValues[4] = rdr[6].ToString();
                 }
-                else{
+                else
+                {
                     RowValues[0] = rdr[1].ToString();
                     RowValues[1] = rdr[3].ToString();
                     RowValues[2] = rdr[4].ToString();
@@ -283,7 +285,7 @@ namespace BarteRoom
                 }
                 DataRow dRow;
                 dRow = dtable.Rows.Add(RowValues);
-                dtable.AcceptChanges();  
+                dtable.AcceptChanges();
             }
 
             connect.Close();
@@ -298,7 +300,7 @@ namespace BarteRoom
         public bool addItem(Item item)
         {
 
-            query = "insert into items values('" + item.getUsr() + "','" + item.getName() + "','" + item.getClass() + "','" + item.getComments() + "','" + item.getDescription()+"',NULL,'"+item.getId()+"');";
+            query = "insert into items values('" + item.getUsr() + "','" + item.getName() + "','" + item.getClass() + "','" + item.getComments() + "','" + item.getDescription() + "'," + item.getPic().ToString() + ",'" + item.getId() + "');";
 
 
             try
@@ -310,8 +312,9 @@ namespace BarteRoom
                 connect.Close();
             }
 
-           catch (Exception e) {
-               return false;
+            catch (Exception e)
+            {
+                return false;
             }
             //uploadPic(item.getUsr(), item.getPic());
 
@@ -324,7 +327,7 @@ namespace BarteRoom
         public bool removeItem(String id)
         {
             query = "DELETE FROM items WHERE id='" + id + "';";
-                 
+
 
 
             try
@@ -346,7 +349,7 @@ namespace BarteRoom
         {
             query = "UPDATE items"
                     + "SET name='" + name + "'," + "comments='" + comments + "'," + "description='" + description + "'," + "pic=" + pic + " "
-                    +"WHERE id='" + id + "';";
+                    + "WHERE id='" + id + "';";
 
 
 
@@ -383,7 +386,7 @@ namespace BarteRoom
             {
                 connect.Open();
 
-                
+
                 command = new SqlCommand(query, connect);
 
                 numOf = Convert.ToInt32(command.ExecuteScalar().ToString());
@@ -397,5 +400,5 @@ namespace BarteRoom
 
     }
 
-   
+
 }

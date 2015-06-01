@@ -15,29 +15,25 @@
             <div class="form-group">
                   <span>name</span>
                          <div class="input-group">
-                         <input type="text" class="form-control" placeholder="Enter Name" aria-describedby="basic-addon1" id="loginPasswordTxtBox" runat="server"/>
+                         <input type="text" class="form-control" placeholder="Enter Name" aria-describedby="basic-addon1" id="textBox_name" runat="server"/>
                         </div>
                 <span>description</span>
                          <div class="input-group">
-                          <input type="text" class="form-control" placeholder="Enter Description" aria-describedby="basic-addon1" id="Password1" runat="server"/>
+                          <input type="text" class="form-control" placeholder="Enter Description" aria-describedby="basic-addon1" id="textBox_description" runat="server"/>
                         </div>
                 <span>comments</span>
                          <div class="input-group">
-                          <input type="text" class="form-control" placeholder="Enter Comments" aria-describedby="basic-addon1" id="Password2" runat="server"/>
+                          <input type="text" class="form-control" placeholder="Enter Comments" aria-describedby="basic-addon1" id="textBox_comments" runat="server"/>
                         </div>
                 <asp:Button ID="commit_cmd" class="btn btn-info" runat="server" Text="OK" Width="42px" OnClick="commit_cmd_Click" CssClass="nav-pills" />
             </div>
-        </div>
-         <div class="col-md-4">
-             <select>
-              <option value="volvo">Volvo</option>
-              <option value="saab">Saab</option>
-              <option value="opel">Opel</option>
-              <option value="audi">Audi</option>
-            </select>
+            <asp:DropDownList ID="classes_list" runat="server" DataSourceID="SqlDataSource1" DataTextField="cls_name" DataValueField="cls_name"></asp:DropDownList>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectToDb %>" SelectCommand="SELECT * FROM [classes]"></asp:SqlDataSource>
+            <asp:Button ID="image_upload_cmd" class="btn btn-info" runat="server" Text="upload" Width="70px" OnClick="image_upload_cmd_Click" CssClass="nav-pills" />
+            <asp:FileUpload CssClass="input-group" ID="image_upload" runat="server" OnLoad="image_upload_Load" />
 
-             <asp:FileUpload CssClass="input-group" ID="FileUpload1" runat="server" />
-         </div>
+
+        </div>
  
             
     </div>
@@ -46,9 +42,7 @@
 
   
 
-  <!--  <asp:TextBox ID="name_textBox" runat="server" OnTextChanged="name_textBox_TextChanged">name</asp:TextBox>
-              <asp:TextBox ID="TextBox1" runat="server" OnTextChanged="comments_textBox_TextChanged">comments</asp:TextBox>
-              <asp:TextBox ID="TextBox2" runat="server" OnTextChanged="description_textBox_TextChanged">description</asp:TextBox>-->
+
    
 
     
