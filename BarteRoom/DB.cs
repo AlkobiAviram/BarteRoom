@@ -358,9 +358,19 @@ namespace BarteRoom
             return true;
 
         }
+
+
         public bool removeItem(String id)
         {
-          
+            //removing the picture from the folder
+            string completePath = System.Web.HttpContext.Current.Server.MapPath("~/" + setImagePath(id));
+            if (System.IO.File.Exists(completePath))
+            {
+
+                System.IO.File.Delete(completePath);
+
+            }
+
 
 
 
@@ -377,6 +387,8 @@ namespace BarteRoom
             }
 
             catch (Exception e) { return false; }
+            
+ 
             return true;
         }
 

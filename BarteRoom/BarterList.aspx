@@ -8,12 +8,14 @@
     <asp:GridView ID="GridView1" CssClass="table table-bordered table-responsive table-striped"  runat="server" AllowSorting="True" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnRowDataBound="GridView1_RowDataBound" AllowPaging="True" DataSourceID="ItemsDataSource" DataKeyNames="id" AutoGenerateColumns="False">
         <Columns>
             <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
+          
+            <asp:ImageField DataImageUrlField ="Image" NullDisplayText="no image" >
+                <ControlStyle Height="250px" Width="250px" />
+                <ItemStyle Height="20px" Width="20px" />
+            </asp:ImageField>
             <asp:BoundField DataField="Name" />
             <asp:BoundField DataField="Comments" />
             <asp:BoundField DataField="Description" />
-            <asp:ImageField DataImageUrlField ="Image" NullDisplayText="no image" >
-                <ItemStyle Height="20px" Width="20px" />
-            </asp:ImageField>
             <asp:BoundField DataField="id" /> 
         </Columns>
         
