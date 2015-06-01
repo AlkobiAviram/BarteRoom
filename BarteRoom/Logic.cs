@@ -190,7 +190,7 @@ namespace BarteRoom
             return -1;
         }
 
-        public void addImage(String id, String path)
+        public void addImage(string id, string path)
         {
             data = new DB();
             data.addImage(id, path);

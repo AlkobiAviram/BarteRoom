@@ -267,8 +267,9 @@ namespace BarteRoom
                     RowValues[0] = rdr[1].ToString();
                     RowValues[1] = rdr[3].ToString();
                     RowValues[2] = rdr[4].ToString();
-                    RowValues[3] = getImagePath(rdr[5].ToString());
-                    RowValues[4] = rdr[5].ToString();
+                    string id = rdr[5].ToString();
+                    RowValues[3] = id;
+                    RowValues[4] = id;
                 
             
            
@@ -279,11 +280,20 @@ namespace BarteRoom
             }
 
             connect.Close();
+            //setting image url
+            foreach (DataRow row in dtable.Rows)
+            {
+                row[3] = setImagePath(row[3].ToString());
+            }
+
+
+
+
             return dtable;
         }
 
 
-        public String getImagePath(String id)
+        public string setImagePath(String id)
         {
             string path = "";
             query = "select path from images where id = '" + id + "';";
@@ -329,7 +339,7 @@ namespace BarteRoom
             return true;
         }
 
-        public bool addImage(String id, String path)
+        public bool addImage(string id, string path)
         {
             query = "insert into images values('" + id + "','" + path + "');";
 
@@ -350,16 +360,18 @@ namespace BarteRoom
         }
         public bool removeItem(String id)
         {
-            query = "DELETE FROM items WHERE id='" + id + "';";
+          
 
 
 
             try
             {
                 connect.Open();
-
+                query = "DELETE FROM items WHERE id='" + id + "';";
                 command = new SqlCommand(query, connect);
-
+                command.ExecuteNonQuery();
+                query = "DELETE FROM images WHERE id='" + id + "';";
+                command = new SqlCommand(query, connect);
                 command.ExecuteNonQuery();
                 connect.Close();
             }

@@ -11,7 +11,9 @@
             <asp:BoundField DataField="Name" />
             <asp:BoundField DataField="Comments" />
             <asp:BoundField DataField="Description" />
-            <asp:ImageField DataImageUrlField ="Image" NullDisplayText="no image"/>
+            <asp:ImageField DataImageUrlField ="Image" NullDisplayText="no image" >
+                <ItemStyle Height="20px" Width="20px" />
+            </asp:ImageField>
             <asp:BoundField DataField="id" /> 
         </Columns>
         
