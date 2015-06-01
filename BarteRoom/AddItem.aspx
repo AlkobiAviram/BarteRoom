@@ -13,10 +13,11 @@
 
         <div class="col-md-4">
             <div class="form-group">
+                 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="classes_list" ErrorMessage="please choose class" InitialValue="choose class"></asp:RequiredFieldValidator>
+                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="textBox_name" ErrorMessage="please insert name"></asp:RequiredFieldValidator>
                   <span>name</span>
                          <div class="input-group">
-                         <input type="text" class="form-control" placeholder="Enter Name" aria-describedby="basic-addon1" id="textBox_name" runat="server"/>
-                        </div>
+                         <input type="text" class="form-control" placeholder="Enter Name" aria-describedby="basic-addon1" id="textBox_name" runat="server"/>&nbsp;</div>
                 <span>description</span>
                          <div class="input-group">
                           <input type="text" class="form-control" placeholder="Enter Description" aria-describedby="basic-addon1" id="textBox_description" runat="server"/>
