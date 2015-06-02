@@ -31,9 +31,9 @@
                 </p>
             </div>
                 <div class="row">
-                <h3>Make offer</h3>
+                <h3>Make a Bid</h3>
                    <p>
-                       <asp:Button ID="offer_cmd" runat="server" Text="Make Offer" CssClass=" btn btn-primary" OnClick="offer_cmd_Click"/>
+                       <asp:Button ID="offer_cmd" runat="server" Text="Make a Bid" CssClass=" btn btn-primary" OnClick="offer_cmd_Click"/>
                 </p>
             </div>
         </div>

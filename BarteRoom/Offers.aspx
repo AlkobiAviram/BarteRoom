@@ -4,4 +4,14 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 
+        <div class="container">
+        <div class="col-md-4">
+            <div class="row">
+               <h1>Offers List</h1>
+            </div>
+        </div>
+
+      </div>
+
+
 </asp:Content>

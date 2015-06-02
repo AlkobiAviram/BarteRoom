@@ -10,43 +10,25 @@
 namespace BarteRoom {
     
     
-    public partial class SearchPage {
+    public partial class MakeBid {
         
         /// <summary>
-        /// SearchTextBox control.
+        /// comments_TextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox SearchTextBox;
+        protected global::System.Web.UI.WebControls.TextBox comments_TextBox;
         
         /// <summary>
-        /// SqlDataSource1 control.
+        /// commitBid_cmd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
-        
-        /// <summary>
-        /// classes_list control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList classes_list;
-        
-        /// <summary>
-        /// search_cmd control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button search_cmd;
+        protected global::System.Web.UI.WebControls.Button commitBid_cmd;
         
         /// <summary>
         /// GridView1 control.

@@ -64,6 +64,7 @@
     <Content Include="Home.aspx" />
     <Content Include="img\arrow1.jpg" />
     <Content Include="img\arrow2.jpg" />
+    <Content Include="MakeBid.aspx" />
     <Content Include="Manager.aspx" />
     <Content Include="MasterPage.Master" />
     <Content Include="AddItem.aspx" />
@@ -145,6 +146,13 @@
       <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
     <Compile Include="Logic.cs" />
+    <Compile Include="MakeBid.aspx.cs">
+      <DependentUpon>MakeBid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MakeBid.aspx.designer.cs">
+      <DependentUpon>MakeBid.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Manager.aspx.cs">
       <DependentUpon>Manager.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

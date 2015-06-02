@@ -525,7 +525,7 @@ namespace BarteRoom
             {
                 connect.Open();
                 //insert to transaction table
-                query = "insert into transactions values('" + transaction.getTransaction_id() + "','" + transaction.getItem_id() + "','" + transaction.getType()+ "','" +transaction.getUser()+  "');";
+                query = "insert into transactions values('" + transaction.getTransaction_id() + "','" + transaction.getItem_id() + "','" + transaction.getType()+ "','" +transaction.getUser()+"','"+transaction.getComments()+  "');";
                 command = new SqlCommand(query, connect);
                 command.ExecuteNonQuery();
 
@@ -547,26 +547,20 @@ namespace BarteRoom
         }
 
 
-        public DataTable getDataSourceForTransaction(String usr)
+        public DataTable getDataSourceForTransaction(String usr,string transaction_type)
         {
 
             DataTable dtable = new DataTable();
-            DataColumn dt = new DataColumn("Name");
-            DataColumn dt1 = new DataColumn("Comments");
-            DataColumn dt2 = new DataColumn("Description");
-            DataColumn dt3 = new DataColumn("Image");
-            DataColumn dt4 = new DataColumn("id");
+            DataColumn dt = new DataColumn("Bidded Item");
+            
 
 
             dtable.Columns.Add(dt);
-            dtable.Columns.Add(dt1);
-            dtable.Columns.Add(dt2);
-            dtable.Columns.Add(dt3);
-            dtable.Columns.Add(dt4);
+           
 
 
 
-            query = "select * from items where usr = '" + usr + "';";
+            query = "select * from transactions where usr = '" + usr + "' and transaction_type='"+transaction_type+"';";
 
             try
             {
@@ -582,13 +576,9 @@ namespace BarteRoom
 
             while (rdr.Read())
             {
-                object[] RowValues = { "", "", "", "", "" };
-                RowValues[0] = rdr[1].ToString();
-                RowValues[1] = rdr[3].ToString();
-                RowValues[2] = rdr[4].ToString();
-                string id = rdr[5].ToString();
-                RowValues[3] = id;
-                RowValues[4] = id;
+                object[] RowValues = { "" };
+                RowValues[0] = rdr[0].ToString();
+              
 
 
 
@@ -599,14 +589,7 @@ namespace BarteRoom
             }
 
             connect.Close();
-            //setting image url
-            foreach (DataRow row in dtable.Rows)
-            {
-                row[3] = setImagePath(row[3].ToString());
-            }
-
-
-
+       
 
             return dtable;
         }

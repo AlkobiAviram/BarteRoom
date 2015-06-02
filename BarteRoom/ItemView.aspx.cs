@@ -17,7 +17,7 @@ namespace BarteRoom
 
         protected void offer_cmd_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("/MakeBid.aspx");
         }
     }
 }
