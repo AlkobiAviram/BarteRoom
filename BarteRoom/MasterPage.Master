@@ -149,7 +149,6 @@
                           <span class="input-group-addon" id="basic-addon8"></span>
                           <input type="email" class="form-control" placeholder="Enter Your E-mail" aria-describedby="basic-addon1" id="SignUpEmailTxtBox" runat="server"/>
                         </div>
- 
                      </div>
                      <div class="modal-footer">
                          <asp:Button class="btn btn-info" ID="SignUp" runat="server" OnClick="SignUp_Click" Text="SignUp" ValidationGroup ="SignUpGroup"/>
@@ -250,6 +249,7 @@
                   window.alert("Incorrect Password!");
               }
     </script>
+
 
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         

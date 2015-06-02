@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-md-4">
             <h2>Image</h2>
-            <asp:Image ID="item_pic" runat="server" />
+            <asp:Image ID="item_pic" CssClass="img-responsive" runat="server" />
         </div>
         <div class="col-md-4">
             <div class="row">
