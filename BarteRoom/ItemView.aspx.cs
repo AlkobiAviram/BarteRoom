@@ -11,7 +11,8 @@ namespace BarteRoom
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Logic lg = new Logic();
+            item_pic.ImageUrl = lg.setImagePath(Session["item_id"].ToString());
         }
     }
 }

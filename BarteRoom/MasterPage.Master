@@ -54,7 +54,7 @@
                       <ul class="dropdown-menu" role="menu">
                         <li><a href="/BarterList.aspx">My Barter list</a></li>
                         <li><a href="/AddItem.aspx">Add an Item</a></li>
-                        <li><a href="#">Another action </a></li>
+                        <li><a href="/SearchPage.aspx">Search For Items </a></li>
                         <li><a href="#">Another action</a></li>
                         <li><asp:LinkButton ID="LogOut" runat="server" OnClick="LogOut_Click">LogOut</asp:LinkButton></li>
                       </ul>

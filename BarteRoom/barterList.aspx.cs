@@ -23,8 +23,8 @@ namespace BarteRoom
 
         private void bind()
         {
-     
-                GridView1.DataSource = lg.getDataSource(Session["usr"].ToString());
+
+            GridView1.DataSource = lg.getDataSourceForUsr(Session["usr"].ToString());
                 GridView1.DataBind();
         
         }
@@ -64,7 +64,7 @@ namespace BarteRoom
               
 
                 // TextBox delete_id = new TextBox();
-                string delete_id = row.Cells[6].Text;
+                string delete_id = row.Cells[7].Text;
                 lg.removeItem(delete_id);
 
                 
@@ -78,23 +78,21 @@ namespace BarteRoom
                 TextBox cmt = new TextBox();
                 TextBox dsct = new TextBox();
                 TextBox ID = new TextBox();
-                nm = (TextBox)GridView1.Rows[index].Cells[3].Controls[0];
-                cmt = (TextBox)GridView1.Rows[index].Cells[4].Controls[0];
-                dsct = (TextBox)GridView1.Rows[index].Cells[5].Controls[0];
-                ID = (TextBox)GridView1.Rows[index].Cells[6].Controls[0];
+                nm = (TextBox)GridView1.Rows[index].Cells[4].Controls[0];
+                cmt = (TextBox)GridView1.Rows[index].Cells[5].Controls[0];
+                dsct = (TextBox)GridView1.Rows[index].Cells[6].Controls[0];
+                ID = (TextBox)GridView1.Rows[index].Cells[7].Controls[0];
 
                 lg.editItem(nm.Text, cmt.Text, dsct.Text, ID.Text);
-                GridView1.EditIndex = -1;
-                //bind();
-                
-     
-
-                //bind();
+                GridView1.EditIndex = -1;    
 
             }
             if (e.CommandName == "Edit")
             {
 
+            }
+            if (e.CommandName == "Select")
+            {
             }
         }
 
@@ -148,6 +146,10 @@ namespace BarteRoom
 
         protected void GridView1_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
+            int index = Convert.ToInt32(e.NewSelectedIndex);
+            GridViewRow row = GridView1.Rows[index];
+            Session["item_id"] = row.Cells[7].Text;
+            Response.Redirect("/ItemView.aspx");
             GridView1.EditIndex = -1;
             bind();
 

@@ -10,6 +10,8 @@
             <asp:CommandField ShowEditButton="True" />
             <asp:CommandField ShowDeleteButton="True" />
           
+            <asp:CommandField ShowSelectButton="True" />
+          
             <asp:ImageField DataImageUrlField ="Image" NullDisplayText="no image" >
                 <ControlStyle Height="250px" Width="250px" />
                 <ItemStyle Height="20px" Width="20px" />

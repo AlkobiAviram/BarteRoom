@@ -167,12 +167,17 @@ namespace BarteRoom
             data.editItem(name,comments,description,id);
 
         }
-        public DataTable getDataSource(String usr)
+        public DataTable getDataSourceForUsr(String usr)
         {
             data = new DB();
-            return data.getDataSource(usr);
+            return data.getDataSourceForUsr(usr);
         }
 
+        public DataTable getDataSourceForAllUsrs()
+        {
+            data = new DB();
+            return data.getDataSourceForAllUsrs();
+        }
         public int numOf(int user_manager)
         {
             data = new DB();
@@ -196,6 +201,10 @@ namespace BarteRoom
             data.addImage(id, path);
         }
 
-
+        public string setImagePath(String id)
+        {
+             data = new DB();
+             return data.setImagePath(id);
+        }
     }
 }

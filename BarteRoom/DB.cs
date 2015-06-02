@@ -228,7 +228,75 @@ namespace BarteRoom
 
 */
 
-        public DataTable getDataSource(String usr)
+
+        public DataTable getDataSourceForAllUsrs()
+        {
+
+            DataTable dtable = new DataTable();
+            DataColumn dt = new DataColumn("Name");
+            DataColumn dt1 = new DataColumn("Comments");
+            DataColumn dt2 = new DataColumn("Description");
+            DataColumn dt3 = new DataColumn("Image");
+            DataColumn dt4 = new DataColumn("id");
+            DataColumn dt5 = new DataColumn("User");
+
+            dtable.Columns.Add(dt);
+            dtable.Columns.Add(dt1);
+            dtable.Columns.Add(dt2);
+            dtable.Columns.Add(dt3);
+            dtable.Columns.Add(dt4);
+            dtable.Columns.Add(dt5);
+
+
+
+            query = "select * from items;";
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+                rdr = command.ExecuteReader();
+
+
+            }
+
+            catch (Exception e) { }
+
+            while (rdr.Read())
+            {
+                object[] RowValues = { "", "", "", "", "","" };
+                RowValues[0] = rdr[1].ToString();
+                RowValues[1] = rdr[3].ToString();
+                RowValues[2] = rdr[4].ToString();
+                string id = rdr[5].ToString();
+                RowValues[3] = id;
+                RowValues[4] = id;
+                RowValues[5] = rdr[0].ToString();
+
+
+
+
+                DataRow dRow;
+                dRow = dtable.Rows.Add(RowValues);
+                dtable.AcceptChanges();
+            }
+
+            connect.Close();
+            //setting image url
+            foreach (DataRow row in dtable.Rows)
+            {
+                row[3] = setImagePath(row[3].ToString());
+            }
+
+
+
+
+            return dtable;
+
+        }
+
+        public DataTable getDataSourceForUsr(String usr)
         {
 
             DataTable dtable = new DataTable();
