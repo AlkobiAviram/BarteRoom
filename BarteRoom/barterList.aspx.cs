@@ -14,11 +14,11 @@ namespace BarteRoom
         protected void Page_Load(object sender, EventArgs e)
         {
             
-           if (!IsPostBack)
-            {
+          if (!IsPostBack)
+           {
         
             bind();
-               }
+            }
         }
 
         private void bind()
@@ -51,6 +51,51 @@ namespace BarteRoom
                       //Convert.ToInt16(e.CommandArgument);
              
             //}
+            
+            if (e.CommandName == "Delete")
+            {
+                // Convert the row index stored in the CommandArgument
+                // property to an Integer.
+                int index = Convert.ToInt32(e.CommandArgument);
+
+                // Retrieve the row that contains the button clicked 
+                // by the user from the Rows collection.
+                GridViewRow row = GridView1.Rows[index];
+              
+
+                // TextBox delete_id = new TextBox();
+                string delete_id = row.Cells[6].Text;
+                lg.removeItem(delete_id);
+
+                
+            }
+            if (e.CommandName == "Update")
+            {
+                int index = Convert.ToInt32(e.CommandArgument);
+                GridViewRow row = GridView1.Rows[index];
+                //you must get the new values with textboxes..
+                TextBox nm = new TextBox();
+                TextBox cmt = new TextBox();
+                TextBox dsct = new TextBox();
+                TextBox ID = new TextBox();
+                nm = (TextBox)GridView1.Rows[index].Cells[3].Controls[0];
+                cmt = (TextBox)GridView1.Rows[index].Cells[4].Controls[0];
+                dsct = (TextBox)GridView1.Rows[index].Cells[5].Controls[0];
+                ID = (TextBox)GridView1.Rows[index].Cells[6].Controls[0];
+
+                lg.editItem(nm.Text, cmt.Text, dsct.Text, ID.Text);
+                GridView1.EditIndex = -1;
+                //bind();
+                
+     
+
+                //bind();
+
+            }
+            if (e.CommandName == "Edit")
+            {
+
+            }
         }
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -62,21 +107,13 @@ namespace BarteRoom
         {
 
         }
-
+        
         protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            
-            GridViewRow row = GridView1.Rows[e.RowIndex];
-            int x = e.RowIndex;
-         
-            TextBox delete_id = new TextBox();
-            delete_id = (TextBox)GridView1.Rows[e.RowIndex].Cells[5].Controls[0];
-            lg.removeItem(delete_id.Text);
-            GridView1.EditIndex = -1;
+    
             bind();
-            
         }
-
+        
         protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
         {
             GridView1.EditIndex = Convert.ToInt16(e.NewEditIndex);
@@ -88,27 +125,15 @@ namespace BarteRoom
         {
             GridView1.EditIndex = -1;
             bind();
+           
         }
 
         protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-        
-     
-            GridViewRow row = GridView1.Rows[e.RowIndex];
-            //you must get the new values with textboxes..
-            TextBox nm = new TextBox();
-            TextBox cmt = new TextBox();
-            TextBox dsct = new TextBox();
-            TextBox ID = new TextBox();
-            nm = (TextBox)GridView1.Rows[e.RowIndex].Cells[2].Controls[0];
-            cmt = (TextBox)GridView1.Rows[e.RowIndex].Cells[3].Controls[0];
-            dsct = (TextBox)GridView1.Rows[e.RowIndex].Cells[4].Controls[0];
-            ID = (TextBox)GridView1.Rows[e.RowIndex].Cells[5].Controls[0];
-           
-            lg.editItem(nm.Text, cmt.Text, dsct.Text, ID.Text);
-            GridView1.EditIndex = -1;
+
+       
             bind();
-           
+          //  Response.Redirect("/BarterList.aspx");
         }
 
         protected void index_ValueChanged(object sender, EventArgs e)
