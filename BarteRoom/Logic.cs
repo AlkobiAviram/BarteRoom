@@ -173,10 +173,10 @@ namespace BarteRoom
             return data.getDataSourceForUsr(usr);
         }
 
-        public DataTable getDataSourceForAllUsrs()
+        public DataTable getDataSourceForItemsByChoice(int whichItems, string name, string clas)
         {
             data = new DB();
-            return data.getDataSourceForAllUsrs();
+            return data.getDataSourceForItemsByChoice(whichItems, name,clas);
         }
         public int numOf(int user_manager)
         {

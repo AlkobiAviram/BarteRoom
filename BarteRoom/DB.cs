@@ -229,7 +229,7 @@ namespace BarteRoom
 */
 
 
-        public DataTable getDataSourceForAllUsrs()
+        public DataTable getDataSourceForItemsByChoice(int whichItems, string name, string clas)
         {
 
             DataTable dtable = new DataTable();
@@ -248,8 +248,10 @@ namespace BarteRoom
             dtable.Columns.Add(dt5);
 
 
-
+            if (whichItems==0)
             query = "select * from items;";
+            else
+               query = "select * from items where name='"+name+"' and "+"class='"+clas+"'";
 
             try
             {
