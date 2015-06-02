@@ -516,6 +516,103 @@ namespace BarteRoom
             return numOf;
         }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //transaction section
+        public bool addTransaction(Transaction transaction)
+        {
+
+            try
+            {
+                connect.Open();
+                //insert to transaction table
+                query = "insert into transactions values('" + transaction.getTransaction_id() + "','" + transaction.getItem_id() + "','" + transaction.getType()+ "','" +transaction.getUser()+  "');";
+                command = new SqlCommand(query, connect);
+                command.ExecuteNonQuery();
+
+                //insert to transactionItems table
+                query = "";
+                foreach (string item_id in transaction.getOfferdItemsList())
+                {
+                    query += "insert into transactionItems values('" + transaction.getTransaction_id() + "','" + item_id + "');";
+
+                }
+                command = new SqlCommand(query, connect);
+                command.ExecuteNonQuery();
+                connect.Close();
+            }
+
+            catch (Exception e) { return false; }
+            return true;
+
+        }
+
+
+        public DataTable getDataSourceForTransaction(String usr)
+        {
+
+            DataTable dtable = new DataTable();
+            DataColumn dt = new DataColumn("Name");
+            DataColumn dt1 = new DataColumn("Comments");
+            DataColumn dt2 = new DataColumn("Description");
+            DataColumn dt3 = new DataColumn("Image");
+            DataColumn dt4 = new DataColumn("id");
+
+
+            dtable.Columns.Add(dt);
+            dtable.Columns.Add(dt1);
+            dtable.Columns.Add(dt2);
+            dtable.Columns.Add(dt3);
+            dtable.Columns.Add(dt4);
+
+
+
+            query = "select * from items where usr = '" + usr + "';";
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+                rdr = command.ExecuteReader();
+
+
+            }
+
+            catch (Exception e) { }
+
+            while (rdr.Read())
+            {
+                object[] RowValues = { "", "", "", "", "" };
+                RowValues[0] = rdr[1].ToString();
+                RowValues[1] = rdr[3].ToString();
+                RowValues[2] = rdr[4].ToString();
+                string id = rdr[5].ToString();
+                RowValues[3] = id;
+                RowValues[4] = id;
+
+
+
+
+                DataRow dRow;
+                dRow = dtable.Rows.Add(RowValues);
+                dtable.AcceptChanges();
+            }
+
+            connect.Close();
+            //setting image url
+            foreach (DataRow row in dtable.Rows)
+            {
+                row[3] = setImagePath(row[3].ToString());
+            }
+
+
+
+
+            return dtable;
+        }
+
+
+
     }
 
 

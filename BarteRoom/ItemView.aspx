@@ -5,7 +5,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 
-<link rel="stylesheet" type="text/css" href="mystyle.css">
+    
+
+                           
+
 
 
     <div class="container">
@@ -25,6 +28,12 @@
                 <h3>Description</h3>
                    <p>
                       <asp:Label ID="ItemDscription" runat="server" Text="Label"></asp:Label>
+                </p>
+            </div>
+                <div class="row">
+                <h3>Make offer</h3>
+                   <p>
+                       <asp:Button ID="offer_cmd" runat="server" Text="Make Offer" CssClass=" btn btn-primary" OnClick="offer_cmd_Click"/>
                 </p>
             </div>
         </div>

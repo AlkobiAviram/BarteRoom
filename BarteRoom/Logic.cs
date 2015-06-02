@@ -206,5 +206,13 @@ namespace BarteRoom
              data = new DB();
              return data.setImagePath(id);
         }
+
+
+        ///transaction section
+        public void addTransaction(Transaction transaction)
+        {
+            data = new DB();
+            data.addTransaction(transaction);
+        }
     }
 }
