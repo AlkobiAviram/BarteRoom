@@ -5,8 +5,8 @@
 
         if (topY < 5) {
 
-            $('#Square').addClass('animate');
-            $('#Square2').addClass('animate');
+            $('#img-scroll').addClass('animatePhone');
+           // $('#Square2').addClass('animate');
 
         }
     })

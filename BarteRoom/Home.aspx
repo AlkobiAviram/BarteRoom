@@ -93,6 +93,9 @@
          <div class="container">
 
              <div class="row row-css-custom">
+                <div id="img-scroll">
+                     <img src="img/phone1.jpg"  />
+                </div>
                  
              </div>
 

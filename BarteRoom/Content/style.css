@@ -96,13 +96,14 @@ a:hover {
 
 }
 
-/*.animatepopup{
+.animatePhone{
 	
 	transition: 2s ease-in-out;
 	-webkit-transition: 2s ease-in-out;
 }
 
-#popupmenu.animatepopup{
+#img-scroll.animatePhone{
 
-
-}*/
+    transform: translate(10em , 0);
+	-webkit-transform: translate(10em , 0);
+}
