@@ -57,10 +57,6 @@
     </table>
 
         
-            <div class="row">
-            <div class="col-md-2">
-               side bar
-            </div>
             <div class="col-md-10">
                 <asp:GridView ID="homeGridView" CssClass="table table-responsive table-striped" HorizontalAlign="Center" AllowSorting="True"  AllowPaging="True" GridLines="None" AutoGenerateColumns="False" runat="server" DataKeyNames="Id" OnSelectedIndexChanged="homeGridView_SelectedIndexChanged">
                     <Columns>
@@ -83,26 +79,7 @@
         </asp:GridView>
             </div>
             
-
-        </div>
-
-
          <div class="container">
-
-            <div class="row row-css-custom">
-
-                <div class="col-md-6" >
-                   <div>
-                       <img src='img/arrow2.jpg' class='img-responsive' id="Square">
-                   </div>
-                </div>
-                
-                <div class="col-md-6" >
-                   <div>
-                       <img src='img/arrow1.jpg' class='img-responsive' id="Square2">
-                   </div>
-                </div>  
-            </div>
 
              <div class="row row-css-custom">
                  <div class="col-md-10 col-md-offset-1">
