@@ -22,39 +22,43 @@
 
      <!-- ==============================================Main container===========================================  -->
 
-    <table class="nav-justified">
-        <tr>
-            <td class="auto-style2"></td>
-            <td class="auto-style3">
+             <div class="row">
+                 <div class="container">
+                       <table class="nav-justified">
+                            <tr>
+                                <td class="auto-style2"></td>
+                                <td class="auto-style3">
 
-                <asp:TextBox ID="SearchTextBox" class="form-control" placeholder="Search" Width="100%" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="SearchTextBox" class="form-control" placeholder="Search" Width="100%" runat="server"></asp:TextBox>
        
-            </td>
+                                </td>
 
-            <td class="auto-style4">
-                <asp:DropDownList ID="catagories" class="form-control" Width="97%" runat="server">
-                <asp:ListItem>All Catagories</asp:ListItem>
-                    </asp:DropDownList>
-            </td>
+                                <td class="auto-style4">
+                                    <asp:DropDownList ID="catagories" class="form-control" Width="97%" runat="server">
+                                    <asp:ListItem>All Catagories</asp:ListItem>
+                                        </asp:DropDownList>
+                                </td>
 
-            <td class="auto-style4">
-                <asp:Button ID="Button1" class="btn btn-info" runat="server" Text="Search" OnClick="searcCmd_Click"/>
-                <asp:LinkButton ID="AdvancedSearch" runat="server" ForeColor="Blue">Advanced</asp:LinkButton>
-            </td>
+                                <td class="auto-style4">
+                                    <asp:Button ID="Button1" class="btn btn-info" runat="server" Text="Search" OnClick="searcCmd_Click"/>
+                                    <asp:LinkButton ID="AdvancedSearch" runat="server" ForeColor="Blue">Advanced</asp:LinkButton>
+                                </td>
 
-        </tr>
-            </table>
-    <br /><br />
+                            </tr>
+                         </table>
+                        <br /><br />
 
-    <table class="nav-justified">
-        <tr>
-            <td class="auto-style4"></td>
-            <td class="auto-style5">
-                <asp:Label ID="searchField" runat="server" Visible =" false" Text="Label" Font-Bold="True"></asp:Label>
-                <asp:Label ID="results" runat="server" Visible =" false" Text="Label"></asp:Label>
-            </td>
-        </tr>
-    </table>
+                        <table class="nav-justified">
+                            <tr>
+                                <td class="auto-style4"></td>
+                                <td class="auto-style5">
+                                    <asp:Label ID="searchField" runat="server" Visible =" false" Text="Label" Font-Bold="True"></asp:Label>
+                                    <asp:Label ID="results" runat="server" Visible =" false" Text="Label"></asp:Label>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+             </div>
 
         
             <div class="col-md-10">
@@ -82,43 +86,7 @@
          <div class="container">
 
              <div class="row row-css-custom">
-                 <div class="col-md-10 col-md-offset-1">
-                     
-                     <div id="Home_Carousel" class="carousel slide">
-                         <ol class="carousel-indicators">
-                             <li data-target="#Home_Carousel" data-slide-to="0" class="active"></li>
-                             <li data-target="#Home_Carousel" data-slide-to="1"></li>
-                             <li data-target="#Home_Carousel" data-slide-to="2"></li>
-                         </ol>
-
-                         <div class="carousel-inner">
-                             <div class="item active">
-                                 <img src="img/img1.jpg" alt="picture1" class="img-responsive" />
-                                 <div class="carousel-caption">
-                                     <h3>Gerrard is the best scorer!</h3>
-                                 </div>
-                             </div>
-                             <div class="item">
-                                 <img src="img/img2.jpg" alt="picture2" class="img-responsive" />
-                                 <div class="carousel-caption">
-                                     <h3>Gerrard is the best passer!</h3>
-                                 </div>
-                             </div>
-                              <div class="item">
-                                 <img src="img/img3.jpg" alt="picture3" class="img-responsive" />
-                                  <div class="carousel-caption">
-                                     <h3>Gerrard is the best player!</h3>
-                                 </div>
-                             </div>
-                         </div>
-                         <a class="carousel-control left" href="#Home_Carousel" data-slide="prev">
-                             <span class="prev"></span>
-                         </a>
-                          <a class="carousel-control right" href="#Home_Carousel" data-slide="next">
-                             <span class="next"></span>
-                         </a>
-                     </div>   
-                </div>
+                 
              </div>
 
              <!-- ==============================================buttom row===========================================  -->
