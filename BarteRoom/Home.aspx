@@ -21,8 +21,8 @@
     </style>
 
      <!-- ==============================================Main container===========================================  -->
-
-             <div class="row">
+           <div class="container" id="popupmenu">
+                <div class="row">
                  <div class="container">
                        <table class="nav-justified">
                             <tr>
@@ -58,30 +58,36 @@
                             </tr>
                         </table>
                     </div>
+
+                 <div class="row">
+                      <div class="col-md-10">
+                        <asp:GridView ID="homeGridView" CssClass="table table-responsive table-striped" HorizontalAlign="Center" AllowSorting="True"  AllowPaging="True" GridLines="None" AutoGenerateColumns="False" runat="server" DataKeyNames="Id" OnSelectedIndexChanged="homeGridView_SelectedIndexChanged">
+                            <Columns>
+                        
+                                <asp:ImageField DataImageUrlField ="Image" NullDisplayText="no image" >
+                                    <ControlStyle Height="250px" Width="250px" />
+                                    <ItemStyle Height="20px" Width="20px" />
+                                </asp:ImageField>
+                        
+                                <asp:TemplateField HeaderText="Name" ShowHeader="False">
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="LinkButton1" runat="server" CssClass="change" CausesValidation="False" CommandName="Select" Text='<%# Bind("name") %>' ></asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+               
+                                <asp:BoundField DataField="comments" HeaderText="Comments" SortExpression="comments" />
+                                <asp:BoundField DataField="description" HeaderText="Description" SortExpression="description" />
+                                <asp:BoundField DataField="Id" HeaderText="Item BarCode" ReadOnly="True" SortExpression="Id" />
+                            </Columns>
+                         </asp:GridView>
+                     </div>
+                 </div>
              </div>
+           </div>
+            
 
         
-            <div class="col-md-10">
-                <asp:GridView ID="homeGridView" CssClass="table table-responsive table-striped" HorizontalAlign="Center" AllowSorting="True"  AllowPaging="True" GridLines="None" AutoGenerateColumns="False" runat="server" DataKeyNames="Id" OnSelectedIndexChanged="homeGridView_SelectedIndexChanged">
-                    <Columns>
-                        
-                        <asp:ImageField DataImageUrlField ="Image" NullDisplayText="no image" >
-                            <ControlStyle Height="250px" Width="250px" />
-                            <ItemStyle Height="20px" Width="20px" />
-                        </asp:ImageField>
-                        
-                        <asp:TemplateField HeaderText="Name" ShowHeader="False">
-                            <ItemTemplate>
-                                <asp:LinkButton ID="LinkButton1" runat="server" CssClass="change" CausesValidation="False" CommandName="Select" Text='<%# Bind("name") %>' ></asp:LinkButton>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-               
-                        <asp:BoundField DataField="comments" HeaderText="Comments" SortExpression="comments" />
-                        <asp:BoundField DataField="description" HeaderText="Description" SortExpression="description" />
-                        <asp:BoundField DataField="Id" HeaderText="Item BarCode" ReadOnly="True" SortExpression="Id" />
-                    </Columns>
-        </asp:GridView>
-            </div>
+           
             
          <div class="container">
 

@@ -85,3 +85,14 @@ a:hover {
 	transform: translate(-10em , 0);
 	-webkit-transform: translate(-10em , 0);
 }
+
+/*.animatepopup{
+	
+	transition: 2s ease-in-out;
+	-webkit-transition: 2s ease-in-out;
+}
+
+#popupmenu.animatepopup{
+
+
+}*/

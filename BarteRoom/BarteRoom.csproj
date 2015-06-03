@@ -64,6 +64,7 @@
     <Content Include="Home.aspx" />
     <Content Include="img\arrow1.jpg" />
     <Content Include="img\arrow2.jpg" />
+    <Content Include="Landing.html" />
     <Content Include="MakeBid.aspx" />
     <Content Include="Manager.aspx" />
     <Content Include="MasterPage.Master" />
