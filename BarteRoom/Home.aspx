@@ -6,6 +6,8 @@
      <style type="text/css">
         .auto-style2 {
             width: 45px;
+
+
         }
         .auto-style3 {
             width: 75px;
