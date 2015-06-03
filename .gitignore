@@ -184,8 +184,9 @@ Backup*/
 UpgradeLog*.XML
 UpgradeLog*.htm
 
-**/App_Data/*.mdf
-**/App_data/*.ldf
+# SQL Server files
+*.mdf
+*.ldf
 
 
 # Business Intelligence projects
