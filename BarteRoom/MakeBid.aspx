@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     
+         
             <div class="col-md-2">
                <h1>Choose items to bid on</h1>
                 <asp:TextBox ID="comments_TextBox" runat="server" Text="write a comments to the owner.."></asp:TextBox>
@@ -13,7 +13,14 @@
                 <asp:GridView ID="GridView1" CssClass="table table-bordered table-responsive table-striped"  runat="server" AllowSorting="True" AutoGenerateColumns="False"  >
                     <Columns>
 
-                        <asp:CommandField ShowSelectButton="True" ButtonType="Button" ControlStyle-CssClass="btn btn-info" />
+                        <asp:TemplateField HeaderText="Select">
+                            <ItemTemplate>
+                                <asp:CheckBox id="checkBox" runat="server" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
+
+
                         <asp:ImageField DataImageUrlField ="Image" NullDisplayText="no image" >
                             <ControlStyle Height="250px" Width="250px" />
                             <ItemStyle Height="20px" Width="20px" />
