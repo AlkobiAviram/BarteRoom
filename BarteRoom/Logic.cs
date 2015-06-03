@@ -214,5 +214,11 @@ namespace BarteRoom
             data = new DB();
             data.addTransaction(transaction);
         }
+
+        public DataTable getDataSourceForSearch(string search)
+        {
+            data = new DB();
+            return data.getDataSourceForSearch(search);
+        }
     }
 }
