@@ -6591,4 +6591,11 @@ button.close {
     display: none !important;
   }
 }
+
+.change:hover{
+    color: Blue;
+    background-color: White;
+    text-decoration:underline;
+}
+
 /*# sourceMappingURL=bootstrap.css.map */

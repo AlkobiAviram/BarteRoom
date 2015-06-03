@@ -13,6 +13,9 @@
           .auto-style4 {
             width: 15px;
         }
+             .auto-style5 {
+            width: 70px;
+        }
 
 
     </style>
@@ -43,6 +46,16 @@
             </table>
     <br /><br />
 
+    <table class="nav-justified">
+        <tr>
+            <td class="auto-style4"></td>
+            <td class="auto-style5">
+                <asp:Label ID="searchField" runat="server" Visible =" false" Text="Label" Font-Bold="True"></asp:Label>
+                <asp:Label ID="results" runat="server" Visible =" false" Text="Label"></asp:Label>
+            </td>
+        </tr>
+    </table>
+
         
             <div class="row">
             <div class="col-md-2">
@@ -59,7 +72,7 @@
                         
                         <asp:TemplateField HeaderText="Name" ShowHeader="False">
                             <ItemTemplate>
-                                <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Select" Text='<%# Bind("name") %>' ></asp:LinkButton>
+                                <asp:LinkButton ID="LinkButton1" runat="server" CssClass="change" CausesValidation="False" CommandName="Select" Text='<%# Bind("name") %>' ></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                

@@ -220,5 +220,11 @@ namespace BarteRoom
             data = new DB();
             return data.getDataSourceForSearch(search);
         }
+
+        public int numOfResults(String search)
+        {
+            data = new DB();
+            return data.numOfResults(search);
+        }
     }
 }

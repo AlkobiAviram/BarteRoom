@@ -52,12 +52,12 @@
                        <li class="dropdown">
                         <asp:LinkButton ID="MyAccount" runat="server" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">My Account<asp:HyperLink ID="caret" runat="server"><span class="caret"></span></asp:HyperLink></asp:LinkButton>
                       <ul class="dropdown-menu" role="menu">
-                        <li><a href="/BarterList.aspx">My Barter list</a></li>
-                        <li><a href="/AddItem.aspx">Add an Item</a></li>
-                        <li><a href="/SearchPage.aspx">Search For Items </a></li>
-                        <li><a href="/Bids.aspx">My Bids</a></li>
-                        <li><a href="/Offers.aspx">My Offers</a></li>
-                        <li><asp:LinkButton ID="LogOut" runat="server" OnClick="LogOut_Click">LogOut</asp:LinkButton></li>
+                          <li><asp:LinkButton ID="MyBarter" runat="server" OnClick="MyBarter_Click">My Barter list</asp:LinkButton></li>
+                          <li><asp:LinkButton ID="AddItem" runat="server" OnClick="AddItem_Click">Add an Item</asp:LinkButton></li>
+                          <li><asp:LinkButton ID="Search" runat="server" OnClick="Search_Click">Search For Items</asp:LinkButton></li>
+                          <li><asp:LinkButton ID="MyBids" runat="server" OnClick="MyBids_Click">My Bids</asp:LinkButton></li>
+                          <li><asp:LinkButton ID="MyOffers" runat="server" OnClick="MyOffers_Click">My Offers</asp:LinkButton></li>
+                          <li><asp:LinkButton ID="LogOut" runat="server" OnClick="LogOut_Click">LogOut</asp:LinkButton></li>
                       </ul>
                          
                     </li>

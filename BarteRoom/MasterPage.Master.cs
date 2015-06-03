@@ -10,6 +10,7 @@ namespace BarteRoom
     public partial class MasterPage : System.Web.UI.MasterPage
     {
         private Logic logic;
+        private System.Drawing.Color Blue;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -151,5 +152,32 @@ namespace BarteRoom
                 logic.sendEmail(usr, first, subject, message, 1);
             }
         }
+
+        protected void MyBarter_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/BarterList.aspx");
+        }
+
+        protected void AddItem_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/AddItem.aspx");
+        }
+
+        protected void Search_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/SearchPage.aspx");
+        }
+
+        protected void MyBids_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Bids.aspx");
+        }
+
+        protected void MyOffers_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Offers.aspx");
+        }
+
+        public System.Drawing.Color Gray { get; set; }
     }
 }

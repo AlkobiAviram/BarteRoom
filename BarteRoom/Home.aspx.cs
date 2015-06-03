@@ -18,11 +18,25 @@ namespace BarteRoom
 
         protected void searcCmd_Click(object sender, EventArgs e)
         {
-            String search = SearchTextBox.Text;
             logic = new Logic();
-
+            String search = SearchTextBox.Text;
+            int res = logic.numOfResults(search);
+            
             if (!(search == null))
             {
+                searchField.Text = SearchTextBox.Text + "   ";
+
+                if (res == 1)
+                {
+                    results.Text = res.ToString() + " listing";
+                }
+
+                else
+                {
+                    results.Text = res.ToString() + " listings";
+                }
+                results.Visible = true;
+                searchField.Visible = true;
                 homeGridView.DataSource = logic.getDataSourceForSearch(search);
                 homeGridView.DataBind();
             }

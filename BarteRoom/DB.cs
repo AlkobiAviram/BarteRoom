@@ -654,6 +654,28 @@ namespace BarteRoom
             return dtable;
         }
 
+        public int numOfResults(String search)
+        {
+            int numOf = 0;
+
+            query = "select count(*) from items where ([name] LIKE '%'+'" + search + "'+'%');";
+
+            try
+            {
+                connect.Open();
+
+
+                command = new SqlCommand(query, connect);
+
+                numOf = Convert.ToInt32(command.ExecuteScalar().ToString());
+                connect.Close();
+            }
+
+            catch (Exception e) { }
+
+            return numOf;
+        }
+
 
 
     }
