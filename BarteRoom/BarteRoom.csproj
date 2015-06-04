@@ -64,6 +64,12 @@
     <Content Include="Home.aspx" />
     <Content Include="img\arrow1.jpg" />
     <Content Include="img\arrow2.jpg" />
+    <Content Include="img\pic1.jpg" />
+    <Content Include="img\pic1_bigger.jpg" />
+    <Content Include="img\pic2.jpg" />
+    <Content Include="img\pic2_bigger.jpg" />
+    <Content Include="img\pic3.jpg" />
+    <Content Include="img\pic3_bigger.jpg" />
     <Content Include="Landing.html" />
     <Content Include="MakeBid.aspx" />
     <Content Include="Manager.aspx" />
@@ -108,6 +114,8 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jquery.parallax-scroll.js" />
+    <Content Include="Scripts\jquery.parallax-scroll.min.js" />
     <Content Include="Scripts\myjs.js" />
     <Content Include="Scripts\npm.js" />
     <Content Include="ItemView.aspx" />

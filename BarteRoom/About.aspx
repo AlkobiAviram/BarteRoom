@@ -3,34 +3,37 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-<div>
-    <h3>ABOUT</h3>
-    <br />
-    <div>
-        <span>BarteRoom is an app for everyone!
-        if you have somthing you need and dont want is first hand for an intial price , you can just open an account with barteroom amd look for what you need.
-        if you find a partner to switch with you are good to go .
-        in the future there will be more bulshit !
-        </span>
+    <script type="text/javascript" src="Scripts/jquery.parallax-scroll.js"> </script>
+     <script type="text/javascript" src="Scripts/jquery.parallax-scroll.min.js"> </script>
+    <script type="text/javascript" src="Scripts/myjs.js"> </script>
+    <link rel="stylesheet" type="text/css" href="Content/style.css" />
+
+    <div id="pic1" class="bg-holder" data-width="1024" data-height="768">
+	</div>
+
+    <section>
+	     <div class="container">
+            <h1>Section 1</h1>
+            <p>laurem ipsum laurem ipsum laurem ipsum laurem ipsum laurem ipsum laurem ipsum </p>
+	    </div> 
+
+    </section>			                                                                         
+    
+    <div id="pic2" class="bg-holder" data-width="1024" data-height="768">
     </div>
-</div>
+    
+    <section>
+        <div class="container">
+        <h1>Section 2</h1>
+        <p>laurem ipsum laurem ipsum laurem ipsum laurem ipsum laurem ipsum laurem ipsum </p>
+        </div>
+    </section>
 
+    <div id="pic3" class="bg-holder" data-width="1024" data-height="768">
+    </div>
+				
 
-<h3>THE BART (BarteRoomTeam)</h3>
-<br />           
-    Gispan
-
-<h3>security</h3>
-<br />
-    More Gispan
-
-<h3>Contact</h3>
-<br />
-    By Contect Us
-
-<p></p>
-
-<br />
+    
 <div class="modal-footer">
     <button class="btn btn-info" data-dismiss="modal"> Share </button>
 </div>

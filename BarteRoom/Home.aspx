@@ -94,13 +94,7 @@
             
          <div class="container">
 
-             <div class="row row-css-custom">
-                <div id="img-scroll">
-                     <img src="img/phone1.jpg"  />
-                </div>
-                 
-             </div>
-
+         
              <!-- ==============================================buttom row===========================================  -->
              <div class="row row-css-custom">
                  <div class="col-md-4">

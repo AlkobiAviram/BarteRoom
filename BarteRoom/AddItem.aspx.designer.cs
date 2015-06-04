@@ -58,15 +58,6 @@ namespace BarteRoom {
         protected global::System.Web.UI.HtmlControls.HtmlInputText textBox_comments;
         
         /// <summary>
-        /// commit_cmd control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button commit_cmd;
-        
-        /// <summary>
         /// classes_list control.
         /// </summary>
         /// <remarks>
@@ -101,5 +92,14 @@ namespace BarteRoom {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload image_upload;
+        
+        /// <summary>
+        /// commit_cmd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button commit_cmd;
     }
 }

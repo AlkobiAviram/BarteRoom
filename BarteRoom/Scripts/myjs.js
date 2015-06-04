@@ -11,9 +11,19 @@
         }
     })
 
+
+
     /* $("#Square").click(function () {
         //$(this).hide();
         $('#Square').addClass('animate');
         $('#Square2').addClass('animate');
     });*/
+});
+
+$(document).ready(function () {
+
+    $('.bg-holder').parallaxScroll({
+        friction: 0.5
+    });
+
 });
