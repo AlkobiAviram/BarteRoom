@@ -62,6 +62,7 @@
     <Content Include="BarterList.aspx" />
     <Content Include="Bids.aspx" />
     <Content Include="Home.aspx" />
+    <Content Include="imageSlider.css" />
     <Content Include="img\arrow1.jpg" />
     <Content Include="img\arrow2.jpg" />
     <Content Include="img\pic1.jpg" />
