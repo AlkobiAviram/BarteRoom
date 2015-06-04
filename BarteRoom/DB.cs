@@ -594,7 +594,7 @@ namespace BarteRoom
             return dtable;
         }
 
-        public DataTable getDataSourceForSearch(string search)
+        public DataTable getDataSourceForSearch(string search, String catagory)
         {
             DataTable dtable = new DataTable();
             DataColumn dt = new DataColumn("Name");
@@ -610,9 +610,15 @@ namespace BarteRoom
             dtable.Columns.Add(dt3);
             dtable.Columns.Add(dt4);
 
+            if (catagory.Equals("All Catagories"))
+            {
+                query = "select * from items where ([name] LIKE '%'+'" + search + "'+'%');";
+            }
 
-
-            query = "select * from items where ([name] LIKE '%'+'" + search + "'+'%');";
+            else
+            {
+                query = "select * from items where ([name] LIKE '%'+'" + search + "'+'%') AND ([class] = '" + catagory + "');";
+            }
 
             try
             {
@@ -654,12 +660,19 @@ namespace BarteRoom
             return dtable;
         }
 
-        public int numOfResults(String search)
+        public int numOfResults(String search, String catagory)
         {
             int numOf = 0;
 
-            query = "select count(*) from items where ([name] LIKE '%'+'" + search + "'+'%');";
+            if (catagory.Equals("All Catagories"))
+            {
+                query = "select * from items where ([name] LIKE '%'+'" + search + "'+'%');";
+            }
 
+            else
+            {
+                query = "select count(*) from items where ([name] LIKE '%'+'" + search + "'+'%') AND ([class] = '" + catagory + "');";
+            }
             try
             {
                 connect.Open();

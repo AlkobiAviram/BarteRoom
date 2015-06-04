@@ -37,8 +37,8 @@
                                 </td>
 
                                 <td class="auto-style4">
-                                    <asp:DropDownList ID="catagories" class="form-control" Width="97%" runat="server">
-                                    <asp:ListItem>All Catagories</asp:ListItem>
+                                    <asp:DropDownList ID="catagories" class="form-control" Width="97%" runat="server" DataSourceID="SqlDataSource1" DataTextField="cls_name" DataValueField="cls_name">
+                                    <asp:ListItem>All Categories</asp:ListItem>
                                         </asp:DropDownList>
                                 </td>
 
@@ -49,7 +49,9 @@
 
                             </tr>
                          </table>
-                        <br /><br />
+                        <br />
+                       <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectToDb %>" SelectCommand="SELECT cls_name FROM classes WHERE (cls_name &lt;&gt; 'choose class')"></asp:SqlDataSource>
+                       <br />
 
                         <table class="nav-justified">
                             <tr>

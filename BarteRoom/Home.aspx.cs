@@ -20,7 +20,9 @@ namespace BarteRoom
         {
             logic = new Logic();
             String search = SearchTextBox.Text;
-            int res = logic.numOfResults(search);
+            String catagory = catagories.Text;
+ 
+            int res = logic.numOfResults(search, catagory);
             
             if (!(search == null))
             {
@@ -37,7 +39,7 @@ namespace BarteRoom
                 }
                 results.Visible = true;
                 searchField.Visible = true;
-                homeGridView.DataSource = logic.getDataSourceForSearch(search);
+                homeGridView.DataSource = logic.getDataSourceForSearch(search, catagory);
                 homeGridView.DataBind();
             }
         }
