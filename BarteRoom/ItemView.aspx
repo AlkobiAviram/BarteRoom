@@ -33,8 +33,12 @@
                 <div class="row">
                 <h3>Make a Bid</h3>
                    <p>
-                       <asp:Button ID="offer_cmd" runat="server" Text="Make a Bid" CssClass=" btn btn-primary" OnClick="offer_cmd_Click"/>
+                       <asp:Button ID="offer_cmd" runat="server" Text="Make a Bid" CssClass=" btn btn-success" OnClick="offer_cmd_Click"/>
+                       
                 </p>
+                    <p>
+                        <asp:Button ID="BackToList" runat="server" Text="<< Back to list" CssClass=" btn btn-primary" OnClick="BackToList_Click"/>
+                    </p>
             </div>
         </div>
         <div class="jumbotron">
@@ -45,12 +49,10 @@
                    <li><asp:HyperLink ID="contactUs" NavigateUrl="#contact" data-toggle="modal" runat="server">Contact Us</asp:HyperLink></li>
                    <li><a href="index.html">Terms of Use</a></li>
 
+                   
                </ul>
-            <p></p>
-            <p><a href="index.html">Next Item</a></p>
-            <p></p
+            <p> <br> <br> </p> <!-- /n/n -->
           </div>
-        
         </div>
 
 </div>

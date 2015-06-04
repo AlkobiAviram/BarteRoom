@@ -19,5 +19,10 @@ namespace BarteRoom
         {
             Response.Redirect("/MakeBid.aspx");
         }
+
+        protected void BackToList_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/BarterList.aspx");
+        }
     }
 }
