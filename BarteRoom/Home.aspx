@@ -5,16 +5,14 @@
 
      <style type="text/css">
         .auto-style2 {
-            width: 45px;
-
-
+            width: 15%;
         }
         .auto-style3 {
-            width: 75px;
+            width: 80px;
 
         }
           .auto-style4 {
-            width: 15px;
+            width: 25px;
         }
              .auto-style5 {
             width: 70px;
@@ -32,13 +30,12 @@
                                 <td class="auto-style2"></td>
                                 <td class="auto-style3">
 
-                                    <asp:TextBox ID="SearchTextBox" class="form-control" placeholder="Search" Width="100%" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="SearchTextBox" class="form-control" placeholder="Search..." Width="100%" runat="server"></asp:TextBox>
        
                                 </td>
 
                                 <td class="auto-style4">
                                     <asp:DropDownList ID="catagories" class="form-control" Width="97%" runat="server" DataSourceID="SqlDataSource1" DataTextField="cls_name" DataValueField="cls_name">
-                                    <asp:ListItem>All Categories</asp:ListItem>
                                         </asp:DropDownList>
                                 </td>
 
