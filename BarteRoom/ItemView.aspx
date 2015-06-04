@@ -5,12 +5,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 
-    
-
-                           
-
-
-
     <div class="container">
     <div class="row">
         <div class="col-md-3 border-css">
@@ -51,7 +45,7 @@
 
                    
                </ul>
-            <p> <br> <br> </p> <!--- /n/n --->
+            <p> <br> <br> </p> <!-- /n/n -->
           </div>
         </div>
 
