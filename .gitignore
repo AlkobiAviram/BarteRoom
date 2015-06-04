@@ -185,10 +185,7 @@ UpgradeLog*.XML
 UpgradeLog*.htm
 
 # SQL Server files
-Database1.mdf
-Database.mdf
-Database_log.ldf
-Database1_log.ldf
+App_Data/
 
 
 # Business Intelligence projects
