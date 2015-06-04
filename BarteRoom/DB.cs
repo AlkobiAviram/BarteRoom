@@ -190,6 +190,7 @@ namespace BarteRoom
             else
                 return false;
         }
+     
 /*
         public LinkedList<Item> fillUsrItemList(String usr)
         {
@@ -660,6 +661,9 @@ namespace BarteRoom
             return dtable;
         }
 
+
+
+
         public int numOfResults(String search, String catagory)
         {
             int numOf = 0;
@@ -688,6 +692,92 @@ namespace BarteRoom
 
             return numOf;
         }
+
+        public DataTable getDataSourceForBids(string usr)
+        {
+            string uuu = usr;
+            DataTable dtable = new DataTable();
+            DataColumn dt = new DataColumn("Bid ID");
+            DataColumn dt1 = new DataColumn("Item BarCode");
+            DataColumn dt2 = new DataColumn("Item Owner");
+         
+
+
+            dtable.Columns.Add(dt);
+            dtable.Columns.Add(dt1);
+            dtable.Columns.Add(dt2);
+
+            //getting only the bid id and the item id
+            query = "select t.id,t.item_id from transactions t where t.usr='" + usr + "';";
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+                rdr = command.ExecuteReader();
+
+
+            }
+
+            catch (Exception e) { }
+
+            while (rdr.Read())
+            {
+                object[] RowValues = { "", "", ""};
+                RowValues[0] = rdr[0].ToString();
+                RowValues[1] = rdr[1].ToString();
+            
+                DataRow dRow;
+                dRow = dtable.Rows.Add(RowValues);
+                dtable.AcceptChanges();
+            }
+
+            //getting the usr field of the utem owner
+            foreach (DataRow row in dtable.Rows)
+            {
+                row[2] = getUsrByItemId(row[1].ToString());
+            }
+
+        
+
+
+            connect.Close();
+       
+            return dtable;
+        }
+
+
+
+
+
+        private string getUsrByItemId(string item_id)
+        {
+            string usr="";
+             //now getting the usr field of the item owner.
+            query = "select i.usr from items i where i.id='" + item_id + "';";
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+                rdr = command.ExecuteReader();
+
+
+            }
+
+            catch (Exception e) { }
+            if (rdr.Read())
+            {
+                usr= rdr[0].ToString();
+            }
+
+            connect.Close();
+       
+            return usr;
+        
+        }
+
 
 
 

@@ -154,8 +154,7 @@ namespace BarteRoom
             bind();
 
         }
-
-
+      
 
 
 

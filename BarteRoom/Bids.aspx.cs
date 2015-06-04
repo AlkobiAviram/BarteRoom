@@ -9,9 +9,23 @@ namespace BarteRoom
 {
     public partial class BidsOffersInbox : System.Web.UI.Page
     {
+        Logic lg = new Logic();
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+
+                bind();
+            }
+        }
+        private void bind()
+        {
+
+            GridView1.DataSource = lg.getDataSourceForBids(Session["usr"].ToString());
+            GridView1.DataBind();
 
         }
+
     }
 }

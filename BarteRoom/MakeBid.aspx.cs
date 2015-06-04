@@ -28,5 +28,32 @@ namespace BarteRoom
             GridView1.DataBind();
 
         }
+        private LinkedList<string> getSelectedItems()
+        {
+            LinkedList<string> items = new LinkedList<string>();
+            foreach(GridViewRow i in GridView1.Rows)
+            {
+                CheckBox chk = (CheckBox)i.FindControl("checkBox");
+                if (chk.Checked)
+                {
+                    items.AddLast(i.Cells[5].Text);
+                }
+            }
+            return items;
+        }
+
+        protected void commitBid_cmd_Click(object sender, EventArgs e)
+        {
+            LinkedList<string> items = getSelectedItems();
+            Transaction trns = new Transaction(Session["usr"].ToString(), "bid", Session["item_id"].ToString(), items, comments_TextBox.Text);
+            lg.addTransaction(trns);
+            Response.Redirect("/Bids.aspx");
+        }
+
+        protected void comments_TextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

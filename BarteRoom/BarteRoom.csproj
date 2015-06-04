@@ -120,6 +120,7 @@
     <Content Include="Scripts\npm.js" />
     <Content Include="ItemView.aspx" />
     <Content Include="SearchPage.aspx" />
+    <Content Include="TransactionView.aspx" />
     <Content Include="Web.config" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
   </ItemGroup>
@@ -192,6 +193,13 @@
       <DependentUpon>SearchPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Transaction.cs" />
+    <Compile Include="TransactionView.aspx.cs">
+      <DependentUpon>TransactionView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TransactionView.aspx.designer.cs">
+      <DependentUpon>TransactionView.aspx</DependentUpon>
+    </Compile>
     <Compile Include="User.cs" />
     <Compile Include="AddItem.aspx.cs">
       <DependentUpon>AddItem.aspx</DependentUpon>

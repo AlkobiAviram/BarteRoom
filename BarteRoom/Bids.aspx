@@ -6,7 +6,15 @@
      <div class="container">
         <div class="col-md-4">
             <div class="row">
-               <h1>Bids List</h1>
+               <h1>
+                   <asp:GridView ID="GridView1" CssClass="table table-responsive table-striped" runat="server" AutoGenerateColumns="False" >
+                       <Columns>
+                           <asp:BoundField DataField="Item BarCode" HeaderText="Item BarCode" />
+                           <asp:BoundField DataField="Bid ID" HeaderText="Bid ID" />
+                           <asp:BoundField DataField="Item Owner" HeaderText="Item Owner" />
+                       </Columns>
+                   </asp:GridView>
+                   Bids List</h1>
             </div>
         </div>
 

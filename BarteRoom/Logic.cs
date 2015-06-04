@@ -226,5 +226,11 @@ namespace BarteRoom
             data = new DB();
             return data.numOfResults(search, catagory);
         }
+        public DataTable getDataSourceForBids(string usr)
+        {
+            data = new DB();
+            return data.getDataSourceForBids(usr);
+        }
+
     }
 }

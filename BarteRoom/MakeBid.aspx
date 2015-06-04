@@ -5,9 +5,9 @@
          
             <div class="col-md-2">
                <h1>Choose items to bid on</h1>
-                <asp:TextBox ID="comments_TextBox" runat="server" Text="write a comments to the owner.."></asp:TextBox>
+                <asp:TextBox ID="comments_TextBox" runat="server" Text="write a comments to the owner.." OnTextChanged="comments_TextBox_TextChanged"></asp:TextBox>
                 <p></p><p></p><p></p>
-               <asp:Button ID="commitBid_cmd" runat="server" Text="Commit Bid" CssClass=" btn btn-primary" />
+               <asp:Button ID="commitBid_cmd" runat="server" Text="Commit Bid" CssClass=" btn btn-primary" OnClick="commitBid_cmd_Click" />
             </div>
             <div class="col-md-10">
                 <asp:GridView ID="GridView1" CssClass="table table-bordered table-responsive table-striped"  runat="server" AllowSorting="True" AutoGenerateColumns="False"  >
