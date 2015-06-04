@@ -13,11 +13,11 @@
 
     <div class="container">
     <div class="row">
-        <div class="col-md-4">
-            <h2>Image</h2>
+        <div class="col-md-3 border-css">
+            
             <asp:Image ID="item_pic" CssClass="img-responsive" runat="server" />
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="row">
                <h3>name</h3>
                  <p>
@@ -37,13 +37,17 @@
                 </p>
             </div>
         </div>
-        <div class="col-md-4">
-            <h3>Side Bar</h3>
-            <p>
-                sideBar                
-            </p>
+        <div class="col-md-2">
+          <div class="jumbotron">
+              <h2>Side news</h2>
+              <p> 
+                  laurem ipsum laurem ipsum laurem ipsum <br />
+                  laurem ipsum laurem ipsum laurem ipsum <br />
+                  
+<              </p>
+          </div>
         
-    </div>
+        </div>
 
 </div>
 

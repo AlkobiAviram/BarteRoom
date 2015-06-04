@@ -5,9 +5,7 @@
 
     <script type="text/javascript" src="Scripts/jquery.parallax-scroll.js"> </script>
      <script type="text/javascript" src="Scripts/jquery.parallax-scroll.min.js"> </script>
-    <script type="text/javascript" src="Scripts/myjs.js"> </script>
-    <link rel="stylesheet" type="text/css" href="Content/style.css" />
-
+ 
     <div id="pic1" class="bg-holder" data-width="1024" data-height="768">
 	</div>
 
@@ -31,8 +29,62 @@
 
     <div id="pic3" class="bg-holder" data-width="1024" data-height="768">
     </div>
-				
+		
+        
 
+    <style>
+
+            html,
+            body {
+              width: 100%;
+              height: 100%;
+            }
+
+            .bg-holder {
+              width: 100%;
+              height: 100%;
+            }
+
+            .bg-holder#pic1 {
+              background-image: url('/img/pic1.jpg');
+
+              
+            }
+
+            .bg-holder#pic2 {
+              background-image: url('/img/pic2.jpg');
+            }
+            .bg-holder#pic3 {
+              background-image: url('/img/pic3.jpg');
+            }
+
+            
+
+            @media (min-width: 768px) {
+              .bg-holder#pic1 {
+                background-image: url('img/pic1_bigger.jpg');
+               
+              }
+              .bg-holder#pic2 {
+                background-image: url('img/pic2_bigger.jpg');
+              }
+              .bg-holder#pic3 {
+                background-image: url('img/pic3_bigger.jpg');
+              }
+            }
+
+    </style>
+    		
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            console.log('in parallax scroll');
+            $('.bg-holder').parallaxScroll({
+                friction: 0.5
+            });
+
+        });
+    </script>
     
 <div class="modal-footer">
     <button class="btn btn-info" data-dismiss="modal"> Share </button>
