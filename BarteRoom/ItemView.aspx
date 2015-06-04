@@ -37,14 +37,18 @@
                 </p>
             </div>
         </div>
-        <div class="col-md-2">
-          <div class="jumbotron">
+        <div class="jumbotron">
               <h2>Side news</h2>
-              <p> 
-                  laurem ipsum laurem ipsum laurem ipsum <br />
-                  laurem ipsum laurem ipsum laurem ipsum <br />
-                  
-<              </p>
+               <ul>
+                   <li><a href="Home.aspx">Home</a></li>
+                   <li><a href="Gallery.aspx">Gallery</a></li>
+                   <li><asp:HyperLink ID="contactUs" NavigateUrl="#contact" data-toggle="modal" runat="server">Contact Us</asp:HyperLink></li>
+                   <li><a href="index.html">Terms of Use</a></li>
+
+               </ul>
+            <p></p>
+            <p><a href="index.html">Next Item</a></p>
+            <p></p
           </div>
         
         </div>
