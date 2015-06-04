@@ -25,7 +25,7 @@ namespace BarteRoom
         {
 
             GridView1.DataSource = lg.getDataSourceForUsr(Session["usr"].ToString());
-                GridView1.DataBind();
+            GridView1.DataBind();
         
         }
         /*

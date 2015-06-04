@@ -13,6 +13,11 @@ namespace BarteRoom
         {
             Logic lg = new Logic();
             item_pic.ImageUrl = lg.setImagePath(Session["item_id"].ToString());
+            Item item = lg.getItemById(Session["item_id"].ToString());
+            itemName.Text = item.getName();
+            itemDescription.Text=item.getDescription();
+            itemComments.Text=item.getComments();
+            itemBarCode.Text = item.getId();
         }
 
         protected void offer_cmd_Click(object sender, EventArgs e)

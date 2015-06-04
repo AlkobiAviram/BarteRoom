@@ -15,13 +15,21 @@
             <div class="row">
                <h3>name</h3>
                  <p>
-                     <asp:Label ID="ItemName" runat="server" Text="Label"></asp:Label>
+                     <asp:Label ID="itemName" runat="server" Text="Label"></asp:Label>
                 </p>
             </div>
              <div class="row">
                 <h3>Description</h3>
                    <p>
-                      <asp:Label ID="ItemDscription" runat="server" Text="Label"></asp:Label>
+                      <asp:Label ID="itemDescription" runat="server" Text="Label"></asp:Label>
+                </p>
+                <h3>Comments</h3>
+                   <p>
+                      <asp:Label ID="itemComments" runat="server" Text="Label"></asp:Label>
+                </p>
+                <h3>Item BarCode</h3>
+                   <p>
+                      <asp:Label ID="itemBarCode" runat="server" Text="Label"></asp:Label>
                 </p>
             </div>
                 <div class="row">

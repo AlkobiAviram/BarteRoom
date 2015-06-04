@@ -777,7 +777,39 @@ namespace BarteRoom
             return usr;
         
         }
+        public Item getItemById(string item_id)
+        {
+            string usr="";
+            string name = "";
+            string clas = "";
+            string comments = "";
+            string description = "";
+            query = "select * from items  where id='" + item_id + "';";
+            try
+            {
+                connect.Open();
 
+                command = new SqlCommand(query, connect);
+                rdr = command.ExecuteReader();
+
+
+            }
+
+            catch (Exception e) { }
+            if (rdr.Read())
+            {
+                usr = rdr[0].ToString();
+                name = rdr[1].ToString();
+                clas= rdr[2].ToString();
+                comments = rdr[3].ToString();
+                description = rdr[4].ToString();
+            }
+
+            connect.Close();
+
+            Item item = new Item(usr,name,clas,comments,description);
+            return item;
+        }
 
 
 

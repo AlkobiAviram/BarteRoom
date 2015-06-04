@@ -22,22 +22,40 @@ namespace BarteRoom {
         protected global::System.Web.UI.WebControls.Image item_pic;
         
         /// <summary>
-        /// ItemName control.
+        /// itemName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ItemName;
+        protected global::System.Web.UI.WebControls.Label itemName;
         
         /// <summary>
-        /// ItemDscription control.
+        /// itemDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ItemDscription;
+        protected global::System.Web.UI.WebControls.Label itemDescription;
+        
+        /// <summary>
+        /// itemComments control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label itemComments;
+        
+        /// <summary>
+        /// itemBarCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label itemBarCode;
         
         /// <summary>
         /// offer_cmd control.
