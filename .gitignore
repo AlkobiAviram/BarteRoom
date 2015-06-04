@@ -206,3 +206,6 @@ FakesAssemblies/
 *.opt
 *.mdf
 *.mdf
+BarteRoom/App_Data/Database1.mdf
+*.mdf
+BarteRoom/App_Data/Database1_log.ldf
