@@ -47,7 +47,7 @@
                             </tr>
                          </table>
                         <br />
-                       <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectToDb %>" SelectCommand="SELECT cls_name FROM classes WHERE (cls_name &lt;&gt; 'choose class')"></asp:SqlDataSource>
+                       <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectToDb %>" SelectCommand="SELECT cls_name FROM classes WHERE (cls_name &lt;&gt; 'Choose Class')"></asp:SqlDataSource>
                        <br />
 
                         <table class="nav-justified">

@@ -56,5 +56,15 @@ namespace BarteRoom
             else
                 ScriptManager.RegisterStartupScript(this, GetType(), "userExists", "userExists();", true);
         }
+
+        protected void insertClass_Click(object sender, EventArgs e)
+        {
+            Guid newGuid = Guid.NewGuid();
+            classesSource.InsertParameters["id"].DefaultValue = newGuid.ToString();
+            classesSource.InsertParameters["class_name"].DefaultValue = ((TextBox)ClassesTable.FooterRow.FindControl("classInsert")).Text;
+
+            classesSource.Insert();
+            Response.Redirect("Manager.aspx");
+        }
     }
 }

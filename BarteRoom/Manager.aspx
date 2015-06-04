@@ -38,7 +38,7 @@
         <tr>
             <td class="auto-style5">&nbsp;</td>
             <td class="auto-style3">
-                <asp:GridView ID="Managers" runat="server" AutoGenerateColumns="False" DataKeyNames="usr" DataSourceID="SqlDataSource1" GridLines="Horizontal" ShowFooter="True" Width="685px" AllowSorting="True" BorderStyle="Inset" HorizontalAlign="Center" CellPadding="5">
+                <asp:GridView ID="Managers" runat="server" AutoGenerateColumns="False" DataKeyNames="usr" DataSourceID="SqlDataSource1" GridLines="Horizontal" ShowFooter="True" Width="685px" AllowSorting="True" BorderStyle="Inset" HorizontalAlign="Center" CellPadding="5" AllowPaging="True">
                     <Columns>
 
                    <asp:TemplateField ShowHeader="False">
@@ -151,24 +151,7 @@ where usr=@usr">
     </table>
     <!-- ======================================================Managers table================================================================== -->
 
-    <asp:SqlDataSource ID="Users" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectToDb %>" SelectCommand="SELECT usr, password, fullName, email FROM users WHERE (manager = 0)" DeleteCommand="DELETE FROM users WHERE (usr = @usr)" InsertCommand="INSERT INTO users(usr, password, fullName, email, manager) VALUES (@usr, @pass, @name, @email, 0)" UpdateCommand="UPDATE users SET password = @password, fullName = @fullName, email = @email 
-where usr=@usr">
-        <DeleteParameters>
-            <asp:Parameter Name="usr" />
-        </DeleteParameters>
-        <InsertParameters>
-            <asp:Parameter Name="usr" />
-            <asp:Parameter Name="pass" />
-            <asp:Parameter Name="name" />
-            <asp:Parameter Name="email" />
-        </InsertParameters>
-        <UpdateParameters>
-            <asp:Parameter Name="password" />
-            <asp:Parameter Name="fullName" />
-            <asp:Parameter Name="email" />
-            <asp:Parameter Name="usr" />
-        </UpdateParameters>
-    </asp:SqlDataSource>
+    
     <br /><br />
 
     <!-- ======================================================Users table================================================================== -->
@@ -272,7 +255,7 @@ where usr=@usr">
                 <asp:ValidationSummary ID="ValidationSummary1" runat="server" ValidationGroup="insertNewUser" ForeColor="red"/>
                 <asp:ValidationSummary ID="ValidationSummary2" runat="server" ValidationGroup="users_editGroup" ForeColor="red"/>
 
-                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectToDb %>" SelectCommand="SELECT usr, password, fullName, email FROM users WHERE (manager = 1)" DeleteCommand="DELETE FROM users WHERE (usr = @usr)" InsertCommand="INSERT INTO users(usr, password, fullName, email, manager) VALUES (@usr, @pass, @name, @email, 1)" UpdateCommand="UPDATE users SET password = @password, fullName = @fullName, email = @email 
+                <asp:SqlDataSource ID="Users" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectToDb %>" SelectCommand="SELECT usr, password, fullName, email FROM users WHERE (manager = 0)" DeleteCommand="DELETE FROM users WHERE (usr = @usr)" InsertCommand="INSERT INTO users(usr, password, fullName, email, manager) VALUES (@usr, @pass, @name, @email, 0)" UpdateCommand="UPDATE users SET password = @password, fullName = @fullName, email = @email 
 where usr=@usr">
                     <InsertParameters>
                         <asp:Parameter Name="usr" Type="String"/>
@@ -294,7 +277,103 @@ where usr=@usr">
             <td>&nbsp;</td>
         </tr>
     </table>
+
     <!-- ======================================================Users table================================================================== -->
+    
+    <br /> <br />
+
+    <!--=======================================================classes====================================================================== -->
+
+            <table class="nav-justified">
+        <tr>
+            <td class="auto-style6">&nbsp;</td>
+            <td class="auto-style2"><strong><span class="auto-style4">Classes - <asp:Label ID="Label5" runat="server" Text="Label" ForeColor="Gray"></asp:Label></span></strong></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style6">&nbsp;</td>
+            <td class="auto-style3">
+                <asp:GridView ID="ClassesTable" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="classesSource" GridLines="Horizontal" ShowFooter="True" Width="685px" AllowSorting="True" BorderStyle="Inset" HorizontalAlign="Center" CellPadding="5" AllowPaging="True">
+                    <Columns>
+
+                        <asp:TemplateField ShowHeader="False">
+                            <ItemTemplate>
+                                      &nbsp;<asp:Button ID="deleteClass" class="btn btn-info" runat="server" CausesValidation="False" CommandName="Delete" Text="Delete" />
+                                  </ItemTemplate>
+
+                              </asp:TemplateField>
+
+                        <asp:TemplateField ShowHeader="False">
+                                  <EditItemTemplate>
+                                      <asp:Button ID="updateClass" class="btn btn-info" runat="server" CausesValidation="True" CommandName="Update" Text="Update" ValidationGroup="classeditGroup"></asp:Button>
+                                      &nbsp;<asp:Button ID="cancelClass" class="btn btn-info" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel"></asp:Button>
+                                  </EditItemTemplate>
+           
+                                  <ItemTemplate>
+                                      <asp:Button ID="editClass" class="btn btn-info" runat="server" CausesValidation="False" CommandName="Edit" Text="Edit"></asp:Button>
+                                      </ItemTemplate>
+                                      </asp:TemplateField>
+
+                        <asp:TemplateField ShowHeader="False">
+                            <FooterTemplate>
+                                <asp:Button ID="insertClass" class="btn btn-info" onClick="insertClass_Click" runat="server" Text="Insert" ValidationGroup="insertClass"/>
+                            </FooterTemplate>
+                        </asp:TemplateField>
+
+                         <asp:TemplateField HeaderText="ID" SortExpression="cls_name">
+                                <ItemTemplate>
+                                    <asp:Label ID="idLabel" runat="server" Text='<%# Bind("id") %>'></asp:Label>
+                                </ItemTemplate>
+
+                        </asp:TemplateField>
+
+                            <asp:TemplateField HeaderText="class Name" SortExpression="cls_name">
+                                <EditItemTemplate>
+                                    <asp:RequiredFieldValidator ID="classRequired" ControlToValidate="classEditTxt" ForeColor="Red" runat="server" ErrorMessage="Class Name Required" ValidationGroup="classeditGroup"></asp:RequiredFieldValidator>
+                                    <asp:TextBox ID="classEditTxt" class="form-control" runat="server" Text='<%# Eval("cls_name") %>'></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label" runat="server" Text='<%# Bind("cls_name") %>'></asp:Label>
+                                </ItemTemplate>
+                                <FooterTemplate>
+                                    <asp:RequiredFieldValidator ID="class_UserRequired" runat="server" ErrorMessage="class Required" ControlToValidate="classInsert" ForeColor="Red" ValidationGroup="insertClass" Display="None"></asp:RequiredFieldValidator>
+                                    <asp:TextBox ID="classInsert" class="form-control" placeholder="Class Name" aria-describedby="basic-addon1" runat="server"></asp:TextBox>
+                            </FooterTemplate>
+                        </asp:TemplateField>
+                       
+                    </Columns>
+                    <EditRowStyle HorizontalAlign="Center" />
+                    <EmptyDataRowStyle HorizontalAlign="Center" Wrap="False" />
+                    <FooterStyle BackColor="#CCCCCC" />
+                    <HeaderStyle HorizontalAlign="Center" BackColor="#CCCCCC" Font-Bold="True" />
+                    <RowStyle HorizontalAlign="Center" />
+
+                </asp:GridView>
+
+                <asp:ValidationSummary ID="insertClassValidationSummary" runat="server" ValidationGroup="insertClass" ForeColor="red"/>
+                <asp:ValidationSummary ID="editClassValidationSummary" runat="server" ValidationGroup="classeditGroup" ForeColor="red"/>
+
+                <asp:SqlDataSource ID="classesSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectToDb %>" SelectCommand="SELECT * FROM classes" InsertCommand="INSERT INTO classes(id, cls_name) VALUES (@id, @class_name)" DeleteCommand="DELETE FROM classes WHERE (id = @id) AND (id <> '1') AND (id <> '2')" UpdateCommand="UPDATE classes SET cls_name = @cls_name WHERE (id = @id)">
+                    <InsertParameters>
+                        <asp:Parameter Name="id" Type="String"/>
+                        <asp:Parameter Name="class_name" Type="String" />
+                    </InsertParameters>
+                          <DeleteParameters>
+                        <asp:Parameter Name="id" Type="String" />
+                    </DeleteParameters>
+                    <UpdateParameters>
+                        <asp:Parameter Name="cls_name" Type="String"/>
+                        <asp:Parameter Name="id" Type="String"/>
+                    </UpdateParameters>
+                </asp:SqlDataSource>
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+    
+    <br /><br /><br />
+    <!--=======================================================classes====================================================================== -->
+
      <script type="text/javascript">
             function userExists() {
 
