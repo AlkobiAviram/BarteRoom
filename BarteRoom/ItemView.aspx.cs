@@ -16,7 +16,7 @@ namespace BarteRoom
             Item item = lg.getItemById(Session["item_id"].ToString());
             itemName.Text = item.getName();
             itemDescription.Text=item.getDescription();
-            itemComments.Text=item.getComments();
+            //itemComments.Text=item.getComments();
             itemBarCode.Text = item.getId();
         }
 

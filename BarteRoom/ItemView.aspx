@@ -15,21 +15,17 @@
             <div class="row">
                <h3>name</h3>
                  <p>
-                     <asp:Label ID="itemName" runat="server" Text="Label"></asp:Label>
+                     <asp:Label ID="itemName" runat="server"></asp:Label>
                 </p>
             </div>
              <div class="row">
                 <h3>Description</h3>
                    <p>
-                      <asp:Label ID="itemDescription" runat="server" Text="Label"></asp:Label>
-                </p>
-                <h3>Comments</h3>
-                   <p>
-                      <asp:Label ID="itemComments" runat="server" Text="Label"></asp:Label>
+                       <asp:Label ID="itemDescription" runat="server"></asp:Label>
                 </p>
                 <h3>Item BarCode</h3>
                    <p>
-                      <asp:Label ID="itemBarCode" runat="server" Text="Label"></asp:Label>
+                      <asp:Label ID="itemBarCode" runat="server" OnDataBinding="Page_Load"></asp:Label>
                 </p>
             </div>
                 <div class="row">
@@ -46,14 +42,15 @@
         <div class="jumbotron">
               <h2>Side news</h2>
                <ul>
-                   <li><a href="Home.aspx">Home</a></li>
-                   <li><a href="Gallery.aspx">Gallery</a></li>
-                   <li><asp:HyperLink ID="contactUs" NavigateUrl="#contact" data-toggle="modal" runat="server">Contact Us</asp:HyperLink></li>
-                   <li><a href="index.html">Terms of Use</a></li>
-
                    
+                   <h4><li><a class="label label-info" href="#">Incoming Offers</a></li></h4>
+                   <h4><li><a class="label label-primary" href="Home.aspx">Home</a></li></h4>
+                   <h4><li><a class="label label-info" href="Gallery.aspx">Gallery</a></li></h4>
+                   <h4><li><asp:HyperLink class="label label-primary" ID="contactUs" NavigateUrl="#contact" data-toggle="modal" runat="server">Contact Us</asp:HyperLink></li></h4>
+                   <h4><li><a class="label label-info" href="index.html">Terms of Use</a></li></h4>
                </ul>
             <p> <br> <br> </p> <!--- /n/n --->
+            
           </div>
         </div>
 
