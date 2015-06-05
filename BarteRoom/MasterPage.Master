@@ -34,7 +34,7 @@
     <form id="form1" runat="server">
     <div>
         <header>
-            <nav class="navbar navbar-default ">
+            <nav class="navbar navbar-default">
               <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
@@ -49,6 +49,7 @@
                     <!--img src="img/img4.jpg" class="img-responsive" /-->
                
                 </div>
+ 
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -69,17 +70,27 @@
                           <li><asp:LinkButton ID="MyBids" runat="server" OnClick="MyBids_Click">My Bids</asp:LinkButton></li>
                           <li><asp:LinkButton ID="MyOffers" runat="server" OnClick="MyOffers_Click">My Offers</asp:LinkButton></li>
                           <li><asp:LinkButton ID="LogOut" runat="server" OnClick="LogOut_Click">LogOut</asp:LinkButton></li>
-                      </ul>     
+                      </ul>  
+                        
                     </li>
+                     
                   </ul>
-                   
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <div class="navbar-brand"><asp:Image ID="Image1" ImageUrl="img\note.png" runat="server" /></div>
-                            <div class="navbar-brand"><span class="badge">0</span></div>
+   
+                    <ul class="navbar-form navbar-right" role="tablist">
+                       
+                          
+                       <li>
+                           <span class="glyphicon glyphicon-bell"><asp:Label ID="note" runat="server" Text="0" Font-Bold="True" ForeColor="#CC0000" BorderStyle="None"></asp:Label></span>
+                       </li> 
+                            </ul>
+                    <ul class="navbar-form navbar-right" role="tablist">
+                       <li>
+                          <span class="glyphicon glyphicon-envelope"><asp:Label ID="message" runat="server" Text="0" Font-Bold="True" ForeColor="#CC0000" BorderStyle="None"></asp:Label></span>
+                       </li> 
+                            
+                  </ul>
+  
 
-                        </li>
-                        </ul>
                 </div><!-- /.navbar-collapse -->
               </div><!-- /.container-fluid -->
 
@@ -179,7 +190,7 @@
                          <span>UserName</span>
                          <div class="input-group">
                           <span class="input-group-addon" id="basic_addon1"></span>
-                          <input type="text" class="form-control" placeholder="Enter Your UserName" aria-describedby="basic-addon1" id="loginUserNameTxtBox" runat="server"/>
+                             <asp:TextBox ID="loginUserNameTxt" class="form-control" placeholder="Enter Your UserName" runat="server"></asp:TextBox>
                         </div>
                           
                          <span>Password</span>
@@ -187,15 +198,19 @@
                           <span class="input-group-addon" id="basic_addon2"></span>
                           <input type="Password" class="form-control" placeholder="Enter Your Password" aria-describedby="basic-addon1" id="loginPasswordTxtBox" runat="server"/>
                         </div>
-
-                       
+                         <br />
+                         <asp:CheckBox ID="loginCheckBox" runat="server" />
+                         <asp:Label ID="keepLoginTxt" runat="server" Text="Keep me logged in"></asp:Label>
+                         <br />
+                         <asp:LinkButton ID="forgotPassword" runat="server" CssClass="change" ForeColor="Blue" OnClick="forgotPassword_Click">forgot Your Password?</asp:LinkButton>
                      </div>
                      <div class="modal-footer">
                          <asp:Button class="btn btn-info" ID="Login" runat="server" OnClick="Login_Click" Text="Login" ValidationGroup="LoginGroup"/>
                          <button class="btn btn-info" data-dismiss="modal"> Cancel </button>
 
+
                          <!-- ===================================================Login Validations=======================================================  -->
-                          <asp:RequiredFieldValidator ID="LoginUsernameRequired" runat="server" ErrorMessage="UserName Required" ForeColor="Red" ControlToValidate="loginUserNameTxtBox" ValidationGroup="LoginGroup" Display="None"></asp:RequiredFieldValidator>
+                          <asp:RequiredFieldValidator ID="LoginUsernameRequired" runat="server" ErrorMessage="UserName Required" ForeColor="Red" ControlToValidate="loginUserNameTxt" ValidationGroup="LoginGroup" Display="None"></asp:RequiredFieldValidator>
                           <asp:RequiredFieldValidator ID="LoginPasswordRequired" runat="server" ErrorMessage="Password Required" ForeColor="Red" ControlToValidate="loginPasswordTxtBox" ValidationGroup="LoginGroup" Display="None"></asp:RequiredFieldValidator>
 
                      </div>

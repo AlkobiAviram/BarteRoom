@@ -139,13 +139,22 @@ namespace BarteRoom {
         protected global::System.Web.UI.WebControls.LinkButton LogOut;
         
         /// <summary>
-        /// Image1 control.
+        /// note control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image1;
+        protected global::System.Web.UI.WebControls.Label note;
+        
+        /// <summary>
+        /// message control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label message;
         
         /// <summary>
         /// SearchTextBox control.
@@ -229,13 +238,13 @@ namespace BarteRoom {
         protected global::System.Web.UI.WebControls.ValidationSummary LoginValidationSummary;
         
         /// <summary>
-        /// loginUserNameTxtBox control.
+        /// loginUserNameTxt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText loginUserNameTxtBox;
+        protected global::System.Web.UI.WebControls.TextBox loginUserNameTxt;
         
         /// <summary>
         /// loginPasswordTxtBox control.
@@ -245,6 +254,33 @@ namespace BarteRoom {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputPassword loginPasswordTxtBox;
+        
+        /// <summary>
+        /// loginCheckBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox loginCheckBox;
+        
+        /// <summary>
+        /// keepLoginTxt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label keepLoginTxt;
+        
+        /// <summary>
+        /// forgotPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton forgotPassword;
         
         /// <summary>
         /// Login control.

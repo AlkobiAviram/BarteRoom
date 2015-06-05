@@ -9,8 +9,8 @@ namespace BarteRoom
 {
     public partial class MasterPage : System.Web.UI.MasterPage
     {
+        private HttpCookie cookie;
         private Logic logic;
-        private System.Drawing.Color Blue;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -18,6 +18,26 @@ namespace BarteRoom
 
             if (Session["usr"] == null)
             {
+                if (!IsPostBack)
+                {
+                    cookie = Request.Cookies["userLogin"];
+                    if (cookie != null)
+                    {
+                        if (cookie["userPassword"] != null)
+                        {
+                            logic = new Logic();
+
+                            if (logic.Login(cookie["username"], cookie["userPassword"]))
+                            {
+                                Session["usr"] = cookie["username"];
+                                Session["name"] = logic.getName(cookie["username"]);
+                                Response.Redirect("Home.aspx");
+                            }
+                        }
+                        loginUserNameTxt.Text = cookie["username"];
+                    }
+                }
+
                 MyAccount.Visible = false;
                 log.Visible = true;
                 reg.Visible = true;
@@ -58,7 +78,7 @@ namespace BarteRoom
             String usrName;
             String password;
 
-            usrName = loginUserNameTxtBox.Value;
+            usrName = loginUserNameTxt.Text;
             password = loginPasswordTxtBox.Value;
 
             logic = new Logic();
@@ -71,6 +91,32 @@ namespace BarteRoom
 
             if (logic.Login(usrName, password))
             {
+                cookie = Request.Cookies["userLogin"];
+                if (cookie == null)
+                {
+                    cookie = new HttpCookie("userLogin");
+                    cookie["username"] = usrName;
+
+                    if (loginCheckBox.Checked)
+                    {
+                        cookie["userPassword"] = password;
+                    }
+
+                    cookie.Expires = DateTime.Now.AddDays(365);
+                    Response.Cookies.Add(cookie);
+                }
+
+                else
+                {
+                    if (loginCheckBox.Checked)
+                    {
+                        cookie["userPassword"] = password;
+                    }
+
+                    cookie["username"] = usrName;
+                    Response.Cookies.Set(cookie);
+                }
+
                 Session["usr"] = usrName;
                 Session["name"] = logic.getName(usrName);
                 Response.Redirect("Home.aspx");
@@ -114,6 +160,12 @@ namespace BarteRoom
 
         protected void LogOut_Click(object sender, EventArgs e)
         {
+            cookie = Request.Cookies["userLogin"];
+            if (cookie != null)
+            {
+                cookie["userPassword"] = null;
+                Response.Cookies.Set(cookie);
+            }
             Session["usr"] = null;
             Session["name"] = null;
             Response.Redirect("Home.aspx");
@@ -155,7 +207,6 @@ namespace BarteRoom
 
         protected void searchCmd_Click(object sender, EventArgs e)
         {
-            HttpCookie cookie;
             logic = new Logic();
             String search = SearchTextBox.Text;
             String catagory = catagories.Text;
@@ -215,6 +266,9 @@ namespace BarteRoom
             Response.Redirect("/Offers.aspx");
         }
 
-        public System.Drawing.Color Gray { get; set; }
+        protected void forgotPassword_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

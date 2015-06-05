@@ -670,7 +670,7 @@ namespace BarteRoom
 
             if (catagory.Equals("All Catagories"))
             {
-                query = "select * from items where ([name] LIKE '%'+'" + search + "'+'%');";
+                query = "select count(*) from items where ([name] LIKE '%'+'" + search + "'+'%');";
             }
 
             else
