@@ -27,35 +27,36 @@
     -->
     <div class="slider">
 	    <input type="radio" name="slide_switch" id="id1" checked="checked"/>
-	    <label for="id1">
-		    <img id="img0"  Width="100" runat="server" />
+	    <label for="id1"   runat="server">
+		    <img src="fff" id="img0"  width="100" runat="server" />
 	    </label>
-	    <img id="img00" src="" runat="server" width="640" height="320" runat="server"/>
-	
+	  <!--  <img id="img00" src="" runat="server" style="width:640px;height:320px;" /> -->
+	    <img src="fff" id="img000" width="640" height="320" runat="server" onclick="onClick0()" />
+      
 	    <!--Lets show the second image by default on page load-->
 	    <input type="radio" name="slide_switch" id="id2" />
 	    <label for="id2">
-		    <img id="img1"  Width="100" runat="server" />
+		    <img src="fff" id="img1"  width="100" runat="server" />
 	    </label>
-	    <img id="img11" src="" runat="server" width="640" height="320" runat="server"/>
+	    <img src="fff" id="img11"  runat="server" style="width:640px;height:320px;"  />
 	
 	    <input type="radio" name="slide_switch" id="id3"/>
         <label for="id3">
-		    <img id="img2"  Width="100" runat="server" />
+		    <img src="fff" id="img2"  width="100" runat="server" />
 	    </label>
-	    <img id="img22" src="" runat="server" width="640" height="320" runat="server"/>
+	    <img src="fff" id="img22"  width="640" height="320" runat="server"/>
 	
 	    <input type="radio" name="slide_switch" id="id4"/>
         <label for="id4">
-		    <img id="img3"  Width="100" runat="server" />
+		    <img src="fff" id="img3"  width="100" runat="server" />
 	    </label>
-	    <img id="img33" src="" runat="server" width="640" height="320" runat="server"/>
+	    <img src="fff" id="img33"  runat="server" width="640" height="320" />
 	
 	    <input type="radio" name="slide_switch" id="id5"/>
         <label for="id5">
-		    <img id="img4"  Width="100" runat="server" />
+		    <img src="fff" id="img4"  width="100" runat="server" />
 	    </label>
-	    <img id="img44" src="" runat="server" width="640" height="320" runat="server"/>
+	    <img id="img44" src="dd" runat="server" width="640" height="320" />
     </div>
 
     <!-- We will use PrefixFree - a script that takes care of CSS3 vendor prefixes
@@ -74,5 +75,11 @@
 
             
                  <!-- ===================================================Main container=======================================================  -->
-
+<script>
+    function onClick0() {
+  
+        window.location.href("Default2.aspx");
+    }
+</script>
         </asp:Content>
+

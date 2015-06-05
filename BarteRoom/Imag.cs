@@ -5,11 +5,11 @@ using System.Web;
 
 namespace BarteRoom
 {
-    public class Image
+    public class Imag
     {
         private string id;
         private string path;
-        public Image(string id, string path)
+        public Imag(string id, string path)
         {
             this.id = id;
             this.path = path;

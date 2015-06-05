@@ -852,9 +852,9 @@ namespace BarteRoom
         }
 
 
-        public LinkedList<Image> getAllImages()
+        public LinkedList<Imag> getAllImages()
         {
-            LinkedList<Image> images = new LinkedList<Image>();
+            LinkedList<Imag> images = new LinkedList<Imag>();
 
 
 
@@ -875,7 +875,7 @@ namespace BarteRoom
 
             while (rdr.Read())
             {
-               Image img = new Image(rdr[0].ToString(), rdr[1].ToString());
+               Imag img = new Imag(rdr[0].ToString(), rdr[1].ToString());
               images.AddLast(img);
 
 

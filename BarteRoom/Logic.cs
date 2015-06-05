@@ -243,7 +243,7 @@ namespace BarteRoom
             data = new DB();
             return data.getAllItems();
         }
-        public LinkedList<Image> getAllImages()
+        public LinkedList<Imag> getAllImages()
         {
             data = new DB();
             return data.getAllImages();

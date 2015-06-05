@@ -152,7 +152,7 @@
     <Compile Include="Bids.aspx.designer.cs">
       <DependentUpon>Bids.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Image.cs" />
+    <Compile Include="Imag.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="DB.cs" />
     <Compile Include="Home.aspx.cs">
