@@ -48,5 +48,9 @@ namespace BarteRoom
         {
             return this.id;
         }
+        public void setId(string newId)
+        {
+            this.id=newId; ;
+        }
     }
 }

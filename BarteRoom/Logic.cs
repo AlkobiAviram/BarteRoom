@@ -237,5 +237,17 @@ namespace BarteRoom
             return data.getItemById(item_id);
         }
 
+
+        public LinkedList<Item> getAllItems()
+        {
+            data = new DB();
+            return data.getAllItems();
+        }
+        public LinkedList<Image> getAllImages()
+        {
+            data = new DB();
+            return data.getAllImages();
+        }
+
     }
 }

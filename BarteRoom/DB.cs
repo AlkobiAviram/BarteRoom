@@ -812,6 +812,83 @@ namespace BarteRoom
         }
 
 
+        public LinkedList<Item> getAllItems()
+        {
+            LinkedList<Item> items = new LinkedList<Item>();
+           
+          
+
+            //getting only the bid id and the item id
+            query = "select * from items;";
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+                rdr = command.ExecuteReader();
+
+
+            }
+
+            catch (Exception e) { }
+
+            while (rdr.Read())
+            {
+                Item itm = new Item(rdr[0].ToString(), rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), rdr[4].ToString());
+                itm.setId(rdr[5].ToString());
+                items.AddLast(itm);
+
+              
+            }
+
+           
+
+
+
+            connect.Close();
+
+            return items;
+        }
+
+
+        public LinkedList<Image> getAllImages()
+        {
+            LinkedList<Image> images = new LinkedList<Image>();
+
+
+
+            //getting only the bid id and the item id
+            query = "select * from images;";
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+                rdr = command.ExecuteReader();
+
+
+            }
+
+            catch (Exception e) { }
+
+            while (rdr.Read())
+            {
+               Image img = new Image(rdr[0].ToString(), rdr[1].ToString());
+              images.AddLast(img);
+
+
+            }
+
+
+
+
+
+            connect.Close();
+
+            return images;
+        }
 
     }
 
