@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Drawing;
 
 namespace BarteRoom
 {
@@ -50,13 +51,20 @@ namespace BarteRoom
 
             else
             {
+                int notRead = 0;
                 logic = new Logic();
+                notRead = logic.notReadBids(Session["usr"].ToString());
 
-                note.Text = logic.notReadBids(Session["usr"].ToString()).ToString();
+                note.Text = notRead.ToString();
                 recentBids.DataSource = logic.getAllBids(Session["usr"].ToString());
                 recentBids.DataBind();
-                MyAccount.Visible = true;
 
+                for (int i = 0; i < notRead; i++)
+                {
+                    recentBids.Rows[i].BackColor = Color.Gainsboro;
+                }
+
+                MyAccount.Visible = true;
                 log.Visible = false;
                 reg.Visible = false;
                 firsTxt.Visible = false;

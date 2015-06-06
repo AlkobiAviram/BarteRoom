@@ -940,7 +940,7 @@ namespace BarteRoom
             dtable.Columns.Add(dt);
             dtable.Columns.Add(dt1);
 
-            query = "select img.path, t.usr from images img, transactions t, items i where (img.id = i.Id) AND (i.Id = t.item_id) AND (i.usr = '" + usr + "');";
+            query = "select img.path, t.usr, t.readBid from images img, transactions t, items i where (img.id = i.Id) AND (i.Id = t.item_id) AND (i.usr = '" + usr + "') order by t.readBid DESC;";
 
             try
             {
