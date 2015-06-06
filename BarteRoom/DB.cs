@@ -890,6 +890,23 @@ namespace BarteRoom
             return images;
         }
 
+
+        public void deleteClass(string className)
+        {
+            query = "DELETE FROM classes WHERE cls_name = '" + className + "';";
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+
+                command.ExecuteNonQuery();
+                connect.Close();
+            }
+
+            catch (Exception e) { }
+        }
     }
 
 

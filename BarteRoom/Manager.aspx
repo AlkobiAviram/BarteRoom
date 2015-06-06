@@ -293,7 +293,7 @@ where usr=@usr">
         <tr>
             <td class="auto-style6">&nbsp;</td>
             <td class="auto-style3">
-                <asp:GridView ID="ClassesTable" runat="server" AutoGenerateColumns="False" DataKeyNames="id" DataSourceID="classesSource" GridLines="Horizontal" ShowFooter="True" Width="685px" AllowSorting="True" BorderStyle="Inset" HorizontalAlign="Center" CellPadding="5" AllowPaging="True">
+                <asp:GridView ID="ClassesTable" runat="server" AutoGenerateColumns="False" DataKeyNames="cls_name" DataSourceID="classesSource" GridLines="Horizontal" ShowFooter="True" Width="685px" AllowSorting="True" BorderStyle="Inset" HorizontalAlign="Center" CellPadding="5" AllowPaging="True" OnRowCommand="ClassesTable_RowCommand">
                     <Columns>
 
                         <asp:TemplateField ShowHeader="False">
@@ -303,16 +303,17 @@ where usr=@usr">
 
                               </asp:TemplateField>
 
-                        <asp:TemplateField ShowHeader="False">
-                                  <EditItemTemplate>
-                                      <asp:Button ID="updateClass" class="btn btn-info" runat="server" CausesValidation="True" CommandName="Update" Text="Update" ValidationGroup="classeditGroup"></asp:Button>
-                                      &nbsp;<asp:Button ID="cancelClass" class="btn btn-info" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel"></asp:Button>
-                                  </EditItemTemplate>
-           
-                                  <ItemTemplate>
-                                      <asp:Button ID="editClass" class="btn btn-info" runat="server" CausesValidation="False" CommandName="Edit" Text="Edit"></asp:Button>
-                                      </ItemTemplate>
-                                      </asp:TemplateField>
+                    
+
+
+                    
+
+                        <asp:CommandField ShowEditButton="True" />
+
+                    
+
+
+                    
 
                         <asp:TemplateField ShowHeader="False">
                             <FooterTemplate>
@@ -320,12 +321,7 @@ where usr=@usr">
                             </FooterTemplate>
                         </asp:TemplateField>
 
-                         <asp:TemplateField HeaderText="ID" SortExpression="cls_name">
-                                <ItemTemplate>
-                                    <asp:Label ID="idLabel" runat="server" Text='<%# Bind("id") %>'></asp:Label>
-                                </ItemTemplate>
-
-                        </asp:TemplateField>
+                         
 
                             <asp:TemplateField HeaderText="class Name" SortExpression="cls_name">
                                 <EditItemTemplate>
@@ -353,17 +349,17 @@ where usr=@usr">
                 <asp:ValidationSummary ID="insertClassValidationSummary" runat="server" ValidationGroup="insertClass" ForeColor="red"/>
                 <asp:ValidationSummary ID="editClassValidationSummary" runat="server" ValidationGroup="classeditGroup" ForeColor="red"/>
 
-                <asp:SqlDataSource ID="classesSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectToDb %>" SelectCommand="SELECT * FROM classes" InsertCommand="INSERT INTO classes(id, cls_name) VALUES (@id, @class_name)" DeleteCommand="DELETE FROM classes WHERE (id = @id) AND (id <> '1') AND (id <> '2')" UpdateCommand="UPDATE classes SET cls_name = @cls_name WHERE (id = @id)">
+                <asp:SqlDataSource ID="classesSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectToDb %>" SelectCommand="SELECT * FROM classes" InsertCommand="INSERT INTO classes(cls_name) VALUES (@class_name)" DeleteCommand="DELETE FROM classes WHERE  cls_name = @cls_name AND cls_name != 'All Catagories' AND cls_name != 'choose class'" UpdateCommand="UPDATE classes SET cls_name = @class_name WHERE (cls_name = @tmp)
+">
                     <InsertParameters>
-                        <asp:Parameter Name="id" Type="String"/>
                         <asp:Parameter Name="class_name" Type="String" />
                     </InsertParameters>
                           <DeleteParameters>
-                        <asp:Parameter Name="id" Type="String" />
+                        <asp:Parameter Name="cls_name" type="String"/>
                     </DeleteParameters>
                     <UpdateParameters>
-                        <asp:Parameter Name="cls_name" Type="String"/>
-                        <asp:Parameter Name="id" Type="String"/>
+                        <asp:Parameter Name="class_name" Type="String" />
+                        <asp:ControlParameter ControlID="tmpLabel" Name="tmp" PropertyName="Text" Type="String" />
                     </UpdateParameters>
                 </asp:SqlDataSource>
             </td>
@@ -371,7 +367,9 @@ where usr=@usr">
         </tr>
     </table>
     
-    <br /><br /><br />
+    <br /><br />
+    <asp:Label ID="tmpLabel" runat="server" Text="Label" Visible="false"></asp:Label>
+    <br />
     <!--=======================================================classes====================================================================== -->
 
      <script type="text/javascript">

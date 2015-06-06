@@ -40,6 +40,7 @@ namespace BarteRoom
 
         protected void insertNewUser_Click(object sender, EventArgs e)
         {
+            
             logic = new Logic();
 
             if (!logic.isExist(((TextBox)Managers.FooterRow.FindControl("addManagerUsr")).Text))
@@ -55,16 +56,45 @@ namespace BarteRoom
 
             else
                 ScriptManager.RegisterStartupScript(this, GetType(), "userExists", "userExists();", true);
+             
         }
 
         protected void insertClass_Click(object sender, EventArgs e)
         {
-            Guid newGuid = Guid.NewGuid();
-            classesSource.InsertParameters["id"].DefaultValue = newGuid.ToString();
             classesSource.InsertParameters["class_name"].DefaultValue = ((TextBox)ClassesTable.FooterRow.FindControl("classInsert")).Text;
 
             classesSource.Insert();
-            Response.Redirect("Manager.aspx");
+            Response.Redirect("Manager.aspx"); 
         }
+
+        protected void ClassesTable_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int i;
+            GridViewRow row;
+
+            if (e.CommandName == "Edit")
+            {
+                
+                i = Convert.ToInt32(e.CommandArgument);
+                row = ClassesTable.Rows[i];
+                tmpLabel.Text = ((Label)row.FindControl("Label")).Text;
+                
+            }
+
+            else if (e.CommandName == "Update")  
+            {
+                i = Convert.ToInt32(e.CommandArgument);
+                row = ClassesTable.Rows[i];
+                classesSource.InsertParameters["class_name"].DefaultValue = ((TextBox)ClassesTable.Rows[i].FindControl("classEditTxt")).Text;
+
+                classesSource.Insert();
+
+                logic = new Logic();
+                logic.deleteClass(tmpLabel.Text);
+
+                Response.Redirect("Manager.aspx");
+            }
+        }
+
     }
 }
