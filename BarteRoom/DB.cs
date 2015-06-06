@@ -526,7 +526,7 @@ namespace BarteRoom
             {
                 connect.Open();
                 //insert to transaction table
-                query = "insert into transactions values('" + transaction.getTransaction_id() + "','" + transaction.getItem_id() + "','" + transaction.getType()+ "','" +transaction.getUser()+"','"+transaction.getComments()+  "');";
+                query = "insert into transactions values('" + transaction.getTransaction_id() + "','" + transaction.getItem_id() + "','" + transaction.getType()+ "','" +transaction.getUser()+"','"+transaction.getComments()+  "', 0);";
                 command = new SqlCommand(query, connect);
                 command.ExecuteNonQuery();
 
@@ -595,7 +595,7 @@ namespace BarteRoom
             return dtable;
         }
 
-        public DataTable getDataSourceForSearch(string search, String catagory)
+        public DataTable getDataSourceForSearch(String usr, string search, String catagory)
         {
             DataTable dtable = new DataTable();
             DataColumn dt = new DataColumn("Name");
@@ -613,12 +613,12 @@ namespace BarteRoom
 
             if (catagory.Equals("All Catagories"))
             {
-                query = "select * from items where ([name] LIKE '%'+'" + search + "'+'%');";
+                query = "select * from items where ([name] LIKE '%'+'" + search + "'+'%') AND (usr != '" + usr + "');";
             }
 
             else
             {
-                query = "select * from items where ([name] LIKE '%'+'" + search + "'+'%') AND ([class] = '" + catagory + "');";
+                query = "select * from items where ([name] LIKE '%'+'" + search + "'+'%')  AND (usr != '" + usr + "') AND ([class] = '" + catagory + "');";
             }
 
             try
@@ -664,18 +664,18 @@ namespace BarteRoom
 
 
 
-        public int numOfResults(String search, String catagory)
+        public int numOfResults(String usr, String search, String catagory)
         {
             int numOf = 0;
 
             if (catagory.Equals("All Catagories"))
             {
-                query = "select count(*) from items where ([name] LIKE '%'+'" + search + "'+'%');";
+                query = "select count(*) from items where ([name] LIKE '%'+'" + search + "'+'%')  AND (usr != '" + usr + "');";
             }
 
             else
             {
-                query = "select count(*) from items where ([name] LIKE '%'+'" + search + "'+'%') AND ([class] = '" + catagory + "');";
+                query = "select count(*) from items where ([name] LIKE '%'+'" + search + "'+'%')  AND (usr != '" + usr + "') AND ([class] = '" + catagory + "');";
             }
             try
             {
@@ -907,6 +907,68 @@ namespace BarteRoom
 
             catch (Exception e) { }
         }
+
+        public int notReadBids(string usr)
+        {
+            int bids = 0;
+
+            query = "select COUNT(*) from items i, transactions t where i.Id = t.item_id AND (i.usr = '" + usr + "') AND (t.readBid = 0);";
+            
+            try
+            {
+                connect.Open();
+
+
+                command = new SqlCommand(query, connect);
+
+                bids = Convert.ToInt32(command.ExecuteScalar().ToString());
+                connect.Close();
+            }
+
+            catch (Exception e) { }
+
+            return bids;
+        }
+
+        public DataTable getAllBids(string usr) {
+ 
+            DataTable dtable = new DataTable();
+            DataColumn dt = new DataColumn("Image");
+            DataColumn dt1 = new DataColumn("Comments");
+         
+
+            dtable.Columns.Add(dt);
+            dtable.Columns.Add(dt1);
+
+            query = "select img.path, t.usr from images img, transactions t, items i where (img.id = i.Id) AND (i.Id = t.item_id) AND (i.usr = '" + usr + "');";
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+                rdr = command.ExecuteReader();
+
+
+            }
+
+            catch (Exception e) { }
+
+            while (rdr.Read())
+            {
+                object[] RowValues = { "", ""};
+                RowValues[0] = rdr[0].ToString();
+                RowValues[1] = "New BID from " + rdr[1].ToString(); ;
+            
+                DataRow dRow;
+                dRow = dtable.Rows.Add(RowValues);
+                dtable.AcceptChanges();
+            }
+
+            connect.Close();
+       
+            return dtable;
+    }
     }
 
 

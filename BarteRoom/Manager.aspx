@@ -164,7 +164,7 @@ where usr=@usr">
         <tr>
             <td class="auto-style6">&nbsp;</td>
             <td class="auto-style3">
-                <asp:GridView ID="UsersTable" runat="server" AutoGenerateColumns="False" DataKeyNames="usr" DataSourceID="Users" GridLines="Horizontal" ShowFooter="True" Width="685px" AllowSorting="True" BorderStyle="Inset" HorizontalAlign="Center" CellPadding="5">
+                <asp:GridView ID="UsersTable" runat="server" AutoGenerateColumns="False" DataKeyNames="usr" DataSourceID="Users" GridLines="Horizontal" ShowFooter="True" Width="685px" AllowSorting="True" BorderStyle="Inset" HorizontalAlign="Center" CellPadding="5" AllowPaging="True">
                     <Columns>
 
                    <asp:TemplateField ShowHeader="False">
@@ -301,19 +301,9 @@ where usr=@usr">
                                       &nbsp;<asp:Button ID="deleteClass" class="btn btn-info" runat="server" CausesValidation="False" CommandName="Delete" Text="Delete" />
                                   </ItemTemplate>
 
-                              </asp:TemplateField>
+                              </asp:TemplateField>             
 
-                    
-
-
-                    
-
-                        <asp:CommandField ShowEditButton="True" />
-
-                    
-
-
-                    
+                        <asp:CommandField ShowEditButton="True" ControlStyle-CssClass="btn btn-info" />
 
                         <asp:TemplateField ShowHeader="False">
                             <FooterTemplate>
@@ -338,10 +328,10 @@ where usr=@usr">
                         </asp:TemplateField>
                        
                     </Columns>
-                    <EditRowStyle HorizontalAlign="Center" />
+                    <EditRowStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                     <EmptyDataRowStyle HorizontalAlign="Center" Wrap="False" />
-                    <FooterStyle BackColor="#CCCCCC" />
-                    <HeaderStyle HorizontalAlign="Center" BackColor="#CCCCCC" Font-Bold="True" />
+                    <FooterStyle BackColor="#CCCCCC" HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <HeaderStyle HorizontalAlign="Center" BackColor="#CCCCCC" Font-Bold="True" VerticalAlign="Middle" />
                     <RowStyle HorizontalAlign="Center" />
 
                 </asp:GridView>

@@ -23,7 +23,7 @@ namespace BarteRoom
                     cookie = Request.Cookies["userLogin"];
                     if (cookie != null)
                     {
-                        if (cookie["userPassword"] != null)
+                        if (!(cookie["userPassword"].Equals("")))
                         {
                             logic = new Logic();
 
@@ -52,6 +52,9 @@ namespace BarteRoom
             {
                 logic = new Logic();
 
+                note.Text = logic.notReadBids(Session["usr"].ToString()).ToString();
+                recentBids.DataSource = logic.getAllBids(Session["usr"].ToString());
+                recentBids.DataBind();
                 MyAccount.Visible = true;
 
                 log.Visible = false;
@@ -96,6 +99,7 @@ namespace BarteRoom
                 {
                     cookie = new HttpCookie("userLogin");
                     cookie["username"] = usrName;
+                    cookie["userPassword"] = "";
 
                     if (loginCheckBox.Checked)
                     {
@@ -111,6 +115,11 @@ namespace BarteRoom
                     if (loginCheckBox.Checked)
                     {
                         cookie["userPassword"] = password;
+                    }
+
+                    else
+                    {
+                        cookie["userPassword"] = "";
                     }
 
                     cookie["username"] = usrName;
@@ -210,8 +219,16 @@ namespace BarteRoom
             logic = new Logic();
             String search = SearchTextBox.Text;
             String catagory = catagories.Text;
+            int res = 0;
 
-            int res = logic.numOfResults(search, catagory);
+            if (Session["usr"] != null)
+            {
+                res = logic.numOfResults(Session["usr"].ToString(), search, catagory);
+            }
+            else
+            {
+                res = logic.numOfResults("", search, catagory);
+            }
 
             if (!(search == null))
             {
@@ -228,7 +245,14 @@ namespace BarteRoom
                 }
                 results.Visible = true;
                 searchField.Visible = true;
-                homeGridView.DataSource = logic.getDataSourceForSearch(search, catagory);
+                if (Session["usr"] != null)
+                {
+                    homeGridView.DataSource = logic.getDataSourceForSearch(Session["usr"].ToString(), search, catagory);
+                }
+                else
+                {
+                    homeGridView.DataSource = logic.getDataSourceForSearch("", search, catagory);
+                }
                 homeGridView.DataBind();
             }
         }

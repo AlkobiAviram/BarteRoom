@@ -79,8 +79,29 @@
                     <ul class="navbar-form navbar-right" role="tablist">
                        
                           
-                       <li>
-                           <span class="glyphicon glyphicon-bell"><asp:Label ID="note" runat="server" Text="0" Font-Bold="True" ForeColor="#CC0000" BorderStyle="None"></asp:Label></span>
+                       <li  class="dropdown">   
+                           <span class="glyphicon glyphicon-bell" runat="server" data-toggle="dropdown" aria-expanded="false"><asp:Label ID="note" runat="server" Text="0" Font-Bold="True" ForeColor="#CC0000" BorderStyle="None"></asp:Label></span>
+                       <ul class="dropdown-menu" role="menu">
+                           <li>
+                               <asp:GridView ID="recentBids" runat="server" BorderStyle="None" GridLines="Horizontal" HeaderStyle-BorderStyle="None" PagerSettings-Visible="True" RowStyle-BorderStyle="None" ShowHeader="False">
+                                       <Columns>
+
+                                            <asp:ImageField DataImageUrlField ="Image" NullDisplayText="no image" ShowHeader="false" >
+                                                <ControlStyle Height="50px" Width="50px" />
+                                                <ItemStyle Height="20px" Width="20px" />
+                                            </asp:ImageField>
+
+                                           <asp:TemplateField>
+                                               
+                                           </asp:TemplateField>
+
+                                       </Columns>
+                                       <EditRowStyle HorizontalAlign="Center" />
+                                       <HeaderStyle HorizontalAlign="Center" />
+                                       <RowStyle HorizontalAlign="Center" />
+                               </asp:GridView>
+                           </li>
+                           </ul>
                        </li> 
                             </ul>
                     <ul class="navbar-form navbar-right" role="tablist">

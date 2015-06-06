@@ -215,16 +215,16 @@ namespace BarteRoom
             data.addTransaction(transaction);
         }
 
-        public DataTable getDataSourceForSearch(string search, String catagory)
+        public DataTable getDataSourceForSearch(String usr, String search, String catagory)
         {
             data = new DB();
-            return data.getDataSourceForSearch(search, catagory);
+            return data.getDataSourceForSearch(usr, search, catagory);
         }
 
-        public int numOfResults(String search, String catagory)
+        public int numOfResults(String usr, String search, String catagory)
         {
             data = new DB();
-            return data.numOfResults(search, catagory);
+            return data.numOfResults(usr, search, catagory);
         }
         public DataTable getDataSourceForBids(string usr)
         {
@@ -254,6 +254,18 @@ namespace BarteRoom
         {
             data = new DB();
             data.deleteClass(className);
+        }
+
+        public int notReadBids(string usr)
+        {
+            data = new DB();
+            return data.notReadBids(usr);
+        }
+
+        public DataTable getAllBids(string usr)
+        {
+            data = new DB();
+            return data.getAllBids(usr);
         }
     }
 }
