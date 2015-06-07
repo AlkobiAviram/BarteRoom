@@ -10,7 +10,7 @@
                     <label>Side news</label>
                 </div>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-10">
                     <asp:GridView ID="GridView1" CssClass="table table-responsive table-striped"  runat="server" AllowSorting="True"  AllowPaging="True"  AutoGenerateColumns="False" GridLines="None" OnRowCommand="GridView1_RowCommand" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowDeleted="GridView1_RowDeleted" OnRowDeleting="GridView1_RowDeleting" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating" OnRowUpdated="GridView1_RowUpdated" OnSelectedIndexChanging="GridView1_SelectedIndexChanging" >
                         <Columns>
                            <asp:CommandField ShowEditButton="True" ButtonType="Button" ControlStyle-CssClass="btn btn-primary"/>
@@ -31,11 +31,7 @@
                         </Columns>
                 </asp:GridView>
             </div>
-            <div class="col-md-2">
-                <div class="jumbotron">
-                    <label>Side news</label>
-                </div>
-            </div>
+          
 
         </div>
    

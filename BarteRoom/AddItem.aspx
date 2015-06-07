@@ -31,16 +31,31 @@
                           <input type="text" class="form-control" placeholder="Enter Comments" aria-describedby="basic-addon1" id="textBox_comments" runat="server"/>
                         </div>
                 <hr />
-               
             </div>
-            <asp:DropDownList ID="classes_list" runat="server" DataSourceID="SqlDataSource1" DataTextField="cls_name" DataValueField="cls_name"></asp:DropDownList>
+        </div>
+         <div class="col-md-4">
+             <asp:DropDownList ID="classes_list" runat="server" DataSourceID="SqlDataSource1" DataTextField="cls_name" DataValueField="cls_name"></asp:DropDownList>
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectToDb %>" SelectCommand="SELECT cls_name FROM classes WHERE (cls_name &lt;&gt; 'All Catagories')"></asp:SqlDataSource>
             <asp:Button ID="image_upload_cmd" class="btn btn-default" runat="server" Text="upload"  OnClick="image_upload_cmd_Click" />
             <asp:FileUpload CssClass="input-group" ID="image_upload" runat="server" OnLoad="image_upload_Load" />
             <hr />
-             <asp:Button ID="commit_cmd" class="btn btn-info" runat="server" Text="OK"  OnClick="commit_cmd_Click" />
+
+              <asp:Button ID="commit_cmd" class="btn btn-info" runat="server" Text="OK"  OnClick="commit_cmd_Click" />
              <a class="btn btn-primary" href="/Home.aspx"> go back </a>
-        </div>
+               
+         </div>
+
+         <div class="col-md-4">
+             <div class="jumbotron">
+                 <h2>Add your new item today! </h2>
+                 <p> share your second hand product with the world</p>
+                 <a class="btn btn-info" href="About.aspx"> more info  </a>
+             </div>
+         </div>
+
+         
+
+        
         
             
     </div>
