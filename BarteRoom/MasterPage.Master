@@ -7,8 +7,7 @@
 
      <link href="Content/bootstrap.css"  rel="stylesheet" />
     <link href="Content/style.css"  rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.2.1/css/material.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.2.1/css/ripples.css" />
+
 
 
     <title></title>
@@ -19,8 +18,7 @@
 
      <script type="text/javascript" src="Scripts/jquery-1.9.1.js"> </script>
     <script type="text/javascript" src="Scripts/bootstrap.min.js"> </script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.2.1/js/material.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.2.1/js/ripples.js"></script>
+
    <!-- <script type="text/javascript" src="Scripts/myjs.js"> </script> -->
      
        <style type="text/css">
@@ -385,11 +383,7 @@
               }
     </script>
    
-     <script>
-        $(document).ready(function () {
-            $.material.init();
-        });
-    </script>
+    
 
 
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">

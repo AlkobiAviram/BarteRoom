@@ -39,20 +39,22 @@
                     </p>
             </div>
         </div>
-        <div class="jumbotron">
+        <div class="col-md-2">
+             
               <h2>Side news</h2>
-               <ul>
-                   
-                   <h4><li><a class="label label-info" href="#">Incoming Offers</a></li></h4>
-                   <h4><li><a class="label label-primary" href="Home.aspx">Home</a></li></h4>
-                   <h4><li><a class="label label-info" href="Gallery.aspx">Gallery</a></li></h4>
-                   <h4><li><asp:HyperLink class="label label-primary" ID="contactUs" NavigateUrl="#contact" data-toggle="modal" runat="server">Contact Us</asp:HyperLink></li></h4>
-                   <h4><li><a class="label label-info" href="index.html">Terms of Use</a></li></h4>
+               <ul class="list-group"> 
+                  <li class="list-group-item"><a  href="#"><label>Incoming Offers</label></a></li>
+                   <li class="list-group-item"><a  href="Home.aspx"><label>Home</label></a></li>
+                   <li class="list-group-item"><asp:HyperLink  ID="contactUs" NavigateUrl="#contact" data-toggle="modal" runat="server"><label>Contact Us</label></asp:HyperLink></li>
+                   <li class="list-group-item"><a  href="index.html"><label>Terms of Use</label></a></li>
                </ul>
-            <p> <br> <br> </p> <!--- /n/n --->
+           <br/> 
+           <br/> <!--- /n/n --->
             
           </div>
-        </div>
+        
+      </div>
+       
 
 </div>
 
