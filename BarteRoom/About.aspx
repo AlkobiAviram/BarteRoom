@@ -11,8 +11,10 @@
 
     <section>
 	     <div class="container">
-            <h1>Section 1</h1>
-            <p>laurem ipsum laurem ipsum laurem ipsum laurem ipsum laurem ipsum laurem ipsum </p>
+            <h1>About Apps</h1>
+            <p>this is our home! BarteRoom is an app for everyone! </p>
+            <p> if you have somthing you need and dont want is first hand for an intial price , you can just open an account with barteroom amd look for what you need.</p>
+            <p> if you find a partner to switch with you are good to go </p>
 	    </div> 
 
     </section>			                                                                         
@@ -22,11 +24,55 @@
     
     <section>
         <div class="container">
-        <h1>Section 2</h1>
-        <p>laurem ipsum laurem ipsum laurem ipsum laurem ipsum laurem ipsum laurem ipsum </p>
+        <h1>How to use</h1>
+             <p>-Surf to the website and login to your account. 
+                now you will be at the home page.</p>
+             <p>-Now you be able to go to your private account page.-</p>
+             <p>-Look for any requests from other users who wish to trade one of your items.</p>
+             <p>the request is made of a request for one of your item and an offer from the sender's items list for your item. </p>
+             <p>If there is a request,you have two posibilites: </p>
+            <p>1.Ignore: if you press that button ,the user who sent the request will get an declain message. </p>
+            <p>2.Accept: if you press that button ,you and the other user will get each other's contact information.</p>
+            <p>-Also you can make your own requests to other users for any item you wish to own. </p>
+            <p>To do this :</p>
+            <p>1.search for an item you wish to have. 
+                2.choose one or more of your items to offer for that item,by check them. 
+                3.press the make a reuest buttom. 
+                Now wait for the other side to respond.</p>
+            <p>-If you wish to to do non of the above ,you can allways manage your items and your wishlist.</p>
         </div>
     </section>
 
+    <section>
+        <div class="container">
+        <h1>About BART(BarteRoom Team)</h1>
+            <p>Gili Mizrahi info:...</p> 
+            <p>Nadav Mor info:...</p>
+            <p>Aviram Alkobi info:...</p>
+            <p>Netanel Gabay info:...</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+        <h1>Contact Us</h1>
+             <asp:HyperLink ID="contactUs" NavigateUrl="#contact" data-toggle="modal" runat="server">Contact Us</asp:HyperLink>
+        </div>
+    </section>
+
+  <section>
+        <div class="container">
+        <h1>Terms of Use</h1>
+             <p>Terms of Us</p>
+        </div>
+    </section>
+
+
+      
+ 
+
+
+    
     <div id="pic3" class="bg-holder" data-width="1024" data-height="768">
     </div>
 		
