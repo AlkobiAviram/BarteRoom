@@ -43,13 +43,14 @@
         </div>
     </section>
 
+
     <section>
         <div class="container">
         <h1>About BART(BarteRoom Team)</h1>
-            <p>Gili Mizrahi info:...</p> 
-            <p>Nadav Mor info:...</p>
-            <p>Aviram Alkobi info:...</p>
-            <p>Netanel Gabay info:...</p>
+            <p>Gili Mizrahi-    info:...</p> 
+            <p>Nadav Mor-       info:...</p>
+            <p>Aviram Alkobi-   info:...</p>
+            <p>Netanel Gabay-   info:...</p>
         </div>
     </section>
 
@@ -60,6 +61,7 @@
         </div>
     </section>
 
+
   <section>
         <div class="container">
         <h1>Terms of Use</h1>
@@ -67,12 +69,6 @@
         </div>
     </section>
 
-
-      
- 
-
-
-    
     <div id="pic3" class="bg-holder" data-width="1024" data-height="768">
     </div>
 		
