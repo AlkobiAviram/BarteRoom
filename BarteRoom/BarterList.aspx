@@ -19,9 +19,8 @@
                         
                             <asp:CommandField ShowSelectButton="True" ButtonType="Button" ControlStyle-CssClass="btn btn-info" />
 
-                            <asp:ImageField DataImageUrlField ="Image" NullDisplayText="no image" >
-                                <ControlStyle Height="250px" Width="250px" />
-                                <ItemStyle Height="20px" Width="20px" />
+                            <asp:ImageField DataImageUrlField ="Image" NullDisplayText="no image" ControlStyle-CssClass="img-responsive img-css" >
+                               
                             </asp:ImageField>
                             <asp:BoundField DataField="Name" HeaderText="Name" />
                             <asp:BoundField DataField="Comments" HeaderText="Comments" />

@@ -63,6 +63,18 @@ a:hover {
     height:400px;
 }
 
+.img-css{
+
+  // border: 1px solid black;
+  min-height: 50px;
+  min-width: 50px;
+  //max-height:250px;
+  //max-width:250px;
+
+}
+
+
+/*
 
 #Square{
     width:200px;
@@ -116,6 +128,8 @@ a:hover {
     transform: translate(10em , 0);
 	-webkit-transform: translate(10em , 0);
 }
+
+*/
 
 
 
