@@ -3,20 +3,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
-        <div class="row">
-       <div class="col-md-3">
-           <asp:TextBox ID="SearchTextBox" runat="server"  OnTextChanged="SearchTextBox_TextChanged" margin="20px;" padding="20px;" width="250px" Height="40px" cssClass="">search...</asp:TextBox>
-       </div>
-        <div class="col-md-3">
-             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectToDb %>" SelectCommand="SELECT * FROM [classes]"></asp:SqlDataSource>
-             <asp:DropDownList ID="classes_list" runat="server" DataSourceID="SqlDataSource1" DataTextField="cls_name" DataValueField="cls_name">
-             </asp:DropDownList>
-        </div>
-          <div class="col-md-3">
-              <asp:Button ID="search_cmd" runat="server" OnClick="search_cmd_Click" Text="Search" />
-        </div>
-    </div>
-    </div>
+   
+
     
     <link type="text/css" rel="stylesheet" href="Content/style.css" />
     <br />
@@ -50,5 +38,5 @@
         </div>
     </div>
 
-
+  </div>
 </asp:Content>

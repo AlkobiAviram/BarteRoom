@@ -56,10 +56,10 @@ namespace BarteRoom
         protected void search_cmd_Click(object sender, EventArgs e)
         {
             
-            choice = 1;
+          /*  choice = 1;
             item_name=SearchTextBox.Text;
             item_class=classes_list.Text;
-            bind();
+            bind();*/
         }
   
 
