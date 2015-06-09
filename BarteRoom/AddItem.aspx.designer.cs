@@ -76,15 +76,6 @@ namespace BarteRoom {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
         
         /// <summary>
-        /// image_upload_cmd control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button image_upload_cmd;
-        
-        /// <summary>
         /// image_upload control.
         /// </summary>
         /// <remarks>

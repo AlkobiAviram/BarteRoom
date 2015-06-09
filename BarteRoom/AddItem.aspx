@@ -36,7 +36,6 @@
          <div class="col-md-4">
              <asp:DropDownList ID="classes_list" runat="server" DataSourceID="SqlDataSource1" DataTextField="cls_name" DataValueField="cls_name"></asp:DropDownList>
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectToDb %>" SelectCommand="SELECT cls_name FROM classes WHERE (cls_name &lt;&gt; 'All Catagories')"></asp:SqlDataSource>
-            <asp:Button ID="image_upload_cmd" class="btn btn-default" runat="server" Text="upload"  OnClick="image_upload_cmd_Click" />
             <asp:FileUpload CssClass="input-group" ID="image_upload" runat="server" OnLoad="image_upload_Load" />
             <hr />
 

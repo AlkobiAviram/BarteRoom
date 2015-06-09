@@ -26,7 +26,7 @@ namespace BarteRoom
                 string URL = "~/" + images.ElementAt(0).getPath();
            
                 img0.Src = URL;
-               img000.Src = URL;
+                img000.Src = URL;
                 URL = "~/" + images.ElementAt(1).getPath(); 
                 img1.Src = URL;
                 img11.Src = URL;
