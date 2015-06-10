@@ -17,12 +17,12 @@ namespace BarteRoom
 {
     public partial class Home1 : System.Web.UI.Page
     {
-        private Logic lg=new Logic();
-        private LinkedList<Imag> images;
+        public static Logic lg=new Logic();
+        public static LinkedList<Imag> images = lg.getAllImages();
         protected void Page_Load(object sender, EventArgs e)
         {
             //setting the image slider images
-                images = lg.getAllImages();
+               
                 string URL = "~/" + images.ElementAt(0).getPath();
            
                 img0.Src = URL;
@@ -41,15 +41,12 @@ namespace BarteRoom
                 img44.Src = URL;
 
             
-            
         }
-        protected void ImgButton0_ServerClick(Object sender, ImageClickEventArgs e)
+    
+        public static string getImageId(int index)
         {
-             images = lg.getAllImages();
-             Session["item_id"] = images.ElementAt(0).getId();
-             Response.Redirect("/ItemView.aspx");
+            return images.ElementAt(index).getId();
         }
-
       
     }
 }

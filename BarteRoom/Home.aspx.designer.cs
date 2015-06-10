@@ -22,15 +22,6 @@ namespace BarteRoom {
         protected global::System.Web.UI.HtmlControls.HtmlImage img0;
         
         /// <summary>
-        /// img00 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlImage img00;
-        
-        /// <summary>
         /// img000 control.
         /// </summary>
         /// <remarks>

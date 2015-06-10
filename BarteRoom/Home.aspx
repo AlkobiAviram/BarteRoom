@@ -10,39 +10,40 @@
 
          
                      <!-- ==============================================buttom row:image slider===========================================  -->
-                     <link href="imageSlider.css" rel="stylesheet" type="text/css" />
-    <div class="slider" >
-	    <input type="radio" name="slide_switch" id="id1"  checked="checked" onclick="test('0')" />
+                     <link href="imageSlider.css" rel="stylesheet" type="text/css" runat="server"/>
+    <div class="slider" runat="server" >
+
+
+	    <input type="radio" name="slide_switch" id="id1"  checked="checked" onclick="test('0')"/>
 	    <label for="id1"   runat="server" >
 		    <img src="fff" id="img0"  width="100" runat="server"  />
 	    </label>
-	  <!--  <img id="img00" src="" runat="server" style="width:640px;height:320px;" /> -->
 	    <img src="fff" id="img000" width="640" height="320" runat="server" />
       
 
 	    <!--Lets show the second image by default on page load-->
-	    <input type="radio" name="slide_switch" id="id2" />
+	    <input type="radio" name="slide_switch" id="id2" onclick="test('1')"/>
 	    <label for="id2">
 		    <img src="fff" id="img1"  width="100" runat="server" />
 	    </label>
 	    <img src="fff" id="img11"  runat="server" style="width:640px;height:320px;"  />
 	
 
-	    <input type="radio" name="slide_switch" id="id3"/>
+	    <input type="radio" name="slide_switch" id="id3" onclick="test('2')"/>
         <label for="id3">
 		    <img src="fff" id="img2"  width="100" runat="server" />
 	    </label>
 	    <img src="fff" id="img22"  width="640" height="320" runat="server"/>
 	
 
-	    <input type="radio" name="slide_switch" id="id4"/>
+	    <input type="radio" name="slide_switch" id="id4" onclick="test('3')"/>
         <label for="id4">
 		    <img src="fff" id="img3"  width="100" runat="server" />
 	    </label>
 	    <img src="fff" id="img33"  runat="server" width="640" height="320" />
 	
 
-	    <input type="radio" name="slide_switch" id="id5"/>
+	    <input type="radio" name="slide_switch" id="id5" onclick="test('4')"/>
         <label for="id5">
 		    <img src="fff" id="img4"  width="100" runat="server" />
 	    </label>
@@ -51,9 +52,19 @@
           
     <script type="text/javascript" >
         function test(id) {
-            //Session["item_id"] = "1e6f4cff-3b75-47e1-8001-f009f767d1d9";
-           // PageMethods.SetDownloadPath(path);
-           /// window.location.href = "/BarterList.aspx";
+            if (id == '0')
+                <% Session["item_id"] = getImageId(0);%>;      
+            else if(id=='1')
+                <% Session["item_id"] = getImageId(1);%>;
+            else if (id == '2')
+                <% Session["item_id"] = getImageId(2);%>;
+            else if (id == '3')
+                <% Session["item_id"] = getImageId(3);%>;
+            else if (id == '4')
+                <% Session["item_id"] = getImageId(4);%>;
+    
+            window.location.href = "/ItemView.aspx";
+
         }
     </script>
     </div>
