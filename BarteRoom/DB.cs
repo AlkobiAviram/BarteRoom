@@ -932,6 +932,23 @@ namespace BarteRoom
        
             return dtable;
     }
+
+        public void MarkAsRead(string usr)
+        {
+            query = "UPDATE transactions SET readBid = 1 WHERE readBid IN (select t.readBid from transactions t, items i where (i.Id = t.item_id) AND (i.usr = 'a') AND (t.readBid = 0));";
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+
+                command.ExecuteNonQuery();
+                connect.Close();
+            }
+
+            catch (Exception e) { }
+        }
     }
 
 

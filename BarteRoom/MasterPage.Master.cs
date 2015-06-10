@@ -302,5 +302,13 @@ namespace BarteRoom
         {
 
         }
+
+        protected void ReadMarkCmd_Click(object sender, EventArgs e)
+        {
+            logic = new Logic();
+
+            logic.MarkAsRead(Session["usr"].ToString());
+            Response.Redirect("Home.aspx");
+        }
     }
 }

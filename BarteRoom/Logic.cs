@@ -267,5 +267,11 @@ namespace BarteRoom
             data = new DB();
             return data.getAllBids(usr);
         }
+
+        public void MarkAsRead(string usr)
+        {
+            data = new DB();
+            data.MarkAsRead(usr);
+        }
     }
 }

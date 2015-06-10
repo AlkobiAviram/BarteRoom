@@ -90,7 +90,7 @@
                            <li class="dropdown-header">
                                <asp:Label ID="noteLabel" runat="server" Text="Notifications" ForeColor="Black"></asp:Label>
                                 <ul class="navbar-form navbar-right">
-                                    <asp:LinkButton ID="ReadMarkCmd" CssClass="change" runat="server">Mark As Read</asp:LinkButton>
+                                    <asp:LinkButton ID="ReadMarkCmd" CssClass="change" runat="server" OnClick="ReadMarkCmd_Click">Mark As Read</asp:LinkButton>
                                </ul>
                            </li>
                            
