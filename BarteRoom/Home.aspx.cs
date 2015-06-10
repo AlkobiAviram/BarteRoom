@@ -13,40 +13,109 @@ using System.Collections;
 // To resize an image and store it to destination folder
 using System.Drawing;
 using System.Drawing.Drawing2D;
+
 namespace BarteRoom
 {
     public partial class Home1 : System.Web.UI.Page
     {
-        public static Logic lg=new Logic();
+        public static Logic lg = new Logic();
         public static LinkedList<Imag> images = lg.getAllImages();
         protected void Page_Load(object sender, EventArgs e)
         {
             //setting the image slider images
-               
-                string URL = "~/" + images.ElementAt(0).getPath();
-           
-                img0.Src = URL;
-                img000.Src = URL;
-                URL = "~/" + images.ElementAt(1).getPath(); 
-                img1.Src = URL;
-                img11.Src = URL;
-                URL = "~/" + images.ElementAt(2).getPath(); 
-                img2.Src = URL;
-                img22.Src = URL;
-                URL = "~/" + images.ElementAt(3).getPath(); 
-                img3.Src = URL;
-                img33.Src = URL;
-                URL = "~/" + images.ElementAt(4).getPath(); 
-                img4.Src = URL;
-                img44.Src = URL;
+            Bitmap target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath(images.ElementAt(0).getPath())), 640, 320) as Bitmap;
+            string path = Server.MapPath("~/img/resizeImage0.jpg");
+            target.Save(path);
+            img0.Src = "~/img/resizeImage0.jpg";
+            img000.Src = "~/img/resizeImage0.jpg";
 
-            
+
+
+            target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath(images.ElementAt(1).getPath())), 640, 320) as Bitmap;
+            path = Server.MapPath("~/img/resizeImage1.jpg");
+            target.Save(path);
+            img1.Src = "~/img/resizeImage1.jpg";
+            img11.Src = "~/img/resizeImage1.jpg";
+
+
+            target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath(images.ElementAt(2).getPath())), 640, 320) as Bitmap;
+            path = Server.MapPath("~/img/resizeImage2.jpg");
+            target.Save(path);
+            img2.Src = "~/img/resizeImage2.jpg";
+            img22.Src = "~/img/resizeImage2.jpg";
+
+
+
+            target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath(images.ElementAt(3).getPath())), 640, 320) as Bitmap;
+            path = Server.MapPath("~/img/resizeImage3.jpg");
+            target.Save(path);
+            img3.Src = "~/img/resizeImage3.jpg";
+            img33.Src = "~/img/resizeImage3.jpg";
+
+
+
+            target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath(images.ElementAt(4).getPath())), 640, 320) as Bitmap;
+            path = Server.MapPath("~/img/resizeImage4.jpg");
+            target.Save(path);
+            img4.Src = "~/img/resizeImage4.jpg";
+            img44.Src = "~/img/resizeImage4.jpg";
+
+
         }
-    
+
         public static string getImageId(int index)
         {
             return images.ElementAt(index).getId();
         }
-      
+
+        static System.Drawing.Image FixedSize(System.Drawing.Image imgPhoto, int Width, int Height)
+        {
+            int sourceWidth = imgPhoto.Width;
+            int sourceHeight = imgPhoto.Height;
+            int sourceX = 0;
+            int sourceY = 0;
+            int destX = 0;
+            int destY = 0;
+
+            float nPercent = 0;
+            float nPercentW = 0;
+            float nPercentH = 0;
+
+            nPercentW = ((float)Width / (float)sourceWidth);
+            nPercentH = ((float)Height / (float)sourceHeight);
+            if (nPercentH < nPercentW)
+            {
+                nPercent = nPercentH;
+                destX = System.Convert.ToInt16((Width -
+                              (sourceWidth * nPercent)) / 2);
+            }
+            else
+            {
+                nPercent = nPercentW;
+                destY = System.Convert.ToInt16((Height -
+                              (sourceHeight * nPercent)) / 2);
+            }
+
+            int destWidth = (int)(sourceWidth * nPercent);
+            int destHeight = (int)(sourceHeight * nPercent);
+
+            Bitmap bmPhoto = new Bitmap(Width, Height,
+                              System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+            bmPhoto.SetResolution(imgPhoto.HorizontalResolution,
+                             imgPhoto.VerticalResolution);
+
+            Graphics grPhoto = Graphics.FromImage(bmPhoto);
+            grPhoto.Clear(Color.White);
+            grPhoto.InterpolationMode =
+                    InterpolationMode.HighQualityBicubic;
+
+            grPhoto.DrawImage(imgPhoto,
+                new Rectangle(destX, destY, destWidth, destHeight),
+                new Rectangle(sourceX, sourceY, sourceWidth, sourceHeight),
+                GraphicsUnit.Pixel);
+
+            grPhoto.Dispose();
+            return bmPhoto;
+        }
     }
 }
