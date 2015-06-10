@@ -4,6 +4,9 @@
         <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 
+             
+
+
              <!-- ==============================================Main container===========================================  -->
                
            
@@ -13,19 +16,21 @@
                          <link href="imageSlider.css" rel="stylesheet" type="text/css" runat="server"/>
         <div class="slider" runat="server" >
 
+
+
              <!--Lets show the first image by default on page load-->
-            	      <!--  picture number 0 -->
-	        <input type="radio" name="slide_switch" id="id1" checked="checked"/>
-	        <label for="id1"   runat="server">
+            	      <!--  picture number 0 --> 
+	        <input type="radio" name="slide_switch" id="id1" checked="checked"  />
+            <label for="id1"   runat="server" onclick="test(0)">
 		        <img src="fff" id="img0"  width="100" runat="server" />
 	        </label>
-	        <img src="fff" id="img000" width="640" height="320" runat="server" onclick="onClick0()" />
+	        <img src="fff" id="img000" width="640" height="320" runat="server" />
       
 
 
 	                       <!--  picture number 1 -->
 
-	        <input type="radio" name="slide_switch" id="id2" />
+	        <input type="radio" name="slide_switch" id="id2"  />
 	        <label for="id2">
 		        <img src="fff" id="img1"  width="100" runat="server" />
 	        </label>
@@ -34,7 +39,7 @@
 
 
 	                       <!--  picture number 2 -->
-	        <input type="radio" name="slide_switch" id="id3"/>
+	        <input type="radio" name="slide_switch" id="id3"  />
             <label for="id3">
 		        <img src="fff" id="img2"  width="100" runat="server" />
 	        </label>
@@ -43,7 +48,7 @@
 
 
 	                       <!--  picture number 3 -->
-	        <input type="radio" name="slide_switch" id="id4"/>
+	        <input type="radio" name="slide_switch" id="id4"  />
             <label for="id4">
 		        <img src="fff" id="img3"  width="100" runat="server" />
 	        </label>
@@ -51,20 +56,24 @@
 	
 
 	                       <!--  picture number 4 -->
-	        <input type="radio" name="slide_switch" id="id5"/>
+	        <input type="radio" name="slide_switch" id="id5"  />
             <label for="id5">
 		        <img src="fff" id="img4"  width="100" runat="server" />
 	        </label>
 	        <img id="img44" src="dd" runat="server" width="640" height="320" />
 
 
+            
+
+
         </div>
 
     <script type="text/javascript" >
 
-        // function test(id) {
-        //   if (id == "id0")
-        //       <% Session["item_id"] = getImageId(0);%>;      
+         function test(id) {
+             //   if (id == "id0")
+        
+                   
         //   else if (id == "id1")
         //       <% Session["item_id"] = getImageId(1);%>;
         //   else if (id == "id2")
@@ -74,9 +83,9 @@
         //   else if (id == "id4")
         //       <% Session["item_id"] = getImageId(4);%>;
 
-        //   window.location.href = "/ItemView.aspx";
+          window.location.href = "/ItemView.aspx";
 
-        // }
+        }
 
     </script>
 

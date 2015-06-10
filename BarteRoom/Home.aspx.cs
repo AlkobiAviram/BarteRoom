@@ -22,7 +22,8 @@ namespace BarteRoom
         public static LinkedList<Imag> images = lg.getAllImages();
         protected void Page_Load(object sender, EventArgs e)
         {
-            //setting the image slider images
+            //setting the image slider images.
+            //note: first i save a copy of a item's imagein 620x320 dimension and then displaies it in the image slider 
             Bitmap target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath(images.ElementAt(0).getPath())), 640, 320) as Bitmap;
             string path = Server.MapPath("~/img/resizeImage0.jpg");
             target.Save(path);
@@ -59,7 +60,7 @@ namespace BarteRoom
             target.Save(path);
             img4.Src = "~/img/resizeImage4.jpg";
             img44.Src = "~/img/resizeImage4.jpg";
-
+            
 
         }
 
@@ -116,6 +117,34 @@ namespace BarteRoom
 
             grPhoto.Dispose();
             return bmPhoto;
+        }
+
+        protected void viewItem_cmd_Click(object sender, EventArgs e)
+        {
+          
+            /*
+            if (label0.TagName )
+            {
+                  Session["item_id"] = getImageId(0);
+            }
+            else if(id2.Checked)
+            {
+                Session["item_id"] = getImageId(1);
+            }
+            else if (id3.Checked)
+            {
+                Session["item_id"] = getImageId(2);
+            }
+            else if (id4.Checked)
+            {
+                Session["item_id"] = getImageId(3);
+            }
+            else if (id5.Checked)
+            {
+                Session["item_id"] = getImageId(4);
+            }
+            Response.Redirect("/ItemView.aspx");
+             */
         }
     }
 }
