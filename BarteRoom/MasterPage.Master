@@ -95,13 +95,19 @@
                            </li>
                            
                            <li class="dropdown-header">
-                               <asp:GridView ID="recentBids" runat="server" BorderStyle="None" GridLines="Horizontal" HeaderStyle-BorderStyle="None" PagerSettings-Visible="True" RowStyle-BorderStyle="None" ShowHeader="False" RowStyle-HorizontalAlign="Center" AllowPaging="True" AllowCustomPaging="True">
+                               <asp:GridView ID="recentBids" runat="server" BorderStyle="None" GridLines="Horizontal" HeaderStyle-BorderStyle="None" PagerSettings-Visible="True" RowStyle-BorderStyle="None" ShowHeader="False" RowStyle-HorizontalAlign="Center" AllowPaging="True" AllowCustomPaging="True" AutoGenerateColumns="False">
                                         <Columns>
                                           
                                             <asp:ImageField DataImageUrlField ="Image" NullDisplayText="no image" ShowHeader="false" >
                                                 <ControlStyle Height="50px" Width="50px" />
                                                 <ItemStyle Height="20px" Width="20px" />
                                             </asp:ImageField>     
+
+                                            <asp:TemplateField HeaderText="Name" ShowHeader="False">
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="SelectBid" runat="server" CssClass="change" CausesValidation="False" CommandName="Select" Text='<%# Bind("comments") %>' OnClick="SelectBid_Click" ></asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
 
                                        </Columns> 
                                        <EditRowStyle HorizontalAlign="Center" />

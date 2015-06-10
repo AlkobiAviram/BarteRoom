@@ -310,5 +310,10 @@ namespace BarteRoom
             logic.MarkAsRead(Session["usr"].ToString());
             Response.Redirect("Home.aspx");
         }
+
+        protected void SelectBid_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
