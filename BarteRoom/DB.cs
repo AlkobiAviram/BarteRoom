@@ -949,6 +949,141 @@ namespace BarteRoom
 
             catch (Exception e) { }
         }
+
+        public Transaction getTransactionById(string id)
+        {
+            string type;
+            string comments;
+            string user;
+            string item_id;
+            LinkedList<string> offerdItemsList=new LinkedList<string>();
+
+            //getting the item list:
+            query = "select item_id from transactionItems where transaction_id='" + id + "';";
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+                rdr = command.ExecuteReader();
+
+
+            }
+           
+            catch (Exception e) { }
+            while(rdr.Read())
+            {          
+                offerdItemsList.AddLast(rdr[0].ToString());
+            }
+
+
+
+            connect.Close();
+            query = "select * from transactions where id='" + id + "';";
+            Transaction trsct = null;
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+                rdr = command.ExecuteReader();
+
+
+            }
+           
+    
+            catch (Exception e) {
+            }
+            if (rdr.Read())
+            {
+                 
+                item_id = rdr[1].ToString();
+                type = rdr[2].ToString();
+                user = rdr[3].ToString();
+                comments = rdr[4].ToString();
+                trsct = new Transaction(user, type, item_id,offerdItemsList ,comments);
+                trsct.setTransaction_id(rdr[0].ToString());
+            }
+
+            connect.Close();
+
+            return trsct;
+        }
+
+
+
+        public DataTable getDataSourceForBiddedItems(Transaction trns)
+        {
+
+            DataTable dtable = new DataTable();
+            DataColumn dt = new DataColumn("Name");
+            DataColumn dt1 = new DataColumn("Comments");
+            DataColumn dt2 = new DataColumn("Description");
+            DataColumn dt3 = new DataColumn("Image");
+            DataColumn dt4 = new DataColumn("id");
+
+
+            dtable.Columns.Add(dt);
+            dtable.Columns.Add(dt1);
+            dtable.Columns.Add(dt2);
+            dtable.Columns.Add(dt3);
+            dtable.Columns.Add(dt4);
+
+
+            LinkedList<string> offeredItems = trns.getOfferdItemsList();
+            query = "select * from items where id =";
+            for (int i = 0; i < offeredItems.Count; i++)
+            {
+                query += "'" + offeredItems.ElementAt(i) + "'";
+                if (i != offeredItems.Count - 1)
+                    query += " or ";
+            }
+            query += ";";
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+                rdr = command.ExecuteReader();
+
+
+            }
+
+            catch (Exception e) { }
+
+            while (rdr.Read())
+            {
+                object[] RowValues = { "", "", "", "", "" };
+                RowValues[0] = rdr[1].ToString();
+                RowValues[1] = rdr[3].ToString();
+                RowValues[2] = rdr[4].ToString();
+                string id = rdr[5].ToString();
+                RowValues[3] = id;
+                RowValues[4] = id;
+
+
+
+
+                DataRow dRow;
+                dRow = dtable.Rows.Add(RowValues);
+                dtable.AcceptChanges();
+            }
+
+            connect.Close();
+            //setting image url
+            foreach (DataRow row in dtable.Rows)
+            {
+                row[3] = setImagePath(row[3].ToString());
+            }
+
+
+
+
+            return dtable;
+        }
+
+
+
     }
 
 

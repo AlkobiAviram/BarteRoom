@@ -40,7 +40,7 @@ namespace BarteRoom
         {
             int index = Convert.ToInt32(e.NewSelectedIndex);
             GridViewRow row = GridView1.Rows[index];
-            Session["bid_id"] = row.Cells[1].Text;
+            Session["bid_id"] = row.Cells[2].Text;
             Response.Redirect("/TransactionView.aspx");
             GridView1.EditIndex = -1;
             bind();

@@ -273,5 +273,15 @@ namespace BarteRoom
             data = new DB();
             data.MarkAsRead(usr);
         }
+        public Transaction getTransactionById(string id)
+        {
+            data = new DB();
+            return data.getTransactionById(id);
+        }
+        public DataTable getDataSourceForBiddedItems(Transaction trns)
+        {
+            data = new DB();
+            return data.getDataSourceForBiddedItems(trns);
+        }
     }
 }

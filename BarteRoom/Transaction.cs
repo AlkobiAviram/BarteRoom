@@ -44,6 +44,11 @@ namespace BarteRoom
         {
             return this.transaction_id;
         }
+        public void setTransaction_id(string newId)
+        {
+             this.transaction_id=newId;
+             return;
+        }
         public LinkedList<string> getOfferdItemsList()
         {
             return this.offerdItemsList;

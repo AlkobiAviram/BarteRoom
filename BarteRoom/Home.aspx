@@ -13,7 +13,9 @@
 
          
                      <!-- ==============================================buttom row:image slider===========================================  -->
-                         <link href="imageSlider.css" rel="stylesheet" type="text/css" runat="server"/>
+                       
+            
+           <link href="imageSlider.css" rel="stylesheet" type="text/css" runat="server"/>
         <div class="slider" runat="server" >
 
 
@@ -21,7 +23,7 @@
              <!--Lets show the first image by default on page load-->
             	      <!--  picture number 0 --> 
 	        <input type="radio" name="slide_switch" id="id1" checked="checked"  />
-            <label for="id1"   runat="server" onclick="test(0)">
+            <label for="id1" runat="server">
 		        <img src="fff" id="img0"  width="100" runat="server" />
 	        </label>
 	        <img src="fff" id="img000" width="640" height="320" runat="server" />

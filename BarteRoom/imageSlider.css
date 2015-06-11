@@ -1,6 +1,9 @@
 ﻿    /*Time for the CSS*/
     * {margin: 0; padding: 0;}
-    body {background: #ccc;}
+    body {
+        background: #FFFFFF;
+
+    }
 
     .slider{
 	    width: 640px; /*Same as width of the large image*/
@@ -9,7 +12,8 @@
 	    padding-top: 320px; /*That helps bring the labels down*/
 	
 	    margin: 100px auto;
-	
+	    background: #DCDCDC;
+        border-color: #DCDCDC;
 	    /*Lets add a shadow*/
 	    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.75);
     }
@@ -34,13 +38,14 @@
 	    float: left;
 	    cursor: pointer;
 	    transition: all 0.5s;
-	
+	 
 	    /*Default style = low opacity*/
 	    opacity: 0.6;
     }
 
     .slider label img{
 	    display: block;
+         
     }
 
     /*Time to add the click effects*/

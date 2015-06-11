@@ -18,6 +18,7 @@ namespace BarteRoom
             itemDescription.Text=item.getDescription();
             //itemComments.Text=item.getComments();
             itemBarCode.Text = item.getId();
+           
         }
 
         protected void offer_cmd_Click(object sender, EventArgs e)
