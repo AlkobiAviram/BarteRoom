@@ -7,34 +7,38 @@ namespace BarteRoom
 {
     public class Transaction
     {
-        private string type;
-        private string comments;
-        private string user;
-        private string item_id;
         private string transaction_id;
+        private string item_id;
+        private string owner;
+        private string bidder;
+        private string comments;
+        private int readBid;
+      
         private LinkedList<string> offerdItemsList;
-        public Transaction(string user, string type, string item_id, LinkedList<string> offerdItemsList, string comments)
+        public Transaction(string item_id, string owner, string bidder, LinkedList<string> offerdItemsList, string comments)
         {
-            this.comments = comments;
-            this.user = user;
-            this.type = type;
-            this.item_id = item_id;
+            this.item_id=item_id;
+            this.owner=owner;
+            this.bidder=bidder;
+            this.comments=comments;
+            this.readBid=0;
+
             this.offerdItemsList = offerdItemsList;
             Guid newGuid = Guid.NewGuid();
-            this.transaction_id = newGuid.ToString(); ;
+            this.transaction_id = newGuid.ToString(); 
 
         }
         public String getComments()
         {
             return this.comments;
         }
-        public String getUser()
+        public String getBidder()
         {
-            return this.user;
+            return this.bidder;
         }
-        public String getType()
+        public String getOwner()
         {
-            return this.type;
+            return this.owner;
         }
         public String getItem_id()
         {
@@ -49,9 +53,18 @@ namespace BarteRoom
              this.transaction_id=newId;
              return;
         }
+        public void setReadBid(int newReadBid)
+        {
+            this.readBid= newReadBid;
+            return;
+        }
         public LinkedList<string> getOfferdItemsList()
         {
             return this.offerdItemsList;
+        }
+        public int getReadBid()
+        {
+            return this.readBid;
         }
     }
 }

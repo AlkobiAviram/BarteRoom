@@ -489,7 +489,7 @@ namespace BarteRoom
             {
                 connect.Open();
                 //insert to transaction table
-                query = "insert into transactions values('" + transaction.getTransaction_id() + "','" + transaction.getItem_id() + "','" + transaction.getType()+ "','" +transaction.getUser()+"','"+transaction.getComments()+  "', 0);";
+                query = "insert into transactions values('" + transaction.getTransaction_id() + "','" + transaction.getItem_id() + "','" + transaction.getOwner()+ "','" +transaction.getBidder()+"','"+transaction.getComments()+  "', 0);";
                 command = new SqlCommand(query, connect);
                 command.ExecuteNonQuery();
 
@@ -510,7 +510,7 @@ namespace BarteRoom
 
         }
 
-
+/*
         public DataTable getDataSourceForTransaction(String usr,string transaction_type)
         {
 
@@ -557,7 +557,8 @@ namespace BarteRoom
 
             return dtable;
         }
-
+<<<<<<< HEAD
+        */
         public DataTable getDataSourceForSearch(String usr, string search, String catagory, int pageIndex)
         {
             int from = 10 * pageIndex;
@@ -643,6 +644,8 @@ namespace BarteRoom
 
 
 
+
+
         public int numOfResults(String usr, String search, String catagory)
         {
             int numOf = 0;
@@ -672,23 +675,25 @@ namespace BarteRoom
             return numOf;
         }
 
-        public DataTable getDataSourceForBids(string usr)
+        public DataTable getDataSourceForBidsOrOffers(string usr,string BidOrOffer)
         {
-            string uuu = usr;
+           
             DataTable dtable = new DataTable();
             DataColumn dt = new DataColumn("Bid ID");
             DataColumn dt1 = new DataColumn("Item BarCode");
             DataColumn dt2 = new DataColumn("Item Owner");
-         
+            DataColumn dt3 = new DataColumn("Comments");
 
 
             dtable.Columns.Add(dt);
             dtable.Columns.Add(dt1);
             dtable.Columns.Add(dt2);
-
+            dtable.Columns.Add(dt3);
             //getting only the bid id and the item id
-            query = "select t.id,t.item_id from transactions t where t.usr='" + usr + "';";
-
+            if(BidOrOffer.Equals("bid"))
+                query = "select t.id,t.item_id,t.owner,t.comments from transactions t where t.bidder='" + usr + "';";
+            else
+                query = "select t.id,t.item_id,t.owner,t.comments from transactions t where t.owner='" + usr + "';";
             try
             {
                 connect.Open();
@@ -703,22 +708,15 @@ namespace BarteRoom
 
             while (rdr.Read())
             {
-                object[] RowValues = { "", "", ""};
+                object[] RowValues = { "", "", "",""};
                 RowValues[0] = rdr[0].ToString();
                 RowValues[1] = rdr[1].ToString();
-            
+                RowValues[2] = rdr[2].ToString();
+                RowValues[3] = rdr[3].ToString();
                 DataRow dRow;
                 dRow = dtable.Rows.Add(RowValues);
                 dtable.AcceptChanges();
             }
-
-            //getting the usr field of the utem owner
-            foreach (DataRow row in dtable.Rows)
-            {
-                row[2] = getUsrByItemId(row[1].ToString());
-            }
-
-        
 
 
             connect.Close();
@@ -726,62 +724,7 @@ namespace BarteRoom
             return dtable;
         }
 
-        public DataTable getDataSourceForOffers(string usr)
-        {
-            string uuu = usr;
-            DataTable dtable = new DataTable();
-            DataColumn dt = new DataColumn("Bid ID");
-            DataColumn dt1 = new DataColumn("Item BarCode");
-            DataColumn dt2 = new DataColumn("Item Owner");
-
-
-
-            dtable.Columns.Add(dt);
-            dtable.Columns.Add(dt1);
-            dtable.Columns.Add(dt2);
-
-            //getting only the bid id and the item id
-            query = "select t.id,t.item_id from transactions t where t.usr='" + usr + "';";
-
-            try
-            {
-                connect.Open();
-
-                command = new SqlCommand(query, connect);
-                rdr = command.ExecuteReader();
-
-
-            }
-
-            catch (Exception e) { }
-
-            while (rdr.Read())
-            {
-                object[] RowValues = { "", "", "" };
-                RowValues[0] = rdr[0].ToString();
-                RowValues[1] = rdr[1].ToString();
-
-                DataRow dRow;
-                dRow = dtable.Rows.Add(RowValues);
-                dtable.AcceptChanges();
-            }
-
-            //getting the usr field of the utem owner
-            foreach (DataRow row in dtable.Rows)
-            {
-                row[2] = getUsrByItemId(row[1].ToString());
-            }
-
-
-
-
-            connect.Close();
-
-            return dtable;
-        }
-
-
-
+        
         private string getUsrByItemId(string item_id)
         {
             string usr="";
@@ -971,7 +914,7 @@ namespace BarteRoom
             dtable.Columns.Add(dt);
             dtable.Columns.Add(dt1);
 
-            query = "select img.path, t.usr, t.readBid from images img, transactions t, items i where (img.id = i.Id) AND (i.Id = t.item_id) AND (i.usr = '" + usr + "') order by t.readBid DESC;";
+            query = "select img.path, t.bidder, t.readBid from images img, transactions t, items i where (img.id = i.Id) AND (i.Id = t.item_id) AND (i.usr = '" + usr + "') order by t.readBid DESC;";
 
             try
             {
@@ -1020,10 +963,12 @@ namespace BarteRoom
 
         public Transaction getTransactionById(string id)
         {
-            string type;
-            string comments;
-            string user;
             string item_id;
+            string owner;
+            string bidder;
+            string comments;
+            int readBid;
+            
             LinkedList<string> offerdItemsList=new LinkedList<string>();
 
             //getting the item list:
@@ -1066,11 +1011,13 @@ namespace BarteRoom
             {
                  
                 item_id = rdr[1].ToString();
-                type = rdr[2].ToString();
-                user = rdr[3].ToString();
+                owner = rdr[2].ToString();
+                bidder = rdr[3].ToString();
                 comments = rdr[4].ToString();
-                trsct = new Transaction(user, type, item_id,offerdItemsList ,comments);
+                readBid = Convert.ToInt32(rdr[5].ToString());
+                trsct = new Transaction(item_id, owner, bidder,offerdItemsList ,comments);
                 trsct.setTransaction_id(rdr[0].ToString());
+                trsct.setReadBid(readBid);
             }
 
             connect.Close();

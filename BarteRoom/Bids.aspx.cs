@@ -22,7 +22,7 @@ namespace BarteRoom
         private void bind()
         {
 
-            GridView1.DataSource = lg.getDataSourceForBids(Session["usr"].ToString());
+            GridView1.DataSource = lg.getDataSourceForBidsOrOffers(Session["usr"].ToString(),"bid");
             GridView1.DataBind();
 
         }
@@ -40,7 +40,8 @@ namespace BarteRoom
         {
             int index = Convert.ToInt32(e.NewSelectedIndex);
             GridViewRow row = GridView1.Rows[index];
-            Session["bid_id"] = row.Cells[2].Text;
+            Session["transaction_type"] = "bid";
+            Session["bid_id"] = row.Cells[1].Text;
             Response.Redirect("/TransactionView.aspx");
             GridView1.EditIndex = -1;
             bind();

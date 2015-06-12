@@ -13,12 +13,12 @@ namespace BarteRoom {
     public partial class Offers {
         
         /// <summary>
-        /// GridViewOffers control.
+        /// GridView1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridViewOffers;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
     }
 }
