@@ -14,6 +14,7 @@
                            <asp:BoundField DataField="Item BarCode" HeaderText="Item BarCode" />
                            <asp:BoundField DataField="Item Owner" HeaderText="Item Owner" />
                            <asp:BoundField DataField="Comments" HeaderText="Comments" />
+                           <asp:BoundField DataField="Seen" HeaderText="Seen" />                       
                        </Columns>
                    </asp:GridView>
                    

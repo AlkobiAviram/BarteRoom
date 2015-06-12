@@ -681,19 +681,24 @@ namespace BarteRoom
             DataTable dtable = new DataTable();
             DataColumn dt = new DataColumn("Bid ID");
             DataColumn dt1 = new DataColumn("Item BarCode");
-            DataColumn dt2 = new DataColumn("Item Owner");
+            DataColumn dt2 ;
+             if(BidOrOffer.Equals("bid"))
+                dt2 = new DataColumn("Item Owner");
+             else
+                dt2 = new DataColumn("Bidder");
             DataColumn dt3 = new DataColumn("Comments");
-
+            DataColumn dt4 = new DataColumn("Seen");
 
             dtable.Columns.Add(dt);
             dtable.Columns.Add(dt1);
             dtable.Columns.Add(dt2);
             dtable.Columns.Add(dt3);
+            dtable.Columns.Add(dt4);
             //getting only the bid id and the item id
-            if(BidOrOffer.Equals("bid"))
-                query = "select t.id,t.item_id,t.owner,t.comments from transactions t where t.bidder='" + usr + "';";
+            if(BidOrOffer=="bid")
+                query = "select t.id,t.item_id,t.owner,t.comments,t.readBid from transactions t where t.bidder='" + usr + "';";
             else
-                query = "select t.id,t.item_id,t.owner,t.comments from transactions t where t.owner='" + usr + "';";
+                query = "select t.id,t.item_id,t.bidder,t.comments,t.readBid from transactions t where t.owner='" + usr + "';";
             try
             {
                 connect.Open();
@@ -708,11 +713,15 @@ namespace BarteRoom
 
             while (rdr.Read())
             {
-                object[] RowValues = { "", "", "",""};
+                object[] RowValues = { "", "", "","",""};
                 RowValues[0] = rdr[0].ToString();
                 RowValues[1] = rdr[1].ToString();
                 RowValues[2] = rdr[2].ToString();
                 RowValues[3] = rdr[3].ToString();
+                if (Convert.ToInt32(rdr[4].ToString()) == 1)
+                    RowValues[4] = "yes";
+                else
+                    RowValues[4] = "no";
                 DataRow dRow;
                 dRow = dtable.Rows.Add(RowValues);
                 dtable.AcceptChanges();
@@ -946,7 +955,7 @@ namespace BarteRoom
 
         public void MarkAsRead(string usr)
         {
-            query = "UPDATE transactions SET readBid = 1 WHERE readBid IN (select t.readBid from transactions t, items i where (i.Id = t.item_id) AND (i.usr = 'a') AND (t.readBid = 0));";
+            query = "UPDATE transactions SET readBid = 1 WHERE readBid IN (select t.readBid from transactions t where (i.Id = t.item_id) AND (i.usr = 'a') AND (t.readBid = 0));";
 
             try
             {

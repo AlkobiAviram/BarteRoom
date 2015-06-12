@@ -12,8 +12,9 @@
                              <asp:CommandField ButtonType="Button" HeaderText="View Bid" ShowSelectButton="True" />
                            <asp:BoundField DataField="Bid ID" HeaderText="Bid ID" />
                            <asp:BoundField DataField="Item BarCode" HeaderText="Item BarCode" />
-                           <asp:BoundField DataField="Item Owner" HeaderText="Item Owner" />
+                           <asp:BoundField DataField="Bidder" HeaderText="Bidder" />
                            <asp:BoundField DataField="Comments" HeaderText="Comments" />
+                           <asp:BoundField DataField="Seen" HeaderText="Seen" />
                        </Columns>
                    </asp:GridView>
                                    
