@@ -10,10 +10,10 @@
     <br />
     <div class="row">
         <div class="col-md-10">
-              <asp:GridView ID="GridView1" runat="server" CssClass="table table-responsive table-striped" GridLines="None" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand"  OnSelectedIndexChanging="GridView1_SelectedIndexChanging">
+              <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered table-responsive table-striped" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand"  OnSelectedIndexChanging="GridView1_SelectedIndexChanging">
                 <Columns>
                     <asp:CommandField ShowSelectButton="True" />
-                    <asp:ImageField DataImageUrlField="Image" >
+                    <asp:ImageField DataImageUrlField="Image" ControlStyle-CssClass="img-responsive img-css">
                        
                         
                     </asp:ImageField>

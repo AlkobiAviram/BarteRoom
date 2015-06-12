@@ -42,16 +42,11 @@
 
                <div class="row">
                 <h2>Your Offered Items</h2>
-                   <asp:GridView ID="GridView1"  CssClass="table table-responsive table-striped" GridLines="None" AutoGenerateColumns="false" runat="server" OnRowCommand="GridView1_RowCommand" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnSelectedIndexChanging="GridView1_SelectedIndexChanging"  >
+                   <asp:GridView ID="GridView1"  CssClass="table table-responsive table-striped"  runat="server" AllowSorting="True"  AllowPaging="True"  AutoGenerateColumns="False" GridLines="None"  >
                         <Columns>                                 
-                            <asp:CommandField ShowSelectButton="True" ButtonType="Button" ControlStyle-CssClass="btn btn-info" SelectText="View Item">
-
-<ControlStyle CssClass="btn btn-info"></ControlStyle>
-                            </asp:CommandField>
+                            <asp:CommandField ShowSelectButton="True" ButtonType="Button" ControlStyle-CssClass="btn btn-info" />
 
                             <asp:ImageField DataImageUrlField ="Image" NullDisplayText="no image" ControlStyle-CssClass="img-responsive img-css" >
-                               
-<ControlStyle CssClass="img-responsive img-css"></ControlStyle>
                                
                             </asp:ImageField>
                             <asp:BoundField DataField="Name" HeaderText="Name" />

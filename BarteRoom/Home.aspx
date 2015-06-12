@@ -71,14 +71,24 @@
         </div>
 
     <script type="text/javascript" >
-        
+
          function test(id) {
-     
+             //   if (id == "id0")
+        
+                   
+        //   else if (id == "id1")
+        //       <% Session["item_id"] = getImageId(1);%>;
+        //   else if (id == "id2")
+        //       <% Session["item_id"] = getImageId(2);%>;
+        //   else if (id == "id3")
+        //       <% Session["item_id"] = getImageId(3);%>;
+        //   else if (id == "id4")
+        //       <% Session["item_id"] = getImageId(4);%>;
 
           window.location.href = "/ItemView.aspx";
 
         }
-        
+
     </script>
 
                    <!-- ==============================================buttom row===========================================  -->

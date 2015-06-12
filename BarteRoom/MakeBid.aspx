@@ -10,7 +10,7 @@
                <asp:Button ID="commitBid_cmd" runat="server" Text="Commit Bid" CssClass=" btn btn-primary" OnClick="commitBid_cmd_Click" />
             </div>
             <div class="col-md-10">
-                <asp:GridView ID="GridView1" CssClass="table table-responsive table-striped" GridLines="None"  runat="server" AllowSorting="True" AutoGenerateColumns="False"  >
+                <asp:GridView ID="GridView1" CssClass="table table-bordered table-responsive table-striped"  runat="server" AllowSorting="True" AutoGenerateColumns="False"  >
                     <Columns>
 
                         <asp:TemplateField HeaderText="Select">
