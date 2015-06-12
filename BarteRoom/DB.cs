@@ -558,8 +558,12 @@ namespace BarteRoom
             return dtable;
         }
 
-        public DataTable getDataSourceForSearch(String usr, string search, String catagory)
+        public DataTable getDataSourceForSearch(String usr, string search, String catagory, int pageIndex)
         {
+            int from = 10 * pageIndex;
+            int to = from + 10;
+            int i = 0;
+
             DataTable dtable = new DataTable();
             DataColumn dt = new DataColumn("Name");
             DataColumn dt1 = new DataColumn("Comments");
@@ -576,12 +580,12 @@ namespace BarteRoom
 
             if (catagory.Equals("All Catagories"))
             {
-                query = "select * from items where ([name] LIKE '%'+'" + search + "'+'%') AND (usr != '" + usr + "');";
+                query = "select * from items where ([name] LIKE '%'+'" + search + "'+'%') AND (usr != '" + usr + "') order by Id;";
             }
 
             else
             {
-                query = "select * from items where ([name] LIKE '%'+'" + search + "'+'%')  AND (usr != '" + usr + "') AND ([class] = '" + catagory + "');";
+                query = "select * from items where ([name] LIKE '%'+'" + search + "'+'%')  AND (usr != '" + usr + "') AND ([class] = '" + catagory + "') order by Id;";
             }
 
             try
@@ -598,20 +602,32 @@ namespace BarteRoom
 
             while (rdr.Read())
             {
-                object[] RowValues = { "", "", "", "", "" };
-                RowValues[0] = rdr[1].ToString();
-                RowValues[1] = rdr[3].ToString();
-                RowValues[2] = rdr[4].ToString();
-                string id = rdr[5].ToString();
-                RowValues[3] = id;
-                RowValues[4] = id;
+                if (from == to)
+                {
+                    break;
+                }
 
+                if (i >= from)
+                {
+                    object[] RowValues = { "", "", "", "", "" };
+                    RowValues[0] = rdr[1].ToString();
+                    RowValues[1] = rdr[3].ToString();
+                    RowValues[2] = rdr[4].ToString();
+                    string id = rdr[5].ToString();
+                    RowValues[3] = id;
+                    RowValues[4] = id;
 
+                    DataRow dRow;
+                    dRow = dtable.Rows.Add(RowValues);
+                    dtable.AcceptChanges();
 
-
-                DataRow dRow;
-                dRow = dtable.Rows.Add(RowValues);
-                dtable.AcceptChanges();
+                    from++;
+                    i++;
+                }
+                else
+                {
+                    i++;
+                }
             }
 
             connect.Close();

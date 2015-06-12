@@ -215,10 +215,10 @@ namespace BarteRoom
             data.addTransaction(transaction);
         }
 
-        public DataTable getDataSourceForSearch(String usr, String search, String catagory)
+        public DataTable getDataSourceForSearch(String usr, String search, String catagory, int pageIndex)
         {
             data = new DB();
-            return data.getDataSourceForSearch(usr, search, catagory);
+            return data.getDataSourceForSearch(usr, search, catagory, pageIndex);
         }
 
         public int numOfResults(String usr, String search, String catagory)

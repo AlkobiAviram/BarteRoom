@@ -247,6 +247,15 @@ namespace BarteRoom {
         protected global::System.Web.UI.WebControls.Label results;
         
         /// <summary>
+        /// ctagoriyLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ctagoriyLabel;
+        
+        /// <summary>
         /// homeGridView control.
         /// </summary>
         /// <remarks>
@@ -254,6 +263,15 @@ namespace BarteRoom {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView homeGridView;
+        
+        /// <summary>
+        /// login control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl login;
         
         /// <summary>
         /// LoginValidationSummary control.
@@ -310,13 +328,13 @@ namespace BarteRoom {
         protected global::System.Web.UI.WebControls.LinkButton forgotPassword;
         
         /// <summary>
-        /// Login control.
+        /// LoginCmd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Login;
+        protected global::System.Web.UI.WebControls.Button LoginCmd;
         
         /// <summary>
         /// LoginUsernameRequired control.

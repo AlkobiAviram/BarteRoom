@@ -5,11 +5,14 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Drawing;
+using System.Data;
+
 
 namespace BarteRoom
 {
     public partial class MasterPage : System.Web.UI.MasterPage
     {
+        protected static int pageIndex;
         private HttpCookie cookie;
         private Logic logic;
 
@@ -228,6 +231,7 @@ namespace BarteRoom
             String search = SearchTextBox.Text;
             String catagory = catagories.Text;
             int res = 0;
+            ctagoriyLabel.Text = catagory;
 
             if (Session["usr"] != null)
             {
@@ -240,7 +244,7 @@ namespace BarteRoom
 
             if (!(search == null))
             {
-                searchField.Text = SearchTextBox.Text + "   ";
+                searchField.Text = SearchTextBox.Text;
 
                 if (res == 1)
                 {
@@ -255,11 +259,11 @@ namespace BarteRoom
                 searchField.Visible = true;
                 if (Session["usr"] != null)
                 {
-                    homeGridView.DataSource = logic.getDataSourceForSearch(Session["usr"].ToString(), search, catagory);
+                    homeGridView.DataSource = logic.getDataSourceForSearch(Session["usr"].ToString(), search, catagory, pageIndex);
                 }
                 else
                 {
-                    homeGridView.DataSource = logic.getDataSourceForSearch("", search, catagory);
+                    homeGridView.DataSource = logic.getDataSourceForSearch("", search, catagory, pageIndex);
                 }
                 homeGridView.DataBind();
             }
@@ -314,6 +318,49 @@ namespace BarteRoom
         protected void SelectBid_Click(object sender, EventArgs e)
         {
 
+        }
+
+        protected void prev_Click(object sender, EventArgs e)
+        {
+            if (pageIndex > 0)
+            {
+                pageIndex--;
+            }
+
+            logic = new Logic();
+            String search = searchField.Text;
+            String catagory = ctagoriyLabel.Text;
+
+
+            if (Session["usr"] != null)
+            {
+                homeGridView.DataSource = logic.getDataSourceForSearch(Session["usr"].ToString(), search, catagory, pageIndex);
+            }
+            else
+            {
+                homeGridView.DataSource = logic.getDataSourceForSearch("", search, catagory, pageIndex);
+            }
+            homeGridView.DataBind();
+        }
+
+        protected void forw_Click(object sender, EventArgs e)
+        {
+            pageIndex++;
+            logic = new Logic();
+            String search = searchField.Text;
+            String catagory = ctagoriyLabel.Text;
+
+
+            if (Session["usr"] != null)
+            {
+                homeGridView.DataSource = logic.getDataSourceForSearch(Session["usr"].ToString(), search, catagory, pageIndex);
+            }
+            else
+            {
+                homeGridView.DataSource = logic.getDataSourceForSearch("", search, catagory, pageIndex);
+            }
+
+            homeGridView.DataBind();
         }
     }
 }

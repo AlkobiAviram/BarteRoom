@@ -169,6 +169,7 @@
                                 <td>
                                     <asp:Label ID="searchField" runat="server" Visible =" false" Text="Label" Font-Bold="True"></asp:Label>
                                     <asp:Label ID="results" runat="server" Visible =" false" Text="Label"></asp:Label>
+                                    <asp:Label ID="ctagoriyLabel" runat="server" Text="Label" Visible="false"></asp:Label>
                                 </td>
                             </tr>
                         </table>
@@ -181,7 +182,7 @@
                             <tr>
                                 <td class="auto-style2"></td>
                                 <td>
-                        <asp:GridView ID="homeGridView" CssClass="table table-responsive table-striped" HorizontalAlign="Center" AllowSorting="True"  AllowPaging="True" GridLines="None" AutoGenerateColumns="False" runat="server" DataKeyNames="Id" OnSelectedIndexChanged="homeGridView_SelectedIndexChanged">
+                        <asp:GridView ID="homeGridView" CssClass="table table-responsive table-striped" HorizontalAlign="Center" GridLines="None" AutoGenerateColumns="False" runat="server" DataKeyNames="Id" ShowFooter="True">
                             <Columns>
                         
                                 <asp:ImageField DataImageUrlField ="Image" NullDisplayText="no image" >
@@ -195,9 +196,30 @@
                                     </ItemTemplate>
                                 </asp:TemplateField>
                
-                                <asp:BoundField DataField="comments" HeaderText="Comments" SortExpression="comments" />
-                                <asp:BoundField DataField="description" HeaderText="Description" SortExpression="description" />
-                                <asp:BoundField DataField="Id" HeaderText="Item BarCode" ReadOnly="True" SortExpression="Id" />
+                                <asp:TemplateField HeaderText="Comments" SortExpression="comments">
+                                    <EditItemTemplate>
+                                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("comments") %>'></asp:TextBox>
+                                    </EditItemTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("comments") %>'></asp:Label>
+                                    </ItemTemplate>
+                                    <FooterTemplate>
+                                        <asp:LinkButton ID="prev" runat="server" OnClick="prev_Click">prev</asp:LinkButton>
+                                    </FooterTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Description" SortExpression="description">
+                                    <EditItemTemplate>
+                                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("description") %>'></asp:TextBox>
+                                    </EditItemTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("description") %>'></asp:Label>
+                                    </ItemTemplate>
+                                    <FooterTemplate>
+                                        <asp:LinkButton ID="forw" runat="server" OnClick="forw_Click">forward</asp:LinkButton>
+                                    </FooterTemplate>
+                                </asp:TemplateField>
+               
+                                <asp:BoundField DataField="Id" HeaderText="Item BarCode" SortExpression="Id" ReadOnly="True" />
                             </Columns>
                          </asp:GridView>
                             </td>
@@ -213,7 +235,7 @@
         <!-- ===================================================search=======================================================  -->
 
         <!-- ===================================================Login Modal=======================================================  -->
-         <div class="modal fade" id="login" role="dialog" >
+         <div class="modal fade" id="login" role="dialog" runat="server" >
              <div class="modal-dialog ">
                  <div class="modal-content">
                      <div class="modal-header">
@@ -240,7 +262,7 @@
                          <asp:LinkButton ID="forgotPassword" runat="server" CssClass="change" ForeColor="Blue" OnClick="forgotPassword_Click">forgot Your Password?</asp:LinkButton>
                      </div>
                      <div class="modal-footer">
-                         <asp:Button class="btn btn-info" ID="Login" runat="server" OnClick="Login_Click" Text="Login" ValidationGroup="LoginGroup"/>
+                         <asp:Button class="btn btn-info" ID="LoginCmd" runat="server" OnClick="Login_Click" Text="Login" ValidationGroup="LoginGroup"/>
                          <button class="btn btn-info" data-dismiss="modal"> Cancel </button>
 
 
