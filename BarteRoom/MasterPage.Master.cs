@@ -272,7 +272,7 @@ namespace BarteRoom
         {
             int index = Convert.ToInt32(homeGridView.SelectedIndex);
             GridViewRow row = homeGridView.Rows[index];
-            Session["item_id"] = row.Cells[4].Text;
+            Session["item_id"] = row.Cells[3].Text;
             Response.Redirect("/ItemView.aspx");
         }
 

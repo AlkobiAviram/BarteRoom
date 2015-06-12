@@ -13,11 +13,20 @@
             <div class="col-md-10">
                     <asp:GridView ID="GridView1"  CssClass="table table-responsive table-striped"  runat="server" AllowSorting="True"  AllowPaging="True"  AutoGenerateColumns="False" GridLines="None" OnRowCommand="GridView1_RowCommand" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowDeleted="GridView1_RowDeleted" OnRowDeleting="GridView1_RowDeleting" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating" OnRowUpdated="GridView1_RowUpdated" OnSelectedIndexChanging="GridView1_SelectedIndexChanging" >
                         <Columns>
-                           <asp:CommandField ShowEditButton="True" ButtonType="Button" ControlStyle-CssClass="btn btn-primary"/>
+                           <asp:CommandField ShowEditButton="True" ButtonType="Button" ControlStyle-CssClass="btn btn-primary">
                      
-                            <asp:CommandField ShowDeleteButton="True" ButtonType="Button" ControlStyle-CssClass="btn btn-danger" />
+<ControlStyle CssClass="btn btn-primary"></ControlStyle>
+                            </asp:CommandField>
+                     
+                            <asp:CommandField ShowDeleteButton="True" ButtonType="Button" ControlStyle-CssClass="btn btn-danger" >
                         
-                            <asp:CommandField ShowSelectButton="True" ButtonType="Button" ControlStyle-CssClass="btn btn-info" />
+<ControlStyle CssClass="btn btn-danger"></ControlStyle>
+                            </asp:CommandField>
+                        
+                            <asp:CommandField ShowSelectButton="True" ButtonType="Button" ControlStyle-CssClass="btn btn-info" >
+
+<ControlStyle CssClass="btn btn-info"></ControlStyle>
+                            </asp:CommandField>
 
                             <asp:ImageField DataImageUrlField ="Image" NullDisplayText="no image"  >
                                
@@ -28,6 +37,7 @@
                             <asp:BoundField DataField="id" HeaderText="Item BarCode" /> 
 
                         </Columns>
+                        <EditRowStyle Width="150px" />
                 </asp:GridView>
             </div>
           

@@ -68,7 +68,6 @@
                       <ul class="dropdown-menu" role="menu">
                           <li><asp:LinkButton ID="MyBarter" runat="server" OnClick="MyBarter_Click">My Barter list</asp:LinkButton></li>
                           <li><asp:LinkButton ID="AddItem" runat="server" OnClick="AddItem_Click">Add an Item</asp:LinkButton></li>
-                          <li><asp:LinkButton ID="Search" runat="server" OnClick="Search_Click">Search For Items</asp:LinkButton></li>
                           <li><asp:LinkButton ID="MyBids" runat="server" OnClick="MyBids_Click">My Bids</asp:LinkButton></li>
                           <li><asp:LinkButton ID="MyOffers" runat="server" OnClick="MyOffers_Click">My Offers</asp:LinkButton></li>
                           <li><asp:LinkButton ID="LogOut" runat="server" OnClick="LogOut_Click">LogOut</asp:LinkButton></li>
@@ -182,7 +181,7 @@
                             <tr>
                                 <td class="auto-style2"></td>
                                 <td>
-                        <asp:GridView ID="homeGridView" CssClass="table table-responsive table-striped" HorizontalAlign="Center" GridLines="None" AutoGenerateColumns="False" runat="server" DataKeyNames="Id" ShowFooter="True" OnSelectedIndexChanged="homeGridView_SelectedIndexChanged" AllowPaging="True" PageSize="10" OnPageIndexChanging="homeGridView_PageIndexChanging" >
+                        <asp:GridView ID="homeGridView" CssClass="table table-responsive table-striped" HorizontalAlign="Center" GridLines="None" AutoGenerateColumns="False" runat="server" DataKeyNames="Id" ShowFooter="True" OnSelectedIndexChanged="homeGridView_SelectedIndexChanged" AllowPaging="True" OnPageIndexChanging="homeGridView_PageIndexChanging" ShowHeader="False" >
                             <Columns>
                         
                                 <asp:TemplateField>
@@ -190,7 +189,7 @@
                                         <asp:TextBox ID="TextBox3" runat="server" Text='<%# Eval("Image") %>'></asp:TextBox>
                                     </EditItemTemplate>
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="LinkButton2" CommandName="Select" runat="server"><asp:Image ID="Image1" runat="server" Height="250px" Width="250px" ImageUrl='<%# Eval("Image") %>' /></asp:LinkButton>         
+                                        <asp:LinkButton ID="LinkButton2" CommandName="Select" runat="server"><asp:Image ID="Image1" runat="server"  ImageUrl='<%# Eval("Image") %>' /></asp:LinkButton>         
                                     </ItemTemplate>
 
                                 </asp:TemplateField>
@@ -199,6 +198,7 @@
                                     <ItemTemplate>
                                         <asp:LinkButton ID="LinkButton1" runat="server" CssClass="change" CausesValidation="False" CommandName="Select" Text='<%# Bind("name") %>' ></asp:LinkButton>
                                     </ItemTemplate>
+                                    <ItemStyle ForeColor="#333300" />
                                 </asp:TemplateField>
                
                                 <asp:TemplateField HeaderText="Comments" SortExpression="comments">
@@ -208,16 +208,9 @@
                                     <ItemTemplate>
                                         <asp:Label ID="Label1" runat="server" Text='<%# Bind("comments") %>'></asp:Label>
                                     </ItemTemplate>
+                                    <ItemStyle Font-Bold="True" Font-Size="Large" ForeColor="#3366CC" />
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Description" SortExpression="description">
-                                    <EditItemTemplate>
-                                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("description") %>'></asp:TextBox>
-                                    </EditItemTemplate>
-                                    <ItemTemplate>
-                                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("description") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-               
+                         
                                <asp:BoundField DataField="Id" HeaderText="Item BarCode" SortExpression="Id" ReadOnly="True" />
                             </Columns>
                             <PagerSettings Mode="NextPrevious" NextPageText="Next" PreviousPageText="Previous" PageButtonCount="100" Position="TopAndBottom" />
@@ -233,6 +226,17 @@
             
          <div class="container">
 
+
+                    <!--
+                                <asp:TemplateField HeaderText="Description" SortExpression="description">
+                                    <EditItemTemplate>
+                                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("description") %>'></asp:TextBox>
+                                    </EditItemTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("description") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                -->
         <!-- ===================================================search=======================================================  -->
 
         <!-- ===================================================Login Modal=======================================================  -->

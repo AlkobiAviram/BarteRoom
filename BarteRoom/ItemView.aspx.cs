@@ -16,9 +16,20 @@ namespace BarteRoom
             Item item = lg.getItemById(Session["item_id"].ToString());
             itemName.Text = item.getName();
             itemDescription.Text=item.getDescription();
-            //itemComments.Text=item.getComments();
             itemBarCode.Text = item.getId();
-           
+            //checking if the user logged in
+            if (Session["usr"] == null)
+            {
+                makeBidLabel.Visible = true;
+                makeBidLabel.Text = "Please log in to make a bid";
+                offer_cmd.Visible = false;
+
+            }
+            else
+            {
+                makeBidLabel.Visible = false;
+                offer_cmd.Visible = true;
+            }
         }
 
         protected void offer_cmd_Click(object sender, EventArgs e)
@@ -28,7 +39,7 @@ namespace BarteRoom
 
         protected void BackToList_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/BarterList.aspx");
+            Response.Redirect("/Home.aspx");
         }
     }
 }

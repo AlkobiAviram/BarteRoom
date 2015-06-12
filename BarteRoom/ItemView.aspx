@@ -32,7 +32,8 @@
                 <h3>Make a Bid</h3>
                    <p>
                        <asp:Button ID="offer_cmd" runat="server" Text="Make a Bid" CssClass=" btn btn-success" OnClick="offer_cmd_Click"/>
-                       
+                       <asp:Label ID="makeBidLabel" runat="server" OnDataBinding="Page_Load"></asp:Label>
+
                 </p>
                     <p>
                         <asp:Button ID="BackToList" runat="server" Text="<< Back to list" CssClass=" btn btn-primary" OnClick="BackToList_Click"/>
