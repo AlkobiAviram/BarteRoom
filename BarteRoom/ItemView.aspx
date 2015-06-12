@@ -4,12 +4,14 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-
-    <div class="container">
+               <link href="imageHover.css" rel="stylesheet" type="text/css" runat="server"/>
+   <div class="container">
     <div class="row">
         <div class="col-md-3 border-css">
             
-            <asp:Image ID="item_pic" CssClass="img-responsive" runat="server" />
+             <div class="zoom_img" >
+            <asp:Image  id="item_pic3" CssClass="img-responsive"  runat="server"/>
+            </div>
         </div>
         <div class="col-md-6">
             <div class="row">

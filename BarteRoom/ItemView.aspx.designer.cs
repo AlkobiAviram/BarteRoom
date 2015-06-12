@@ -13,13 +13,13 @@ namespace BarteRoom {
     public partial class viewItem {
         
         /// <summary>
-        /// item_pic control.
+        /// item_pic3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image item_pic;
+        protected global::System.Web.UI.WebControls.Image item_pic3;
         
         /// <summary>
         /// itemName control.

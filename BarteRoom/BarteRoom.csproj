@@ -63,6 +63,7 @@
     <Content Include="BarterList.aspx" />
     <Content Include="Bids.aspx" />
     <Content Include="Home.aspx" />
+    <Content Include="ImageHover.css" />
     <Content Include="imageSlider.css" />
     <Content Include="img\%24_57.jpg" />
     <Content Include="img\adidas-euro-puntero-football-white-p18231-1462_zoom.jpg" />

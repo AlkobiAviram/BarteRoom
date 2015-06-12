@@ -1,0 +1,27 @@
+﻿  /*Time for the CSS... 
+      *this css zooms a image on mouse hover
+  */
+    * {margin: 0; padding: 0;}
+    body {
+        background: #FFFFFF;
+
+    }
+.zoom_img img{
+margin:50px;
+height:225px;
+width:225px;
+-moz-transition:-moz-transform 0.5s ease-in; 
+-webkit-transition:-webkit-transform 0.5s ease-in; 
+-o-transition:-o-transform 0.5s ease-in;
+
+	/*Lets add a shadow*/
+box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.75);
+   padding:1px;
+   border:1px solid #021a40;
+   
+}
+.zoom_img img:hover{
+-moz-transform:scale(2); 
+-webkit-transform:scale(2);
+-o-transform:scale(2);
+}

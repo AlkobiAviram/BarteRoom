@@ -9,14 +9,22 @@ namespace BarteRoom
 {
     public partial class viewItem : System.Web.UI.Page
     {
+        Logic lg = new Logic();
+        
         protected void Page_Load(object sender, EventArgs e)
         {
-            Logic lg = new Logic();
-            item_pic.ImageUrl = lg.setImagePath(Session["item_id"].ToString());
+            
+            //setting image 
+            string[] split = lg.setImagePath(Session["item_id"].ToString()).Split('/');
+            item_pic3.ImageUrl = "img/OriginalSize_" + split[1];        
+
+            //setting labels
             Item item = lg.getItemById(Session["item_id"].ToString());
             itemName.Text = item.getName();
             itemDescription.Text=item.getDescription();
             itemBarCode.Text = item.getId();
+
+
             //checking if the user logged in
             if (Session["usr"] == null)
             {
@@ -41,5 +49,8 @@ namespace BarteRoom
         {
             Response.Redirect("/Home.aspx");
         }
+
+      
+
     }
 }
