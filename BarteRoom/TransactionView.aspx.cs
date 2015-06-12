@@ -57,5 +57,30 @@ namespace BarteRoom
         {
             Response.Redirect("/BarterList.aspx");
         }
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
+            if (e.CommandName == "Select")
+            {
+            }
+        }
+
+
+        protected void GridView1_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        {
+            int index = Convert.ToInt32(e.NewSelectedIndex);
+            GridViewRow row = GridView1.Rows[index];
+            Session["item_id"] = row.Cells[5].Text;
+            Response.Redirect("/ItemView.aspx");
+            GridView1.EditIndex = -1;
+            bind();
+
+        }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

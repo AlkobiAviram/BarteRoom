@@ -38,7 +38,7 @@
         <tr>
             <td class="auto-style5">&nbsp;</td>
             <td class="auto-style3">
-                <asp:GridView ID="Managers" runat="server" AutoGenerateColumns="False" DataKeyNames="usr" DataSourceID="SqlDataSource1" GridLines="Horizontal" ShowFooter="True" Width="685px" AllowSorting="True" BorderStyle="Inset" HorizontalAlign="Center" CellPadding="5" AllowPaging="True">
+                <asp:GridView ID="Managers" runat="server" AutoGenerateColumns="False" DataKeyNames="usr" DataSourceID="SqlDataSource1" GridLines="Horizontal" ShowFooter="True" Width="685px" AllowSorting="True" BorderStyle="Inset" HorizontalAlign="Center" CellPadding="5" AllowPaging="True" CssClass="table table-responsive table-striped" >
                     <Columns>
 
                    <asp:TemplateField ShowHeader="False">
