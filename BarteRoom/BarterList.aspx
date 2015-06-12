@@ -19,7 +19,7 @@
                         
                             <asp:CommandField ShowSelectButton="True" ButtonType="Button" ControlStyle-CssClass="btn btn-info" />
 
-                            <asp:ImageField DataImageUrlField ="Image" NullDisplayText="no image" ControlStyle-CssClass="img-responsive img-css" >
+                            <asp:ImageField DataImageUrlField ="Image" NullDisplayText="no image"  >
                                
                             </asp:ImageField>
                             <asp:BoundField DataField="Name" HeaderText="Name" />

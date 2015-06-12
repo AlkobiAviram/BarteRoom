@@ -51,15 +51,25 @@ namespace BarteRoom
 
 
 
-                    //String path = "BarteRoom/img/" + Path.GetFileName(image_upload.PostedFile.FileName);
                    
                     lg = new Logic();
                     Item newItem = new Item(Session["usr"].ToString(), textBox_name.Value.ToString(), classes_list.SelectedValue.ToString(), textBox_comments.Value.ToString(), textBox_description.Value.ToString());
-                    string path = Server.MapPath("~/img/" + image_upload.FileName);
+                    string file_name = image_upload.FileName;
+                    
+                    //saving original  size image
+                    string path = Server.MapPath("~/img/OriginalSize_" + file_name);
                     image_upload.PostedFile.SaveAs(path);
-                    lg.addImage(newItem.getId(), "img/" + image_upload.FileName);
+                
+                   
+                    
+                    //saving display size copy
+                    Bitmap target = FixedSize(System.Drawing.Image.FromFile(path), 225, 225) as Bitmap;
+                    path = Server.MapPath("~/img/"+file_name);
+                    target.Save(path);
+
+                    lg.addImage(newItem.getId(), "img/" + file_name);
                     lg.addItem(newItem);
-                    Response.Redirect("BarterList.aspx");
+                    Response.Redirect("/BarterList.aspx");
                    
                 }
                 catch (Exception ex)
@@ -85,37 +95,54 @@ namespace BarteRoom
 
 
         }
-        public void ResizeImage(string OriginalFile, string NewFile, int NewWidth, int MaxHeight, bool OnlyResizeIfWider)
+        static System.Drawing.Image FixedSize(System.Drawing.Image imgPhoto, int Width, int Height)
         {
-            System.Drawing.Image FullsizeImage = System.Drawing.Image.FromFile(OriginalFile);
+            int sourceWidth = imgPhoto.Width;
+            int sourceHeight = imgPhoto.Height;
+            int sourceX = 0;
+            int sourceY = 0;
+            int destX = 0;
+            int destY = 0;
 
-            // Prevent using images internal thumbnail
-            FullsizeImage.RotateFlip(System.Drawing.RotateFlipType.Rotate180FlipNone);
-            FullsizeImage.RotateFlip(System.Drawing.RotateFlipType.Rotate180FlipNone);
+            float nPercent = 0;
+            float nPercentW = 0;
+            float nPercentH = 0;
 
-            if (OnlyResizeIfWider)
+            nPercentW = ((float)Width / (float)sourceWidth);
+            nPercentH = ((float)Height / (float)sourceHeight);
+            if (nPercentH < nPercentW)
             {
-                if (FullsizeImage.Width <= NewWidth)
-                {
-                    NewWidth = FullsizeImage.Width;
-                }
+                nPercent = nPercentH;
+                destX = System.Convert.ToInt16((Width -
+                              (sourceWidth * nPercent)) / 2);
+            }
+            else
+            {
+                nPercent = nPercentW;
+                destY = System.Convert.ToInt16((Height -
+                              (sourceHeight * nPercent)) / 2);
             }
 
-            int NewHeight = FullsizeImage.Height * NewWidth / FullsizeImage.Width;
-            if (NewHeight > MaxHeight)
-            {
-                // Resize with height instead
-                NewWidth = FullsizeImage.Width * MaxHeight / FullsizeImage.Height;
-                NewHeight = MaxHeight;
-            }
+            int destWidth = (int)(sourceWidth * nPercent);
+            int destHeight = (int)(sourceHeight * nPercent);
 
-            System.Drawing.Image NewImage = FullsizeImage.GetThumbnailImage(NewWidth, NewHeight, null, IntPtr.Zero);
+            Bitmap bmPhoto = new Bitmap(Width, Height,
+                              System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+            bmPhoto.SetResolution(imgPhoto.HorizontalResolution,
+                             imgPhoto.VerticalResolution);
 
-            // Clear handle to original file so that we can overwrite it if necessary
-            FullsizeImage.Dispose();
+            Graphics grPhoto = Graphics.FromImage(bmPhoto);
+            grPhoto.Clear(Color.White);
+            grPhoto.InterpolationMode =
+                    InterpolationMode.HighQualityBicubic;
 
-            // Save resized picture
-            NewImage.Save(NewFile);
+            grPhoto.DrawImage(imgPhoto,
+                new Rectangle(destX, destY, destWidth, destHeight),
+                new Rectangle(sourceX, sourceY, sourceWidth, sourceHeight),
+                GraphicsUnit.Pixel);
+
+            grPhoto.Dispose();
+            return bmPhoto;
         }
 
     }
