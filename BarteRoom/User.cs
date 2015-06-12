@@ -13,8 +13,6 @@ namespace BarteRoom
         private String fullName;
         private String email;
         private int manager;
-        LinkedList<Item> itemList;
-        Logic lg;
         public User(String usr)
         {
             this.usr=usr;
@@ -27,14 +25,23 @@ namespace BarteRoom
             this.email = email;
             this.manager = manager;
         
-            lg = new Logic();
+         
         }
-   //     public void fillUsrItemList(){
-     //       itemList=lg.fillUsrItemList(this.usr);
-     //   }
-   
-    
-
-
+        public string getUser()
+        {
+            return this.usr;
+        }
+        public string getFullName()
+        {
+            return this.fullName;
+        }
+        public string getEmail()
+        {
+            return this.email;
+        }
+        public int getManager()
+        {
+            return this.manager;
+        }
     }
 }

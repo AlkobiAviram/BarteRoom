@@ -283,5 +283,16 @@ namespace BarteRoom
             data = new DB();
             return data.getDataSourceForBiddedItems(trns);
         }
+        public User getUserInformation(string user)
+        {
+            data = new DB();
+            return data.getUserInformation(user);
+        }
+        public void removeTransaction(string bid_id)
+        {
+            data = new DB();
+            data.removeTransaction(bid_id);
+        }
+
     }
 }

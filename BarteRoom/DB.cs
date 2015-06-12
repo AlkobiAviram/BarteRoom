@@ -710,7 +710,59 @@ namespace BarteRoom
             return dtable;
         }
 
+        public DataTable getDataSourceForOffers(string usr)
+        {
+            string uuu = usr;
+            DataTable dtable = new DataTable();
+            DataColumn dt = new DataColumn("Bid ID");
+            DataColumn dt1 = new DataColumn("Item BarCode");
+            DataColumn dt2 = new DataColumn("Item Owner");
 
+
+
+            dtable.Columns.Add(dt);
+            dtable.Columns.Add(dt1);
+            dtable.Columns.Add(dt2);
+
+            //getting only the bid id and the item id
+            query = "select t.id,t.item_id from transactions t where t.usr='" + usr + "';";
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+                rdr = command.ExecuteReader();
+
+
+            }
+
+            catch (Exception e) { }
+
+            while (rdr.Read())
+            {
+                object[] RowValues = { "", "", "" };
+                RowValues[0] = rdr[0].ToString();
+                RowValues[1] = rdr[1].ToString();
+
+                DataRow dRow;
+                dRow = dtable.Rows.Add(RowValues);
+                dtable.AcceptChanges();
+            }
+
+            //getting the usr field of the utem owner
+            foreach (DataRow row in dtable.Rows)
+            {
+                row[2] = getUsrByItemId(row[1].ToString());
+            }
+
+
+
+
+            connect.Close();
+
+            return dtable;
+        }
 
 
 
@@ -1036,7 +1088,7 @@ namespace BarteRoom
             {
                 query += "'" + offeredItems.ElementAt(i) + "'";
                 if (i != offeredItems.Count - 1)
-                    query += " or ";
+                    query += " or id= ";
             }
             query += ";";
             try
@@ -1080,6 +1132,70 @@ namespace BarteRoom
 
 
             return dtable;
+        }
+
+        public User getUserInformation(string user)
+        {
+
+            
+            query = "select * from users where usr='" + user + "';";
+            User tempUser=null;
+           
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+                rdr = command.ExecuteReader();
+
+
+            }
+           
+            catch (Exception e) { }
+            if(rdr.Read())
+            {
+                tempUser = new User(rdr[0].ToString(), rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), Convert.ToInt16(rdr[4].ToString()));
+            }
+
+
+
+            connect.Close();
+           
+            return tempUser;
+        }
+
+        public void removeTransaction(string bid_id)
+        {
+        
+            query = "DELETE FROM transactions WHERE id = '" + bid_id + "';";
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+
+                command.ExecuteNonQuery();
+                
+
+            }
+            catch (Exception e) { }
+            connect.Close();
+            query = "DELETE FROM transactionsItems WHERE id = '" + bid_id + "';";
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+
+                command.ExecuteNonQuery();
+                
+
+            }
+            catch (Exception e) { }
+            connect.Close();
+            return;
         }
 
 

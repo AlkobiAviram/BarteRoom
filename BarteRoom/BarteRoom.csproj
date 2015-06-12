@@ -108,7 +108,9 @@
     <Content Include="img\img1.jpg" />
     <Content Include="img\img2.jpg" />
     <Content Include="img\img3.jpg" />
-    <Content Include="Offers.aspx" />
+    <Content Include="Offers.aspx">
+      <BrowseToURL>~/Offeres.aspx</BrowseToURL>
+    </Content>
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

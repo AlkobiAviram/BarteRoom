@@ -9,7 +9,9 @@
         </div>
         <div class="col-md-6">
             <div class="row">
-               <h3>Bidded Item</h3>
+               <h2>Bidded Item</h2>
+                <p></p>
+                <h3>Item Name</h3>
                  <p>
                      <asp:Label ID="itemName" runat="server"></asp:Label>
                 </p>
@@ -23,11 +25,15 @@
                    <p>
                       <asp:Label ID="itemBarCode" runat="server" OnDataBinding="Page_Load"></asp:Label>
                 </p>
+                 <h3>Item Owner</h3>
+                   <p>
+                      <asp:Label ID="itemOwner" runat="server" OnDataBinding="Page_Load"></asp:Label>
+                </p>
             </div>
                 <div class="row">
-                <h3>Bid Operations</h3>
+                <h2>Bid Operations</h2>
                    <p>
-                       <asp:Button ID="offer_cmd" runat="server" Text="Make a Bid" CssClass=" btn btn-success" OnClick="offer_cmd_Click"/>      
+                       <asp:Button ID="cancel_cmd" runat="server" Text="Cancel Bid" CssClass=" btn btn-success" OnClick="cancel_cmd_Click"/>      
                 </p>
                     <p>
                         <asp:Button ID="BackToList" runat="server" Text="<< Back to list" CssClass=" btn btn-primary" OnClick="BackToList_Click"/>
@@ -35,7 +41,7 @@
             </div>
 
                <div class="row">
-                <h3>Your Offerd Items</h3>
+                <h2>Your Offered Items</h2>
                    <asp:GridView ID="GridView1"  CssClass="table table-responsive table-striped"  runat="server" AllowSorting="True"  AllowPaging="True"  AutoGenerateColumns="False" GridLines="None"  >
                         <Columns>                                 
                             <asp:CommandField ShowSelectButton="True" ButtonType="Button" ControlStyle-CssClass="btn btn-info" />
@@ -52,6 +58,21 @@
                 </asp:GridView>
             </div>
         </div>
+           <div class="col-md-2">
+             
+              <h2>User Information</h2>
+                
+               
+                        <h3>Contact's User Tag</h3>
+                  <p>
+                     <asp:Label ID="contact_usr" runat="server"></asp:Label>
+                  </p>  <h3>Contact's Full Name</h3><p>
+                     <asp:Label ID="contact_fullName" runat="server"></asp:Label>
+                   </p>  <h3>Contact's Email</h3><p>
+                     <asp:Label ID="contact_email" runat="server"></asp:Label>
+                   </p>  
+                       
+          </div>
         <div class="col-md-2">
              
               <h2>Side news</h2>
