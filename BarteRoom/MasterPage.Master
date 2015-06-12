@@ -141,7 +141,7 @@
                                 <td class="auto-style2"></td>
                                 <td class="auto-style3">
 
-                                    <asp:TextBox ID="SearchTextBox" class="form-control" Height="45px" placeholder="Search..." Width="700px" runat="server" Font-Size="Large"></asp:TextBox>
+                                    <asp:TextBox ID="SearchTextBox" class="form-control" Height="45px" placeholder="Search..." Width="700px" runat="server" Font-Size="Large" Visible="false"></asp:TextBox>
        
                                 </td>
 
