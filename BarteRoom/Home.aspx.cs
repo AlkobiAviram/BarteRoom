@@ -25,7 +25,8 @@ namespace BarteRoom
             
             //setting the image slider images.
             //note: first i save a copy of a item's imagein 620x320 dimension and then displaies it in the image slider 
-            Bitmap target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath(images.ElementAt(0).getPath())), 640, 320) as Bitmap;
+            string[] split = images.ElementAt(0).getPath().Split('/');
+            Bitmap target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath("img/OriginalSize_"+split[1])), 640, 320) as Bitmap;
             string path = Server.MapPath("~/img/resizeImage0.jpg");
             target.Save(path);
             img0.Src = "~/img/resizeImage0.jpg";
@@ -33,31 +34,32 @@ namespace BarteRoom
 
 
 
-            target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath(images.ElementAt(1).getPath())), 640, 320) as Bitmap;
+            split = images.ElementAt(1).getPath().Split('/');
+            target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath("img/OriginalSize_" + split[1])), 640, 320) as Bitmap;
             path = Server.MapPath("~/img/resizeImage1.jpg");
             target.Save(path);
             img1.Src = "~/img/resizeImage1.jpg";
             img11.Src = "~/img/resizeImage1.jpg";
 
 
-            target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath(images.ElementAt(2).getPath())), 640, 320) as Bitmap;
-            path = Server.MapPath("~/img/resizeImage2.jpg");
+            split = images.ElementAt(2).getPath().Split('/');
+            target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath("img/OriginalSize_" + split[1])), 640, 320) as Bitmap; path = Server.MapPath("~/img/resizeImage2.jpg");
             target.Save(path);
             img2.Src = "~/img/resizeImage2.jpg";
             img22.Src = "~/img/resizeImage2.jpg";
 
 
 
-            target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath(images.ElementAt(3).getPath())), 640, 320) as Bitmap;
-            path = Server.MapPath("~/img/resizeImage3.jpg");
+            split = images.ElementAt(3).getPath().Split('/');
+            target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath("img/OriginalSize_" + split[1])), 640, 320) as Bitmap; path = Server.MapPath("~/img/resizeImage3.jpg");
             target.Save(path);
             img3.Src = "~/img/resizeImage3.jpg";
             img33.Src = "~/img/resizeImage3.jpg";
 
 
 
-            target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath(images.ElementAt(4).getPath())), 640, 320) as Bitmap;
-            path = Server.MapPath("~/img/resizeImage4.jpg");
+            split = images.ElementAt(4).getPath().Split('/');
+            target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath("img/OriginalSize_" + split[1])), 640, 320) as Bitmap; path = Server.MapPath("~/img/resizeImage4.jpg");
             target.Save(path);
             img4.Src = "~/img/resizeImage4.jpg";
             img44.Src = "~/img/resizeImage4.jpg";
