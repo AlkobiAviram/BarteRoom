@@ -95,7 +95,7 @@
                            </li>
                            
                            <li class="dropdown-header">
-                               <asp:GridView ID="recentBids" runat="server" BorderStyle="None" GridLines="Horizontal" HeaderStyle-BorderStyle="None" PagerSettings-Visible="True" RowStyle-BorderStyle="None" ShowHeader="False" RowStyle-HorizontalAlign="Center" AllowPaging="True" AllowCustomPaging="True" AutoGenerateColumns="False">
+                               <asp:GridView ID="recentBids" runat="server" BorderStyle="None" GridLines="Horizontal" HeaderStyle-BorderStyle="None" PagerSettings-Visible="True" RowStyle-BorderStyle="None" ShowHeader="False" RowStyle-HorizontalAlign="Center" AllowPaging="True" AllowCustomPaging="True" AutoGenerateColumns="False" OnRowCreated="recentBids_RowCreated" OnRowDataBound="recentBids_RowDataBound">
                                         <Columns>
                                           
                                             <asp:ImageField DataImageUrlField ="Image" NullDisplayText="no image" ShowHeader="false" >
@@ -182,13 +182,18 @@
                             <tr>
                                 <td class="auto-style2"></td>
                                 <td>
-                        <asp:GridView ID="homeGridView" CssClass="table table-responsive table-striped" HorizontalAlign="Center" GridLines="None" AutoGenerateColumns="False" runat="server" DataKeyNames="Id" ShowFooter="True">
+                        <asp:GridView ID="homeGridView" CssClass="table table-responsive table-striped" HorizontalAlign="Center" GridLines="None" AutoGenerateColumns="False" runat="server" DataKeyNames="Id" ShowFooter="True" OnSelectedIndexChanged="homeGridView_SelectedIndexChanged" AllowPaging="True" PageSize="10" OnPageIndexChanging="homeGridView_PageIndexChanging" >
                             <Columns>
                         
-                                <asp:ImageField DataImageUrlField ="Image" NullDisplayText="no image" >
-                                    <ControlStyle Height="250px" Width="250px" />
-                                    <ItemStyle Height="20px" Width="20px" />
-                                </asp:ImageField>
+                                <asp:TemplateField>
+                                    <EditItemTemplate>
+                                        <asp:TextBox ID="TextBox3" runat="server" Text='<%# Eval("Image") %>'></asp:TextBox>
+                                    </EditItemTemplate>
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="LinkButton2" CommandName="Select" runat="server"><asp:Image ID="Image1" runat="server" Height="250px" Width="250px" ImageUrl='<%# Eval("Image") %>' /></asp:LinkButton>         
+                                    </ItemTemplate>
+
+                                </asp:TemplateField>
                         
                                 <asp:TemplateField HeaderText="Name" ShowHeader="False">
                                     <ItemTemplate>
@@ -203,9 +208,6 @@
                                     <ItemTemplate>
                                         <asp:Label ID="Label1" runat="server" Text='<%# Bind("comments") %>'></asp:Label>
                                     </ItemTemplate>
-                                    <FooterTemplate>
-                                        <asp:LinkButton ID="prev" runat="server" OnClick="prev_Click">prev</asp:LinkButton>
-                                    </FooterTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Description" SortExpression="description">
                                     <EditItemTemplate>
@@ -214,13 +216,12 @@
                                     <ItemTemplate>
                                         <asp:Label ID="Label2" runat="server" Text='<%# Bind("description") %>'></asp:Label>
                                     </ItemTemplate>
-                                    <FooterTemplate>
-                                        <asp:LinkButton ID="forw" runat="server" OnClick="forw_Click">forward</asp:LinkButton>
-                                    </FooterTemplate>
                                 </asp:TemplateField>
                
-                                <asp:BoundField DataField="Id" HeaderText="Item BarCode" SortExpression="Id" ReadOnly="True" />
+                               <asp:BoundField DataField="Id" HeaderText="Item BarCode" SortExpression="Id" ReadOnly="True" />
                             </Columns>
+                            <PagerSettings Mode="NextPrevious" NextPageText="Next" PreviousPageText="Previous" PageButtonCount="100" Position="TopAndBottom" />
+                            <PagerStyle HorizontalAlign="Center" CssClass="change" BorderWidth="2px" Wrap="true" />
                          </asp:GridView>
                             </td>
                             </tr>

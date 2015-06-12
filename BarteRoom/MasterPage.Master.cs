@@ -12,7 +12,6 @@ namespace BarteRoom
 {
     public partial class MasterPage : System.Web.UI.MasterPage
     {
-        protected static int pageIndex;
         private HttpCookie cookie;
         private Logic logic;
 
@@ -259,11 +258,11 @@ namespace BarteRoom
                 searchField.Visible = true;
                 if (Session["usr"] != null)
                 {
-                    homeGridView.DataSource = logic.getDataSourceForSearch(Session["usr"].ToString(), search, catagory, pageIndex);
+                    homeGridView.DataSource = logic.getDataSourceForSearch(Session["usr"].ToString(), search, catagory);
                 }
                 else
                 {
-                    homeGridView.DataSource = logic.getDataSourceForSearch("", search, catagory, pageIndex);
+                    homeGridView.DataSource = logic.getDataSourceForSearch("", search, catagory);
                 }
                 homeGridView.DataBind();
             }
@@ -320,13 +319,8 @@ namespace BarteRoom
 
         }
 
-        protected void prev_Click(object sender, EventArgs e)
+        protected void homeGridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            if (pageIndex > 0)
-            {
-                pageIndex--;
-            }
-
             logic = new Logic();
             String search = searchField.Text;
             String catagory = ctagoriyLabel.Text;
@@ -334,33 +328,28 @@ namespace BarteRoom
 
             if (Session["usr"] != null)
             {
-                homeGridView.DataSource = logic.getDataSourceForSearch(Session["usr"].ToString(), search, catagory, pageIndex);
+                homeGridView.DataSource = logic.getDataSourceForSearch(Session["usr"].ToString(), search, catagory);
             }
             else
             {
-                homeGridView.DataSource = logic.getDataSourceForSearch("", search, catagory, pageIndex);
+                homeGridView.DataSource = logic.getDataSourceForSearch("", search, catagory);
             }
+            homeGridView.PageIndex = e.NewPageIndex;
             homeGridView.DataBind();
         }
 
-        protected void forw_Click(object sender, EventArgs e)
+        protected void recentBids_RowCreated(object sender, GridViewRowEventArgs e)
         {
-            pageIndex++;
-            logic = new Logic();
-            String search = searchField.Text;
-            String catagory = ctagoriyLabel.Text;
+            e.Row.Attributes["onmouseover"] = "this.style.cursor='pointer';this.style.textDecoration='underline';";
+            e.Row.Attributes["onmouseout"] = "this.style.textDecoration='none';";
+            e.Row.ToolTip = "Click to select row";
+            e.Row.Attributes["onclick"] = this.Page.ClientScript.GetPostBackClientHyperlink(recentBids, "Select$" + e.Row.RowIndex);
+        }
 
-
-            if (Session["usr"] != null)
-            {
-                homeGridView.DataSource = logic.getDataSourceForSearch(Session["usr"].ToString(), search, catagory, pageIndex);
-            }
-            else
-            {
-                homeGridView.DataSource = logic.getDataSourceForSearch("", search, catagory, pageIndex);
-            }
-
-            homeGridView.DataBind();
+        protected void recentBids_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            e.Row.Attributes.Add("onmouseover", "this.originalstyle=this.style.backgroundColor;this.style.backgroundColor='#EEFFAA'");
+            e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor=this.originalstyle;");
         }
     }
 }

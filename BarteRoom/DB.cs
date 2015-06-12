@@ -559,12 +559,8 @@ namespace BarteRoom
         }
 <<<<<<< HEAD
         */
-        public DataTable getDataSourceForSearch(String usr, string search, String catagory, int pageIndex)
+        public DataTable getDataSourceForSearch(String usr, string search, String catagory)
         {
-            int from = 10 * pageIndex;
-            int to = from + 10;
-            int i = 0;
-
             DataTable dtable = new DataTable();
             DataColumn dt = new DataColumn("Name");
             DataColumn dt1 = new DataColumn("Comments");
@@ -603,13 +599,7 @@ namespace BarteRoom
 
             while (rdr.Read())
             {
-                if (from == to)
-                {
-                    break;
-                }
-
-                if (i >= from)
-                {
+              
                     object[] RowValues = { "", "", "", "", "" };
                     RowValues[0] = rdr[1].ToString();
                     RowValues[1] = rdr[3].ToString();
@@ -622,13 +612,6 @@ namespace BarteRoom
                     dRow = dtable.Rows.Add(RowValues);
                     dtable.AcceptChanges();
 
-                    from++;
-                    i++;
-                }
-                else
-                {
-                    i++;
-                }
             }
 
             connect.Close();
@@ -955,7 +938,7 @@ namespace BarteRoom
 
         public void MarkAsRead(string usr)
         {
-            query = "UPDATE transactions SET readBid = 1 WHERE readBid IN (select t.readBid from transactions t where (i.Id = t.item_id) AND (i.usr = 'a') AND (t.readBid = 0));";
+            query = "UPDATE transactions SET readBid = 1 WHERE readBid IN (select t.readBid from transactions t where (t.owner = '" + usr + "') AND (t.readBid = 0));";
 
             try
             {
