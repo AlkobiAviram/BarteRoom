@@ -6596,7 +6596,7 @@ button.close {
 
 .change:hover{
     color: Blue;
-    background-color: White;
+    background-color: transparent;
     text-decoration:underline;
 }
 

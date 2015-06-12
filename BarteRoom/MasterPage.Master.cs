@@ -301,6 +301,7 @@ namespace BarteRoom
             Response.Redirect("/Offers.aspx");
         }
 
+
         protected void forgotPassword_Click(object sender, EventArgs e)
         {
 
@@ -359,6 +360,28 @@ namespace BarteRoom
         protected void recentBids_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
 
+        }
+
+        protected void AboutCmd_Click(object sender, EventArgs e)
+        {
+            SearchTextBox.Visible = false;
+            catagories.Visible = false;
+            Button1.Visible = false;
+            AdvancedSearch.Visible = false;
+            homeGridView.Visible = false;
+
+            Response.Redirect("/About.aspx");
+        }
+
+        protected void ImageButton2_Click(object sender, ImageClickEventArgs e)
+        {
+            SearchTextBox.Visible = true;
+            catagories.Visible = true;
+            Button1.Visible = true;
+            AdvancedSearch.Visible = true;
+            homeGridView.Visible = true;
+
+            Response.Redirect("Home.aspx");
         }
     }
 }

@@ -120,7 +120,7 @@ namespace BarteRoom
 
         protected void viewItem_cmd_Click(object sender, EventArgs e)
         {
-          
+    
             /*
             if (label0.TagName )
             {

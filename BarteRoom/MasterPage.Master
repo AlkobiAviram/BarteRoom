@@ -46,21 +46,20 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                   </button>
-                               
-                    <a class="navbar-brand" href="/Home.aspx">BarteRoom</a>
-                    <!--img src="img/img4.jpg" class="img-responsive" /-->
-               
+              
                 </div>
- 
+                
+                    
+                
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
+                      <li><asp:ImageButton ID="ImageButton2" ImageUrl="img/img4.jpg" runat="server" Height="45" Width="110" OnClick="ImageButton2_Click"/></li>
                       <li><asp:HyperLink ID="manage" NavigateUrl="/Manager.aspx" data-toggle="modal" runat="server">Manager Page</asp:HyperLink></li>
-                    <li> <a href="/Home.aspx">Home<span class="sr-only">(current)</span></a></li>
                      <li><asp:HyperLink ID="log" NavigateUrl="#login" data-toggle="modal" runat="server">Login</asp:HyperLink></li>
                      <li><asp:HyperLink ID="reg" NavigateUrl="#register" data-toggle="modal" runat="server">Register</asp:HyperLink></li>
-                      <li><a href="/About.aspx">About</a></li>
+                      <li><asp:LinkButton ID="AboutCmd" runat="server" OnClick="AboutCmd_Click">About</asp:LinkButton></li>
                       <li><asp:HyperLink ID="contactUs" NavigateUrl="#contact" data-toggle="modal" runat="server">Contact Us</asp:HyperLink></li>
      
                        <li class="dropdown">
@@ -206,7 +205,8 @@
                                         <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("comments") %>'></asp:TextBox>
                                     </EditItemTemplate>
                                     <ItemTemplate>
-                                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("comments") %>'></asp:Label>
+                                        <asp:LinkButton ID="LinkButton3" runat="server" CssClass="change" CausesValidation="False" CommandName="Select"><asp:Label ID="Label1" runat="server" Text='<%# Bind("comments") %>'></asp:Label></asp:LinkButton>
+                                        
                                     </ItemTemplate>
                                     <ItemStyle Font-Bold="True" Font-Size="Large" ForeColor="#3366CC" />
                                 </asp:TemplateField>
