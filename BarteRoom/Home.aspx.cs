@@ -22,7 +22,7 @@ namespace BarteRoom
         public static LinkedList<Imag> images = lg.getAllImages();
         protected void Page_Load(object sender, EventArgs e)
         {
-            /*
+            
             //setting the image slider images.
             //note: first i save a copy of a item's imagein 620x320 dimension and then displaies it in the image slider 
             Bitmap target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath(images.ElementAt(0).getPath())), 640, 320) as Bitmap;
@@ -62,14 +62,10 @@ namespace BarteRoom
             img4.Src = "~/img/resizeImage4.jpg";
             img44.Src = "~/img/resizeImage4.jpg";
             
-            */
+            
         }
 
-        public static string getImageId(int index)
-        {
-            return images.ElementAt(index).getId();
-        }
-
+     
         static System.Drawing.Image FixedSize(System.Drawing.Image imgPhoto, int Width, int Height)
         {
             int sourceWidth = imgPhoto.Width;
