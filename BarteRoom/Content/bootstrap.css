@@ -3521,11 +3521,13 @@ tbody.collapse.in {
 }
 .dropdown-header {
   display: block;
-  padding: 3px 20px;
+  padding: 0px 0px;
   font-size: 12px;
   line-height: 1.42857143;
   color: #777;
   white-space: nowrap;
+  left: 0;
+  right: 0;
 }
 .dropdown-backdrop {
   position: fixed;

@@ -57,7 +57,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
                       <li><asp:HyperLink ID="manage" NavigateUrl="/Manager.aspx" data-toggle="modal" runat="server">Manager Page</asp:HyperLink></li>
-                    <li class="active"> <a href="/Home.aspx">Home<span class="sr-only">(current)</span></a></li>
+                    <li> <a href="/Home.aspx">Home<span class="sr-only">(current)</span></a></li>
                      <li><asp:HyperLink ID="log" NavigateUrl="#login" data-toggle="modal" runat="server">Login</asp:HyperLink></li>
                      <li><asp:HyperLink ID="reg" NavigateUrl="#register" data-toggle="modal" runat="server">Register</asp:HyperLink></li>
                       <li><a href="/About.aspx">About</a></li>
@@ -79,33 +79,32 @@
                   </ul>
    
                     <ul class="navbar-form navbar-right" role="tablist">
-                       
+                       <li>
                           
-                       <li  class="dropdown">   
+                       <div  class="dropdown">   
                            <span class="glyphicon glyphicon-bell" runat="server" data-toggle="dropdown" aria-expanded="false"><asp:Label ID="note" runat="server" Text="0" Font-Bold="True" ForeColor="#CC0000" BorderStyle="None"></asp:Label></span>
             
                            <ul class="dropdown-menu">
                               
                      
                            <li class="dropdown-header">
-                               <asp:Label ID="noteLabel" runat="server" Text="Notifications" ForeColor="Black"></asp:Label>
-                                <ul class="navbar-form navbar-right">
-                                    <asp:LinkButton ID="ReadMarkCmd" CssClass="change" runat="server" OnClick="ReadMarkCmd_Click">Mark As Read</asp:LinkButton>
-                               </ul>
-                           </li>
-                           
-                           <li class="dropdown-header">
-                               <asp:GridView ID="recentBids" runat="server" BorderStyle="None" GridLines="Horizontal" HeaderStyle-BorderStyle="None" PagerSettings-Visible="True" RowStyle-BorderStyle="None" ShowHeader="False" RowStyle-HorizontalAlign="Center" AllowPaging="True" AllowCustomPaging="True" AutoGenerateColumns="False" OnRowCreated="recentBids_RowCreated" OnRowDataBound="recentBids_RowDataBound">
+                        
+                               <asp:Label ID="noteLabel" runat="server" Font-Size="Medium" Text="Notifications" ForeColor="Black"></asp:Label>
+                                <nav class="navbar-form navbar-right">
+                                    <asp:LinkButton ID="ReadMarkCmd" CssClass="change" runat="server" OnClick="ReadMarkCmd_Click">Mark as read</asp:LinkButton>
+                               </nav>
+                              
+                               <asp:GridView ID="recentBids" runat="server" BorderStyle="None" GridLines="Horizontal" HeaderStyle-BorderStyle="None" PagerSettings-Visible="True" RowStyle-BorderStyle="None" ShowHeader="False" RowStyle-HorizontalAlign="Center" AllowPaging="True" AllowCustomPaging="True" AutoGenerateColumns="False" OnRowCreated="recentBids_RowCreated" OnRowDataBound="recentBids_RowDataBound" OnSelectedIndexChanged="recentBids_SelectedIndexChanged" OnSelectedIndexChanging="recentBids_SelectedIndexChanging">
                                         <Columns>
                                           
                                             <asp:ImageField DataImageUrlField ="Image" NullDisplayText="no image" ShowHeader="false" >
                                                 <ControlStyle Height="50px" Width="50px" />
-                                                <ItemStyle Height="20px" Width="20px" />
+                                                <ItemStyle Height="70px" Width="95%" />
                                             </asp:ImageField>     
 
                                             <asp:TemplateField HeaderText="Name" ShowHeader="False">
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="SelectBid" runat="server" CssClass="change" CausesValidation="False" CommandName="Select" Text='<%# Bind("comments") %>' OnClick="SelectBid_Click" ></asp:LinkButton>
+                                        <asp:Label ID="Label3" runat="server" Text='<%# Bind("comments") %>'></asp:Label> 
                                     </ItemTemplate>
                                 </asp:TemplateField>
 
@@ -116,7 +115,8 @@
                                </asp:GridView>
                            </li>                     
                                </ul> 
-                       </li> 
+                       </div> 
+                           </li>
                       </ul>
                     <ul class="navbar-form navbar-right" role="tablist">
                        <li>

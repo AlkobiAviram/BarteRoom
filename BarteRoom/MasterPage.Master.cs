@@ -340,16 +340,25 @@ namespace BarteRoom
 
         protected void recentBids_RowCreated(object sender, GridViewRowEventArgs e)
         {
-            e.Row.Attributes["onmouseover"] = "this.style.cursor='pointer';this.style.textDecoration='underline';";
-            e.Row.Attributes["onmouseout"] = "this.style.textDecoration='none';";
-            e.Row.ToolTip = "Click to select row";
-            e.Row.Attributes["onclick"] = this.Page.ClientScript.GetPostBackClientHyperlink(recentBids, "Select$" + e.Row.RowIndex);
+            e.Row.ToolTip = "Click to select";
         }
 
         protected void recentBids_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            e.Row.Attributes.Add("onmouseover", "this.originalstyle=this.style.backgroundColor;this.style.backgroundColor='#EEFFAA'");
+            e.Row.Attributes.Add("onmouseover", "this.style.cursor='pointer';this.originalstyle=this.style.backgroundColor;this.style.backgroundColor='#F5F5DC'");
             e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor=this.originalstyle;");
+            e.Row.Attributes["onclick"] = this.Page.ClientScript.GetPostBackClientHyperlink(recentBids, "Select$" + e.Row.RowIndex.ToString());
+        }
+
+        protected void recentBids_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int index = Convert.ToInt32(homeGridView.SelectedIndex);
+            Response.Write(index.ToString());
+        }
+
+        protected void recentBids_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        {
+
         }
     }
 }
