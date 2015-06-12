@@ -2,10 +2,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <div class="container">
+                  <link href="imageHover.css" rel="stylesheet" type="text/css" runat="server"/>
+
+      <div class="container">
     <div class="row">
         <div class="col-md-3 border-css">
+             <div class="zoom_img" >
             <asp:Image ID="item_pic" CssClass="img-responsive" runat="server" />
+              </div>
         </div>
         <div class="col-md-6">
             <div class="row">
@@ -17,41 +21,44 @@
                 </p>
             </div>
              <div class="row">
-                <h3>Description</h3>
+                <h3><asp:Label ID="descriptionHeader" Text="Description" runat="server"></asp:Label></h3>
                    <p>
                        <asp:Label ID="itemDescription" runat="server"></asp:Label>
                 </p>
-                <h3>Item BarCode</h3>
+                <h3><asp:Label ID="itemBarCodeHeader" Text="Item BarCode" runat="server"></asp:Label></h3>
                    <p>
                       <asp:Label ID="itemBarCode" runat="server" OnDataBinding="Page_Load"></asp:Label>
                 </p>
-                 <h3>Item Owner</h3>
+                <h3><asp:Label ID="itemOwnerHeader" Text="Item Owner" runat="server"></asp:Label></h3>
                    <p>
                       <asp:Label ID="itemOwner" runat="server" OnDataBinding="Page_Load"></asp:Label>
                 </p>
             </div>
                 <div class="row">
-                <h2>Bid Operations</h2>
+                <h2><asp:Label ID="BidOrOfferHeader" Text="" runat="server"></asp:Label></h2>
                    <p>
                        <asp:Button ID="cancel_cmd" runat="server" Text="Cancel Bid" CssClass=" btn btn-success" OnClick="cancel_cmd_Click"/>      
                 </p>
                     <p>
                         <asp:Button ID="BackToList" runat="server" Text="<< Back to list" CssClass=" btn btn-primary" OnClick="BackToList_Click"/>
                     </p>
+                    <p>
+                        <asp:Button ID="Confirm_cmd" runat="server" Text="Confirm Offer" CssClass=" btn btn-primary" OnClick="Confirm_cmd_Click"/>
+                        <asp:Label ID="confirm_label" Text="Note:By confirming the offer ,You commite to the Transaction" runat="server"></asp:Label>
+                    </p>
             </div>
 
                <div class="row">
-                <h2>Your Offered Items</h2>
+                <h2><asp:Label ID="OfferdItemsHeader"  runat="server"></asp:Label></h2>
                    <asp:GridView ID="GridView1"  CssClass="table table-responsive table-striped"  runat="server" AllowSorting="True"  AllowPaging="True"  AutoGenerateColumns="False" GridLines="None"  >
                         <Columns>                                 
-                            <asp:CommandField ShowSelectButton="True" ButtonType="Button" ControlStyle-CssClass="btn btn-info" />
 
                             <asp:ImageField DataImageUrlField ="Image" NullDisplayText="no image" ControlStyle-CssClass="img-responsive img-css" >
                                
                             </asp:ImageField>
                             <asp:BoundField DataField="Name" HeaderText="Name" />
                             <asp:BoundField DataField="Comments" HeaderText="Comments" />
-                            <asp:BoundField DataField="Description" HeaderText="Description" />
+                        
                             <asp:BoundField DataField="id" HeaderText="Item BarCode" /> 
 
                         </Columns>
@@ -60,7 +67,7 @@
         </div>
            <div class="col-md-2">
              
-              <h2>User Information</h2>
+                <h2><asp:Label ID="OwnerOrBidderInformationHeader"  runat="server"></asp:Label></h2>
                 
                
                         <h3>Contact's User Tag</h3>

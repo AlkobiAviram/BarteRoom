@@ -31,6 +31,15 @@ namespace BarteRoom {
         protected global::System.Web.UI.WebControls.Label itemName;
         
         /// <summary>
+        /// descriptionHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label descriptionHeader;
+        
+        /// <summary>
         /// itemDescription control.
         /// </summary>
         /// <remarks>
@@ -38,6 +47,15 @@ namespace BarteRoom {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label itemDescription;
+        
+        /// <summary>
+        /// itemBarCodeHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label itemBarCodeHeader;
         
         /// <summary>
         /// itemBarCode control.
@@ -49,6 +67,15 @@ namespace BarteRoom {
         protected global::System.Web.UI.WebControls.Label itemBarCode;
         
         /// <summary>
+        /// itemOwnerHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label itemOwnerHeader;
+        
+        /// <summary>
         /// itemOwner control.
         /// </summary>
         /// <remarks>
@@ -56,6 +83,15 @@ namespace BarteRoom {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label itemOwner;
+        
+        /// <summary>
+        /// BidOrOfferHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label BidOrOfferHeader;
         
         /// <summary>
         /// cancel_cmd control.
@@ -76,6 +112,33 @@ namespace BarteRoom {
         protected global::System.Web.UI.WebControls.Button BackToList;
         
         /// <summary>
+        /// Confirm_cmd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Confirm_cmd;
+        
+        /// <summary>
+        /// confirm_label control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label confirm_label;
+        
+        /// <summary>
+        /// OfferdItemsHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label OfferdItemsHeader;
+        
+        /// <summary>
         /// GridView1 control.
         /// </summary>
         /// <remarks>
@@ -83,6 +146,15 @@ namespace BarteRoom {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridView1;
+        
+        /// <summary>
+        /// OwnerOrBidderInformationHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label OwnerOrBidderInformationHeader;
         
         /// <summary>
         /// contact_usr control.

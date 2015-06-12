@@ -27,12 +27,39 @@ namespace BarteRoom
             /////////////////////////////////
 
 
+
+            //////////////////////regarding the bid or offer 
+            if (Session["transaction_type"].ToString() == "bid")
+            {
+                BidOrOfferHeader.Text = "Bid Information";
+                OfferdItemsHeader.Text = "The Items That You Offered To The Owner:";
+                OwnerOrBidderInformationHeader.Text = "Owner Information";
+                Confirm_cmd.Visible = false;
+                confirm_label.Visible = false;
+
+            }
+            else
+            {
+                BidOrOfferHeader.Text = "Offer Information";
+                OfferdItemsHeader.Text = "The Items That The Bidder Offered To You:";
+                OwnerOrBidderInformationHeader.Text = "Bidder Information";
+                Confirm_cmd.Visible = true;
+                confirm_label.Visible = true;
+            }
+
+
+            //////////////////////
+
+
+
             ///////////////////////////////regarding the contact information
             User usr = lg.getUserInformation(trns.getBidder());
             contact_usr.Text = usr.getUser();
             contact_fullName.Text = usr.getFullName();
             contact_email.Text = usr.getEmail();
             ////////////////////////////////
+
+
             if (!IsPostBack)
             {
 
@@ -56,6 +83,11 @@ namespace BarteRoom
         protected void BackToList_Click(object sender, EventArgs e)
         {
             Response.Redirect("/BarterList.aspx");
+        }
+
+        protected void Confirm_cmd_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
