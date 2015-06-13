@@ -16,7 +16,7 @@ namespace BarteRoom
         {
             ((LinkButton)Master.FindControl("MyAccount")).BackColor = Color.Gainsboro;
             ((LinkButton)Master.FindControl("MyBarter")).BackColor = Color.Gainsboro;
-
+            GridView1.RowStyle.Height = 50;
           if (!IsPostBack)
            {
         

@@ -1172,6 +1172,37 @@ namespace BarteRoom
             catch (Exception e) { }
         }
 
+
+
+
+        ////////////////////////////////////////////////////////////////////////////
+        //this section is related to messages
+
+
+        public void addMessage(Message msg)
+        {
+
+            query = "insert into messages values('" + msg.getId() + "','" + msg.getFrom() + "','" + msg.getTo() + "','" + msg.getSubject() + "'," + msg.getMsg_body() + ");";
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+
+                command.ExecuteNonQuery();
+                connect.Close();
+            }
+
+            catch (Exception e) { }
+        
+        }
+       //public LinkedList<Message> getAllSentMessages
+
+
+
+
+
     }
 
 
