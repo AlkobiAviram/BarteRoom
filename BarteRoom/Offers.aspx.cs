@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Drawing;
 
 namespace BarteRoom
 {
@@ -14,6 +15,9 @@ namespace BarteRoom
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            ((LinkButton)Master.FindControl("MyAccount")).BackColor = Color.Gainsboro;
+            ((LinkButton)Master.FindControl("MyOffers")).BackColor = Color.Gainsboro;
+
             if (!IsPostBack)
             {
 

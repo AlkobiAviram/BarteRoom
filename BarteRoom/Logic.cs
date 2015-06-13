@@ -294,5 +294,11 @@ namespace BarteRoom
             data.removeTransaction(bid_id);
         }
 
+        public void readIndex(string id)
+        {
+            data = new DB();
+            data.readIndex(id);
+        }
+
     }
 }

@@ -901,12 +901,13 @@ namespace BarteRoom
             DataTable dtable = new DataTable();
             DataColumn dt = new DataColumn("Image");
             DataColumn dt1 = new DataColumn("Comments");
-         
+            DataColumn dt2 = new DataColumn("id");
 
             dtable.Columns.Add(dt);
             dtable.Columns.Add(dt1);
+            dtable.Columns.Add(dt2);
 
-            query = "select img.path, t.bidder, t.readBid from images img, transactions t, items i where (img.id = i.Id) AND (i.Id = t.item_id) AND (i.usr = '" + usr + "') order by t.readBid DESC;";
+            query = "select img.path, t.bidder, t.id, t.readBid from images img, transactions t, items i where (img.id = i.Id) AND (i.Id = t.item_id) AND (i.usr = '" + usr + "') order by t.readBid DESC, id;";
 
             try
             {
@@ -922,9 +923,10 @@ namespace BarteRoom
 
             while (rdr.Read())
             {
-                object[] RowValues = { "", ""};
+                object[] RowValues = {"", "", ""};
                 RowValues[0] = rdr[0].ToString();
-                RowValues[1] = "New BID from " + rdr[1].ToString(); ;
+                RowValues[1] = "New BID from " + rdr[1].ToString();
+                RowValues[2] = rdr[2].ToString();
             
                 DataRow dRow;
                 dRow = dtable.Rows.Add(RowValues);
@@ -1153,7 +1155,22 @@ namespace BarteRoom
             return;
         }
 
+        public void readIndex(string id)
+        {
+            query = "UPDATE transactions SET readBid = 1 WHERE id = '" + id + "';";
 
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+
+                command.ExecuteNonQuery();
+
+
+            }
+            catch (Exception e) { }
+        }
 
     }
 

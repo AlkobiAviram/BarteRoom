@@ -19,9 +19,9 @@ namespace BarteRoom
         {
             manage.Visible = false;
 
-            if (Session["usr"] == null)
+            if (!IsPostBack)
             {
-                if (!IsPostBack)
+                if (Session["usr"] == null)
                 {
                     cookie = Request.Cookies["userLogin"];
                     if (cookie != null)
@@ -39,50 +39,51 @@ namespace BarteRoom
                         }
                         loginUserNameTxt.Text = cookie["username"];
                     }
+                  
+
+                    MyAccount.Visible = false;
+                    log.Visible = true;
+                    reg.Visible = true;
+                    firsTxt.Visible = true;
+                    lastTxt.Visible = true;
+
+                    SendFirstRequired.Visible = true;
+                    SendLastRequired.Visible = true;
                 }
 
-                MyAccount.Visible = false;
-                log.Visible = true;
-                reg.Visible = true;
-                firsTxt.Visible = true;
-                lastTxt.Visible = true;
-
-                SendFirstRequired.Visible = true;
-                SendLastRequired.Visible = true;
-            }
-
-            else
-            {
-                int notRead = 0;
-                logic = new Logic();
-                notRead = logic.notReadBids(Session["usr"].ToString());
-
-                note.Text = notRead.ToString();
-                recentBids.DataSource = logic.getAllBids(Session["usr"].ToString());
-                recentBids.DataBind();
-
-                for (int i = 0; i < notRead; i++)
+                else
                 {
-                    recentBids.Rows[i].BackColor = Color.Gainsboro;
+                    int notRead = 0;
+                    logic = new Logic();
+                    notRead = logic.notReadBids(Session["usr"].ToString());
+
+                    note.Text = notRead.ToString();
+                    recentBids.DataSource = logic.getAllBids(Session["usr"].ToString());
+                    recentBids.DataBind();
+
+                    for (int i = 0; i < notRead; i++)
+                    {
+                        recentBids.Rows[i].BackColor = Color.Gainsboro;
+                    }
+
+                    MyAccount.Visible = true;
+                    log.Visible = false;
+                    reg.Visible = false;
+                    firsTxt.Visible = false;
+                    lastTxt.Visible = false;
+                    MyAccount.Text = Session["name"].ToString() + caret.Text;
+
+                    SendFirstRequired.Visible = false;
+                    SendLastRequired.Visible = false;
+
+
+
+                    if (logic.isManager(Session["usr"].ToString()))
+                    {
+                        manage.Visible = true;
+                    }
+
                 }
-
-                MyAccount.Visible = true;
-                log.Visible = false;
-                reg.Visible = false;
-                firsTxt.Visible = false;
-                lastTxt.Visible = false;
-                MyAccount.Text = Session["name"].ToString() + caret.Text;
-
-                SendFirstRequired.Visible = false;
-                SendLastRequired.Visible = false;
-
-
-
-                if (logic.isManager(Session["usr"].ToString()))
-                {
-                    manage.Visible = true;
-                }
-
             }
         }
 
@@ -286,11 +287,6 @@ namespace BarteRoom
             Response.Redirect("/AddItem.aspx");
         }
 
-        protected void Search_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("/SearchPage.aspx");
-        }
-
         protected void MyBids_Click(object sender, EventArgs e)
         {
             Response.Redirect("/Bids.aspx");
@@ -346,41 +342,53 @@ namespace BarteRoom
 
         protected void recentBids_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            e.Row.Attributes.Add("onmouseover", "this.style.cursor='pointer';this.originalstyle=this.style.backgroundColor;this.style.backgroundColor='#F5F5DC'");
-            e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor=this.originalstyle;");
-            e.Row.Attributes["onclick"] = this.Page.ClientScript.GetPostBackClientHyperlink(recentBids, "Select$" + e.Row.RowIndex.ToString());
+                try
+                {
+                    switch (e.Row.RowType)
+                    {
+                        case DataControlRowType.Header:
+
+                            break;
+                        case DataControlRowType.DataRow:
+                            e.Row.Attributes.Add("onmouseover", "this.style.cursor='pointer';this.originalstyle=this.style.backgroundColor;this.style.backgroundColor='#F5F5DC'");
+                            if (e.Row.RowState == DataControlRowState.Alternate)
+                            {
+                                e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor=this.originalstyle;");
+                            }
+                            else
+                            {
+                                e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor=this.originalstyle;");
+                            }
+                            e.Row.Attributes.Add("onclick", Page.ClientScript.GetPostBackEventReference(recentBids, "Select$" + e.Row.RowIndex));
+                            break;
+                    }
+                }
+                catch { }
         }
 
         protected void recentBids_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int index = Convert.ToInt32(homeGridView.SelectedIndex);
-            Response.Write(index.ToString());
-        }
-
-        protected void recentBids_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
-        {
-
+            
+            logic = new Logic();
+            recentBids.DataSource = logic.getAllBids(Session["usr"].ToString());
+            recentBids.DataBind();
+           
+            int index = Convert.ToInt32(recentBids.SelectedIndex);
+            GridViewRow row = recentBids.Rows[index];
+            logic.readIndex(row.Cells[2].Text);
+            Session["transaction_type"] = "offer";
+            Session["bid_id"] = row.Cells[2].Text;
+            
+            Response.Redirect("/TransactionView.aspx");
         }
 
         protected void AboutCmd_Click(object sender, EventArgs e)
         {
-            SearchTextBox.Visible = false;
-            catagories.Visible = false;
-            Button1.Visible = false;
-            AdvancedSearch.Visible = false;
-            homeGridView.Visible = false;
-
             Response.Redirect("/About.aspx");
         }
 
         protected void ImageButton2_Click(object sender, ImageClickEventArgs e)
         {
-            SearchTextBox.Visible = true;
-            catagories.Visible = true;
-            Button1.Visible = true;
-            AdvancedSearch.Visible = true;
-            homeGridView.Visible = true;
-
             Response.Redirect("Home.aspx");
         }
     }

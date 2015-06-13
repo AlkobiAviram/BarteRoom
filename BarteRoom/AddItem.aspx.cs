@@ -21,8 +21,8 @@ namespace BarteRoom
         private Logic lg;
         protected void Page_Load(object sender, EventArgs e)
         {
-
-
+            ((LinkButton)Master.FindControl("MyAccount")).BackColor = Color.Gainsboro;
+            ((LinkButton)Master.FindControl("AddItem")).BackColor = Color.Gainsboro;
         }
 
 

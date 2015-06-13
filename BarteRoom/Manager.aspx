@@ -14,11 +14,8 @@
         .auto-style4 {
             text-decoration: underline;
         }
-        .auto-style5 {
-            width: 317px;
-        }
-        .auto-style6 {
-            width: 315px;
+        .auto-style10 {
+            width: 251px;
         }
     </style>
 
@@ -31,12 +28,12 @@
     <!-- ======================================================Managers table================================================================== -->
     <table class="nav-justified">
         <tr>
-            <td class="auto-style5">&nbsp;</td>
+            <td class="auto-style10">&nbsp;</td>
             <td class="auto-style2"><strong><span class="auto-style4">All Managers - <asp:Label ID="numOfManagers" runat="server" Text="Label" ForeColor="Gray"></asp:Label></span></strong></td>
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td class="auto-style5">&nbsp;</td>
+            <td class="auto-style10">&nbsp;</td>
             <td class="auto-style3">
                 <asp:GridView ID="Managers" runat="server" AutoGenerateColumns="False" DataKeyNames="usr" DataSourceID="SqlDataSource1" GridLines="Horizontal" ShowFooter="True" Width="685px" AllowSorting="True" BorderStyle="Inset" HorizontalAlign="Center" CellPadding="5" AllowPaging="True">
                     <Columns>
@@ -157,12 +154,12 @@ where usr=@usr">
     <!-- ======================================================Users table================================================================== -->
         <table class="nav-justified">
         <tr>
-            <td class="auto-style6">&nbsp;</td>
+            <td class="auto-style10">&nbsp;</td>
             <td class="auto-style2"><strong><span class="auto-style4">All Users - <asp:Label ID="numOfUsers" runat="server" Text="Label" ForeColor="Gray"></asp:Label></span></strong></td>
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td class="auto-style6">&nbsp;</td>
+            <td class="auto-style10">&nbsp;</td>
             <td class="auto-style3">
                 <asp:GridView ID="UsersTable" runat="server" AutoGenerateColumns="False" DataKeyNames="usr" DataSourceID="Users" GridLines="Horizontal" ShowFooter="True" Width="685px" AllowSorting="True" BorderStyle="Inset" HorizontalAlign="Center" CellPadding="5" AllowPaging="True">
                     <Columns>
@@ -286,12 +283,12 @@ where usr=@usr">
 
             <table class="nav-justified">
         <tr>
-            <td class="auto-style6">&nbsp;</td>
-            <td class="auto-style2"><strong><span class="auto-style4">Classes - <asp:Label ID="Label5" runat="server" Text="Label" ForeColor="Gray"></asp:Label></span></strong></td>
+            <td class="auto-style10">&nbsp;</td>
+            <td class="auto-style2"><strong><span class="auto-style4">Classes</asp:Label></span></strong></td>
             <td>&nbsp;</td>
         </tr>
         <tr>
-            <td class="auto-style6">&nbsp;</td>
+            <td class="auto-style10">&nbsp;</td>
             <td class="auto-style3">
                 <asp:GridView ID="ClassesTable" runat="server" AutoGenerateColumns="False" DataKeyNames="cls_name" DataSourceID="classesSource" GridLines="Horizontal" ShowFooter="True" Width="685px" AllowSorting="True" BorderStyle="Inset" HorizontalAlign="Center" CellPadding="5" AllowPaging="True" OnRowCommand="ClassesTable_RowCommand">
                     <Columns>
