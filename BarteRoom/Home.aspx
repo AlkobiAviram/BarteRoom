@@ -13,7 +13,12 @@
 
          
                      <!-- ==============================================buttom row:image slider===========================================  -->
-                       
+         <div class="row">
+             <div class="jumbotron">
+                 <h1>Welcome to BarteRoom</h1>
+                 <h3><span> your home for second hand barters </span></h3>
+             </div>
+         </div>              
             
            <link href="imageSlider.css" rel="stylesheet" type="text/css" runat="server"/>
         <div class="slider" runat="server" >
