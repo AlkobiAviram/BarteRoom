@@ -65,19 +65,6 @@
     <Content Include="Home.aspx" />
     <Content Include="ImageHover.css" />
     <Content Include="imageSlider.css" />
-    <Content Include="img\%24_57.jpg" />
-    <Content Include="img\adidas-euro-puntero-football-white-p18231-1462_zoom.jpg" />
-    <Content Include="img\arrow1.jpg" />
-    <Content Include="img\arrow2.jpg" />
-    <Content Include="img\coffie.jpg" />
-    <Content Include="img\phone1.jpg" />
-    <Content Include="img\pic1.jpg" />
-    <Content Include="img\pic1_bigger.jpg" />
-    <Content Include="img\pic2.jpg" />
-    <Content Include="img\pic2_bigger.jpg" />
-    <Content Include="img\pic3.jpg" />
-    <Content Include="img\pic3_bigger.jpg" />
-    <Content Include="img\shoes.jpg" />
     <Content Include="Landing.html" />
     <Content Include="Mail.aspx" />
     <Content Include="MakeBid.aspx" />
@@ -99,9 +86,6 @@
     <Content Include="Content\style.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Icon.png" />
-    <Content Include="img\img1.jpg" />
-    <Content Include="img\img2.jpg" />
-    <Content Include="img\img3.jpg" />
     <Content Include="Offers.aspx">
       <BrowseToURL>~/Offeres.aspx</BrowseToURL>
     </Content>
@@ -230,6 +214,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="img\App_LocalResources\" />
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
