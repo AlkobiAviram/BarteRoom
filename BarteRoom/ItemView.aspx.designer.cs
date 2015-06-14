@@ -22,31 +22,94 @@ namespace BarteRoom {
         protected global::System.Web.UI.WebControls.Image item_pic3;
         
         /// <summary>
-        /// itemName control.
+        /// edit_cmd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label itemName;
+        protected global::System.Web.UI.WebControls.Button edit_cmd;
         
         /// <summary>
-        /// itemDescription control.
+        /// commit_cmd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label itemDescription;
+        protected global::System.Web.UI.WebControls.Button commit_cmd;
         
         /// <summary>
-        /// itemBarCode control.
+        /// cancel_cmd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label itemBarCode;
+        protected global::System.Web.UI.WebControls.Button cancel_cmd;
+        
+        /// <summary>
+        /// name_textBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox name_textBox;
+        
+        /// <summary>
+        /// nameLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label nameLabel;
+        
+        /// <summary>
+        /// comments_textBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox comments_textBox;
+        
+        /// <summary>
+        /// comLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label comLabel;
+        
+        /// <summary>
+        /// description_textBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox description_textBox;
+        
+        /// <summary>
+        /// desLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label desLabel;
+        
+        /// <summary>
+        /// idLabel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label idLabel1;
         
         /// <summary>
         /// offer_cmd control.
