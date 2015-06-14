@@ -834,8 +834,6 @@ namespace BarteRoom
 
                 command = new SqlCommand(query, connect);
                 rdr = command.ExecuteReader();
-
-
             }
 
             catch (Exception e) { }
@@ -844,8 +842,6 @@ namespace BarteRoom
             {
                Imag img = new Imag(rdr[0].ToString(), rdr[1].ToString());
               images.AddLast(img);
-
-
             }
 
 
