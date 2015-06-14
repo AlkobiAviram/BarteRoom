@@ -14,6 +14,9 @@ namespace BarteRoom
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //searech button event catch
+            ((Button)Master.FindControl("Button1")).Click += new EventHandler(this.searchBtn_Click);
+
             ((LinkButton)Master.FindControl("MyAccount")).BackColor = Color.Gainsboro;
             ((LinkButton)Master.FindControl("MyBids")).BackColor = Color.Gainsboro;
 
@@ -55,6 +58,12 @@ namespace BarteRoom
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        //search button event handler
+        void searchBtn_Click(Object sender, EventArgs e)
+        {
+            BidsPage.Visible = false;
         }
     }
 }

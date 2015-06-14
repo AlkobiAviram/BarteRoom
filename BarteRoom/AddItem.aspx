@@ -4,17 +4,18 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     
 
-<div class="container">
+<div class="container"  runat="server" id="AddItem">
      <h2>Add Item</h2>
     
      <div class="row">
         
 
 
-        <div class="col-md-4">
+        <div class="col-md-4" runat="server" id="addItemFields">
             <div class="form-group form-group-md">
-                 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="classes_list" ErrorMessage="please choose class" InitialValue="choose class"></asp:RequiredFieldValidator>
-                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="textBox_name" ErrorMessage="please insert name"></asp:RequiredFieldValidator>
+                <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" DisplayMode="List" ValidationGroup="addGroup" />
+                 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="classes_list" ErrorMessage="please choose class" ForeColor="Red" Display="None" InitialValue="choose class" ValidationGroup="addGroup"></asp:RequiredFieldValidator>
+                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="textBox_name" ErrorMessage="please insert name" ForeColor="Red" Display="None" ValidationGroup="addGroup"></asp:RequiredFieldValidator>
                  
                          <div class="input-group">
                             <label>Name</label>
@@ -33,13 +34,13 @@
                 <hr />
             </div>
         </div>
-         <div class="col-md-4">
+         <div class="col-md-4" runat="server" id="sideBar">
              <asp:DropDownList ID="classes_list" runat="server" DataSourceID="SqlDataSource1" DataTextField="cls_name" DataValueField="cls_name"></asp:DropDownList>
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectToDb %>" SelectCommand="SELECT cls_name FROM classes WHERE (cls_name &lt;&gt; 'All Catagories')"></asp:SqlDataSource>
             <asp:FileUpload CssClass="input-group" ID="image_upload" runat="server" OnLoad="image_upload_Load" />
             <hr />
 
-              <asp:Button ID="commit_cmd" class="btn btn-info" runat="server" Text="OK"  OnClick="commit_cmd_Click" />
+              <asp:Button ID="commit_cmd" class="btn btn-info" runat="server" Text="OK"  OnClick="commit_cmd_Click"  ValidationGroup="addGroup" />
              <a class="btn btn-primary" href="/Home.aspx"> go back </a>
                
          </div>

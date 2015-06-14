@@ -13,6 +13,15 @@ namespace BarteRoom {
     public partial class BidsOffersInbox {
         
         /// <summary>
+        /// BidsPage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl BidsPage;
+        
+        /// <summary>
         /// GridView1 control.
         /// </summary>
         /// <remarks>

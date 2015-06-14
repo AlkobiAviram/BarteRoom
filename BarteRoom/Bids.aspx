@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
  
-     <div class="container">
+     <div class="container" runat="server" id="BidsPage">
         <div class="col-md-4">
             <div class="row">
                <h1>Bids List</h1>

@@ -14,6 +14,10 @@ namespace BarteRoom
    
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            //searech button event catch
+            ((Button)Master.FindControl("Button1")).Click += new EventHandler(this.searchBtn_Click);
+
             ((LinkButton)Master.FindControl("MyAccount")).BackColor = Color.Gainsboro;
             ((LinkButton)Master.FindControl("MyBarter")).BackColor = Color.Gainsboro;
             GridView1.RowStyle.Height = 50;
@@ -157,9 +161,14 @@ namespace BarteRoom
             bind();
 
         }
-      
 
 
+        //search button event handler
+        void searchBtn_Click(Object sender, EventArgs e)
+        {
+            GridView1.Visible = false;
+            sideBar.Visible = false;
+        }
 
 
     }

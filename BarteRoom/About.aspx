@@ -57,7 +57,7 @@
     <section>
         <div class="container">
         <h1>Contact Us</h1>
-             <asp:HyperLink ID="contactUs" NavigateUrl="#contact" data-toggle="modal" runat="server">Contact Us</asp:HyperLink>
+             <asp:HyperLink ID="contactUs" CssClass="change" NavigateUrl="#contact" data-toggle="modal" runat="server">Contact Us</asp:HyperLink>
         </div>
     </section>
 

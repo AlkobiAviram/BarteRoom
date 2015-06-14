@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
                   <link href="imageHover.css" rel="stylesheet" type="text/css" runat="server"/>
 
-      <div class="container">
+      <div class="container" runat="server" id="transactionsPage">
     <div class="row">
         <div class="col-md-3 border-css">
              <div class="zoom_img" >

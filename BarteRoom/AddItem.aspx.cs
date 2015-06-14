@@ -21,6 +21,9 @@ namespace BarteRoom
         private Logic lg;
         protected void Page_Load(object sender, EventArgs e)
         {
+            //searech button event catch
+            ((Button)Master.FindControl("Button1")).Click += new EventHandler(this.searchBtn_Click);
+
             ((LinkButton)Master.FindControl("MyAccount")).BackColor = Color.Gainsboro;
             ((LinkButton)Master.FindControl("AddItem")).BackColor = Color.Gainsboro;
         }
@@ -143,6 +146,14 @@ namespace BarteRoom
 
             grPhoto.Dispose();
             return bmPhoto;
+        }
+
+        //search button event handler
+        void searchBtn_Click(Object sender, EventArgs e)
+        {
+            addItemFields.Visible = false;
+            AddItem.Visible = false;
+            sideBar.Visible = false;
         }
 
     }

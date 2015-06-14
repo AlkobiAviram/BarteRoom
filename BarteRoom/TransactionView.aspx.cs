@@ -13,6 +13,10 @@ namespace BarteRoom
         Transaction trns;
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            //searech button event catch
+            ((Button)Master.FindControl("Button1")).Click += new EventHandler(this.searchBtn_Click);
+
             Logic lg = new Logic();
             trns=lg.getTransactionById(Session["bid_id"].ToString());
             
@@ -88,6 +92,12 @@ namespace BarteRoom
         protected void Confirm_cmd_Click(object sender, EventArgs e)
         {
 
+        }
+
+        //search button event handler
+        void searchBtn_Click(Object sender, EventArgs e)
+        {
+            transactionsPage.Visible = false;
         }
     }
 }

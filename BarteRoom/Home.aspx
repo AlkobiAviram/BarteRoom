@@ -13,7 +13,7 @@
 
          
                      <!-- ==============================================buttom row:image slider===========================================  -->
-         <div class="row">
+         <div class="row" runat="server" id="welcomeHome">
              <div class="jumbotron">
                  <h1>Welcome to BarteRoom</h1>
                  <h3><span> your home for second hand barters </span></h3>
@@ -21,7 +21,7 @@
          </div>              
             
            <link href="imageSlider.css" rel="stylesheet" type="text/css" runat="server"/>
-        <div class="slider" runat="server" >
+        <div class="slider" runat="server" id="homePhotos" >
 
 
 
@@ -68,7 +68,7 @@
 		        <img src="fff" id="img4"  width="100" runat="server" />
 	        </label>
 	        <img id="img44" src="dd" runat="server" width="640" height="320" />
-
+            <br /><br />
 
             
 

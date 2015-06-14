@@ -22,7 +22,9 @@ namespace BarteRoom
         public static LinkedList<Imag> images = lg.getAllImages();
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            //searech button event catch
+            ((Button)Master.FindControl("Button1")).Click += new EventHandler(this.searchBtn_Click);
+
             //setting the image slider images.
             //note: first i save a copy of a item's imagein 620x320 dimension and then displaies it in the image slider 
             string[] split = images.ElementAt(0).getPath().Split('/');
@@ -144,6 +146,13 @@ namespace BarteRoom
             }
             Response.Redirect("/ItemView.aspx");
              */
+        }
+
+        //search button event handler
+        void searchBtn_Click(Object sender, EventArgs e)
+        {
+            welcomeHome.Visible = false;
+            homePhotos.Visible = false;
         }
     }
 }

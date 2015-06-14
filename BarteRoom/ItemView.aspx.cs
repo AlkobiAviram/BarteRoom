@@ -15,7 +15,10 @@ namespace BarteRoom
         private string new_description = "";
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
+            //searech button event catch
+            ((Button)Master.FindControl("Button1")).Click += new EventHandler(this.searchBtn_Click);
+
             //setting image 
             string[] split = lg.setImagePath(Session["item_id"].ToString()).Split('/');
             item_pic3.ImageUrl = "img/OriginalSize_" + split[1];        
@@ -159,7 +162,12 @@ namespace BarteRoom
 
       
         }
-      
+
+        //search button event handler
+        void searchBtn_Click(Object sender, EventArgs e)
+        {
+            itemViewPage.Visible = false;
+        }
 
     }
 }

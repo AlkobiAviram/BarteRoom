@@ -4,7 +4,7 @@
     <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     
-            <div class="row">
+            <div class="row" runat="server" id="sideBar">
                  <div class="col-md-2">
                     <div class="jumbotron">
                         <label>Side news</label>

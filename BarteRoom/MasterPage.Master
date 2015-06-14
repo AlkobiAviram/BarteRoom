@@ -285,17 +285,6 @@
             
          <div class="container">
 
-
-                    <!--
-                                <asp:TemplateField HeaderText="Description" SortExpression="description">
-                                    <EditItemTemplate>
-                                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("description") %>'></asp:TextBox>
-                                    </EditItemTemplate>
-                                    <ItemTemplate>
-                                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("description") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                -->
         <!-- ===================================================search=======================================================  -->
 
         <!-- ===================================================Login Modal=======================================================  -->
@@ -457,7 +446,7 @@
 
             <div class="navbar navbar-default navbar-fixed-bottom"> 
                  <div class="container">
-                    <p class="navbar-text"> About Us</p>
+                     <p class="navbar-text"><asp:HyperLink ID="ButtomAbout" runat="server" NavigateUrl="~/About.aspx" CssClass="change">About Us</asp:HyperLink></p>
                      <p class="navbar-text"> Copyrights </p>
                      <p class="navbar-text"> Site is Powered by BarteRoom team </p>
                   </div>
