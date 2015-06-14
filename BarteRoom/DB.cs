@@ -23,7 +23,8 @@ namespace BarteRoom
         //constructor - initialize the connection to the Database
         public DB()
         {
-            connect = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectToDb"].ConnectionString);
+            //connect = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectToDb"].ConnectionString);
+            connect = new SqlConnection("Data Source=mgdzsouv9h.database.windows.net;Initial Catalog=barterDB;Integrated Security=False;User ID=barteroom@mgdzsouv9h;Password=NatiGabay1;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False");
         }
 
 
@@ -213,9 +214,9 @@ namespace BarteRoom
 
 
             if (whichItems==0)
-            query = "select * from items;";
+            query = "select * from dbo.items;";
             else
-               query = "select * from items where name='"+name+"' and "+"class='"+clas+"'";
+                query = "select * from dbo.items where name='" + name + "' and " + "class='" + clas + "'";
 
             try
             {
@@ -281,7 +282,7 @@ namespace BarteRoom
 
 
 
-            query = "select * from items where usr = '" + usr + "';";
+            query = "select * from dbo.items where usr = '" + usr + "';";
 
             try
             {
@@ -330,7 +331,7 @@ namespace BarteRoom
         public string setImagePath(String id)
         {
             string path = "";
-            query = "select path from images where id = '" + id + "';";
+            query = "select path from dbo.images where id = '" + id + "';";
 
             try
             {
@@ -352,7 +353,7 @@ namespace BarteRoom
         public bool addItem(Item item)
         {
 
-            query = "insert into items values('" + item.getUsr() + "','" + item.getName() + "','" + item.getClass() + "','" + item.getComments() + "','" + item.getDescription() + "','" + item.getId() + "');";
+            query = "insert into dbo.items values('" + item.getUsr() + "','" + item.getName() + "','" + item.getClass() + "','" + item.getComments() + "','" + item.getDescription() + "','" + item.getId() + "');";
 
 
             try
@@ -375,7 +376,7 @@ namespace BarteRoom
 
         public bool addImage(string id, string path)
         {
-            query = "insert into images values('" + id + "','" + path + "');";
+            query = "insert into dbo.images values('" + id + "','" + path + "');";
 
 
 
@@ -411,10 +412,10 @@ namespace BarteRoom
             try
             {
                 connect.Open();
-                query = "DELETE FROM items WHERE id='" + id + "';";
+                query = "DELETE FROM dbo.items WHERE id='" + id + "';";
                 command = new SqlCommand(query, connect);
                 command.ExecuteNonQuery();
-                query = "DELETE FROM images WHERE id='" + id + "';";
+                query = "DELETE FROM dbo.images WHERE id='" + id + "';";
                 command = new SqlCommand(query, connect);
                 command.ExecuteNonQuery();
                 connect.Close();
@@ -429,7 +430,7 @@ namespace BarteRoom
 
         public bool editItem(String name, String comments, String description, String id)
         {
-            query = "UPDATE items "
+            query = "UPDATE dbo.items "
                     + "SET name='" + name + "'," + "comments='" + comments + "'," + "description='" + description + "' "
                     + "WHERE id='" + id + "';";
 
@@ -456,12 +457,12 @@ namespace BarteRoom
 
             if (user_manager == 1)
             {
-                query = "select COUNT(*) from users where manager = 1;";
+                query = "select COUNT(*) from dbo.users where manager = 1;";
             }
 
             else if (user_manager == 0)
             {
-                query = "select COUNT(*) from users where manager = 0;";
+                query = "select COUNT(*) from dbo.users where manager = 0;";
             }
 
             try
@@ -489,7 +490,7 @@ namespace BarteRoom
             {
                 connect.Open();
                 //insert to transaction table
-                query = "insert into transactions values('" + transaction.getTransaction_id() + "','" + transaction.getItem_id() + "','" + transaction.getOwner()+ "','" +transaction.getBidder()+"','"+transaction.getComments()+  "', 0);";
+                query = "insert into dbo.transactions values('" + transaction.getTransaction_id() + "','" + transaction.getItem_id() + "','" + transaction.getOwner() + "','" + transaction.getBidder() + "','" + transaction.getComments() + "', 0);";
                 command = new SqlCommand(query, connect);
                 command.ExecuteNonQuery();
 
@@ -497,7 +498,7 @@ namespace BarteRoom
                 query = "";
                 foreach (string item_id in transaction.getOfferdItemsList())
                 {
-                    query += "insert into transactionItems values('" + transaction.getTransaction_id() + "','" + item_id + "');";
+                    query += "insert into dbo.transactionItems values('" + transaction.getTransaction_id() + "','" + item_id + "');";
 
                 }
                 command = new SqlCommand(query, connect);
@@ -577,12 +578,12 @@ namespace BarteRoom
 
             if (catagory.Equals("All Catagories"))
             {
-                query = "select * from items where ([name] LIKE '%'+'" + search + "'+'%') AND (usr != '" + usr + "') order by Id;";
+                query = "select * from dbo.items where ([name] LIKE '%'+'" + search + "'+'%') AND (usr != '" + usr + "') order by Id;";
             }
 
             else
             {
-                query = "select * from items where ([name] LIKE '%'+'" + search + "'+'%')  AND (usr != '" + usr + "') AND ([class] = '" + catagory + "') order by Id;";
+                query = "select * from dbo.items where ([name] LIKE '%'+'" + search + "'+'%')  AND (usr != '" + usr + "') AND ([class] = '" + catagory + "') order by Id;";
             }
 
             try
@@ -635,12 +636,12 @@ namespace BarteRoom
 
             if (catagory.Equals("All Catagories"))
             {
-                query = "select count(*) from items where ([name] LIKE '%'+'" + search + "'+'%')  AND (usr != '" + usr + "');";
+                query = "select count(*) from dbo.items where ([name] LIKE '%'+'" + search + "'+'%')  AND (usr != '" + usr + "');";
             }
 
             else
             {
-                query = "select count(*) from items where ([name] LIKE '%'+'" + search + "'+'%')  AND (usr != '" + usr + "') AND ([class] = '" + catagory + "');";
+                query = "select count(*) from dbo.items where ([name] LIKE '%'+'" + search + "'+'%')  AND (usr != '" + usr + "') AND ([class] = '" + catagory + "');";
             }
             try
             {
@@ -679,9 +680,9 @@ namespace BarteRoom
             dtable.Columns.Add(dt4);
             //getting only the bid id and the item id
             if(BidOrOffer=="bid")
-                query = "select t.id,t.item_id,t.owner,t.comments,t.readBid from transactions t where t.bidder='" + usr + "';";
+                query = "select t.id,t.item_id,t.owner,t.comments,t.readBid from dbo.transactions t where t.bidder='" + usr + "';";
             else
-                query = "select t.id,t.item_id,t.bidder,t.comments,t.readBid from transactions t where t.owner='" + usr + "';";
+                query = "select t.id,t.item_id,t.bidder,t.comments,t.readBid from dbo.transactions t where t.owner='" + usr + "';";
             try
             {
                 connect.Open();
@@ -721,7 +722,7 @@ namespace BarteRoom
         {
             string usr="";
              //now getting the usr field of the item owner.
-            query = "select i.usr from items i where i.id='" + item_id + "';";
+            query = "select i.usr from dbo.items i where i.id='" + item_id + "';";
             try
             {
                 connect.Open();
@@ -750,7 +751,7 @@ namespace BarteRoom
             string clas = "";
             string comments = "";
             string description = "";
-            query = "select * from items  where id='" + item_id + "';";
+            query = "select * from dbo.items  where id='" + item_id + "';";
             try
             {
                 connect.Open();
@@ -785,7 +786,7 @@ namespace BarteRoom
           
 
             //getting only the bid id and the item id
-            query = "select * from items;";
+            query = "select * from dbo.items;";
 
             try
             {
@@ -825,7 +826,7 @@ namespace BarteRoom
 
 
             //getting only the bid id and the item id
-            query = "select * from images;";
+            query = "select * from dbo.images;";
 
             try
             {
@@ -859,7 +860,7 @@ namespace BarteRoom
 
         public void deleteClass(string className)
         {
-            query = "DELETE FROM classes WHERE cls_name = '" + className + "';";
+            query = "DELETE FROM dbo.classes WHERE cls_name = '" + className + "';";
 
             try
             {
@@ -878,7 +879,7 @@ namespace BarteRoom
         {
             int bids = 0;
 
-            query = "select COUNT(*) from items i, transactions t where i.Id = t.item_id AND (i.usr = '" + usr + "') AND (t.readBid = 0);";
+            query = "select COUNT(*) from dbo.items i, dbo.transactions t where i.Id = t.item_id AND (i.usr = '" + usr + "') AND (t.readBid = 0);";
             
             try
             {
@@ -907,7 +908,7 @@ namespace BarteRoom
             dtable.Columns.Add(dt1);
             dtable.Columns.Add(dt2);
 
-            query = "select img.path, t.bidder, t.id, t.readBid from images img, transactions t, items i where (img.id = i.Id) AND (i.Id = t.item_id) AND (i.usr = '" + usr + "') order by t.readBid DESC, id;";
+            query = "select img.path, t.bidder, t.id, t.readBid from dbo.images img, dbo.transactions t, dbo.items i where (img.id = i.Id) AND (i.Id = t.item_id) AND (i.usr = '" + usr + "') order by t.readBid DESC, id;";
 
             try
             {
@@ -940,7 +941,7 @@ namespace BarteRoom
 
         public void MarkAsRead(string usr)
         {
-            query = "UPDATE transactions SET readBid = 1 WHERE readBid IN (select t.readBid from transactions t where (t.owner = '" + usr + "') AND (t.readBid = 0));";
+            query = "UPDATE dbo.transactions SET readBid = 1 WHERE readBid IN (select t.readBid from dbo.transactions t where (t.owner = '" + usr + "') AND (t.readBid = 0));";
 
             try
             {
@@ -966,7 +967,7 @@ namespace BarteRoom
             LinkedList<string> offerdItemsList=new LinkedList<string>();
 
             //getting the item list:
-            query = "select item_id from transactionItems where transaction_id='" + id + "';";
+            query = "select item_id from dbo.transactionItems where transaction_id='" + id + "';";
             try
             {
                 connect.Open();
@@ -986,7 +987,7 @@ namespace BarteRoom
 
 
             connect.Close();
-            query = "select * from transactions where id='" + id + "';";
+            query = "select * from dbo.transactions where id='" + id + "';";
             Transaction trsct = null;
             try
             {
@@ -1040,7 +1041,7 @@ namespace BarteRoom
 
 
             LinkedList<string> offeredItems = trns.getOfferdItemsList();
-            query = "select * from items where id =";
+            query = "select * from dbo.items where id =";
             for (int i = 0; i < offeredItems.Count; i++)
             {
                 query += "'" + offeredItems.ElementAt(i) + "'";
@@ -1094,8 +1095,8 @@ namespace BarteRoom
         public User getUserInformation(string user)
         {
 
-            
-            query = "select * from users where usr='" + user + "';";
+
+            query = "select * from dbo.users where usr='" + user + "';";
             User tempUser=null;
            
             try
@@ -1123,8 +1124,8 @@ namespace BarteRoom
 
         public void removeTransaction(string bid_id)
         {
-        
-            query = "DELETE FROM transactions WHERE id = '" + bid_id + "';";
+
+            query = "DELETE FROM dbo.transactions WHERE id = '" + bid_id + "';";
 
             try
             {
@@ -1138,7 +1139,7 @@ namespace BarteRoom
             }
             catch (Exception e) { }
             connect.Close();
-            query = "DELETE FROM transactionsItems WHERE id = '" + bid_id + "';";
+            query = "DELETE FROM dbo.transactionsItems WHERE id = '" + bid_id + "';";
 
             try
             {
@@ -1157,7 +1158,7 @@ namespace BarteRoom
 
         public void readIndex(string id)
         {
-            query = "UPDATE transactions SET readBid = 1 WHERE id = '" + id + "';";
+            query = "UPDATE dbo.transactions SET readBid = 1 WHERE id = '" + id + "';";
 
             try
             {
@@ -1174,6 +1175,8 @@ namespace BarteRoom
 
 
 
+
+        
 
         ////////////////////////////////////////////////////////////////////////////
         //this section is related to messages
