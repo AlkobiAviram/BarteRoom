@@ -1179,10 +1179,10 @@ namespace BarteRoom
         //this section is related to messages
 
 
-        public void addMessage(Message msg)
+        public void addMessage(Message msg, string dt)
         {
 
-            query = "insert into messages values('" + msg.getId() + "','" + msg.getFrom() + "','" + msg.getTo() + "','" + msg.getSubject() + "'," + msg.getMsg_body() + ");";
+            query = "insert into msg values('" + msg.Id + "','" + msg.From + "','" + msg.To + "','" + msg.Subject + "','" + msg.Msg_body + "', 0, '" + dt + "');";
 
             try
             {
@@ -1200,8 +1200,81 @@ namespace BarteRoom
        //public LinkedList<Message> getAllSentMessages
 
 
+        public DataTable getAllMessages(string usr)
+        {
+            DataTable dtable = new DataTable();
+            DataColumn dt = new DataColumn("From");
+            DataColumn dt1 = new DataColumn("Subject");
+            DataColumn dt2 = new DataColumn("Msg");
+            DataColumn dt3 = new DataColumn("Datetime");
+            DataColumn dt4 = new DataColumn("Id");
+
+            dtable.Columns.Add(dt);
+            dtable.Columns.Add(dt1);
+            dtable.Columns.Add(dt2);
+            dtable.Columns.Add(dt3);
+            dtable.Columns.Add(dt4);
+
+            query = "select fromUsr, subject, msg_body, datetime, Id, isRead from msg where toUsr = '" + usr + "' order by isRead DESC, Id;";
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+                rdr = command.ExecuteReader();
 
 
+            }
+
+            catch (Exception e) { }
+
+            while (rdr.Read())
+            {
+
+                object[] RowValues = { "", "", "", "", "" };
+
+                RowValues[0] = rdr[0].ToString();
+                if (rdr[1].ToString() != null)
+                {
+                    RowValues[1] = rdr[1].ToString() + ": ";
+                }
+                RowValues[2] = rdr[2].ToString();
+                RowValues[3] = rdr[3].ToString();
+                RowValues[4] = rdr[4].ToString();
+
+                DataRow dRow;
+                dRow = dtable.Rows.Add(RowValues);
+                dtable.AcceptChanges();
+
+            }
+
+            connect.Close();
+
+            return dtable;
+        }
+
+        public int notReadMsg(string usr)
+        {
+            int bids = 0;
+
+            query = "select COUNT(*) from msg where toUsr = '" +  usr + "' AND (isRead = 0);";
+
+            try
+            {
+                connect.Open();
+
+
+                command = new SqlCommand(query, connect);
+
+                bids = Convert.ToInt32(command.ExecuteScalar().ToString());
+                connect.Close();
+            }
+
+            catch (Exception e) { }
+
+            return bids;
+        }
 
     }
 

@@ -53,15 +53,26 @@ namespace BarteRoom
 
                 else
                 {
-                    int notRead = 0;
+                    int notRead_Msg = 0;
+                    int notRead_bids = 0;
                     logic = new Logic();
-                    notRead = logic.notReadBids(Session["usr"].ToString());
+                    notRead_Msg = logic.notReadMsg(Session["usr"].ToString());
+                    notRead_bids = logic.notReadBids(Session["usr"].ToString());
 
-                    note.Text = notRead.ToString();
+                    message.Text = notRead_Msg.ToString();
+                    note.Text = notRead_bids.ToString();
                     recentBids.DataSource = logic.getAllBids(Session["usr"].ToString());
                     recentBids.DataBind();
 
-                    for (int i = 0; i < notRead; i++)
+                    recentmsg.DataSource = logic.getAllMessages(Session["usr"].ToString());
+                    recentmsg.DataBind();
+
+                    for (int i = 0; i < notRead_Msg; i++)
+                    {
+                        recentmsg.Rows[i].BackColor = Color.Gainsboro;
+                    }
+
+                    for (int i = 0; i < notRead_bids; i++)
                     {
                         recentBids.Rows[i].BackColor = Color.Gainsboro;
                     }
@@ -390,6 +401,32 @@ namespace BarteRoom
         protected void ImageButton2_Click(object sender, ImageClickEventArgs e)
         {
             Response.Redirect("Home.aspx");
+        }
+
+        protected void recentmsg_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            try
+            {
+                switch (e.Row.RowType)
+                {
+                    case DataControlRowType.Header:
+
+                        break;
+                    case DataControlRowType.DataRow:
+                        e.Row.Attributes.Add("onmouseover", "this.style.cursor='pointer';this.originalstyle=this.style.backgroundColor;this.style.backgroundColor='#F5F5DC'");
+                        if (e.Row.RowState == DataControlRowState.Alternate)
+                        {
+                            e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor=this.originalstyle;");
+                        }
+                        else
+                        {
+                            e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor=this.originalstyle;");
+                        }
+                        e.Row.Attributes.Add("onclick", Page.ClientScript.GetPostBackEventReference(recentmsg, "Select$" + e.Row.RowIndex));
+                        break;
+                }
+            }
+            catch { }
         }
     }
 }

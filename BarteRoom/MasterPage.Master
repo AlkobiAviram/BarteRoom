@@ -77,9 +77,9 @@
                   </ul>
    
                     <ul class="navbar-form navbar-right" role="tablist">
-                       <li>
+                       <li class="dropdown">
                           
-                       <div  class="dropdown">   
+           
                            <span class="glyphicon glyphicon-bell" runat="server" data-toggle="dropdown" aria-expanded="false"><asp:Label ID="note" runat="server" Text="0" Font-Bold="True" ForeColor="#CC0000" BorderStyle="None"></asp:Label></span>
             
                            <ul class="dropdown-menu">
@@ -115,16 +115,73 @@
                                </asp:GridView>
                            </li>                     
                                </ul> 
-                       </div> 
+                    
                            </li>
                       </ul>
                     <ul class="navbar-form navbar-right" role="tablist">
-                       <li>
-                          <span class="glyphicon glyphicon-envelope"><asp:Label ID="message" runat="server" Text="0" Font-Bold="True" ForeColor="#CC0000" BorderStyle="None"></asp:Label></span>
-                       </li> 
-                            
-                  </ul>
-  
+                       <li class="dropdown">
+
+                          <span class="glyphicon glyphicon-envelope"  runat="server" data-toggle="dropdown" aria-expanded="false"><asp:Label ID="message" runat="server" Text="0" Font-Bold="True" ForeColor="#CC0000" BorderStyle="None"></asp:Label></span>
+                       
+                           <ul class="dropdown-menu">
+                               
+                               <li class="dropdown-header">
+
+                           <nav class="navbar-form navbar-right">
+                               
+                                    <asp:LinkButton ID="LinkButton4" CssClass="change" ForeColor="Blue" runat="server">Mark all as read</asp:LinkButton>
+                               </nav>
+                              
+                               <asp:GridView ID="recentmsg" runat="server" BorderStyle="None" GridLines="Horizontal" HeaderStyle-BorderStyle="None" PagerSettings-Visible="True" RowStyle-BorderStyle="None" ShowHeader="False" RowStyle-HorizontalAlign="Center" AllowPaging="True" AllowCustomPaging="True" AutoGenerateColumns="False" OnRowDataBound="recentmsg_RowDataBound">
+                                        <Columns>
+
+                                     <asp:TemplateField HeaderText="From" ShowHeader="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="fromLabel" runat="server" Font-Size="Medium" Font-Bold="true" Text='<%# Bind("From") %>'></asp:Label>
+                                    </ItemTemplate>  
+                                                                             
+                                </asp:TemplateField>                                               
+
+                                            <asp:TemplateField HeaderText="Subject" ShowHeader="False">
+                                    <ItemTemplate>
+                                        <br /><br /> 
+                                        <asp:Label ID="subLabel" runat="server" ForeColor="Blue" Text='<%# Bind("Subject") %>'></asp:Label><br /> 
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+
+                                     <asp:TemplateField HeaderText="Msg" ShowHeader="False">
+                                    <ItemTemplate>
+                                        <br /><br /> 
+                                        <asp:Label ID="msgLabel" runat="server" Text='<%# Bind("Msg") %>'></asp:Label> 
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Datetime" ShowHeader="False">
+                                    <ItemTemplate>
+                                        <br /><br /> 
+                                        <asp:Label ID="dateLabel" runat="server" Text='<%# Bind("Datetime") %>'></asp:Label> 
+                                    </ItemTemplate>
+                                </asp:TemplateField>       
+
+                                            
+                                     <asp:TemplateField HeaderText="Id" ShowHeader="False">
+                                    <ItemTemplate>
+                                        <br /><br /> 
+                                        <asp:Label ID="idLabel" runat="server" Font-Size="0px" Text='<%# Bind("Id") %>'></asp:Label> 
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+
+                                       </Columns> 
+                                       <EditRowStyle HorizontalAlign="Center" />
+                                       <HeaderStyle HorizontalAlign="Center" />
+                                       <RowStyle HorizontalAlign="Center" />
+                               </asp:GridView>
+                                </li>                     
+                           </ul> 
+                    
+                         </li>
+                    </ul>
+
 
                 </div><!-- /.navbar-collapse -->
               </div><!-- /.container-fluid -->

@@ -300,5 +300,38 @@ namespace BarteRoom
             data.readIndex(id);
         }
 
+        public DataTable getAllMessages(string usr)
+        {
+            data = new DB();
+            return data.getAllMessages(usr);
+        }
+
+        public void addMessage(Message msg)
+        {
+            DateTime dt = DateTime.Now;
+            string newDatetimeFormat = changeDateFormat(dt.ToString());
+
+            data = new DB();
+
+            data.addMessage(msg, newDatetimeFormat);
+        }
+
+        public int notReadMsg(string usr)
+        {
+            data = new DB();
+            return data.notReadMsg(usr);
+        }
+
+        private string changeDateFormat(string dt)
+        {
+            string[] date = dt.Split(' ');
+
+            string[] tmp = date[0].Split('/');
+
+            string newFormat = tmp[2] + "-" + tmp[1] + "-" + tmp[0] + " " + date[1];
+
+            return newFormat;
+        }
+
     }
 }

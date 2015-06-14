@@ -18,30 +18,35 @@ namespace BarteRoom
             Guid newGuid = Guid.NewGuid();
             this.id = newGuid.ToString(); ;
         }
-        public string getId()
+
+        public string Id
         {
-            return this.id;
+            get { return id; }
+            set { id = value; }
         }
-        public string getFrom()
+
+        public string From
         {
-            return this.from;
+            get { return from; }
+            set { from = value; }
         }
-        public string getTo()
+
+        public string To
         {
-            return this.to;
+            get { return to; }
+            set { to = value; }
         }
-        public string getSubject()
+
+        public string Subject
         {
-            return this.subject;
+            get { return subject; }
+            set { subject = value; }
         }
-        public string getMsg_body()
+
+        public string Msg_body
         {
-            return this.msg_body;
-        }
-        public void setId(string newId)
-        {
-            this.id=newId;
-            return;
+            get { return msg_body; }
+            set { msg_body = value; }
         }
    
     }
