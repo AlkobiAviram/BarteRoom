@@ -207,3 +207,11 @@ FakesAssemblies/
 **/App_Data/*.mdf
 **/App_Data/*.ldf
 **/App_Data/*.sdf
+
+
+#temp images
+BarteRoom/img/resizeImage0.jpg
+BarteRoom/img/resizeImage1.jpg
+BarteRoom/img/resizeImage2.jpg
+BarteRoom/img/resizeImage3.jpg
+BarteRoom/img/resizeImage4.jpg
