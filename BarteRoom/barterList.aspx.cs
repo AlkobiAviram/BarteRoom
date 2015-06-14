@@ -71,7 +71,7 @@ namespace BarteRoom
               
 
                 // TextBox delete_id = new TextBox();
-                string delete_id = row.Cells[7].Text;
+                string delete_id = row.Cells[6].Text;
                 lg.removeItem(delete_id);
 
                 
@@ -85,10 +85,10 @@ namespace BarteRoom
                 TextBox cmt = new TextBox();
                 TextBox dsct = new TextBox();
                 TextBox ID = new TextBox();
-                nm = (TextBox)GridView1.Rows[index].Cells[4].Controls[0];
-                cmt = (TextBox)GridView1.Rows[index].Cells[5].Controls[0];
-                dsct = (TextBox)GridView1.Rows[index].Cells[6].Controls[0];
-                ID = (TextBox)GridView1.Rows[index].Cells[7].Controls[0];
+                nm = (TextBox)GridView1.Rows[index].Cells[3].Controls[0];
+                cmt = (TextBox)GridView1.Rows[index].Cells[4].Controls[0];
+                dsct = (TextBox)GridView1.Rows[index].Cells[5].Controls[0];
+                ID = (TextBox)GridView1.Rows[index].Cells[6].Controls[0];
 
                 lg.editItem(nm.Text, cmt.Text, dsct.Text, ID.Text);
                 GridView1.EditIndex = -1;    
@@ -155,7 +155,7 @@ namespace BarteRoom
         {
             int index = Convert.ToInt32(e.NewSelectedIndex);
             GridViewRow row = GridView1.Rows[index];
-            Session["item_id"] = row.Cells[7].Text;
+            Session["item_id"] = row.Cells[6].Text;
             Response.Redirect("/ItemView.aspx");
             GridView1.EditIndex = -1;
             bind();

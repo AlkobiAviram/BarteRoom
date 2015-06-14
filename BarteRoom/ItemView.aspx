@@ -11,23 +11,23 @@
             
              <div class="zoom_img" >
             <asp:Image  id="item_pic3" CssClass="img-responsive"  runat="server"/>
-            <asp:Button ID="edit_cmd" runat="server" CssClass="btn-default" Text="Edit" OnClick="edit_cmd_Click"></asp:Button>
+            <asp:Button ID="edit_cmd" runat="server" CssClass="btn btn-info" Text="Edit" OnClick="edit_cmd_Click" Height="26px" Width="158px"></asp:Button>
             <asp:Button ID="commit_cmd" runat="server" CssClass="btn-default" Visible="false" Text="Commit changes" OnClick="commit_cmd_Click"></asp:Button>
-             <asp:Button ID="cancel_cmd" runat="server" CssClass="btn-default" Visible="false" Text="cancel" OnClick="cancel_cmd_Click"></asp:Button>
+             <asp:Button ID="cancel_cmd" runat="server" CssClass="btn-default" Visible="false" Text="cancel" OnClick="cancel_cmd_Click" Width="114px"></asp:Button>
              </div>
         </div>
         <div class="col-md-6">
             <div class="row">
                <h3>name</h3>
                  <p>
-                        <asp:TextBox  id="name_textBox" AutoPostBack="true" TextMode="multiline" BorderStyle="None"  runat="server" Width="100%" OnTextChanged="name_textBox_TextChanged"/>
+                        <asp:TextBox  id="name_textBox" AutoPostBack="true" TextMode="multiline" BorderStyle="Dashed"  runat="server" Width="100%" OnTextChanged="name_textBox_TextChanged"/>
                         <asp:Label ID="nameLabel" runat="server" />
                  </p>
             </div>
                 <div class="row">
                <h3>Comments</h3>
                  <p>
-                       <asp:TextBox id="comments_textBox" TextMode="multiline" BorderStyle="None"  runat="server" Width="100%" OnTextChanged="comments_textBox_TextChanged"/>
+                       <asp:TextBox id="comments_textBox" TextMode="multiline" BorderStyle="Dashed"  runat="server" Width="100%" OnTextChanged="comments_textBox_TextChanged"/>
                        <asp:Label ID="comLabel" runat="server" />
 
                  </p>
@@ -35,7 +35,7 @@
              <div class="row">
                 <h3>Description</h3>
                    <p>
-                        <asp:TextBox  id="description_textBox" TextMode="multiline" BorderStyle="None"  runat="server" OnTextChanged="description_textBox_TextChanged" />
+                        <asp:TextBox  id="description_textBox" TextMode="multiline" BorderStyle="Dashed" runat="server" OnTextChanged="description_textBox_TextChanged" />
                         <asp:Label ID="desLabel" runat="server" />
                      </p>
              </div>

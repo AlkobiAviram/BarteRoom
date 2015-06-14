@@ -10,9 +10,6 @@ namespace BarteRoom
     public partial class viewItem : System.Web.UI.Page
     {
         Logic lg = new Logic();
-        private string new_name="";
-        private string new_comments = "";
-        private string new_description = "";
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -32,11 +29,12 @@ namespace BarteRoom
             idLabel1.Text = item.getId();  
             desLabel.Text=item.getDescription();
 
-            if (IsPostBack)
+            if (!IsPostBack)
             {
                 comments_textBox.Visible = false;
                 name_textBox.Visible = false;
                 description_textBox.Visible = false;
+                edit_cmd.Visible = false;
 
             }
             //checking if the user logged in
@@ -47,11 +45,25 @@ namespace BarteRoom
                 offer_cmd.Visible = false;
 
             }
-            else
+            else//a user has logged in
             {
                 makeBidLabel.Visible = false;
                 offer_cmd.Visible = true;
+                if (Session["usr"].ToString() == item.getUsr())//this means that the item is owned by the user who logged in
+                {
+                    edit_cmd.Visible = true;
+                    offer_cmd.Visible = false;
+                    makeBidLabel.Visible = false;
+                }
+                else//this means that the item is not owned by the user who logged in
+                {
+                    edit_cmd.Visible = false;
+                    offer_cmd.Visible = true;
+                    makeBidLabel.Visible = true;
+                }
             }
+
+         
         }
 
         protected void offer_cmd_Click(object sender, EventArgs e)
@@ -93,8 +105,8 @@ namespace BarteRoom
             comments_textBox.Visible = true;
 
             description_textBox.Text = item.getDescription();
-            description_textBox.Rows = numOfRows(item.getDescription());
-            description_textBox.Width = maxLineLength(item.getDescription());
+            description_textBox.Height = 400;
+            description_textBox.Width = 400;
             description_textBox.Visible = true;
 
          
