@@ -35,7 +35,7 @@ namespace BarteRoom
         */
         public bool addNewUser(String usr, String password, String fullName, String email, int manager)
         {
-            query = "insert into Users values('" + usr + "','" + password + "','" + fullName + "','" + email + "'," + manager + ");";
+            query = "insert into dbo.Users values('" + usr + "','" + password + "','" + fullName + "','" + email + "'," + manager + ");";
 
             try
             {
@@ -61,7 +61,7 @@ namespace BarteRoom
             {
                 connect.Open();
 
-                query = "select COUNT(*) from users where usr = '" + usr + "';";
+                query = "select COUNT(*) from dbo.users where usr = '" + usr + "';";
                 command = new SqlCommand(query, connect);
 
                 tmp = Convert.ToInt32(command.ExecuteScalar().ToString());
@@ -82,7 +82,7 @@ namespace BarteRoom
         public String getFullName(String usr)
         {
             string Name = "";
-            query = "select fullName from users where usr = '" + usr + "';";
+            query = "select fullName from dbo.users where usr = '" + usr + "';";
 
             try
             {
@@ -106,7 +106,7 @@ namespace BarteRoom
         public bool loginCheck(String usr, String pass)
         {
             string password = "";
-            query = "select password from users where usr = '" + usr + "';";
+            query = "select password from dbo.users where usr = '" + usr + "';";
 
             try
             {
@@ -151,7 +151,7 @@ namespace BarteRoom
         public string getEmail(string usr)
         {
             string email = "";
-            query = "select email from users where usr = '" + usr + "';";
+            query = "select email from dbo.users where usr = '" + usr + "';";
 
             try
             {
@@ -176,7 +176,7 @@ namespace BarteRoom
             {
                 connect.Open();
 
-                query = "select COUNT(*) from users where usr = '" + usr + "' AND manager = 1;";
+                query = "select COUNT(*) from dbo.users where usr = '" + usr + "' AND manager = 1;";
                 command = new SqlCommand(query, connect);
 
                 tmp = Convert.ToInt32(command.ExecuteScalar().ToString());
@@ -1185,7 +1185,7 @@ namespace BarteRoom
         public void addMessage(Message msg, string dt)
         {
 
-            query = "insert into msg values('" + msg.Id + "','" + msg.From + "','" + msg.To + "','" + msg.Subject + "','" + msg.Msg_body + "', 0, '" + dt + "');";
+            query = "insert into dbo.msg values('" + msg.Id + "','" + msg.From + "','" + msg.To + "','" + msg.Subject + "','" + msg.Msg_body + "', 0, '" + dt + "');";
 
             try
             {
@@ -1218,7 +1218,7 @@ namespace BarteRoom
             dtable.Columns.Add(dt3);
             dtable.Columns.Add(dt4);
 
-            query = "select fromUsr, subject, msg_body, datetime, Id, isRead from msg where toUsr = '" + usr + "' order by isRead DESC, Id;";
+            query = "select fromUsr, subject, msg_body, datetime, Id, isRead from dbo.msg where toUsr = '" + usr + "' order by isRead DESC, Id;";
 
             try
             {
@@ -1261,7 +1261,7 @@ namespace BarteRoom
         {
             int bids = 0;
 
-            query = "select COUNT(*) from msg where toUsr = '" +  usr + "' AND (isRead = 0);";
+            query = "select COUNT(*) from dbo.msg where toUsr = '" + usr + "' AND (isRead = 0);";
 
             try
             {
