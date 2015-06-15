@@ -31,6 +31,24 @@ namespace BarteRoom {
         protected global::System.Web.UI.WebControls.Image item_pic3;
         
         /// <summary>
+        /// newImage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload newImage;
+        
+        /// <summary>
+        /// uploadNewImageLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label uploadNewImageLabel;
+        
+        /// <summary>
         /// edit_cmd control.
         /// </summary>
         /// <remarks>
@@ -119,6 +137,15 @@ namespace BarteRoom {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label idLabel1;
+        
+        /// <summary>
+        /// makeBidHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label makeBidHeader;
         
         /// <summary>
         /// offer_cmd control.

@@ -127,25 +127,42 @@ namespace BarteRoom
             else
                 return false;
         }
-        /*
+        
         //upload image
-        public void uploadPic(string usr, byte[] image)
+        public void uploadNewImage(string item_id,string newImage)
         {
-            query = "update items set image = @IMG where usr = '" + usr + "';";
+            query = "update dbo.images set path ='" +newImage +"' where id = '" + item_id + "';";
+            //removing the picture from the folder
+            string completePath = System.Web.HttpContext.Current.Server.MapPath("~/" + setImagePath(item_id));
+            if (System.IO.File.Exists(completePath))
+            {
+
+                System.IO.File.Delete(completePath);
+
+            }
+            string[] split=setImagePath(item_id).Split('/');
+            completePath = System.Web.HttpContext.Current.Server.MapPath("~/img/OriginalSize_" + split[1]);
+            if (System.IO.File.Exists(completePath))
+            {
+
+                System.IO.File.Delete(completePath);
+
+            }
+
+
 
             try
             {
                 connect.Open();
 
                 command = new SqlCommand(query, connect);
-                command.Parameters.AddWithValue("@IMG", image);
                 command.ExecuteNonQuery();
                 connect.Close();
             }
 
             catch (Exception ex) { }
         }
-        */
+        
 
         //return the E-mail of the correct user
         public string getEmail(string usr)

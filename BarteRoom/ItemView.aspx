@@ -11,6 +11,8 @@
             
              <div class="zoom_img" >
             <asp:Image  id="item_pic3" CssClass="img-responsive"  runat="server"/>
+            <asp:FileUpload ID="newImage" runat="server" />
+            <asp:Label ID="uploadNewImageLabel" Text="Upload new image" runat="server" />
             <asp:Button ID="edit_cmd" runat="server" CssClass="btn btn-info" Text="Edit" OnClick="edit_cmd_Click" Height="26px" Width="158px"></asp:Button>
             <asp:Button ID="commit_cmd" runat="server" CssClass="btn-default" Visible="false" Text="Commit changes" OnClick="commit_cmd_Click"></asp:Button>
              <asp:Button ID="cancel_cmd" runat="server" CssClass="btn-default" Visible="false" Text="cancel" OnClick="cancel_cmd_Click" Width="114px"></asp:Button>
@@ -47,7 +49,7 @@
                 </p>
             </div>
                 <div class="row">
-                <h3>Make a Bid</h3>
+                <h3> <asp:Label ID="makeBidHeader" Text="Make A Bid" runat="server" OnDataBinding="Page_Load"></asp:Label></h3>
                    <p>
                        <asp:Button ID="offer_cmd" runat="server" Text="Make a Bid" CssClass=" btn btn-success" OnClick="offer_cmd_Click"/>
                        <asp:Label ID="makeBidLabel" runat="server" OnDataBinding="Page_Load"></asp:Label>

@@ -4,7 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+// To resize an image and store it to destination folder
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Net;
+using System.Drawing.Imaging;
 namespace BarteRoom
 {
     public partial class viewItem : System.Web.UI.Page
@@ -35,6 +39,8 @@ namespace BarteRoom
                 name_textBox.Visible = false;
                 description_textBox.Visible = false;
                 edit_cmd.Visible = false;
+                newImage.Visible = false;
+                uploadNewImageLabel.Visible = false;
 
             }
             //checking if the user logged in
@@ -48,18 +54,21 @@ namespace BarteRoom
             else//a user has logged in
             {
                 makeBidLabel.Visible = false;
+                makeBidHeader.Visible = false;
                 offer_cmd.Visible = true;
                 if (Session["usr"].ToString() == item.getUsr())//this means that the item is owned by the user who logged in
                 {
                     edit_cmd.Visible = true;
                     offer_cmd.Visible = false;
                     makeBidLabel.Visible = false;
+                    makeBidHeader.Visible = false;
                 }
                 else//this means that the item is not owned by the user who logged in
                 {
                     edit_cmd.Visible = false;
                     offer_cmd.Visible = true;
                     makeBidLabel.Visible = true;
+                    makeBidHeader.Visible = true;
                 }
             }
 
@@ -120,6 +129,10 @@ namespace BarteRoom
             commit_cmd.Visible = true;
             cancel_cmd.Visible = true;
             edit_cmd.Visible = false;
+
+
+            newImage.Visible = true;
+            uploadNewImageLabel.Visible = true;
             
         }
 
@@ -131,7 +144,8 @@ namespace BarteRoom
             comments_textBox.Visible = false;
             name_textBox.Visible = false;
             description_textBox.Visible = false;
-
+            newImage.Visible = false;
+            uploadNewImageLabel.Visible = false;
 
             desLabel.Visible = true;
             nameLabel.Visible = true;
@@ -140,6 +154,66 @@ namespace BarteRoom
             commit_cmd.Visible = false;
             cancel_cmd.Visible = false;
             edit_cmd.Visible = true;
+
+
+
+            //upload new image:
+            Boolean fileOK = false;
+            if (newImage.HasFile)
+            {
+                String fileExtension =
+                    System.IO.Path.GetExtension(newImage.FileName).ToLower();
+                String[] allowedExtensions = { ".gif", ".png", ".jpeg", ".jpg" };
+                for (int i = 0; i < allowedExtensions.Length; i++)
+                {
+                    if (fileExtension == allowedExtensions[i])
+                    {
+                        fileOK = true;
+                    }
+                }
+            }
+
+            if (fileOK)
+            {
+                try
+                {
+                    string file_name = newImage.FileName;
+
+                    //saving original  size image
+                    string path = Server.MapPath("~/img/OriginalSize_" + file_name);
+                    newImage.PostedFile.SaveAs(path);
+
+
+
+                    //saving display size copy
+                    Bitmap target = FixedSize(System.Drawing.Image.FromFile(path), 225, 225) as Bitmap;
+                    path = Server.MapPath("~/img/" + file_name);
+                    target.Save(path);
+
+                    lg.uploadNewImage(Session["item_id"].ToString(), "img/" + file_name);
+                    
+                    Response.Redirect("/BarterList.aspx");
+
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             Response.Redirect("/ItemView.aspx");
         }
 
@@ -149,7 +223,8 @@ namespace BarteRoom
             comments_textBox.Visible = false;
             name_textBox.Visible = false;
             description_textBox.Visible = false;
-
+            newImage.Visible = false;
+            uploadNewImageLabel.Visible = false;
 
             desLabel.Visible = true;
             nameLabel.Visible = true;
@@ -180,6 +255,57 @@ namespace BarteRoom
         {
             itemViewPage.Visible = false;
         }
+        static System.Drawing.Image FixedSize(System.Drawing.Image imgPhoto, int Width, int Height)
+        {
+            int sourceWidth = imgPhoto.Width;
+            int sourceHeight = imgPhoto.Height;
+            int sourceX = 0;
+            int sourceY = 0;
+            int destX = 0;
+            int destY = 0;
+
+            float nPercent = 0;
+            float nPercentW = 0;
+            float nPercentH = 0;
+
+            nPercentW = ((float)Width / (float)sourceWidth);
+            nPercentH = ((float)Height / (float)sourceHeight);
+            if (nPercentH < nPercentW)
+            {
+                nPercent = nPercentH;
+                destX = System.Convert.ToInt16((Width -
+                              (sourceWidth * nPercent)) / 2);
+            }
+            else
+            {
+                nPercent = nPercentW;
+                destY = System.Convert.ToInt16((Height -
+                              (sourceHeight * nPercent)) / 2);
+            }
+
+            int destWidth = (int)(sourceWidth * nPercent);
+            int destHeight = (int)(sourceHeight * nPercent);
+
+            Bitmap bmPhoto = new Bitmap(Width, Height,
+                              System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+            bmPhoto.SetResolution(imgPhoto.HorizontalResolution,
+                             imgPhoto.VerticalResolution);
+
+            Graphics grPhoto = Graphics.FromImage(bmPhoto);
+            grPhoto.Clear(Color.White);
+            grPhoto.InterpolationMode =
+                    InterpolationMode.HighQualityBicubic;
+
+            grPhoto.DrawImage(imgPhoto,
+                new Rectangle(destX, destY, destWidth, destHeight),
+                new Rectangle(sourceX, sourceY, sourceWidth, sourceHeight),
+                GraphicsUnit.Pixel);
+
+            grPhoto.Dispose();
+            return bmPhoto;
+        }
+
+
 
     }
 }
