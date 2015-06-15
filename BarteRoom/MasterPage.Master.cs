@@ -150,7 +150,8 @@ namespace BarteRoom
 
                 Session["usr"] = usrName;
                 Session["name"] = logic.getName(usrName);
-                Response.Redirect("Home.aspx");
+
+                Response.Redirect(Page.Request.Url.ToString(), true);
             }
 
             else

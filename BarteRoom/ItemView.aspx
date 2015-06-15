@@ -52,7 +52,9 @@
                 <h3> <asp:Label ID="makeBidHeader" Text="Make A Bid" runat="server" OnDataBinding="Page_Load"></asp:Label></h3>
                    <p>
                        <asp:Button ID="offer_cmd" runat="server" Text="Make a Bid" CssClass=" btn btn-success" OnClick="offer_cmd_Click"/>
-                       <asp:Label ID="makeBidLabel" runat="server" OnDataBinding="Page_Load"></asp:Label>
+                       <asp:Label ID="Label2" runat="server" Text="Please"></asp:Label>
+                       <asp:HyperLink ID="logInHyperLink" runat="server" OnDataBinding="Page_Load" NavigateUrl="#login" data-toggle="modal" CssClass="change"> log in </asp:HyperLink>
+                       <asp:Label ID="Label1" runat="server" Text="to make a bid"></asp:Label>
 
                 </p>
                     <p>

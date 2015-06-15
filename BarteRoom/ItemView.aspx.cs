@@ -46,28 +46,29 @@ namespace BarteRoom
             //checking if the user logged in
             if (Session["usr"] == null)
             {
-                makeBidLabel.Visible = true;
-                makeBidLabel.Text = "Please log in to make a bid";
+                Label1.Visible = true;
+                logInHyperLink.Visible = true;
+                Label2.Visible = true;
                 offer_cmd.Visible = false;
 
             }
             else//a user has logged in
             {
-                makeBidLabel.Visible = false;
-                makeBidHeader.Visible = false;
+                Label1.Visible = false;
+                logInHyperLink.Visible = false;
+                Label2.Visible = false;
                 offer_cmd.Visible = true;
+
                 if (Session["usr"].ToString() == item.getUsr())//this means that the item is owned by the user who logged in
                 {
                     edit_cmd.Visible = true;
                     offer_cmd.Visible = false;
-                    makeBidLabel.Visible = false;
                     makeBidHeader.Visible = false;
                 }
                 else//this means that the item is not owned by the user who logged in
                 {
                     edit_cmd.Visible = false;
                     offer_cmd.Visible = true;
-                    makeBidLabel.Visible = true;
                     makeBidHeader.Visible = true;
                 }
             }
