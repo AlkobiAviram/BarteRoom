@@ -91,22 +91,31 @@ namespace BarteRoom
                 return false;
         }
 
-        public void sendEmail(String usr, String first, String sub, String msg, int flag)
+        public void sendEmail(String Email, String usr, String first, String sub, String msg, int flag)
         {
             String email = "barterroom@gmail.com";
             String message = msg;
             String fullName;
 
+            //contact message from guest
             if (flag == 0)
             {
                 message = "Message from: " + first + "\n\n" + msg;
             }
 
+            //contact message from register user
             else if (flag == 1)
             {
                 data = new DB();
                 fullName = data.getFullName(usr);
                 message = "Message from: " + fullName + ", User Name: " + usr + "\n\n" + msg;
+            }
+
+            //forgot password message
+            else if (flag == 2)
+            {
+                email = Email;
+                message = "Hello " + first + "\n" + "Your password to User Name " + usr + " account in Barteroom is: " + msg + ".";
             }
 
             SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
@@ -135,6 +144,12 @@ namespace BarteRoom
             data = new DB();
 
             return data.isExists(usr); 
+        }
+
+        public string getEmail(string usr)
+        {
+            data = new DB();
+            return data.getEmail(usr);
         }
 /*
         public void uploadPic(string usr, byte[] image)
@@ -336,6 +351,24 @@ namespace BarteRoom
             string newFormat = tmp[2] + "-" + tmp[1] + "-" + tmp[0] + " " + date[1];
 
             return newFormat;
+        }
+
+        public string getPass(string usr)
+        {
+            data = new DB();
+            return data.getPass(usr);
+        }
+
+        public bool isEmailExists(string email)
+        {
+            data = new DB();
+            return data.isEmailExists(email);
+        }
+
+        public string getUserByEmail(string email)
+        {
+            data = new DB();
+            return data.getUserByEmail(email);
         }
 
     }

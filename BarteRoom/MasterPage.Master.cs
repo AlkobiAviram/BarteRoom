@@ -110,7 +110,10 @@ namespace BarteRoom
 
             if (!logic.isExist(usrName))
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "loginUserNotExist", "loginUserNotExist();", true);
+                passError.Visible = false;
+                userError.Visible = true;
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "openerrorModal();", true);
+
                 return;
             }
 
@@ -155,7 +158,11 @@ namespace BarteRoom
             }
 
             else
-                ScriptManager.RegisterStartupScript(this, GetType(), "loginFail", "loginFail();", true);
+            {
+                passError.Visible = true;
+                userError.Visible = false;
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "openerrorModal();", true);
+            }
         }
 
         protected void SignUp_Click(object sender, EventArgs e)
@@ -174,7 +181,7 @@ namespace BarteRoom
 
             if (state == 1)
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "userExists", "userExists();", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "openRegerrorModal();", true);
             }
 
             else if (state == 2)
@@ -220,7 +227,7 @@ namespace BarteRoom
 
                 logic = new Logic();
 
-                logic.sendEmail("", first, subject, message, 0);
+                logic.sendEmail("", "", first, subject, message, 0);
             }
 
             else
@@ -233,8 +240,14 @@ namespace BarteRoom
 
                 logic = new Logic();
 
-                logic.sendEmail(usr, first, subject, message, 1);
+                logic.sendEmail("", usr, first, subject, message, 1);
             }
+            Label2.Visible = true;
+            Label3.Visible = true;
+            Label4.Visible = false;
+            Label5.Visible = false;
+            Label6.Visible = false;
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "openInfoModal();", true);
         }
 
         protected void searchCmd_Click(object sender, EventArgs e)
@@ -312,7 +325,7 @@ namespace BarteRoom
 
         protected void forgotPassword_Click(object sender, EventArgs e)
         {
-
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "openForgotModal();", true);
         }
 
         protected void ReadMarkCmd_Click(object sender, EventArgs e)
@@ -428,6 +441,85 @@ namespace BarteRoom
                 }
             }
             catch { }
+        }
+
+        protected void forgotSend_Click(object sender, EventArgs e)
+        {
+            string text = forgotTxt.Text;
+            string user, email, pass, name;
+            logic = new Logic();
+
+            if (text.Contains("@"))
+            {
+                if (logic.isEmailExists(text))
+                {
+                    user = logic.getUserByEmail(text);
+                    pass = logic.getPass(user);
+                    name = logic.getName(user);
+                    logic.sendEmail(text, user, name, "Your Password at BarteRoom", pass, 2);
+
+                    Label2.Visible = false;
+                    Label3.Visible = false;
+                    Label4.Visible = false;
+                    Label5.Visible = true;
+                    Label6.Visible = false;
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "openInfoModal();", true);
+                }
+
+                else
+                {
+                    Label2.Visible = false;
+                    Label3.Visible = false;
+                    Label4.Visible = false;
+                    Label5.Visible = false;
+                    Label6.Visible = true;
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "openInfoModal();", true);
+                }
+            }
+
+            else
+            {
+                if (logic.isExist(text))
+                {
+                    email = logic.getEmail(text);
+                    pass = logic.getPass(text);
+                    name = logic.getName(text);
+                    logic.sendEmail(email, text, name, "Your Password at BarteRoom", pass, 2);
+
+                    Label2.Visible = false;
+                    Label3.Visible = false;
+                    Label4.Visible = false;
+                    Label5.Visible = true;
+                    Label6.Visible = false;
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "openInfoModal();", true);
+                }
+
+                else
+                {
+                    Label2.Visible = false;
+                    Label3.Visible = false;
+                    Label4.Visible = true;
+                    Label5.Visible = false;
+                    Label6.Visible = false;
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "openInfoModal();", true);
+                }
+            }
+        }
+
+        protected void forgotCancel_Click(object sender, EventArgs e)
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "openloginModal();", true);
+        }
+
+        protected void errorOk_Click(object sender, EventArgs e)
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "openloginModal();", true);
+        }
+
+        protected void RegerrorOk_Click(object sender, EventArgs e)
+        {
+            SignUpUsernameTxt.Text = "";
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "openregisterModal();", true);
         }
     }
 }

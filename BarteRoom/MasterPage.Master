@@ -211,7 +211,7 @@
 
                                 <td class="auto-style4">
                                     <asp:Button ID="Button1" class="btn btn-info" Height="45px" Width="120px" runat="server" Text="Search" OnClick="searchCmd_Click"/>
-                                    <asp:LinkButton ID="AdvancedSearch" runat="server" ForeColor="Blue">Advanced</asp:LinkButton>
+                                    <asp:LinkButton ID="AdvancedSearch" runat="server" CssClass="change" ForeColor="Blue">Advanced</asp:LinkButton>
                                 </td>
 
                             </tr>
@@ -330,6 +330,37 @@
       
          <!-- ===================================================Login Modal=======================================================  -->
 
+         <!-- ===============================================Forgot Password Modal==================================================  -->
+
+             <div class="modal fade" id="Forgot" role="dialog" runat="server" >
+             <div class="modal-dialog ">
+                 <div class="modal-content">
+                     <div class="modal-header">
+                         <h3>Find Your Account</h3>
+                     </div>
+                     <div class="modal-body">
+                         <asp:ValidationSummary ID="ForgotValidationSummary" DisplayMode="List" ForeColor="Red" runat="server" ValidationGroup="ForgotGroup" />
+                         <span>Enter Your E-mail Or User Name</span>
+                         <div class="input-group">
+                          <span class="input-group-addon" id="basic_addon1"></span>
+                             <asp:TextBox ID="forgotTxt" class="form-control" placeholder="Enter Your E-mail Or User Name" runat="server"></asp:TextBox>
+                        </div>
+
+                     </div>
+                     <div class="modal-footer">
+                         <asp:Button class="btn btn-info" ID="forgotSend" runat="server" Text="Send to E-mail" OnClick="forgotSend_Click" ValidationGroup="ForgotGroup"/>
+                         <asp:Button class="btn btn-info" ID="forgotCancel" Text="Cancel" runat="server" OnClick="forgotCancel_Click" />
+
+
+                         <!-- ===================================================Forgot Validations=======================================================  -->
+                          <asp:RequiredFieldValidator ID="forgotTxtRequiredField" runat="server" ErrorMessage="E-mail or User Name Required" ForeColor="Red" ControlToValidate="forgotTxt" ValidationGroup="ForgotGroup" Display="None"></asp:RequiredFieldValidator>
+
+                     </div>
+                 </div>
+             </div>
+         </div>
+
+             <!-- ===============================================Forgot Password Modal==================================================  -->
 
           <!-- ===================================================Register Modal=======================================================  -->
          <div class="modal fade" id="register" role="dialog">
@@ -382,7 +413,7 @@
                          <asp:RequiredFieldValidator ID="FirstRequired" runat="server" ErrorMessage="First Name Required" ForeColor="Red" ControlToValidate="SignUpFirstTxtBox" ValidationGroup="SignUpGroup" Display="None"></asp:RequiredFieldValidator>
                           <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ErrorMessage="Password Required" ForeColor="Red" ControlToValidate="SignUpPasswordTxtBox" ValidationGroup="SignUpGroup" Display="None"></asp:RequiredFieldValidator>
                           <asp:RegularExpressionValidator ID="PasswordExpression" runat="server" ControlToValidate="SignUpPasswordTxtBox" ValidationExpression="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" ErrorMessage="Password must be Min 8 characters, atleast 1 Alphabet and 1 Number" ForeColor="Red" Display="None" ValidationGroup="SignUpGroup"/>
-                         <asp:RegularExpressionValidator ID="FirstExpression" runat="server" ControlToValidate="SignUpFirstTxtBox" ValidationExpression="^[a-zA-Z ]*$" ErrorMessage="Invalid character in First Name" ForeColor="Red" Display="None" ValidationGroup="SignUpGroup"/>
+                         <asp:RegularExpressionValidator ID="FirstExpression" runat="server" ControlToValidate="SignUpFirstTxtBox" ValidationExpression="^[a-zA-Z ]*$" ErrorMessage="First Name must contain only english letters" ForeColor="Red" Display="None" ValidationGroup="SignUpGroup"/>
                           <asp:RequiredFieldValidator ID="ConfirmRequired" runat="server" ErrorMessage="Confirm Password Required" ForeColor="Red" ControlToValidate="SignUpConfirmTxtBox" ValidationGroup="SignUpGroup" Display="None"></asp:RequiredFieldValidator>
                           <asp:CompareValidator ID="ComparePasswords" runat="server" ErrorMessage="Password and Confirm are not equals" ForeColor="Red" ControlToValidate="SignUpPasswordTxtBox" ControlToCompare="SignUpConfirmTxtBox" ValidationGroup="SignUpGroup" Display="None"></asp:CompareValidator>
                           <asp:RequiredFieldValidator ID="EmailRequired" runat="server" ErrorMessage="E-mail Required" ForeColor="Red" ControlToValidate="SignUpEmailTxtBox" ValidationGroup="SignUpGroup" Display="None"></asp:RequiredFieldValidator>
@@ -444,6 +475,74 @@
          </div>
          <!-- ===================================================Contact Modal========================================================  -->
 
+         <!-- ===================================================Error Modal========================================================  -->
+
+             <div class="modal fade" id="error" role="dialog" runat="server" >
+             <div class="modal-dialog ">
+                 <div class="modal-content">
+                     <div class="modal-header">
+                         <h3><span class="glyphicon glyphicon-remove-sign"></span> Error</h3>
+                     </div>
+                     <div class="modal-body">                  
+                         <asp:Label ID="userError" runat="server" Text="Incorrect User Name!"></asp:Label>
+                         <asp:Label ID="passError" runat="server" Text="Incorrect Password!"></asp:Label>
+                     </div>
+                     <div class="modal-footer">
+                         <asp:Button class="btn btn-info" ID="errorOk" Text="OK" runat="server" OnClick="errorOk_Click" />
+                     </div>
+                 </div>
+             </div>
+         </div>
+
+             <!-- ===================================================Error Modal========================================================  -->
+
+              <!-- ===================================================Register Error Modal========================================================  -->
+
+             <div class="modal fade" id="Regerror" role="dialog" runat="server" >
+             <div class="modal-dialog ">
+                 <div class="modal-content">
+                     <div class="modal-header">
+                         <h3><span class="glyphicon glyphicon-remove-sign"></span> Error</h3>
+                     </div>
+                     <div class="modal-body">                  
+                         <asp:Label ID="usrExistsError1" runat="server" Text="This User Name Already Exists!"></asp:Label>
+                         <br />
+                         <asp:Label ID="usrExistsError2" runat="server" Text="Please try another one"></asp:Label>
+                     </div>
+                     <div class="modal-footer">
+                         <asp:Button class="btn btn-info" ID="RegerrorOk" Text="OK" runat="server" OnClick="RegerrorOk_Click" />
+                     </div>
+                 </div>
+             </div>
+         </div>
+
+             <!-- ===================================================Register Error Modal========================================================  -->
+
+             <!-- ===================================================Info Modal========================================================  -->
+
+             <div class="modal fade" id="Info" role="dialog" runat="server" >
+             <div class="modal-dialog ">
+                 <div class="modal-content">
+                     <div class="modal-header">
+                         <h3><span class="glyphicon glyphicon-info-sign"></span></h3>
+                     </div>
+                     <div class="modal-body">                  
+                         <asp:Label ID="Label2" runat="server" Text="Thank You!"></asp:Label>
+                         <br />
+                         <asp:Label ID="Label3" runat="server" Text="Your message sent to us"></asp:Label>
+                         <asp:Label ID="Label4" runat="server" Text="User Name not exists"></asp:Label>
+                         <asp:Label ID="Label5" runat="server" Text="Your password sent to your E-mail"></asp:Label>
+                         <asp:Label ID="Label6" runat="server" Text="E-mail not exists in the system"></asp:Label>
+                     </div>
+                     <div class="modal-footer">
+                         <asp:Button class="btn btn-info" ID="InfoOk" Text="OK" runat="server" />
+                     </div>
+                 </div>
+             </div>
+         </div>
+
+             <!-- ===================================================Info Modal========================================================  -->
+
             <div class="navbar navbar-default navbar-fixed-bottom"> 
                  <div class="container">
                      <p class="navbar-text"><asp:HyperLink ID="ButtomAbout" runat="server" NavigateUrl="~/About.aspx" CssClass="change">About Us</asp:HyperLink></p>
@@ -452,27 +551,53 @@
                   </div>
           </div>
 
-     <script type="text/javascript">
-         function userExists() {
+    <script type="text/javascript">
 
-             alert("This User Name Already Exists!");
-         }
-    </script>
+        function openForgotModal() {
+           $('#Forgot').modal('show');
+        }
 
-        <script type="text/javascript">
-            function loginUserNotExist() {
-
-                alert("Incorrect User Name!");
-            }
-    </script>
-
-          <script type="text/javascript">
-              function loginFail() {
-
-                  window.alert("Incorrect Password!");
-              }
     </script>
    
+    <script type="text/javascript">
+
+        function openloginModal() {
+            $('#login').modal('show');
+        }
+
+    </script>
+
+    <script type="text/javascript">
+
+        function openregisterModal() {
+            $('#register').modal('show');
+         }
+
+    </script>
+
+   <script type="text/javascript">
+
+        function openerrorModal() {
+            $('#error').modal('show');
+        }
+
+   </script>
+
+   <script type="text/javascript">
+
+       function openRegerrorModal() {
+            $('#Regerror').modal('show');
+        }
+
+   </script>
+
+   <script type="text/javascript">
+
+        function openInfoModal() {
+            $('#Info').modal('show');
+        }
+
+   </script>
     
 
 

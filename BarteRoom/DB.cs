@@ -1292,6 +1292,70 @@ namespace BarteRoom
             return bids;
         }
 
+        public string getPass(string usr)
+        {
+            string pass = "";
+            query = "select password from dbo.users where usr = '" + usr + "';";
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+
+                pass = command.ExecuteScalar().ToString();
+                connect.Close();
+            }
+
+            catch (Exception e) { }
+
+            return pass;
+        }
+
+        public bool isEmailExists(string email)
+        {
+            int tmp = 0;
+
+            try
+            {
+                connect.Open();
+
+                query = "select COUNT(*) from dbo.users where email = '" + email + "';";
+                command = new SqlCommand(query, connect);
+
+                tmp = Convert.ToInt32(command.ExecuteScalar().ToString());
+                connect.Close();
+            }
+
+            catch (Exception e) { }
+
+            if (tmp >= 1)
+                return true;
+
+            else
+                return false;
+        }
+
+        public string getUserByEmail(string email)
+        {
+            string user = "";
+            query = "select usr from dbo.users where email = '" + email + "';";
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+
+                user = command.ExecuteScalar().ToString();
+                connect.Close();
+            }
+
+            catch (Exception e) { }
+
+            return user;
+        }
+
     }
 
 
