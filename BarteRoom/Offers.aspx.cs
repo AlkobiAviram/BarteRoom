@@ -64,6 +64,9 @@ namespace BarteRoom
         void searchBtn_Click(Object sender, EventArgs e)
         {
             offerPage.Visible = false;
+
+            ((LinkButton)Master.FindControl("MyAccount")).BackColor = Color.Transparent;
+            ((LinkButton)Master.FindControl("MyOffers")).BackColor = Color.Transparent;
         }
 
     }

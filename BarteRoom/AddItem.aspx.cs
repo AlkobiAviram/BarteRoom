@@ -151,9 +151,10 @@ namespace BarteRoom
         //search button event handler
         void searchBtn_Click(Object sender, EventArgs e)
         {
-            addItemFields.Visible = false;
             AddItem.Visible = false;
-            sideBar.Visible = false;
+
+            ((LinkButton)Master.FindControl("MyAccount")).BackColor = Color.Transparent;
+            ((LinkButton)Master.FindControl("AddItem")).BackColor = Color.Transparent;
         }
 
     }

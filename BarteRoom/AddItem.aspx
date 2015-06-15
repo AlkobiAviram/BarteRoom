@@ -11,7 +11,7 @@
         
 
 
-        <div class="col-md-4" runat="server" id="addItemFields">
+        <div class="col-md-4">
             <div class="form-group form-group-md">
                 <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" DisplayMode="List" ValidationGroup="addGroup" />
                  <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="classes_list" ErrorMessage="please choose class" ForeColor="Red" Display="None" InitialValue="choose class" ValidationGroup="addGroup"></asp:RequiredFieldValidator>
@@ -34,7 +34,7 @@
                 <hr />
             </div>
         </div>
-         <div class="col-md-4" runat="server" id="sideBar">
+         <div class="col-md-4">
              <asp:DropDownList ID="classes_list" runat="server" DataSourceID="SqlDataSource1" DataTextField="cls_name" DataValueField="cls_name"></asp:DropDownList>
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectToDb %>" SelectCommand="SELECT cls_name FROM classes WHERE (cls_name &lt;&gt; 'All Catagories')"></asp:SqlDataSource>
             <asp:FileUpload CssClass="input-group" ID="image_upload" runat="server" OnLoad="image_upload_Load" />

@@ -168,6 +168,9 @@ namespace BarteRoom
         {
             GridView1.Visible = false;
             sideBar.Visible = false;
+
+            ((LinkButton)Master.FindControl("MyAccount")).BackColor = Color.Transparent;
+            ((LinkButton)Master.FindControl("MyBarter")).BackColor = Color.Transparent;
         }
 
 
