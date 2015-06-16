@@ -65,7 +65,9 @@
   <section>
         <div class="container">
         <h1>Terms of Use</h1>
-             <p>Terms of Us</p>
+               <ul> 
+                 <li class="list-group-item"><a  href="TermsOfUse.aspx"><label>Terms of Use</label></a></li>
+                </ul>
         </div>
     </section>
 
