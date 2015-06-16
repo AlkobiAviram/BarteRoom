@@ -71,6 +71,9 @@
     <Content Include="Manager.aspx" />
     <Content Include="MasterPage.Master" />
     <Content Include="AddItem.aspx" />
+    <None Include="Properties\PublishProfiles\BarteRoom.pubxml" />
+    <None Include="Properties\PublishProfiles\barteroomweb.pubxml" />
+    <None Include="Properties\PublishProfiles\new.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -108,7 +111,9 @@
     <Content Include="ItemView.aspx" />
     <Content Include="SearchPage.aspx" />
     <Content Include="TransactionView.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Scripts\jquery-1.9.1.min.map" />
   </ItemGroup>
   <ItemGroup>
@@ -214,7 +219,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="img\App_LocalResources\" />
-    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

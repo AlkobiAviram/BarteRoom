@@ -24,7 +24,7 @@ namespace BarteRoom
         public DB()
         {
             //connect = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectToDb"].ConnectionString);
-            connect = new SqlConnection("Data Source=mgdzsouv9h.database.windows.net;Initial Catalog=barterDB;Integrated Security=False;User ID=barteroom@mgdzsouv9h;Password=NatiGabay1;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False");
+            connect = new SqlConnection("Data Source=dorejhld9m.database.windows.net;Initial Catalog=barteroomdb;Integrated Security=False;User ID=gabaynati;Password=NatiGabay1;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False");
         }
 
 
