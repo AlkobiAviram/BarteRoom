@@ -5,6 +5,7 @@
 
         <h1>Terms Of Use</h1>
               
+        need to add Terms
 
 </asp:Content>
 
