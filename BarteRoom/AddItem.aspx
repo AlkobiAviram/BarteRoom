@@ -18,7 +18,7 @@
                  <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="textBox_name" ErrorMessage="please insert name" ForeColor="Red" Display="None" ValidationGroup="addGroup"></asp:RequiredFieldValidator>
                  
                          <div class="input-group">
-                            <label>Name</label>
+                            <label>Item Name</label>
                             <input type="text" class="form-control " placeholder="Enter Name" aria-describedby="basic-addon1" id="textBox_name" runat="server"/>&nbsp;
                          </div>
                

@@ -136,6 +136,7 @@
     <Content Include="Scripts\npm.js" />
     <Content Include="ItemView.aspx" />
     <Content Include="SearchPage.aspx" />
+    <Content Include="TermsOfUse.aspx" />
     <Content Include="TransactionView.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -218,6 +219,13 @@
     </Compile>
     <Compile Include="SearchPage.aspx.designer.cs">
       <DependentUpon>SearchPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TermsOfUse.aspx.cs">
+      <DependentUpon>TermsOfUse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TermsOfUse.aspx.designer.cs">
+      <DependentUpon>TermsOfUse.aspx</DependentUpon>
     </Compile>
     <Compile Include="Transaction.cs" />
     <Compile Include="TransactionView.aspx.cs">
