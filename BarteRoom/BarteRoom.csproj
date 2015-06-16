@@ -19,6 +19,8 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -65,6 +67,30 @@
     <Content Include="Home.aspx" />
     <Content Include="ImageHover.css" />
     <Content Include="imageSlider.css" />
+    <Content Include="img\%24_57 %281%29.JPG" />
+    <Content Include="img\2222.jpg" />
+    <Content Include="img\4444.JPG" />
+    <Content Include="img\arrow.jpg" />
+    <Content Include="img\arrow1.jpg" />
+    <Content Include="img\arrow2.jpg" />
+    <Content Include="img\cod-aw-ps4.jpg" />
+    <Content Include="img\Football1.jpg" />
+    <Content Include="img\img4.JPG" />
+    <Content Include="img\maxresdefault.jpg" />
+    <Content Include="img\OriginalSize_%24_57 %281%29.JPG" />
+    <Content Include="img\OriginalSize_11.JPG" />
+    <Content Include="img\OriginalSize_2222.jpg" />
+    <Content Include="img\OriginalSize_4444.JPG" />
+    <Content Include="img\OriginalSize_66666.jpg" />
+    <Content Include="img\OriginalSize_cod-aw-ps4.jpg" />
+    <Content Include="img\OriginalSize_Football1.jpg" />
+    <Content Include="img\OriginalSize_maxresdefault.jpg" />
+    <Content Include="img\resizeImage0.jpg" />
+    <Content Include="img\resizeImage1.jpg" />
+    <Content Include="img\resizeImage2.jpg" />
+    <Content Include="img\resizeImage3.jpg" />
+    <Content Include="img\resizeImage4.jpg" />
+    <Content Include="img\search.png" />
     <Content Include="Landing.html" />
     <Content Include="Mail.aspx" />
     <Content Include="MakeBid.aspx" />
@@ -245,6 +271,13 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
