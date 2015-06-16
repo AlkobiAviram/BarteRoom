@@ -69,7 +69,7 @@
                   <li class="list-group-item"><a  href="#"><label>Incoming Offers</label></a></li>
                    <li class="list-group-item"><a  href="Home.aspx"><label>Home</label></a></li>
                    <li class="list-group-item"><asp:HyperLink  ID="contactUs" NavigateUrl="#contact" data-toggle="modal" runat="server"><label>Contact Us</label></asp:HyperLink></li>
-                   <li class="list-group-item"><a  href="index.html"><label>Terms of Use</label></a></li>
+                   <li class="list-group-item"><a  href="About.aspx"><label>Terms of Use</label></a></li>
                </ul>
            <br/> 
            <br/> <!--- /n/n --->
