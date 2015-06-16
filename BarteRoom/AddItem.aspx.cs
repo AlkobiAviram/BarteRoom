@@ -56,6 +56,7 @@ namespace BarteRoom
 
                    
                     lg = new Logic();
+                    Item newItem = new Item(Session["usr"].ToString(), textBox_name.Value.ToString(), classes_list.SelectedValue.ToString(), textBox_comments.Value.ToString(), textBox_description.Value.ToString());
                     string file_name = image_upload.FileName;
                     
                     //saving original  size image
@@ -69,8 +70,9 @@ namespace BarteRoom
                     path = Server.MapPath("~/img/"+file_name);
                     target.Save(path);
 
-                    lg.uploadNewImage(Session["item_id"].ToString(), "img/" + file_name);
-                   
+                   // lg.uploadNewImage(Session["item_id"].ToString(), "img/" + file_name);
+                    lg.addImage(newItem.getId(), "img/" + file_name);
+                    lg.addItem(newItem);
                     Response.Redirect("/BarterList.aspx");
                    
                 }
