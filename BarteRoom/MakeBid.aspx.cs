@@ -45,8 +45,8 @@ namespace BarteRoom
         protected void commitBid_cmd_Click(object sender, EventArgs e)
         {
             LinkedList<string> items = getSelectedItems();
-            string owner = lg.getItemById(Session["item_id"].ToString()).getUsr();
-            Transaction trns = new Transaction( Session["item_id"].ToString(),owner,Session["usr"].ToString(), items,comments_TextBox.Text);
+            string owner = lg.getItemById(Request.QueryString["id"].ToString()).getUsr();
+            Transaction trns = new Transaction(Request.QueryString["id"].ToString(), owner, Session["usr"].ToString(), items, comments_TextBox.Text);
             lg.addTransaction(trns);
             Response.Redirect("/Bids.aspx");
         }

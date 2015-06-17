@@ -78,7 +78,7 @@ namespace BarteRoom
 
         protected void offer_cmd_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/MakeBid.aspx");
+            Response.Redirect("/MakeBid.aspx?" + "id=" + Request.QueryString["id"].ToString());
         }
         private int numOfRows(string str)
         {

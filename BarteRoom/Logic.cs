@@ -348,7 +348,7 @@ namespace BarteRoom
 
             string[] tmp = date[0].Split('/');
 
-            string newFormat = tmp[2] + "-" + tmp[1] + "-" + tmp[0] + " " + date[1];
+            string newFormat = tmp[2] + "-" + tmp[0] + "-" + tmp[1] + " " + date[1];
 
             return newFormat;
         }
