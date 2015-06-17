@@ -507,7 +507,7 @@ namespace BarteRoom
             {
                 connect.Open();
                 //insert to transaction table
-                query = "insert into dbo.transactions values('" + transaction.getTransaction_id() + "','" + transaction.getItem_id() + "','" + transaction.getOwner() + "','" + transaction.getBidder() + "','" + transaction.getComments() + "', 0,'" + transaction.getDate() + "');";
+                query = "insert into dbo.transactions values('" + transaction.getTransaction_id() + "','" + transaction.getItem_id() + "','" + transaction.getOwner() + "','" + transaction.getBidder() + "','" + transaction.getComments() + "', 0,'" + transaction.Date + "');";
                 command = new SqlCommand(query, connect);
                 command.ExecuteNonQuery();
 

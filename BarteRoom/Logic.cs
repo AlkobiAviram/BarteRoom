@@ -342,7 +342,7 @@ namespace BarteRoom
             return data.notReadMsg(usr);
         }
 
-        private string changeDateFormat(string dt)
+        public static string changeDateFormat(string dt)
         {
             string[] date = dt.Split(' ');
 

@@ -13,7 +13,7 @@ namespace BarteRoom
         private string bidder;
         private string comments;
         private int readBid;
-      
+        private string date;
         private LinkedList<string> offerdItemsList;
         public Transaction(string item_id, string owner, string bidder, LinkedList<string> offerdItemsList, string comments)
         {
@@ -25,9 +25,19 @@ namespace BarteRoom
 
             this.offerdItemsList = offerdItemsList;
             Guid newGuid = Guid.NewGuid();
-            this.transaction_id = newGuid.ToString(); 
+            this.transaction_id = newGuid.ToString();
+
+
+            DateTime dt = DateTime.Now;
+            this.date = Logic.changeDateFormat(dt.ToString());
+        }
+        public string Date 
+        {
+            get { return this.date;}
+            set {this.date=value;}
 
         }
+
         public String getComments()
         {
             return this.comments;
