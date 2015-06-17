@@ -344,7 +344,7 @@ namespace BarteRoom
             logic = new Logic();
 
             logic.MarkAsRead(Session["usr"].ToString());
-            Response.Redirect("Home.aspx");
+            Response.Redirect(Page.Request.Url.ToString(), true);
         }
 
         protected void SelectBid_Click(object sender, EventArgs e)
@@ -540,7 +540,9 @@ namespace BarteRoom
 
         protected void msgReadMarkCmd_Click(object sender, EventArgs e)
         {
-
+            logic = new Logic();
+            logic.msgMarkAsRead(Session["usr"].ToString());
+            Response.Redirect(Page.Request.Url.ToString(), true);
         }
     }
 }

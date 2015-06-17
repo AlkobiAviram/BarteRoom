@@ -1255,11 +1255,24 @@ namespace BarteRoom
                 object[] RowValues = { "", "", "", "", "" };
 
                 RowValues[0] = rdr[0].ToString();
-                if (rdr[1].ToString() != null)
+
+                String tmpSub = rdr[1].ToString();
+
+                if (tmpSub.Length > 7)
                 {
-                    RowValues[1] = rdr[1].ToString() + ": ";
+                    tmpSub = tmpSub.Substring(0, 7) + "...";
                 }
-                RowValues[2] = rdr[2].ToString();
+
+                RowValues[1] = tmpSub;
+                
+                String tmpMsg = rdr[2].ToString();
+
+                if (tmpMsg.Length > 3)
+                {
+                    tmpMsg = tmpMsg.Substring(0, 3) + "...";
+                }
+
+                RowValues[2] = tmpMsg;
                 RowValues[3] = rdr[3].ToString();
                 RowValues[4] = rdr[4].ToString();
 
@@ -1358,6 +1371,23 @@ namespace BarteRoom
             catch (Exception e) { }
 
             return user;
+        }
+
+        public void msgMarkAsRead(string usr)
+        {
+            query = "UPDATE dbo.msg SET isRead = 1 WHERE isRead = 0;";
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+
+                command.ExecuteNonQuery();
+                connect.Close();
+            }
+
+            catch (Exception e) { }
         }
 
     }

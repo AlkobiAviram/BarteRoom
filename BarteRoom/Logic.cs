@@ -371,5 +371,11 @@ namespace BarteRoom
             return data.getUserByEmail(email);
         }
 
+        public void msgMarkAsRead(string usr)
+        {
+            data = new DB();
+            data.msgMarkAsRead(usr);
+        }
+
     }
 }
