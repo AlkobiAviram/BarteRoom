@@ -309,8 +309,8 @@ namespace BarteRoom
         {
             int index = Convert.ToInt32(homeGridView.SelectedIndex);
             GridViewRow row = homeGridView.Rows[index];
-            Session["item_id"] = row.Cells[3].Text;
-            Response.Redirect("/ItemView.aspx");
+            string id= row.Cells[3].Text;
+            Response.Redirect("/ItemView.aspx?" + "id=" + Server.UrlEncode(id));
         }
 
         protected void MyBarter_Click(object sender, EventArgs e)

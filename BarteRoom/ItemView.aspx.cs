@@ -21,11 +21,11 @@ namespace BarteRoom
             ((Button)Master.FindControl("Button1")).Click += new EventHandler(this.searchBtn_Click);
 
             //setting image 
-            string[] split = lg.setImagePath(Session["item_id"].ToString()).Split('/');
+            string[] split = lg.setImagePath(Request.QueryString["id"].ToString()).Split('/');
             item_pic3.ImageUrl = "img/OriginalSize_" + split[1];        
 
             //setting labels
-            Item item = lg.getItemById(Session["item_id"].ToString());
+            Item item = lg.getItemById(Request.QueryString["id"].ToString());
             
       
             nameLabel.Text = item.getName();   
@@ -106,7 +106,7 @@ namespace BarteRoom
         protected void edit_cmd_Click(object sender, EventArgs e)
         {
             Logic lg_temp = new Logic();
-            Item item = lg.getItemById(Session["item_id"].ToString());
+            Item item = lg.getItemById(Request.QueryString["id"].ToString());
             name_textBox.Text = item.getName();
             name_textBox.Visible = true;
 
@@ -139,9 +139,9 @@ namespace BarteRoom
 
         protected void commit_cmd_Click(object sender, EventArgs e)
         {
-            
-           
-            lg.editItem(name_textBox.Text, comments_textBox.Text, description_textBox.Text, Session["item_id"].ToString());
+
+
+            lg.editItem(name_textBox.Text, comments_textBox.Text, description_textBox.Text, Request.QueryString["id"].ToString());
             comments_textBox.Visible = false;
             name_textBox.Visible = false;
             description_textBox.Visible = false;
@@ -191,7 +191,7 @@ namespace BarteRoom
                     path = Server.MapPath("~/img/" + file_name);
                     target.Save(path);
 
-                    lg.uploadNewImage(Session["item_id"].ToString(), "img/" + file_name);
+                    lg.uploadNewImage(Request.QueryString["id"].ToString(), "img/" + file_name);
                     
                     Response.Redirect("/BarterList.aspx");
 
