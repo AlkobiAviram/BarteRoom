@@ -127,11 +127,11 @@ namespace BarteRoom
             else
                 return false;
         }
-        
+
         //upload image
-        public void uploadNewImage(string item_id,string newImage)
+        public void uploadNewImage(string item_id, string newImage)
         {
-            query = "update dbo.images set path ='" +newImage +"' where id = '" + item_id + "';";
+            query = "update dbo.images set path ='" + newImage + "' where id = '" + item_id + "';";
             //removing the picture from the folder
             string completePath = System.Web.HttpContext.Current.Server.MapPath("~/" + setImagePath(item_id));
             if (System.IO.File.Exists(completePath))
@@ -140,7 +140,7 @@ namespace BarteRoom
                 System.IO.File.Delete(completePath);
 
             }
-            string[] split=setImagePath(item_id).Split('/');
+            string[] split = setImagePath(item_id).Split('/');
             completePath = System.Web.HttpContext.Current.Server.MapPath("~/img/OriginalSize_" + split[1]);
             if (System.IO.File.Exists(completePath))
             {
@@ -162,7 +162,7 @@ namespace BarteRoom
 
             catch (Exception ex) { }
         }
-        
+
 
         //return the E-mail of the correct user
         public string getEmail(string usr)
@@ -208,7 +208,7 @@ namespace BarteRoom
             else
                 return false;
         }
-     
+
 
 
         public DataTable getDataSourceForItemsByChoice(int whichItems, string name, string clas)
@@ -230,8 +230,8 @@ namespace BarteRoom
             dtable.Columns.Add(dt5);
 
 
-            if (whichItems==0)
-            query = "select * from dbo.items;";
+            if (whichItems == 0)
+                query = "select * from dbo.items;";
             else
                 query = "select * from dbo.items where name='" + name + "' and " + "class='" + clas + "'";
 
@@ -249,7 +249,7 @@ namespace BarteRoom
 
             while (rdr.Read())
             {
-                object[] RowValues = { "", "", "", "", "","" };
+                object[] RowValues = { "", "", "", "", "", "" };
                 RowValues[0] = rdr[1].ToString();
                 RowValues[1] = rdr[3].ToString();
                 RowValues[2] = rdr[4].ToString();
@@ -316,16 +316,16 @@ namespace BarteRoom
             while (rdr.Read())
             {
                 object[] RowValues = { "", "", "", "", "" };
-                    RowValues[0] = rdr[1].ToString();
-                    RowValues[1] = rdr[3].ToString();
-                    RowValues[2] = rdr[4].ToString();
-                    string id = rdr[5].ToString();
-                    RowValues[3] = id;
-                    RowValues[4] = id;
-                
-            
-           
-                
+                RowValues[0] = rdr[1].ToString();
+                RowValues[1] = rdr[3].ToString();
+                RowValues[2] = rdr[4].ToString();
+                string id = rdr[5].ToString();
+                RowValues[3] = id;
+                RowValues[4] = id;
+
+
+
+
                 DataRow dRow;
                 dRow = dtable.Rows.Add(RowValues);
                 dtable.AcceptChanges();
@@ -439,8 +439,8 @@ namespace BarteRoom
             }
 
             catch (Exception e) { return false; }
-            
- 
+
+
             return true;
         }
 
@@ -498,7 +498,7 @@ namespace BarteRoom
             return numOf;
         }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //transaction section
         public bool addTransaction(Transaction transaction)
         {
@@ -507,7 +507,7 @@ namespace BarteRoom
             {
                 connect.Open();
                 //insert to transaction table
-                query = "insert into dbo.transactions values('" + transaction.getTransaction_id() + "','" + transaction.getItem_id() + "','" + transaction.getOwner() + "','" + transaction.getBidder() + "','" + transaction.getComments() + "', 0);";
+                query = "insert into dbo.transactions values('" + transaction.getTransaction_id() + "','" + transaction.getItem_id() + "','" + transaction.getOwner() + "','" + transaction.getBidder() + "','" + transaction.getComments() + "', 0,'" + transaction.getDate() + "');";
                 command = new SqlCommand(query, connect);
                 command.ExecuteNonQuery();
 
@@ -516,8 +516,8 @@ namespace BarteRoom
                 foreach (string item_id in transaction.getOfferdItemsList())
                 {
                     Guid newGuid = Guid.NewGuid();
-                  
-                    query += "insert into dbo.transactionItems values('" + transaction.getTransaction_id() + "','" + item_id + "','"+  newGuid.ToString() +"');";
+
+                    query += "insert into dbo.transactionItems values('" + transaction.getTransaction_id() + "','" + item_id + "','" + newGuid.ToString() + "');";
 
                 }
                 command = new SqlCommand(query, connect);
@@ -530,55 +530,55 @@ namespace BarteRoom
 
         }
 
-/*
-        public DataTable getDataSourceForTransaction(String usr,string transaction_type)
-        {
+        /*
+                public DataTable getDataSourceForTransaction(String usr,string transaction_type)
+                {
 
-            DataTable dtable = new DataTable();
-            DataColumn dt = new DataColumn("Bidded Item");
+                    DataTable dtable = new DataTable();
+                    DataColumn dt = new DataColumn("Bidded Item");
             
 
 
-            dtable.Columns.Add(dt);
+                    dtable.Columns.Add(dt);
            
 
 
 
-            query = "select * from transactions where usr = '" + usr + "' and transaction_type='"+transaction_type+"';";
+                    query = "select * from transactions where usr = '" + usr + "' and transaction_type='"+transaction_type+"';";
 
-            try
-            {
-                connect.Open();
+                    try
+                    {
+                        connect.Open();
 
-                command = new SqlCommand(query, connect);
-                rdr = command.ExecuteReader();
+                        command = new SqlCommand(query, connect);
+                        rdr = command.ExecuteReader();
 
 
-            }
+                    }
 
-            catch (Exception e) { }
+                    catch (Exception e) { }
 
-            while (rdr.Read())
-            {
-                object[] RowValues = { "" };
-                RowValues[0] = rdr[0].ToString();
+                    while (rdr.Read())
+                    {
+                        object[] RowValues = { "" };
+                        RowValues[0] = rdr[0].ToString();
               
 
 
 
 
-                DataRow dRow;
-                dRow = dtable.Rows.Add(RowValues);
-                dtable.AcceptChanges();
-            }
+                        DataRow dRow;
+                        dRow = dtable.Rows.Add(RowValues);
+                        dtable.AcceptChanges();
+                    }
 
-            connect.Close();
+                    connect.Close();
        
 
-            return dtable;
-        }
-<<<<<<< HEAD
-        */
+                    return dtable;
+                }
+        <<<<<<< HEAD
+                */
         public DataTable getDataSourceForSearch(String usr, string search, String catagory)
         {
             DataTable dtable = new DataTable();
@@ -619,18 +619,18 @@ namespace BarteRoom
 
             while (rdr.Read())
             {
-              
-                    object[] RowValues = { "", "", "", "", "" };
-                    RowValues[0] = rdr[1].ToString();
-                    RowValues[1] = rdr[3].ToString();
-                    RowValues[2] = rdr[4].ToString();
-                    string id = rdr[5].ToString();
-                    RowValues[3] = id;
-                    RowValues[4] = id;
 
-                    DataRow dRow;
-                    dRow = dtable.Rows.Add(RowValues);
-                    dtable.AcceptChanges();
+                object[] RowValues = { "", "", "", "", "" };
+                RowValues[0] = rdr[1].ToString();
+                RowValues[1] = rdr[3].ToString();
+                RowValues[2] = rdr[4].ToString();
+                string id = rdr[5].ToString();
+                RowValues[3] = id;
+                RowValues[4] = id;
+
+                DataRow dRow;
+                dRow = dtable.Rows.Add(RowValues);
+                dtable.AcceptChanges();
 
             }
 
@@ -678,16 +678,16 @@ namespace BarteRoom
             return numOf;
         }
 
-        public DataTable getDataSourceForBidsOrOffers(string usr,string BidOrOffer)
+        public DataTable getDataSourceForBidsOrOffers(string usr, string BidOrOffer)
         {
-           
+
             DataTable dtable = new DataTable();
             DataColumn dt = new DataColumn("Bid ID");
             DataColumn dt1 = new DataColumn("Item BarCode");
-            DataColumn dt2 ;
-             if(BidOrOffer.Equals("bid"))
+            DataColumn dt2;
+            if (BidOrOffer.Equals("bid"))
                 dt2 = new DataColumn("Item Owner");
-             else
+            else
                 dt2 = new DataColumn("Bidder");
             DataColumn dt3 = new DataColumn("Comments");
             DataColumn dt4 = new DataColumn("Seen");
@@ -698,7 +698,7 @@ namespace BarteRoom
             dtable.Columns.Add(dt3);
             dtable.Columns.Add(dt4);
             //getting only the bid id and the item id
-            if(BidOrOffer=="bid")
+            if (BidOrOffer == "bid")
                 query = "select t.id,t.item_id,t.owner,t.comments,t.readBid from dbo.transactions t where t.bidder='" + usr + "';";
             else
                 query = "select t.id,t.item_id,t.bidder,t.comments,t.readBid from dbo.transactions t where t.owner='" + usr + "';";
@@ -716,7 +716,7 @@ namespace BarteRoom
 
             while (rdr.Read())
             {
-                object[] RowValues = { "", "", "","",""};
+                object[] RowValues = { "", "", "", "", "" };
                 RowValues[0] = rdr[0].ToString();
                 RowValues[1] = rdr[1].ToString();
                 RowValues[2] = rdr[2].ToString();
@@ -732,15 +732,15 @@ namespace BarteRoom
 
 
             connect.Close();
-       
+
             return dtable;
         }
 
-        
+
         private string getUsrByItemId(string item_id)
         {
-            string usr="";
-             //now getting the usr field of the item owner.
+            string usr = "";
+            //now getting the usr field of the item owner.
             query = "select i.usr from dbo.items i where i.id='" + item_id + "';";
             try
             {
@@ -755,17 +755,17 @@ namespace BarteRoom
             catch (Exception e) { }
             if (rdr.Read())
             {
-                usr= rdr[0].ToString();
+                usr = rdr[0].ToString();
             }
 
             connect.Close();
-       
+
             return usr;
-        
+
         }
         public Item getItemById(string item_id)
         {
-            string usr="";
+            string usr = "";
             string name = "";
             string clas = "";
             string comments = "";
@@ -786,14 +786,14 @@ namespace BarteRoom
             {
                 usr = rdr[0].ToString();
                 name = rdr[1].ToString();
-                clas= rdr[2].ToString();
+                clas = rdr[2].ToString();
                 comments = rdr[3].ToString();
                 description = rdr[4].ToString();
             }
 
             connect.Close();
 
-            Item item = new Item(usr,name,clas,comments,description);
+            Item item = new Item(usr, name, clas, comments, description);
             return item;
         }
 
@@ -801,8 +801,8 @@ namespace BarteRoom
         public LinkedList<Item> getAllItems()
         {
             LinkedList<Item> items = new LinkedList<Item>();
-           
-          
+
+
 
             //getting only the bid id and the item id
             query = "select * from dbo.items;";
@@ -825,10 +825,10 @@ namespace BarteRoom
                 itm.setId(rdr[5].ToString());
                 items.AddLast(itm);
 
-              
+
             }
 
-           
+
 
 
 
@@ -859,8 +859,8 @@ namespace BarteRoom
 
             while (rdr.Read())
             {
-               Imag img = new Imag(rdr[0].ToString(), rdr[1].ToString());
-              images.AddLast(img);
+                Imag img = new Imag(rdr[0].ToString(), rdr[1].ToString());
+                images.AddLast(img);
             }
 
 
@@ -895,7 +895,7 @@ namespace BarteRoom
             int bids = 0;
 
             query = "select COUNT(*) from dbo.items i, dbo.transactions t where i.Id = t.item_id AND (i.usr = '" + usr + "') AND (t.readBid = 0);";
-            
+
             try
             {
                 connect.Open();
@@ -912,8 +912,9 @@ namespace BarteRoom
             return bids;
         }
 
-        public DataTable getAllBids(string usr) {
- 
+        public DataTable getAllBids(string usr)
+        {
+
             DataTable dtable = new DataTable();
             DataColumn dt = new DataColumn("Image");
             DataColumn dt1 = new DataColumn("Comments");
@@ -923,7 +924,7 @@ namespace BarteRoom
             dtable.Columns.Add(dt1);
             dtable.Columns.Add(dt2);
 
-            query = "select img.path, t.bidder, t.id, t.readBid from dbo.images img, dbo.transactions t, dbo.items i where (img.id = i.Id) AND (i.Id = t.item_id) AND (i.usr = '" + usr + "') order by t.readBid DESC, id;";
+            query = "select img.path, t.bidder, t.id, t.readBid from dbo.images img, dbo.transactions t, dbo.items i where (img.id = i.Id) AND (i.Id = t.item_id) AND (i.usr = '" + usr + "') order by t.readBid,datetime DESC;";
 
             try
             {
@@ -939,20 +940,20 @@ namespace BarteRoom
 
             while (rdr.Read())
             {
-                object[] RowValues = {"", "", ""};
+                object[] RowValues = { "", "", "" };
                 RowValues[0] = rdr[0].ToString();
                 RowValues[1] = "New BID from " + rdr[1].ToString();
                 RowValues[2] = rdr[2].ToString();
-            
+
                 DataRow dRow;
                 dRow = dtable.Rows.Add(RowValues);
                 dtable.AcceptChanges();
             }
 
             connect.Close();
-       
+
             return dtable;
-    }
+        }
 
         public void MarkAsRead(string usr)
         {
@@ -978,8 +979,8 @@ namespace BarteRoom
             string bidder;
             string comments;
             int readBid;
-            
-            LinkedList<string> offerdItemsList=new LinkedList<string>();
+
+            LinkedList<string> offerdItemsList = new LinkedList<string>();
 
             //getting the item list:
             query = "select item_id from dbo.transactionItems where transaction_id='" + id + "';";
@@ -992,10 +993,10 @@ namespace BarteRoom
 
 
             }
-           
+
             catch (Exception e) { }
-            while(rdr.Read())
-            {          
+            while (rdr.Read())
+            {
                 offerdItemsList.AddLast(rdr[0].ToString());
             }
 
@@ -1013,19 +1014,20 @@ namespace BarteRoom
 
 
             }
-           
-    
-            catch (Exception e) {
+
+
+            catch (Exception e)
+            {
             }
             if (rdr.Read())
             {
-                 
+
                 item_id = rdr[1].ToString();
                 owner = rdr[2].ToString();
                 bidder = rdr[3].ToString();
                 comments = rdr[4].ToString();
                 readBid = Convert.ToInt32(rdr[5].ToString());
-                trsct = new Transaction(item_id, owner, bidder,offerdItemsList ,comments);
+                trsct = new Transaction(item_id, owner, bidder, offerdItemsList, comments);
                 trsct.setTransaction_id(rdr[0].ToString());
                 trsct.setReadBid(readBid);
             }
@@ -1112,8 +1114,8 @@ namespace BarteRoom
 
 
             query = "select * from dbo.users where usr='" + user + "';";
-            User tempUser=null;
-           
+            User tempUser = null;
+
             try
             {
                 connect.Open();
@@ -1123,9 +1125,9 @@ namespace BarteRoom
 
 
             }
-           
+
             catch (Exception e) { }
-            if(rdr.Read())
+            if (rdr.Read())
             {
                 tempUser = new User(rdr[0].ToString(), rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), Convert.ToInt16(rdr[4].ToString()));
             }
@@ -1133,7 +1135,7 @@ namespace BarteRoom
 
 
             connect.Close();
-           
+
             return tempUser;
         }
 
@@ -1149,7 +1151,7 @@ namespace BarteRoom
                 command = new SqlCommand(query, connect);
 
                 command.ExecuteNonQuery();
-                
+
 
             }
             catch (Exception e) { }
@@ -1163,7 +1165,7 @@ namespace BarteRoom
                 command = new SqlCommand(query, connect);
 
                 command.ExecuteNonQuery();
-                
+
 
             }
             catch (Exception e) { }
@@ -1191,7 +1193,7 @@ namespace BarteRoom
 
 
 
-        
+
 
         ////////////////////////////////////////////////////////////////////////////
         //this section is related to messages
@@ -1213,9 +1215,9 @@ namespace BarteRoom
             }
 
             catch (Exception e) { }
-        
+
         }
-       //public LinkedList<Message> getAllSentMessages
+        //public LinkedList<Message> getAllSentMessages
 
 
         public DataTable getAllMessages(string usr)
@@ -1233,7 +1235,7 @@ namespace BarteRoom
             dtable.Columns.Add(dt3);
             dtable.Columns.Add(dt4);
 
-            query = "select fromUsr, subject, msg_body, datetime, Id, isRead from dbo.msg where toUsr = '" + usr + "' order by datetime, isRead DESC;";
+            query = "select fromUsr, subject, msg_body, datetime, Id, isRead from dbo.msg where toUsr = '" + usr + "' order by  isRead, datetime DESC;";
 
             try
             {
