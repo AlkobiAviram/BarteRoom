@@ -17,10 +17,10 @@ namespace BarteRoom
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            manage.Visible = false;
-
             if (!IsPostBack)
             {
+                manage.Visible = false;
+
                 if (Session["usr"] == null)
                 {
                     cookie = Request.Cookies["userLogin"];
@@ -51,12 +51,15 @@ namespace BarteRoom
                     SignInLabel1.Visible = true;
                     SignInLabel2.Visible = true;
                     noteSignInButton.Visible = true;
+                    signInMsg1.Visible = true;
+                    signInMsg1.Visible = true;
+                    msgLinkButton.Visible = true;
 
                     SendFirstRequired.Visible = true;
                     SendLastRequired.Visible = true;
                 }
-
-                else
+            }
+                if (Session["usr"] != null)
                 {
                     int notRead_Msg = 0;
                     int notRead_bids = 0;
@@ -92,6 +95,9 @@ namespace BarteRoom
                     SignInLabel1.Visible = false;
                     SignInLabel2.Visible = false;
                     noteSignInButton.Visible = false;
+                    signInMsg1.Visible = false;
+                    signInMsg1.Visible = false;
+                    msgLinkButton.Visible = false;
 
                     MyAccount.Text = Session["name"].ToString() + caret.Text;
 
@@ -106,7 +112,7 @@ namespace BarteRoom
                     }
 
                 }
-            }
+            //}
         }
 
         protected void Login_Click(object sender, EventArgs e)

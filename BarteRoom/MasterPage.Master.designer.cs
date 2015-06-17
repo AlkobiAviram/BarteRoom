@@ -247,6 +247,33 @@ namespace BarteRoom {
         protected global::System.Web.UI.WebControls.GridView recentmsg;
         
         /// <summary>
+        /// signInMsg1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label signInMsg1;
+        
+        /// <summary>
+        /// msgLinkButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton msgLinkButton;
+        
+        /// <summary>
+        /// signInMsg2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label signInMsg2;
+        
+        /// <summary>
         /// SearchTextBox control.
         /// </summary>
         /// <remarks>

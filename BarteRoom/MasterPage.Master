@@ -204,6 +204,18 @@
                                        <HeaderStyle HorizontalAlign="Center" />
                                        <RowStyle HorizontalAlign="Center" />
                                </asp:GridView>
+
+                                   <table> 
+                                   <tr>
+                                       <td class="note-SignInstyle"></td>
+                                       <td>
+                                            <asp:Label ID="signInMsg1" runat="server" Font-Size="Medium" Text="Please "></asp:Label>
+                                            <asp:LinkButton ID="msgLinkButton" Font-Size="Medium" CssClass="change" runat="server" OnClick="noteSignInButton_Click">Login</asp:LinkButton>
+                                            <asp:Label ID="signInMsg2" runat="server" Font-Size="Medium" Text=" to view notifications."></asp:Label>
+                                       </td>
+                                   </tr>
+                               </table> 
+
                                 </li>                     
                            </ul> 
                     
