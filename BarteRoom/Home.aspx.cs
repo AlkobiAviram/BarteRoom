@@ -20,6 +20,7 @@ namespace BarteRoom
     {
         public static Logic lg = new Logic();
         public static LinkedList<Imag> images = lg.getAllImages();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             //searech button event catch
@@ -32,8 +33,9 @@ namespace BarteRoom
                 Bitmap target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath("img/OriginalSize_" + split[1])), 640, 320) as Bitmap;
                 string path = Server.MapPath("~/img/resizeImage0.jpg");
                 target.Save(path);
-                img0.Src = "~/img/resizeImage0.jpg";
-                img000.Src = "~/img/resizeImage0.jpg";
+                image1.ImageUrl = "img/resizeImage0.jpg";
+               // img00.ImageUrl = "~/img/resizeImage0.jpg";
+                //img0000.ImageUrl = "~/img/resizeImage0.jpg";
 
 
 
@@ -41,31 +43,31 @@ namespace BarteRoom
                 target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath("img/OriginalSize_" + split[1])), 640, 320) as Bitmap;
                 path = Server.MapPath("~/img/resizeImage1.jpg");
                 target.Save(path);
-                img1.Src = "~/img/resizeImage1.jpg";
-                img11.Src = "~/img/resizeImage1.jpg";
+               // img1111.ImageUrl = "~/img/resizeImage1.jpg";
+               // img111.ImageUrl = "~/img/resizeImage1.jpg";
 
 
                 split = images.ElementAt(2).getPath().Split('/');
                 target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath("img/OriginalSize_" + split[1])), 640, 320) as Bitmap; path = Server.MapPath("~/img/resizeImage2.jpg");
                 target.Save(path);
-                img2.Src = "~/img/resizeImage2.jpg";
-                img22.Src = "~/img/resizeImage2.jpg";
+                //img2222.ImageUrl = "~/img/resizeImage2.jpg";
+               // img222.ImageUrl = "~/img/resizeImage2.jpg";
 
 
 
                 split = images.ElementAt(3).getPath().Split('/');
                 target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath("img/OriginalSize_" + split[1])), 640, 320) as Bitmap; path = Server.MapPath("~/img/resizeImage3.jpg");
                 target.Save(path);
-                img3.Src = "~/img/resizeImage3.jpg";
-                img33.Src = "~/img/resizeImage3.jpg";
+               // img3333.ImageUrl = "~/img/resizeImage3.jpg";
+               // img333.ImageUrl = "~/img/resizeImage3.jpg";
 
 
 
                 split = images.ElementAt(4).getPath().Split('/');
                 target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath("img/OriginalSize_" + split[1])), 640, 320) as Bitmap; path = Server.MapPath("~/img/resizeImage4.jpg");
                 target.Save(path);
-                img4.Src = "~/img/resizeImage4.jpg";
-                img44.Src = "~/img/resizeImage4.jpg";
+               // img44444.ImageUrl = "~/img/resizeImage4.jpg";
+              //  img444.ImageUrl = "~/img/resizeImage4.jpg";
 
             }
             catch (Exception exp)
@@ -124,7 +126,8 @@ namespace BarteRoom
             grPhoto.Dispose();
             return bmPhoto;
         }
-
+      //  protected void img0_
+            
         protected void viewItem_cmd_Click(object sender, EventArgs e)
         {
     
@@ -156,8 +159,8 @@ namespace BarteRoom
         //search button event handler
         void searchBtn_Click(Object sender, EventArgs e)
         {
-            welcomeHome.Visible = false;
-            homePhotos.Visible = false;
+            //welcomeHome.Visible = false;
+           // homePhotos.Visible = false;
         }
     }
 }
