@@ -1233,7 +1233,7 @@ namespace BarteRoom
             dtable.Columns.Add(dt3);
             dtable.Columns.Add(dt4);
 
-            query = "select fromUsr, subject, msg_body, datetime, Id, isRead from dbo.msg where toUsr = '" + usr + "' order by isRead DESC, Id;";
+            query = "select fromUsr, subject, msg_body, datetime, Id, isRead from dbo.msg where toUsr = '" + usr + "' order by datetime, isRead DESC;";
 
             try
             {

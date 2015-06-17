@@ -169,7 +169,7 @@
                                        
                                 </table>
                                
-                               <asp:GridView ID="recentmsg" runat="server" BorderStyle="None" GridLines="Horizontal" HeaderStyle-BorderStyle="None" PagerSettings-Visible="True" RowStyle-BorderStyle="None" ShowHeader="False" RowStyle-HorizontalAlign="Center" AllowPaging="True" AllowCustomPaging="True" AutoGenerateColumns="False" OnRowDataBound="recentmsg_RowDataBound">
+                               <asp:GridView ID="recentmsg" runat="server" BorderStyle="None" GridLines="Horizontal" Width="100%" HeaderStyle-BorderStyle="None" PagerSettings-Visible="True" RowStyle-BorderStyle="None" ShowHeader="False" RowStyle-HorizontalAlign="Center" AllowPaging="True" AllowCustomPaging="True" AutoGenerateColumns="False" OnRowDataBound="recentmsg_RowDataBound">
                                         <Columns>
 
                                      <asp:TemplateField HeaderText="From" ShowHeader="False">
