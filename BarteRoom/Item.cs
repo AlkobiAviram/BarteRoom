@@ -21,7 +21,7 @@ namespace BarteRoom
             this.comments = comments;
             this.description = description;
             Guid newGuid = Guid.NewGuid();
-            this.id = newGuid.ToString(); ;
+            this.id = newGuid.ToString(); 
         }
         public String getUsr()
         {

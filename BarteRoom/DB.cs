@@ -515,7 +515,9 @@ namespace BarteRoom
                 query = "";
                 foreach (string item_id in transaction.getOfferdItemsList())
                 {
-                    query += "insert into dbo.transactionItems values('" + transaction.getTransaction_id() + "','" + item_id + "');";
+                    Guid newGuid = Guid.NewGuid();
+                  
+                    query += "insert into dbo.transactionItems values('" + transaction.getTransaction_id() + "','" + item_id + "','"+  newGuid.ToString() +"');";
 
                 }
                 command = new SqlCommand(query, connect);

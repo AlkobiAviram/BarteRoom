@@ -7,10 +7,11 @@
         <div class="col-md-4">
             <div class="row">
                <h1>Bids List</h1>
-                   <asp:GridView ID="GridView1" CssClass="table table-bordered table-responsive table-striped"  runat="server" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnSelectedIndexChanging="GridView1_SelectedIndexChanging" >
+                   <asp:GridView ID="GridView1" CssClass="table table-responsive table-hover" GridLines="None" runat="server" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnSelectedIndexChanging="GridView1_SelectedIndexChanging" >
                        <Columns>
-                           <asp:CommandField ButtonType="Button" HeaderText="View Bid" ShowSelectButton="True" SelectText="cancel" />
-
+                           <asp:CommandField ButtonType="Button" SelectText="View" HeaderText="View Bid" ShowSelectButton="True">
+                              <ControlStyle CssClass="btn hvr hvr-wobble-to-bottom-right"></ControlStyle>
+                           </asp:CommandField>
                            <asp:BoundField DataField="Bid ID" HeaderText="Bid ID" />
                            <asp:BoundField DataField="Item BarCode" HeaderText="Item BarCode" />
                            <asp:BoundField DataField="Item Owner" HeaderText="Item Owner" />

@@ -29,14 +29,14 @@ namespace BarteRoom
         private void bind()
         {
 
-            GridView1.DataSource = lg.getDataSourceForBidsOrOffers(Session["usr"].ToString(),"bid");
+            GridView1.DataSource = lg.getDataSourceForBidsOrOffers(Session["usr"].ToString(), "bid");
             GridView1.DataBind();
 
         }
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-           
+
             if (e.CommandName == "Select")
             {
             }

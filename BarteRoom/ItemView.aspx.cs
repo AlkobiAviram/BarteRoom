@@ -26,7 +26,7 @@ namespace BarteRoom
 
             //setting labels
             Item item = lg.getItemById(Request.QueryString["id"].ToString());
-            
+            item.setId(Request.QueryString["id"].ToString());
       
             nameLabel.Text = item.getName();   
             comLabel.Text = item.getComments();
@@ -107,6 +107,7 @@ namespace BarteRoom
         {
             Logic lg_temp = new Logic();
             Item item = lg.getItemById(Request.QueryString["id"].ToString());
+            item.setId(Request.QueryString["id"].ToString());
             name_textBox.Text = item.getName();
             name_textBox.Visible = true;
 
