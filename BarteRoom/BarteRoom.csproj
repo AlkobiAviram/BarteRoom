@@ -65,8 +65,10 @@
     <Content Include="BarterList.aspx" />
     <Content Include="Bids.aspx" />
     <Content Include="Home.aspx" />
-    <Content Include="ImageHover.css" />
-    <Content Include="imageSlider.css" />
+    <Content Include="css\Hover.css" />
+    <Content Include="css\icons.css" />
+    <Content Include="css\ImageHover.css" />
+    <Content Include="css\imageSlider.css" />
     <Content Include="img\%24_57 %281%29.JPG" />
     <Content Include="img\2222.jpg" />
     <Content Include="img\4444.JPG" />

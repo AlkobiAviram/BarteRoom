@@ -158,5 +158,10 @@ namespace BarteRoom
             ((LinkButton)Master.FindControl("AddItem")).BackColor = Color.Transparent;
         }
 
+        protected void cancel_cmd_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/BarterList.aspx");
+        }
+
     }
 }

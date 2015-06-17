@@ -20,7 +20,6 @@
              </div>
          </div>              
             
-           <link href="imageSlider.css" rel="stylesheet" type="text/css" runat="server"/>
         <div class="slider" runat="server" id="homePhotos" >
 
 

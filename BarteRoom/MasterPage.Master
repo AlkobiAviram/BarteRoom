@@ -4,9 +4,13 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-
-     <link href="Content/bootstrap.css"  rel="stylesheet" />
-    <link href="Content/style.css"  rel="stylesheet" />
+    
+     <link href="Content/bootstrap.css"  rel="stylesheet" runat="server"/>
+     <link href="Content/style.css"  rel="stylesheet" />
+     <link href="css/imageSlider.css" rel="stylesheet" type="text/css" runat="server"/>
+     <link href="css/Hover.css" rel="stylesheet" type="text/css" runat="server"/>
+     <link href="css/icons.css" rel="stylesheet" type="text/css" runat="server"/>
+     <link href="css/imageHover.css" rel="stylesheet" type="text/css" runat="server"/>
 
 
 
@@ -210,7 +214,7 @@
                                 </td>
 
                                 <td class="auto-style4">
-                                    <asp:Button ID="Button1" class="btn btn-info" Height="45px" Width="120px" runat="server" Text="Search" OnClick="searchCmd_Click"/>
+                                    <asp:Button ID="Button1" CssClass="btn hvr-pulse-grow btn-info" Height="45px" Width="120px" runat="server" Text="Search" OnClick="searchCmd_Click"/>
                                     <asp:LinkButton ID="AdvancedSearch" runat="server" CssClass="change" ForeColor="Blue">Advanced</asp:LinkButton>
                                 </td>
 

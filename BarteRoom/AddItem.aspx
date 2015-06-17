@@ -5,6 +5,7 @@
     
 
 <div class="container"  runat="server" id="AddItem">
+                  
      <h2>Add Item</h2>
     
      <div class="row">
@@ -40,9 +41,9 @@
             <asp:FileUpload CssClass="input-group" ID="image_upload" runat="server" OnLoad="image_upload_Load" />
             <hr />
 
-              <asp:Button ID="commit_cmd" class="btn btn-info" runat="server" Text="OK"  OnClick="commit_cmd_Click"  ValidationGroup="addGroup" />
-             <a class="btn btn-primary" href="/Home.aspx"> go back </a>
-               
+            <asp:Button ID="commit_cmd" CssClass="btn icon-bar fa-arrow-circle-left" runat="server"   OnClick="commit_cmd_Click"  ValidationGroup="addGroup" />
+             <asp:Button ID="cancel_cmd" CssClass="btn hvr hvr-wobble-to-bottom-right" runat="server" Text="Cancel"  OnClick="cancel_cmd_Click"  ValidationGroup="addGroup" />
+
          </div>
 
          <div class="col-md-4">
