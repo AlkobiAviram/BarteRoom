@@ -9,7 +9,9 @@
                    <h1>Offers List</h1>
                 <asp:GridView ID="GridView1" CssClass="table table-responsive table-striped" AutoGenerateColumns="false" runat="server" OnRowCommand="GridView1_RowCommand" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnSelectedIndexChanging="GridView1_SelectedIndexChanging" >
                        <Columns>
-                             <asp:CommandField ButtonType="Button" HeaderText="View Bid" ShowSelectButton="True" />
+                             <asp:CommandField ButtonType="Button" HeaderText="View Bid" ShowSelectButton="True" SelectText="Accept" />
+                             <asp:CommandField ButtonType="Button" HeaderText="View Bid" ShowSelectButton="True" SelectText="Reject" />
+
                            <asp:BoundField DataField="Bid ID" HeaderText="Bid ID" />
                            <asp:BoundField DataField="Item BarCode" HeaderText="Item BarCode" />
                            <asp:BoundField DataField="Bidder" HeaderText="Bidder" />
