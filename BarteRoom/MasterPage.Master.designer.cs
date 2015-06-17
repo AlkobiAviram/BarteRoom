@@ -184,6 +184,33 @@ namespace BarteRoom {
         protected global::System.Web.UI.WebControls.GridView recentBids;
         
         /// <summary>
+        /// SignInLabel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label SignInLabel1;
+        
+        /// <summary>
+        /// noteSignInButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton noteSignInButton;
+        
+        /// <summary>
+        /// SignInLabel2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label SignInLabel2;
+        
+        /// <summary>
         /// message control.
         /// </summary>
         /// <remarks>
@@ -193,13 +220,22 @@ namespace BarteRoom {
         protected global::System.Web.UI.WebControls.Label message;
         
         /// <summary>
-        /// LinkButton4 control.
+        /// MessagesLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton4;
+        protected global::System.Web.UI.WebControls.Label MessagesLabel;
+        
+        /// <summary>
+        /// msgReadMarkCmd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton msgReadMarkCmd;
         
         /// <summary>
         /// recentmsg control.

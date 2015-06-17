@@ -34,6 +34,14 @@
 
         }
 
+        .note-style {
+            width: 1000px;
+        }
+
+        .note-SignInstyle {
+            width: 65px;
+        }
+
 
     </style>
 
@@ -82,26 +90,31 @@
    
                     <ul class="navbar-form navbar-right" role="tablist">
                        <li class="dropdown">
-                          
-           
-                           <span class="glyphicon glyphicon-bell" runat="server" data-toggle="dropdown" aria-expanded="false"><asp:Label ID="note" runat="server" Text="0" Font-Bold="True" ForeColor="#CC0000" BorderStyle="None"></asp:Label></span>
-            
-                           <ul class="dropdown-menu">
+
+                           <span class="glyphicon glyphicon-bell" onmouseover="this.style.cursor='pointer'" runat="server" data-toggle="dropdown" aria-expanded="false"><asp:Label ID="note" runat="server" Text="0" Font-Bold="True" ForeColor="#CC0000" BorderStyle="None"></asp:Label></span>
+
+                           <ul class="dropdown-menuNote">
                               
                      
                            <li class="dropdown-header">
                         
-                               <asp:Label ID="noteLabel" runat="server" Font-Size="Medium" Text="Notifications" ForeColor="Black"></asp:Label>
-                                <nav class="navbar-form navbar-right">
-                                    <asp:LinkButton ID="ReadMarkCmd" CssClass="change" runat="server" OnClick="ReadMarkCmd_Click">Mark as read</asp:LinkButton>
-                               </nav>
-                              
-                               <asp:GridView ID="recentBids" runat="server" BorderStyle="None" GridLines="Horizontal" HeaderStyle-BorderStyle="None" PagerSettings-Visible="True" RowStyle-BorderStyle="None" ShowHeader="False" RowStyle-HorizontalAlign="Center" AllowPaging="True" AllowCustomPaging="True" AutoGenerateColumns="False" OnRowCreated="recentBids_RowCreated" OnRowDataBound="recentBids_RowDataBound" OnSelectedIndexChanged="recentBids_SelectedIndexChanged">
+                               <table>
+                                   <tr>
+                                     <td>
+                                        <asp:Label ID="noteLabel" runat="server" Font-Size="Medium" Font-Bold="true" Text="Notifications" ForeColor="Black"></asp:Label>
+                                     </td>
+                                       <td class="note-style"></td>
+                                     <td>
+                                        <asp:LinkButton ID="ReadMarkCmd" CssClass="change" runat="server" OnClick="ReadMarkCmd_Click">Mark all as read</asp:LinkButton>
+                                    </td>
+                                  </tr>
+                                       
+                                </table>       
+                                           <asp:GridView ID="recentBids" runat="server" Width="100%" BorderStyle="None" GridLines="Horizontal" HeaderStyle-BorderStyle="None" PagerSettings-Visible="True" RowStyle-BorderStyle="Inset" RowStyle-BorderColor="Gray" RowStyle-BorderWidth="2px" ShowHeader="False" RowStyle-HorizontalAlign="Left" AllowPaging="True" AllowCustomPaging="True" AutoGenerateColumns="False" OnRowCreated="recentBids_RowCreated" OnRowDataBound="recentBids_RowDataBound" OnSelectedIndexChanged="recentBids_SelectedIndexChanged">
                                         <Columns>
                                           
-                                            <asp:ImageField DataImageUrlField ="Image" NullDisplayText="no image" ShowHeader="false" >
-                                                <ControlStyle Height="50px" Width="50px" />
-                                                <ItemStyle Height="70px" Width="95%" />
+                                            <asp:ImageField DataImageUrlField ="Image" ItemStyle-Width ="50px" ItemStyle-Height="65px" ControlStyle-Width="50px" ControlStyle-Height="50px" NullDisplayText="no image" ShowHeader="false" >
+
                                             </asp:ImageField>     
 
                                             <asp:TemplateField HeaderText="Name" ShowHeader="False">
@@ -117,6 +130,18 @@
                                        <HeaderStyle HorizontalAlign="Center" />
                                        <RowStyle HorizontalAlign="Center" />
                                </asp:GridView>
+
+                                   <table> 
+                                   <tr>
+                                       <td class="note-SignInstyle"></td>
+                                       <td>
+                                            <asp:Label ID="SignInLabel1" runat="server" Font-Size="Medium" Text="Please "></asp:Label>
+                                            <asp:LinkButton ID="noteSignInButton" Font-Size="Medium" CssClass="change" runat="server" OnClick="noteSignInButton_Click">Login</asp:LinkButton>
+                                            <asp:Label ID="SignInLabel2" runat="server" Font-Size="Medium" Text=" to view notifications."></asp:Label>
+                                       </td>
+                                   </tr>
+                               </table>       
+  
                            </li>                     
                                </ul> 
                     
@@ -125,17 +150,25 @@
                     <ul class="navbar-form navbar-right" role="tablist">
                        <li class="dropdown">
 
-                          <span class="glyphicon glyphicon-envelope"  runat="server" data-toggle="dropdown" aria-expanded="false"><asp:Label ID="message" runat="server" Text="0" Font-Bold="True" ForeColor="#CC0000" BorderStyle="None"></asp:Label></span>
+                          <span class="glyphicon glyphicon-envelope" onmouseover="this.style.cursor='pointer'" runat="server" data-toggle="dropdown" aria-expanded="false"><asp:Label ID="message" runat="server" Text="0" Font-Bold="True" ForeColor="#CC0000" BorderStyle="None"></asp:Label></span>
                        
-                           <ul class="dropdown-menu">
+                           <ul class="dropdown-menuNote">
                                
                                <li class="dropdown-header">
 
-                           <nav class="navbar-form navbar-right">
+                           <table>
+                                   <tr>
+                                     <td>
+                               <asp:Label ID="MessagesLabel" runat="server" Font-Size="Medium" Font-Bold="true" Text="Messages" ForeColor="Black"></asp:Label>
+                                     </td>
+                                       <td class="note-style"></td>
+                                     <td>
+                                    <asp:LinkButton ID="msgReadMarkCmd" CssClass="change" ForeColor="Blue" runat="server" OnClick="msgReadMarkCmd_Click">Mark all as read</asp:LinkButton>
+                                </td>
+                                  </tr>
+                                       
+                                </table>
                                
-                                    <asp:LinkButton ID="LinkButton4" CssClass="change" ForeColor="Blue" runat="server">Mark all as read</asp:LinkButton>
-                               </nav>
-                              
                                <asp:GridView ID="recentmsg" runat="server" BorderStyle="None" GridLines="Horizontal" HeaderStyle-BorderStyle="None" PagerSettings-Visible="True" RowStyle-BorderStyle="None" ShowHeader="False" RowStyle-HorizontalAlign="Center" AllowPaging="True" AllowCustomPaging="True" AutoGenerateColumns="False" OnRowDataBound="recentmsg_RowDataBound">
                                         <Columns>
 
