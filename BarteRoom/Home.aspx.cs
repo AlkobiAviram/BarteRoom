@@ -33,7 +33,7 @@ namespace BarteRoom
                 Bitmap target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath("img/OriginalSize_" + split[1])), 640, 320) as Bitmap;
                 string path = Server.MapPath("~/img/resizeImage0.jpg");
                 target.Save(path);
-                image1.ImageUrl = "img/resizeImage0.jpg";
+                //image1.ImageUrl = "img/resizeImage0.jpg";
                // img00.ImageUrl = "~/img/resizeImage0.jpg";
                 //img0000.ImageUrl = "~/img/resizeImage0.jpg";
 

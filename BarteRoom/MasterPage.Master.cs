@@ -557,5 +557,6 @@ namespace BarteRoom
         {
             Response.Redirect("/Offers.aspx");
         }
+
     }
 }

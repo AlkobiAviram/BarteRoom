@@ -7,14 +7,13 @@
     
      <link href="Content/bootstrap.css"  rel="stylesheet" runat="server"/>
      <link href="Content/style.css"  rel="stylesheet" />
-     <link href="css/imageSlider.css" rel="stylesheet" type="text/css" runat="server"/>
      <link href="css/Hover.css" rel="stylesheet" type="text/css" runat="server"/>
      <link href="css/icons.css" rel="stylesheet" type="text/css" runat="server"/>
      <link href="css/imageHover.css" rel="stylesheet" type="text/css" runat="server"/>
 
 
 
-    <title></title>
+    <title>BarteRoom</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -109,7 +108,7 @@
                                   </tr>
                                        
                                 </table>       
-                                           <asp:GridView ID="recentBids" runat="server" Width="100%" BorderStyle="None" GridLines="Horizontal" HeaderStyle-BorderStyle="None" PagerSettings-Visible="True" RowStyle-BorderStyle="Inset" RowStyle-BorderColor="Gray" RowStyle-BorderWidth="2px" PageSize="4" ShowHeader="False" RowStyle-HorizontalAlign="Left" AllowPaging="True" AllowCustomPaging="True" AutoGenerateColumns="False" OnRowCreated="recentBids_RowCreated" OnRowDataBound="recentBids_RowDataBound" OnSelectedIndexChanged="recentBids_SelectedIndexChanged">
+                                           <asp:GridView ID="recentBids" runat="server" Width="100%" BorderStyle="None" GridLines="Horizontal" HeaderStyle-BorderStyle="None" PagerSettings-Visible="True" RowStyle-BorderColor="Gray" PageSize="7" ShowHeader="False" RowStyle-HorizontalAlign="Left" AutoGenerateColumns="False" OnRowCreated="recentBids_RowCreated" OnRowDataBound="recentBids_RowDataBound" OnSelectedIndexChanged="recentBids_SelectedIndexChanged" PagerStyle-HorizontalAlign="Center" PagerSettings-Mode="NextPrevious">
                                         <Columns>
                                           
                                             <asp:ImageField DataImageUrlField ="Image" ItemStyle-Width ="50px" ItemStyle-Height="65px" ControlStyle-Width="50px" ControlStyle-Height="50px" NullDisplayText="no image" ShowHeader="false" >
@@ -118,7 +117,7 @@
 
                                             <asp:TemplateField HeaderText="Name" ShowHeader="False">
                                     <ItemTemplate>
-                                        <asp:Label ID="bidComments" runat="server" Text='<%# Bind("comments") %>'></asp:Label> 
+                                        <asp:Label ID="bidComments" Font-Size="14px" runat="server" ForeColor="Black" Text='<%# Bind("comments") %>'></asp:Label> 
                                         <br />
                                         <asp:Label ID="DatetimeLabel" runat="server" Text='<%# Bind("Datetime") %>'></asp:Label> 
                                     </ItemTemplate>
@@ -184,18 +183,20 @@
 
                                 <asp:TemplateField HeaderText="From" ShowHeader="False" ConvertEmptyStringToNull="true">
                                     <ItemTemplate>
-                                        <asp:Label ID="fromLabel" runat="server" Font-Size="Medium" Font-Bold="true" Text='<%# Bind("From") %>'></asp:Label>
+                                        <asp:Label ID="fromLabel" runat="server" Font-Size="Medium" ForeColor="Black" Font-Bold="true" Text='<%# Bind("From") %>'></asp:Label>
                                         <br />
-                                        <asp:Label ID="subLabel" runat="server" ForeColor="Gray" Text='<%# Bind("Subject") %>'></asp:Label>
+                                        <asp:Label ID="subLabel" runat="server" ForeColor="Black" Text='<%# Bind("Subject") %>'></asp:Label>
                                     </ItemTemplate>                                          
                                 </asp:TemplateField>                                               
 
                                      <asp:TemplateField HeaderText="Msg" ShowHeader="False" ItemStyle-HorizontalAlign="Left" ConvertEmptyStringToNull="true">
                                     <ItemTemplate>
-                                        <asp:Label ID="msgLabel" runat="server" Text='<%# Bind("Msg") %>'></asp:Label> 
+                                        <asp:Label ID="msgLabel" runat="server" ForeColor="Black" Font-Size="14px" Text='<%# Bind("Msg") %>'></asp:Label> 
                                         <br />
                                         <asp:Label ID="dateLabel" runat="server" Text='<%# Bind("Datetime") %>'></asp:Label> 
                                     </ItemTemplate>
+                                             
+                                         
                                 </asp:TemplateField>      
                                           
                                      <asp:TemplateField HeaderText="Id" ShowHeader="False">

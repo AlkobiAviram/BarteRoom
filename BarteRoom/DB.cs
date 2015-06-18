@@ -944,7 +944,15 @@ namespace BarteRoom
             {
                 object[] RowValues = { "", "", "", "" };
                 RowValues[0] = rdr[0].ToString();
-                RowValues[1] = "New BID from " + rdr[1].ToString();
+
+                if(Convert.ToInt32(rdr[4].ToString()) == 0)
+                {
+                RowValues[1] = "You have a new BID from user " + rdr[1].ToString();
+                }
+                else
+                {
+                    RowValues[1] = "Already read BID from user " + rdr[1].ToString();
+                }
                 RowValues[2] = rdr[2].ToString();
 
                 string[] tmp = rdr[3].ToString().Split(' ');
@@ -1272,9 +1280,9 @@ namespace BarteRoom
                 
                 String tmpMsg = rdr[2].ToString();
 
-                if (tmpMsg.Length > 3)
+                if (tmpMsg.Length > 47)
                 {
-                    tmpMsg = tmpMsg.Substring(0, 3) + "...";
+                    tmpMsg = tmpMsg.Substring(0, 47) + "...";
                 }
 
                 RowValues[2] = tmpMsg;
