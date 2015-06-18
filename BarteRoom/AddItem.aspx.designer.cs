@@ -49,31 +49,31 @@ namespace BarteRoom {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
         
         /// <summary>
-        /// textBox_name control.
+        /// name_textBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText textBox_name;
+        protected global::System.Web.UI.WebControls.TextBox name_textBox;
         
         /// <summary>
-        /// textBox_description control.
+        /// comnts_textBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText textBox_description;
+        protected global::System.Web.UI.WebControls.TextBox comnts_textBox;
         
         /// <summary>
-        /// textBox_comments control.
+        /// desc_textBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText textBox_comments;
+        protected global::System.Web.UI.WebControls.TextBox desc_textBox;
         
         /// <summary>
         /// classes_list control.
@@ -101,6 +101,24 @@ namespace BarteRoom {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload image_upload;
+        
+        /// <summary>
+        /// previe_button control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button previe_button;
+        
+        /// <summary>
+        /// image_preview control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image image_preview;
         
         /// <summary>
         /// commit_cmd control.

@@ -14,24 +14,37 @@ namespace BarteRoom
     public partial class viewItem : System.Web.UI.Page
     {
         Logic lg = new Logic();
+        string id = "";
         protected void Page_Load(object sender, EventArgs e)
         {
 
             //searech button event catch
             ((Button)Master.FindControl("Button1")).Click += new EventHandler(this.searchBtn_Click);
+             
+          
+            //setting image
+              if (Request.QueryString["id"] != null){
+                  id = Request.QueryString["id"].ToString();
+                  Session["item_id"] = Request.QueryString["id"].ToString();
+               }  
+              else
+              {
+                  id = Session["item_id"].ToString(); 
+              }
 
-            //setting image 
-            string[] split = lg.setImagePath(Request.QueryString["id"].ToString()).Split('/');
+
+            string[] split = lg.setImagePath(id).Split('/');
             item_pic3.ImageUrl = "img/OriginalSize_" + split[1];        
 
             //setting labels
-            Item item = lg.getItemById(Request.QueryString["id"].ToString());
-            item.setId(Request.QueryString["id"].ToString());
+            Item item = lg.getItemById(id);
+            item.setId(id);
       
             nameLabel.Text = item.getName();   
             comLabel.Text = item.getComments();
             idLabel1.Text = item.getId();  
             desLabel.Text=item.getDescription();
+
 
             if (!IsPostBack)
             {
@@ -43,6 +56,9 @@ namespace BarteRoom
                 uploadNewImageLabel.Visible = false;
 
             }
+       
+
+       
             //checking if the user logged in
             if (Session["usr"] == null)
             {
@@ -105,9 +121,12 @@ namespace BarteRoom
 
         protected void edit_cmd_Click(object sender, EventArgs e)
         {
+   
+
+
             Logic lg_temp = new Logic();
-            Item item = lg.getItemById(Request.QueryString["id"].ToString());
-            item.setId(Request.QueryString["id"].ToString());
+            Item item = lg.getItemById(id);
+            item.setId(id);
             name_textBox.Text = item.getName();
             name_textBox.Visible = true;
 
@@ -135,14 +154,14 @@ namespace BarteRoom
 
             newImage.Visible = true;
             uploadNewImageLabel.Visible = true;
-            
         }
 
         protected void commit_cmd_Click(object sender, EventArgs e)
         {
+           
 
 
-            lg.editItem(name_textBox.Text, comments_textBox.Text, description_textBox.Text, Request.QueryString["id"].ToString());
+            lg.editItem(name_textBox.Text, comments_textBox.Text, description_textBox.Text, id);
             comments_textBox.Visible = false;
             name_textBox.Visible = false;
             description_textBox.Visible = false;
@@ -215,13 +234,12 @@ namespace BarteRoom
 
 
 
-
-            Response.Redirect("/ItemView.aspx");
+            Response.Redirect("/ItemView.aspx?id="+id);
+       
         }
 
         protected void cancel_cmd_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/ItemView.aspx");
             comments_textBox.Visible = false;
             name_textBox.Visible = false;
             description_textBox.Visible = false;

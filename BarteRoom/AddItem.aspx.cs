@@ -26,6 +26,7 @@ namespace BarteRoom
 
             ((LinkButton)Master.FindControl("MyAccount")).BackColor = Color.Gainsboro;
             ((LinkButton)Master.FindControl("AddItem")).BackColor = Color.Gainsboro;
+          
         }
 
 
@@ -56,7 +57,7 @@ namespace BarteRoom
 
                    
                     lg = new Logic();
-                    Item newItem = new Item(Session["usr"].ToString(), textBox_name.Value.ToString(), classes_list.SelectedValue.ToString(), textBox_comments.Value.ToString(), textBox_description.Value.ToString());
+                    Item newItem = new Item(Session["usr"].ToString(), name_textBox.Text, classes_list.SelectedValue.ToString(), comnts_textBox.Text, desc_textBox.Text);
                     string file_name = image_upload.FileName;
                     
                     //saving original  size image
@@ -161,6 +162,29 @@ namespace BarteRoom
         protected void cancel_cmd_Click(object sender, EventArgs e)
         {
             Response.Redirect("/BarterList.aspx");
+        }
+
+        protected void previe_button_Click(object sender, EventArgs e)
+        {
+            if (image_upload.HasFile)
+            {
+                image_preview.Visible = true;
+                string path = Server.MapPath("~/img/temp.jpg");
+                image_upload.PostedFile.SaveAs(path);
+
+                Bitmap target = FixedSize(System.Drawing.Image.FromFile(path), 225, 225) as Bitmap;
+                path = Server.MapPath("~/img/tempSmall.jpg");
+                target.Save(path);
+
+                image_preview.ImageUrl = "img/tempSmall.jpg";
+                previe_button.Visible = false;
+            }
+            else
+            {
+                image_preview.Visible = false;
+                previe_button.Visible = true;
+
+            }
         }
 
     }
