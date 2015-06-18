@@ -110,7 +110,7 @@
                                   </tr>
                                        
                                 </table>       
-                                           <asp:GridView ID="recentBids" runat="server" Width="100%" BorderStyle="None" GridLines="Horizontal" HeaderStyle-BorderStyle="None" PagerSettings-Visible="True" RowStyle-BorderColor="Gray" PageSize="7" ShowHeader="False" RowStyle-HorizontalAlign="Left" AutoGenerateColumns="False" OnRowCreated="recentBids_RowCreated" OnRowDataBound="recentBids_RowDataBound" OnSelectedIndexChanged="recentBids_SelectedIndexChanged" PagerStyle-HorizontalAlign="Center" PagerSettings-Mode="NextPrevious">
+                                           <asp:GridView ID="recentBids" runat="server" Width="100%" GridLines="Horizontal" RowStyle-BorderStyle="Solid" RowStyle-BorderColor="#F8F8FF" PageSize="7" ShowHeader="False" RowStyle-HorizontalAlign="Left" AutoGenerateColumns="False" OnRowCreated="recentBids_RowCreated" OnRowDataBound="recentBids_RowDataBound" OnSelectedIndexChanged="recentBids_SelectedIndexChanged">
                                         <Columns>
                                           
                                             <asp:ImageField DataImageUrlField ="Image" ItemStyle-Width ="50px" ItemStyle-Height="65px" ControlStyle-Width="50px" ControlStyle-Height="50px" NullDisplayText="no image" ShowHeader="false" >
@@ -180,7 +180,7 @@
                                        
                                 </table>
                                
-                               <asp:GridView ID="recentmsg" runat="server" BorderStyle="None" GridLines="Horizontal" Width="100%" HeaderStyle-BorderStyle="None" PagerSettings-Visible="True" RowStyle-BorderStyle="None" ShowHeader="False" RowStyle-HorizontalAlign="Center" AllowPaging="True" AllowCustomPaging="True" AutoGenerateColumns="False" OnRowDataBound="recentmsg_RowDataBound">
+                               <asp:GridView ID="recentmsg" runat="server" Width="100%" GridLines="Horizontal" RowStyle-BorderStyle="Solid" RowStyle-BorderColor="#F8F8FF" ShowHeader="False" RowStyle-HorizontalAlign="Center" AllowCustomPaging="True" AutoGenerateColumns="False" OnRowDataBound="recentmsg_RowDataBound">
                                         <Columns>
 
                                 <asp:TemplateField HeaderText="From" ShowHeader="False" ConvertEmptyStringToNull="true">

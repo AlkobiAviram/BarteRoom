@@ -987,7 +987,7 @@ namespace BarteRoom
 
                 if(Convert.ToInt32(rdr[4].ToString()) == 0)
                 {
-                RowValues[1] = "You have a new BID from user " + rdr[1].ToString();
+                RowValues[1] = "You have a new BID from " + rdr[1].ToString();
                 }
                 else
                 {
