@@ -48,8 +48,7 @@ namespace BarteRoom
                 }
             }
 
-            if (fileOK)
-            {
+         
                 try
                 {
 
@@ -58,21 +57,23 @@ namespace BarteRoom
                    
                     lg = new Logic();
                     Item newItem = new Item(Session["usr"].ToString(), name_textBox.Text, classes_list.SelectedValue.ToString(), comnts_textBox.Text, desc_textBox.Text);
-                    string file_name = image_upload.FileName;
-                    
-                    //saving original  size image
-                    string path = Server.MapPath("~/img/OriginalSize_" + file_name);
-                    image_upload.PostedFile.SaveAs(path);
-                
-                   
-                    
-                    //saving display size copy
-                    Bitmap target = FixedSize(System.Drawing.Image.FromFile(path), 225, 225) as Bitmap;
-                    path = Server.MapPath("~/img/"+file_name);
-                    target.Save(path);
+                    if (fileOK)
+                    {
+                        string file_name = image_upload.FileName;
 
-                   // lg.uploadNewImage(Session["item_id"].ToString(), "img/" + file_name);
-                    lg.addImage(newItem.getId(), "img/" + file_name);
+                        //saving original  size image
+                        string path = Server.MapPath("~/img/OriginalSize_" + file_name);
+                        image_upload.PostedFile.SaveAs(path);
+
+
+
+                        //saving display size copy
+                        Bitmap target = FixedSize(System.Drawing.Image.FromFile(path), 225, 225) as Bitmap;
+                        path = Server.MapPath("~/img/" + file_name);
+                        target.Save(path);
+
+                        lg.addImage(newItem.getId(), "img/" + file_name);
+                    }
                     lg.addItem(newItem);
                     Response.Redirect("/BarterList.aspx");
                    
@@ -84,7 +85,7 @@ namespace BarteRoom
 
 
 
-        }
+        
         
 
 
