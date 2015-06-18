@@ -31,20 +31,15 @@
         }
         .auto-style3 {
             width: 700px;
-
         }
-
         .note-style {
             width: 1000px;
         }
-
         .note-SignInstyle {
             width: 65px;
         }
-        .labelLimit
-        {
-            height:3px;
-            Overflow:hidden;
+         .note-SeaAllstyle {
+            width: 155px;
         }
 
     </style>
@@ -114,7 +109,7 @@
                                   </tr>
                                        
                                 </table>       
-                                           <asp:GridView ID="recentBids" runat="server" Width="100%" BorderStyle="None" GridLines="Horizontal" HeaderStyle-BorderStyle="None" PagerSettings-Visible="True" RowStyle-BorderStyle="Inset" RowStyle-BorderColor="Gray" RowStyle-BorderWidth="2px" ShowHeader="False" RowStyle-HorizontalAlign="Left" AllowPaging="True" AllowCustomPaging="True" AutoGenerateColumns="False" OnRowCreated="recentBids_RowCreated" OnRowDataBound="recentBids_RowDataBound" OnSelectedIndexChanged="recentBids_SelectedIndexChanged">
+                                           <asp:GridView ID="recentBids" runat="server" Width="100%" BorderStyle="None" GridLines="Horizontal" HeaderStyle-BorderStyle="None" PagerSettings-Visible="True" RowStyle-BorderStyle="Inset" RowStyle-BorderColor="Gray" RowStyle-BorderWidth="2px" PageSize="4" ShowHeader="False" RowStyle-HorizontalAlign="Left" AllowPaging="True" AllowCustomPaging="True" AutoGenerateColumns="False" OnRowCreated="recentBids_RowCreated" OnRowDataBound="recentBids_RowDataBound" OnSelectedIndexChanged="recentBids_SelectedIndexChanged">
                                         <Columns>
                                           
                                             <asp:ImageField DataImageUrlField ="Image" ItemStyle-Width ="50px" ItemStyle-Height="65px" ControlStyle-Width="50px" ControlStyle-Height="50px" NullDisplayText="no image" ShowHeader="false" >
@@ -124,6 +119,8 @@
                                             <asp:TemplateField HeaderText="Name" ShowHeader="False">
                                     <ItemTemplate>
                                         <asp:Label ID="bidComments" runat="server" Text='<%# Bind("comments") %>'></asp:Label> 
+                                        <br />
+                                        <asp:Label ID="DatetimeLabel" runat="server" Text='<%# Bind("Datetime") %>'></asp:Label> 
                                     </ItemTemplate>
                                 </asp:TemplateField>
 
@@ -144,7 +141,16 @@
                                             <asp:Label ID="SignInLabel2" runat="server" Font-Size="Medium" Text=" to view notifications."></asp:Label>
                                        </td>
                                    </tr>
-                               </table>       
+                               </table>  
+                               
+                               <table>
+                                   <tr>
+                                       <td class="note-SeaAllstyle"></td>
+                                       <td>
+                                           <asp:LinkButton ID="seeAllNoteCmd" CssClass="change" runat="server" Font-Size="Medium" OnClick="seeAllNoteCmd_Click">See All</asp:LinkButton>
+                                       </td>
+                                   </tr>
+                               </table>     
   
                            </li>                     
                                </ul> 
@@ -188,7 +194,7 @@
                                     <ItemTemplate>
                                         <asp:Label ID="msgLabel" runat="server" Text='<%# Bind("Msg") %>'></asp:Label> 
                                         <br />
-                                        <asp:Label ID="dateLabel" CssClass="labelLimit" runat="server" Text='<%# Bind("Datetime") %>'></asp:Label> 
+                                        <asp:Label ID="dateLabel" runat="server" Text='<%# Bind("Datetime") %>'></asp:Label> 
                                     </ItemTemplate>
                                 </asp:TemplateField>      
                                           
@@ -211,7 +217,7 @@
                                        <td>
                                             <asp:Label ID="signInMsg1" runat="server" Font-Size="Medium" Text="Please "></asp:Label>
                                             <asp:LinkButton ID="msgLinkButton" Font-Size="Medium" CssClass="change" runat="server" OnClick="noteSignInButton_Click">Login</asp:LinkButton>
-                                            <asp:Label ID="signInMsg2" runat="server" Font-Size="Medium" Text=" to view notifications."></asp:Label>
+                                            <asp:Label ID="signInMsg2" runat="server" Font-Size="Medium" Text=" to view messages."></asp:Label>
                                        </td>
                                    </tr>
                                </table> 

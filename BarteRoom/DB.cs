@@ -919,12 +919,14 @@ namespace BarteRoom
             DataColumn dt = new DataColumn("Image");
             DataColumn dt1 = new DataColumn("Comments");
             DataColumn dt2 = new DataColumn("id");
+            DataColumn dt3 = new DataColumn("Datetime");
 
             dtable.Columns.Add(dt);
             dtable.Columns.Add(dt1);
             dtable.Columns.Add(dt2);
+            dtable.Columns.Add(dt3);
 
-            query = "select img.path, t.bidder, t.id, t.readBid from dbo.images img, dbo.transactions t, dbo.items i where (img.id = i.Id) AND (i.Id = t.item_id) AND (i.usr = '" + usr + "') order by t.readBid,datetime DESC;";
+            query = "select img.path, t.bidder, t.id, t.datetime, t.readBid from dbo.images img, dbo.transactions t, dbo.items i where (img.id = i.Id) AND (i.Id = t.item_id) AND (i.usr = '" + usr + "') order by t.readBid,datetime DESC;";
 
             try
             {
@@ -940,10 +942,13 @@ namespace BarteRoom
 
             while (rdr.Read())
             {
-                object[] RowValues = { "", "", "" };
+                object[] RowValues = { "", "", "", "" };
                 RowValues[0] = rdr[0].ToString();
                 RowValues[1] = "New BID from " + rdr[1].ToString();
                 RowValues[2] = rdr[2].ToString();
+
+                string[] tmp = rdr[3].ToString().Split(' ');
+                RowValues[3] = tmp[0] + " at " + tmp[1];
 
                 DataRow dRow;
                 dRow = dtable.Rows.Add(RowValues);
@@ -1273,7 +1278,9 @@ namespace BarteRoom
                 }
 
                 RowValues[2] = tmpMsg;
-                RowValues[3] = rdr[3].ToString();
+
+                string[] tmp = rdr[3].ToString().Split(' ');
+                RowValues[3] = tmp[0] + " at " + tmp[1];
                 RowValues[4] = rdr[4].ToString();
 
                 DataRow dRow;

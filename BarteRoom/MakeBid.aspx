@@ -5,7 +5,8 @@
          
             <div class="col-md-2">
                <h1>Choose items to bid on</h1>
-                <asp:TextBox ID="comments_TextBox" runat="server" Text="write a comments to the owner.." OnTextChanged="comments_TextBox_TextChanged"></asp:TextBox>
+                
+                <asp:TextBox ID="comments_TextBox" class="form-control" TextMode="MultiLine" placeholder="write a comments to the owner" Font-Size="Medium" ForeColor="Gray" runat="server"></asp:TextBox>
                 <p></p><p></p><p></p>
                <asp:Button ID="commitBid_cmd" runat="server" Text="Commit Bid" CssClass=" btn btn-primary" OnClick="commitBid_cmd_Click" />
             </div>

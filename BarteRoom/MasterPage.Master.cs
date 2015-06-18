@@ -54,6 +54,7 @@ namespace BarteRoom
                     signInMsg1.Visible = true;
                     signInMsg1.Visible = true;
                     msgLinkButton.Visible = true;
+                    seeAllNoteCmd.Visible = false;
 
                     SendFirstRequired.Visible = true;
                     SendLastRequired.Visible = true;
@@ -96,8 +97,9 @@ namespace BarteRoom
                     SignInLabel2.Visible = false;
                     noteSignInButton.Visible = false;
                     signInMsg1.Visible = false;
-                    signInMsg1.Visible = false;
+                    signInMsg2.Visible = false;
                     msgLinkButton.Visible = false;
+                    seeAllNoteCmd.Visible = true;
 
                     MyAccount.Text = Session["name"].ToString() + caret.Text;
 
@@ -549,6 +551,11 @@ namespace BarteRoom
             logic = new Logic();
             logic.msgMarkAsRead(Session["usr"].ToString());
             Response.Redirect(Page.Request.Url.ToString(), true);
+        }
+
+        protected void seeAllNoteCmd_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Offers.aspx");
         }
     }
 }
