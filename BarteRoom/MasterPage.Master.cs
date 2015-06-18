@@ -215,7 +215,10 @@ namespace BarteRoom
                 Response.Redirect("Home.aspx");
             }
         }
-
+        protected void MyMail_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Mail.aspx");
+        }
         protected void LogOut_Click(object sender, EventArgs e)
         {
             cookie = Request.Cookies["userLogin"];

@@ -79,7 +79,9 @@
                           <li><asp:LinkButton ID="AddItem" runat="server" OnClick="AddItem_Click">Add an Item</asp:LinkButton></li>
                           <li><asp:LinkButton ID="MyBids" runat="server" OnClick="MyBids_Click">My Bids</asp:LinkButton></li>
                           <li><asp:LinkButton ID="MyOffers" runat="server" OnClick="MyOffers_Click">My Offers</asp:LinkButton></li>
+                          <li><asp:LinkButton ID="MyMail" runat="server" OnClick="MyMail_Click">My Mail</asp:LinkButton></li>
                           <li><asp:LinkButton ID="LogOut" runat="server" OnClick="LogOut_Click">LogOut</asp:LinkButton></li>
+
                       </ul>  
                         
                     </li>

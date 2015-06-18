@@ -64,6 +64,7 @@
     <Content Include="About.aspx" />
     <Content Include="BarterList.aspx" />
     <Content Include="Bids.aspx" />
+    <Content Include="css\accordionCss.css" />
     <Content Include="Home.aspx" />
     <Content Include="css\Hover.css" />
     <Content Include="css\icons.css" />
@@ -128,6 +129,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\accordion.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />

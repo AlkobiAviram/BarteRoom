@@ -4,6 +4,10 @@
             <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
         <link href="css/imageSlider.css" rel="stylesheet" type="text/css" runat="server"/>
 
+
+
+
+<!-----------------------------Image Silder------------------------------------------------------>
          <section class='galeria' runat="server">
         <input type="radio" id="uno" value="1" name="tractor" checked='checked' />    
         <input type="radio" id="dole" value="2" name="tractor" />      
@@ -40,9 +44,11 @@
            <h2 ><asp:HyperLink ID="image3Link" Text="ccccc" runat="server" /></h2>
       </article>
 
-
     </section>
+<!----------------------------------------------------------------------------------------->
+
     <div>
     </div>
+
             </asp:Content>
 
