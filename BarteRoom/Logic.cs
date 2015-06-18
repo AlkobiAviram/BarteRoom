@@ -268,7 +268,11 @@ namespace BarteRoom
             data = new DB();
             return data.getAllImages();
         }
-
+        public string getIdByImagePath(string path)
+        {
+            data = new DB();
+            return data.getIdByImagePath(path);
+        }
 
         public void deleteClass(string className)
         {

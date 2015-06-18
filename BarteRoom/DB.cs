@@ -871,7 +871,37 @@ namespace BarteRoom
 
             return images;
         }
+        public string getIdByImagePath(string path)
+        {
 
+            string item_id="";
+            //getting only the bid id and the item id
+            query = "select id from dbo.images where path='"+path+"';";
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+                rdr = command.ExecuteReader();
+            }
+
+            catch (Exception e) { }
+
+            while (rdr.Read())
+            {
+             item_id=rdr[0].ToString();
+            }
+
+
+
+
+
+            connect.Close();
+
+            return item_id;
+        
+        }
 
         public void deleteClass(string className)
         {
@@ -984,7 +1014,7 @@ namespace BarteRoom
 
             catch (Exception e) { }
         }
-
+        
         public Transaction getTransactionById(string id)
         {
             string item_id;

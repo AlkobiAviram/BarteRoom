@@ -33,9 +33,10 @@ namespace BarteRoom
                 Bitmap target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath("img/OriginalSize_" + split[1])), 640, 320) as Bitmap;
                 string path = Server.MapPath("~/img/resizeImage0.jpg");
                 target.Save(path);
-                //image1.ImageUrl = "img/resizeImage0.jpg";
-               // img00.ImageUrl = "~/img/resizeImage0.jpg";
-                //img0000.ImageUrl = "~/img/resizeImage0.jpg";
+                image1.ImageUrl = "img/resizeImage0.jpg";
+                image1Link.Text = lg.getItemById(lg.getIdByImagePath(images.ElementAt(0).getPath())).getComments();
+                string id = lg.getIdByImagePath(images.ElementAt(0).getPath());
+                image1Link.NavigateUrl = "/ItemView.aspx?id=" + id;
 
 
 
@@ -43,29 +44,37 @@ namespace BarteRoom
                 target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath("img/OriginalSize_" + split[1])), 640, 320) as Bitmap;
                 path = Server.MapPath("~/img/resizeImage1.jpg");
                 target.Save(path);
-               // img1111.ImageUrl = "~/img/resizeImage1.jpg";
-               // img111.ImageUrl = "~/img/resizeImage1.jpg";
+                image2.ImageUrl = "img/resizeImage1.jpg";
+                image2Link.Text = lg.getItemById(lg.getIdByImagePath(images.ElementAt(1).getPath())).getComments();
+                id = lg.getIdByImagePath(images.ElementAt(1).getPath());
+                image2Link.NavigateUrl = "/ItemView.aspx?id=" + id;
+
+
 
 
                 split = images.ElementAt(2).getPath().Split('/');
-                target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath("img/OriginalSize_" + split[1])), 640, 320) as Bitmap; path = Server.MapPath("~/img/resizeImage2.jpg");
+                target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath("img/OriginalSize_" + split[1])), 640, 320) as Bitmap;
+                path = Server.MapPath("~/img/resizeImage2.jpg");
                 target.Save(path);
-                //img2222.ImageUrl = "~/img/resizeImage2.jpg";
-               // img222.ImageUrl = "~/img/resizeImage2.jpg";
+                image3.ImageUrl = "img/resizeImage2.jpg";
+                image3Link.Text = lg.getItemById(lg.getIdByImagePath(images.ElementAt(2).getPath())).getComments();
+                id = lg.getIdByImagePath(images.ElementAt(2).getPath());
+                image3Link.NavigateUrl = "/ItemView.aspx?id=" + id;
+           
 
 
 
-                split = images.ElementAt(3).getPath().Split('/');
-                target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath("img/OriginalSize_" + split[1])), 640, 320) as Bitmap; path = Server.MapPath("~/img/resizeImage3.jpg");
-                target.Save(path);
+              //  split = images.ElementAt(3).getPath().Split('/');
+              //  target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath("img/OriginalSize_" + split[1])), 640, 320) as Bitmap; path = Server.MapPath("~/img/resizeImage3.jpg");
+               // target.Save(path);
                // img3333.ImageUrl = "~/img/resizeImage3.jpg";
                // img333.ImageUrl = "~/img/resizeImage3.jpg";
 
 
 
-                split = images.ElementAt(4).getPath().Split('/');
-                target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath("img/OriginalSize_" + split[1])), 640, 320) as Bitmap; path = Server.MapPath("~/img/resizeImage4.jpg");
-                target.Save(path);
+               // split = images.ElementAt(4).getPath().Split('/');
+               // target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath("img/OriginalSize_" + split[1])), 640, 320) as Bitmap; path = Server.MapPath("~/img/resizeImage4.jpg");
+               // target.Save(path);
                // img44444.ImageUrl = "~/img/resizeImage4.jpg";
               //  img444.ImageUrl = "~/img/resizeImage4.jpg";
 
@@ -115,6 +124,7 @@ namespace BarteRoom
 
             Graphics grPhoto = Graphics.FromImage(bmPhoto);
             grPhoto.Clear(Color.White);
+           
             grPhoto.InterpolationMode =
                     InterpolationMode.HighQualityBicubic;
 
@@ -161,6 +171,27 @@ namespace BarteRoom
         {
             //welcomeHome.Visible = false;
            // homePhotos.Visible = false;
+        }
+
+        protected void image3_Click(object sender, ImageClickEventArgs e)
+        {
+            string id = lg.getIdByImagePath(images.ElementAt(2).getPath());
+            Response.Redirect("/ItemView.aspx?id=" + id);
+
+        }
+
+        protected void image2_Click(object sender, ImageClickEventArgs e)
+        {
+            string id = lg.getIdByImagePath(images.ElementAt(1).getPath());
+            Response.Redirect("/ItemView.aspx?id=" + id);
+
+        }
+
+        protected void image1_Click(object sender, ImageClickEventArgs e)
+        {
+            string id = lg.getIdByImagePath(images.ElementAt(0).getPath());
+            Response.Redirect("/ItemView.aspx?id=" + id);
+
         }
     }
 }
