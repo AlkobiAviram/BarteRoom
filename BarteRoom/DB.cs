@@ -684,24 +684,28 @@ namespace BarteRoom
             DataTable dtable = new DataTable();
             DataColumn dt = new DataColumn("Bid ID");
             DataColumn dt1 = new DataColumn("Item BarCode");
-            DataColumn dt2;
+            DataColumn dt2 = new DataColumn("Item Image");
+            DataColumn dt3;
             if (BidOrOffer.Equals("bid"))
-                dt2 = new DataColumn("Item Owner");
+                dt3 = new DataColumn("Item Owner");
             else
-                dt2 = new DataColumn("Bidder");
-            DataColumn dt3 = new DataColumn("Comments");
-            DataColumn dt4 = new DataColumn("Seen");
+                dt3 = new DataColumn("Bidder");
+            DataColumn dt4 = new DataColumn("Comments");
+            DataColumn dt5 = new DataColumn("Seen");
+            DataColumn dt6 = new DataColumn("Date Created");
 
             dtable.Columns.Add(dt);
             dtable.Columns.Add(dt1);
             dtable.Columns.Add(dt2);
             dtable.Columns.Add(dt3);
             dtable.Columns.Add(dt4);
+            dtable.Columns.Add(dt5);
+            dtable.Columns.Add(dt6);
             //getting only the bid id and the item id
             if (BidOrOffer == "bid")
-                query = "select t.id,t.item_id,t.owner,t.comments,t.readBid from dbo.transactions t where t.bidder='" + usr + "';";
+                query = "select t.id,t.item_id,t.owner,t.comments,t.readBid ,t.datetime from dbo.transactions t where t.bidder='" + usr + "';";
             else
-                query = "select t.id,t.item_id,t.bidder,t.comments,t.readBid from dbo.transactions t where t.owner='" + usr + "';";
+                query = "select t.id,t.item_id,t.bidder,t.comments,t.readBid,t.datetime from dbo.transactions t where t.owner='" + usr + "';";
             try
             {
                 connect.Open();
@@ -716,15 +720,17 @@ namespace BarteRoom
 
             while (rdr.Read())
             {
-                object[] RowValues = { "", "", "", "", "" };
+                object[] RowValues = { "", "", "", "", "" ,"",""};
                 RowValues[0] = rdr[0].ToString();
                 RowValues[1] = rdr[1].ToString();
-                RowValues[2] = rdr[2].ToString();
-                RowValues[3] = rdr[3].ToString();
+                RowValues[2] = rdr[1].ToString();
+                RowValues[3] = rdr[2].ToString();
+                RowValues[4] = rdr[3].ToString();
                 if (Convert.ToInt32(rdr[4].ToString()) == 1)
-                    RowValues[4] = "yes";
+                    RowValues[5] = "yes";
                 else
-                    RowValues[4] = "no";
+                    RowValues[5] = "no";
+                RowValues[6] = rdr[5].ToString();
                 DataRow dRow;
                 dRow = dtable.Rows.Add(RowValues);
                 dtable.AcceptChanges();
@@ -732,7 +738,11 @@ namespace BarteRoom
 
 
             connect.Close();
-
+            //setting image url
+            foreach (DataRow row in dtable.Rows)
+            {
+                row[2] = setImagePath(row[2].ToString());
+            }
             return dtable;
         }
 

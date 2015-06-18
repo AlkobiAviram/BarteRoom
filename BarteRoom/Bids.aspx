@@ -13,10 +13,12 @@
                               <ControlStyle CssClass="btn hvr hvr-wobble-to-bottom-right"></ControlStyle>
                            </asp:CommandField>
                            <asp:BoundField DataField="Bid ID" HeaderText="Bid ID" />
-                           <asp:BoundField DataField="Item BarCode" HeaderText="Item BarCode" />
+                           <asp:BoundField DataField="Item BarCode" HeaderText="Bidded Item BarCode" />
+                           <asp:ImageField DataImageUrlField="Item Image" HeaderText="Bidded Item Image" />                      
                            <asp:BoundField DataField="Item Owner" HeaderText="Item Owner" />
                            <asp:BoundField DataField="Comments" HeaderText="Comments" />
                            <asp:BoundField DataField="Seen" HeaderText="Seen" />                       
+                           <asp:BoundField DataField="Date Created" HeaderText="Date Submitted" />
                        </Columns>
                    </asp:GridView>
                    
