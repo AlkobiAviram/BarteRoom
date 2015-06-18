@@ -6,7 +6,7 @@
 @import url(http://weloveiconfonts.com/api/?family=entypo);
 * {margin:0;padding:0;border: 0 none;position: center;}
 [class*="entypo-"]:before {font-family: 'entypo', sans-serif; display: inline-block; margin-right: .5rem;}
-h1, h1 a {
+/*h1, h1 a {
   font-size: 6vw;
   font-weight: 300;
   color: #00262F;
@@ -20,6 +20,7 @@ body > p {
   text-align: center;
   
 }
+*/
 .galeria {
   margin: 2vh auto 0;
   width: 80vw;
@@ -58,7 +59,6 @@ h2 {
   color: #fff;
   font-family: lato;
   text-align: center;
-  font-size: 3vh;
   font-weight: 300;
   line-height: 8vh;
   background:  #FF7361;
@@ -71,6 +71,7 @@ h2:before {
   font-weight: 300;
   color: #00262F;
 }
+
 .card p {
   text-align: center;
   color: #fff;
@@ -79,11 +80,12 @@ h2:before {
   text-shadow: -1px -1px 0 #0D757D, 1px 1px 0 #000;
   margin-top: 3vh;
 }
+
 h3 {
-  font-size: 5vw;
   font-weight: 700;
   margin: 1vh 0 1vh;
 }
+
 .footer {
  
   color: #0D757D;

@@ -7,16 +7,18 @@
         <div class="col-md-4">
             <div class="row">
                    <h1>Offers List</h1>
-                <asp:GridView ID="GridView1" CssClass="table table-responsive table-hover" GridLines="None" AutoGenerateColumns="false" runat="server" OnRowCommand="GridView1_RowCommand" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnSelectedIndexChanging="GridView1_SelectedIndexChanging" >
+                <asp:GridView ID="GridView1" CssClass="table table-responsive table-hover" GridLines="None" AutoGenerateColumns="False" runat="server" OnRowCommand="GridView1_RowCommand" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnSelectedIndexChanging="GridView1_SelectedIndexChanging" >
                        <Columns>
                            <asp:CommandField ButtonType="Button" SelectText="View" HeaderText="View Bid" ShowSelectButton="True">
                                  <ControlStyle CssClass="btn hvr hvr-wobble-to-bottom-right"></ControlStyle>
                            </asp:CommandField>
                            <asp:BoundField DataField="Bid ID" HeaderText="Bid ID" />
-                           <asp:BoundField DataField="Item BarCode" HeaderText="Item BarCode" />
+                           <asp:BoundField DataField="Item BarCode" HeaderText="Offered Item BarCode" />
+                           <asp:ImageField DataImageUrlField="Item Image" HeaderText="Offered Item Image"/>
                            <asp:BoundField DataField="Bidder" HeaderText="Bidder" />
                            <asp:BoundField DataField="Comments" HeaderText="Comments" />
                            <asp:BoundField DataField="Seen" HeaderText="Seen" />
+                           <asp:BoundField DataField="Date Created" HeaderText="Date Submitted"/>
                        </Columns>
                    </asp:GridView>
                                    
