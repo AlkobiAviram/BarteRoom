@@ -141,6 +141,7 @@ namespace BarteRoom
 
             }
             string[] split = setImagePath(item_id).Split('/');
+           
             completePath = System.Web.HttpContext.Current.Server.MapPath("~/img/OriginalSize_" + split[1]);
             if (System.IO.File.Exists(completePath))
             {
@@ -422,12 +423,21 @@ namespace BarteRoom
                 System.IO.File.Delete(completePath);
 
             }
+            string[] split = setImagePath(id).Split('/');
+            completePath = System.Web.HttpContext.Current.Server.MapPath("~/img/OriginalSize_" + split[1]);
+            if (System.IO.File.Exists(completePath))
+            {
+
+                System.IO.File.Delete(completePath);
+
+            }
 
 
 
 
             try
             {
+                if(connect.State==ConnectionState.Closed)
                 connect.Open();
                 query = "DELETE FROM dbo.items WHERE id='" + id + "';";
                 command = new SqlCommand(query, connect);
@@ -435,6 +445,7 @@ namespace BarteRoom
                 query = "DELETE FROM dbo.images WHERE id='" + id + "';";
                 command = new SqlCommand(query, connect);
                 command.ExecuteNonQuery();
+                if (connect.State == ConnectionState.Open)
                 connect.Close();
             }
 

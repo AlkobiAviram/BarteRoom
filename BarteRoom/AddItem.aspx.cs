@@ -19,6 +19,8 @@ namespace BarteRoom
     {
 
         private Logic lg;
+        private string image_path="";
+        private Boolean hasFile=false;
         protected void Page_Load(object sender, EventArgs e)
         {
             //searech button event catch
@@ -26,7 +28,8 @@ namespace BarteRoom
 
             ((LinkButton)Master.FindControl("MyAccount")).BackColor = Color.Gainsboro;
             ((LinkButton)Master.FindControl("AddItem")).BackColor = Color.Gainsboro;
-          
+     
+
         }
 
 
@@ -61,17 +64,16 @@ namespace BarteRoom
                     {
                         string file_name = image_upload.FileName;
 
-                        //saving original  size image
+                        //saving original size image
                         string path = Server.MapPath("~/img/OriginalSize_" + file_name);
                         image_upload.PostedFile.SaveAs(path);
-
+                       
 
 
                         //saving display size copy
                         Bitmap target = FixedSize(System.Drawing.Image.FromFile(path), 225, 225) as Bitmap;
                         path = Server.MapPath("~/img/" + file_name);
                         target.Save(path);
-
                         lg.addImage(newItem.getId(), "img/" + file_name);
                     }
                     lg.addItem(newItem);
@@ -167,6 +169,7 @@ namespace BarteRoom
 
         protected void previe_button_Click(object sender, EventArgs e)
         {
+            
             if (image_upload.HasFile)
             {
                 image_preview.Visible = true;
@@ -186,6 +189,7 @@ namespace BarteRoom
                 previe_button.Visible = true;
 
             }
+              
         }
 
     }

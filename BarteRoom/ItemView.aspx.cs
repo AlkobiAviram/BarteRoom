@@ -31,11 +31,12 @@ namespace BarteRoom
               {
                   id = Session["item_id"].ToString(); 
               }
-
-
-            string[] split = lg.setImagePath(id).Split('/');
+            string[] split;
+            if (lg.setImagePath(id) != "" && lg.setImagePath(id)!=null)
+            { 
+            split = lg.setImagePath(id).Split('/');
             item_pic3.ImageUrl = "img/OriginalSize_" + split[1];        
-
+            }
             //setting labels
             Item item = lg.getItemById(id);
             item.setId(id);
@@ -154,6 +155,8 @@ namespace BarteRoom
 
             newImage.Visible = true;
             uploadNewImageLabel.Visible = true;
+
+            item_pic3.Visible=false;
         }
 
         protected void commit_cmd_Click(object sender, EventArgs e)
@@ -210,7 +213,7 @@ namespace BarteRoom
                     Bitmap target = FixedSize(System.Drawing.Image.FromFile(path), 225, 225) as Bitmap;
                     path = Server.MapPath("~/img/" + file_name);
                     target.Save(path);
-
+                  
                     lg.uploadNewImage(Request.QueryString["id"].ToString(), "img/" + file_name);
                     
                     Response.Redirect("/BarterList.aspx");
