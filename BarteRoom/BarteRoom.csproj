@@ -78,7 +78,6 @@
     <Content Include="img\arrow1.jpg" />
     <Content Include="img\arrow2.jpg" />
     <Content Include="img\cod-aw-ps4.jpg" />
-    <Content Include="img\Football1.jpg" />
     <Content Include="img\img4.JPG" />
     <Content Include="img\maxresdefault.jpg" />
     <Content Include="img\OriginalSize_%24_57 %281%29.JPG" />
@@ -87,13 +86,7 @@
     <Content Include="img\OriginalSize_4444.JPG" />
     <Content Include="img\OriginalSize_66666.jpg" />
     <Content Include="img\OriginalSize_cod-aw-ps4.jpg" />
-    <Content Include="img\OriginalSize_Football1.jpg" />
     <Content Include="img\OriginalSize_maxresdefault.jpg" />
-    <Content Include="img\resizeImage0.jpg" />
-    <Content Include="img\resizeImage1.jpg" />
-    <Content Include="img\resizeImage2.jpg" />
-    <Content Include="img\resizeImage3.jpg" />
-    <Content Include="img\resizeImage4.jpg" />
     <Content Include="img\search.png" />
     <Content Include="Landing.html" />
     <Content Include="Mail.aspx" />
