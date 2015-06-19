@@ -349,7 +349,7 @@ namespace BarteRoom
         public string setImagePath(String id)
         {
             string path = "";
-            query = "select path from dbo.images where id = '" + id + "';";
+            query = "select path from dbo.images where item_id = '" + id + "' and isProfile=1;";
 
             try
             {
@@ -392,9 +392,9 @@ namespace BarteRoom
             return true;
         }
 
-        public bool addImage(string id, string path)
+        public bool addImage(Imag img)
         {
-            query = "insert into dbo.images values('" + id + "','" + path + "');";
+            query = "insert into dbo.images values('" + img.getItem_id() + "','" + img.getPath() + "','" + img.getImage_id() +"',"+img.getIsProfile()+ ");";
 
 
 
@@ -442,7 +442,7 @@ namespace BarteRoom
                 query = "DELETE FROM dbo.items WHERE id='" + id + "';";
                 command = new SqlCommand(query, connect);
                 command.ExecuteNonQuery();
-                query = "DELETE FROM dbo.images WHERE id='" + id + "';";
+                query = "DELETE FROM dbo.images WHERE item_id='" + id + "';";
                 command = new SqlCommand(query, connect);
                 command.ExecuteNonQuery();
                 if (connect.State == ConnectionState.Open)
@@ -865,7 +865,6 @@ namespace BarteRoom
 
 
 
-            //getting only the bid id and the item id
             query = "select * from dbo.images;";
 
             try
@@ -880,7 +879,8 @@ namespace BarteRoom
 
             while (rdr.Read())
             {
-                Imag img = new Imag(rdr[0].ToString(), rdr[1].ToString());
+                Imag img = new Imag(rdr[0].ToString(), rdr[1].ToString(), Convert.ToInt32(rdr[3].ToString()));
+                img.setImage_id(rdr[2].ToString());
                 images.AddLast(img);
             }
 
@@ -897,7 +897,7 @@ namespace BarteRoom
 
             string item_id="";
             //getting only the bid id and the item id
-            query = "select id from dbo.images where path='"+path+"';";
+            query = "select item_id from dbo.images where path='"+path+"';";
 
             try
             {
@@ -977,7 +977,7 @@ namespace BarteRoom
             dtable.Columns.Add(dt2);
             dtable.Columns.Add(dt3);
 
-            query = "select img.path, t.bidder, t.id, t.datetime, t.readBid from dbo.images img, dbo.transactions t, dbo.items i where (img.id = i.Id) AND (i.Id = t.item_id) AND (i.usr = '" + usr + "') order by t.readBid,datetime DESC;";
+            query = "select img.path, t.bidder, t.id, t.datetime, t.readBid from dbo.images img, dbo.transactions t, dbo.items i where (img.item_id = i.Id) AND (i.Id = t.item_id) AND (i.usr = '" + usr + "') order by t.readBid,datetime DESC;";
 
             try
             {

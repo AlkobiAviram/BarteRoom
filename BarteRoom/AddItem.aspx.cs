@@ -74,7 +74,8 @@ namespace BarteRoom
                         Bitmap target = FixedSize(System.Drawing.Image.FromFile(path), 225, 225) as Bitmap;
                         path = Server.MapPath("~/img/" + file_name);
                         target.Save(path);
-                        lg.addImage(newItem.getId(), "img/" + file_name);
+                        Imag img = new Imag(newItem.getId(), "img/" + file_name, 1);
+                        lg.addImage(img);
                     }
                     lg.addItem(newItem);
                     Response.Redirect("/BarterList.aspx");
