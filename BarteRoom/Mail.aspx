@@ -1,29 +1,72 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Mail.aspx.cs" Inherits="BarteRoom.Mail" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style type="text/css">
+        .auto-style4 {
+            width: 69px;
+        }
+        .auto-style5 {
+            width: 170px;
+        }
+        .auto-style6 {
+            width: 1137px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <link href="mailStyle.css" rel="stylesheet" />
 
-    <style>
-        .tb{
-            width:50px;
-        }
-    </style>
-    <div class="mailBox" runat="server" id="mailBoxID">
-        <table>
+
+        <table class="nav-justified">
             <tr>
-                <td class="td"></td>
-                <td>
-                    <asp:GridView ID="inboxView" ShowHeader="false" Width="80%" runat="server"></asp:GridView>
+                <td class="auto-style5">&nbsp;</td>
+                <td class="auto-style6">
+
+
+    
+                    <asp:GridView ID="inboxView" ShowHeader="false" Width="97%" GridLines="Horizontal" AutoGenerateColumns="False" OnRowDataBound="inboxView_RowDataBound" runat="server">
+                        <Columns>
+
+                            <asp:TemplateField HeaderText="From" ShowHeader="False" ConvertEmptyStringToNull="true" ItemStyle-HorizontalAlign="Left">
+                                    <ItemTemplate>
+                                        <asp:Label ID="fromLabel" runat="server" Font-Size="Medium" ForeColor="Black" Text='<%# Bind("From") %>'></asp:Label>
+                                    </ItemTemplate>                                          
+                                </asp:TemplateField> 
+
+                            <asp:TemplateField HeaderText="Subject" ShowHeader="False" ConvertEmptyStringToNull="true">
+                                    <ItemTemplate>
+                                        <asp:Label ID="subjectLabel" runat="server" Font-Size="Medium" ForeColor="Black" Text='<%# Bind("Subject") %>'></asp:Label>
+                                    </ItemTemplate>                                          
+                                </asp:TemplateField> 
+
+                            <asp:TemplateField HeaderText="Msg" ShowHeader="False" ConvertEmptyStringToNull="true" ItemStyle-HorizontalAlign="Left">
+                                    <ItemTemplate>
+                                        <asp:Label ID="msgLabel" runat="server" Font-Size="Medium" ForeColor="#A9A9A9" Text='<%# Bind("Msg") %>'></asp:Label>
+                                    </ItemTemplate>                                          
+                                </asp:TemplateField>
+
+                            <asp:TemplateField HeaderText="Datetime" ShowHeader="False" ConvertEmptyStringToNull="true" ItemStyle-HorizontalAlign="Right">
+                                    <ItemTemplate>
+                                        <asp:Label ID="datetimeLabel" runat="server" Font-Size="Medium" ForeColor="#A9A9A9" Text='<%# Bind("Datetime") %>'></asp:Label>
+                                    </ItemTemplate>                                          
+                                </asp:TemplateField>
+
+                            <asp:TemplateField HeaderText="Id" ShowHeader="False" ConvertEmptyStringToNull="true">
+                                    <ItemTemplate>
+                                        <asp:Label ID="idLabel" runat="server" Font-Size="0px" ForeColor="Black" Text='<%# Bind("Id") %>'></asp:Label>
+                                    </ItemTemplate>                                          
+                                </asp:TemplateField>
+
+                        </Columns>
+                    </asp:GridView>
+    
+
                 </td>
+                <td>&nbsp;</td>
             </tr>
         </table>
-    </div>
 
-    <div class="area">
-
-    </div>
+  
     <nav class="main-menu">
             <ul>
                <li class="has-subnav">

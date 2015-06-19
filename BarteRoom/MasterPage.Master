@@ -252,7 +252,7 @@
                                 </td>
 
                                 <td class="auto-style4">
-                                    <asp:DropDownList ID="catagories" class="form-control" Height="45px" Width="150px" runat="server" DataSourceID="SqlDataSource1" DataTextField="cls_name" DataValueField="cls_name">
+                                    <asp:DropDownList ID="catagories" class="form-control" Height="45px" Width="97%" runat="server" DataSourceID="SqlDataSource1" DataTextField="cls_name" DataValueField="cls_name">
                                         </asp:DropDownList>
                                 </td>
 
