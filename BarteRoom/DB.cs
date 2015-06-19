@@ -1292,12 +1292,14 @@ namespace BarteRoom
             DataColumn dt2 = new DataColumn("Msg");
             DataColumn dt3 = new DataColumn("Datetime");
             DataColumn dt4 = new DataColumn("Id");
+            DataColumn dt5 = new DataColumn("IsRead");
 
             dtable.Columns.Add(dt);
             dtable.Columns.Add(dt1);
             dtable.Columns.Add(dt2);
             dtable.Columns.Add(dt3);
             dtable.Columns.Add(dt4);
+            dtable.Columns.Add(dt5);
 
             if (flag == 0)
             {
@@ -1324,7 +1326,7 @@ namespace BarteRoom
             while (rdr.Read())
             {
 
-                object[] RowValues = { "", "", "", "", "" };
+                object[] RowValues = { "", "", "", "", "", "" };
 
                 RowValues[0] = rdr[0].ToString();
 
@@ -1335,6 +1337,10 @@ namespace BarteRoom
                     tmpSub = tmpSub.Substring(0, 7) + "...";
                 }
 
+                if (flag == 1)
+                {
+                    tmpSub += "-";
+                }
                 RowValues[1] = tmpSub;
                 
                 String tmpMsg = rdr[2].ToString();
@@ -1349,6 +1355,7 @@ namespace BarteRoom
                 string[] tmp = rdr[3].ToString().Split(' ');
                 RowValues[3] = tmp[0] + " at " + tmp[1];
                 RowValues[4] = rdr[4].ToString();
+                RowValues[5] = rdr[5].ToString();
 
                 DataRow dRow;
                 dRow = dtable.Rows.Add(RowValues);

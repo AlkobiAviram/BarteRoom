@@ -58,10 +58,29 @@ namespace BarteRoom
                     case DataControlRowType.DataRow:
                         e.Row.Attributes.Add("onmouseover", "this.style.cursor='pointer';");
                         e.Row.Attributes.Add("onclick", Page.ClientScript.GetPostBackEventReference(inboxView, "Select$" + e.Row.RowIndex));
+
+
+
+                        if ((((Label)e.Row.FindControl("isReadLabel")).Text).Equals("0"))
+                        {
+                            ((Label)e.Row.FindControl("fromLabel")).CssClass = "notReadStyle";
+                            ((Label)e.Row.FindControl("subjectLabel")).CssClass = "notReadStyle";
+                            ((Label)e.Row.FindControl("datetimeLabel")).CssClass = "notReadStyle";
+                        }
+
+                        else if ((((Label)e.Row.FindControl("isReadLabel")).Text).Equals("1"))
+                        {
+                            ((Label)e.Row.FindControl("fromLabel")).CssClass = "readStyle";
+                            ((Label)e.Row.FindControl("subjectLabel")).CssClass = "readStyle";
+                            ((Label)e.Row.FindControl("datetimeLabel")).CssClass = "readStyle";
+                        }
+                        
                         break;
                 }
             }
             catch { }
         }
+
+        
     }
 }

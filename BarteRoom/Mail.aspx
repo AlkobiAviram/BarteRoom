@@ -4,11 +4,17 @@
         .auto-style4 {
             width: 69px;
         }
-        .auto-style5 {
-            width: 170px;
-        }
         .auto-style6 {
             width: 1137px;
+        }
+        .auto-style7 {
+            width: 150px;
+        }
+        .notReadStyle{
+            font-weight: bold;
+        }
+        .readStyle{
+            font-weight: normal;
         }
     </style>
 </asp:Content>
@@ -19,7 +25,7 @@
 
         <table class="nav-justified">
             <tr>
-                <td class="auto-style5">&nbsp;</td>
+                <td class="auto-style7">&nbsp;</td>
                 <td class="auto-style6">
 
 
@@ -29,31 +35,32 @@
 
                             <asp:TemplateField HeaderText="From" ShowHeader="False" ConvertEmptyStringToNull="true" ItemStyle-HorizontalAlign="Left">
                                     <ItemTemplate>
-                                        <asp:Label ID="fromLabel" runat="server" Font-Size="Medium" ForeColor="Black" Text='<%# Bind("From") %>'></asp:Label>
+                                        <asp:Label ID="fromLabel" runat="server" Font-Size="18px" ForeColor="Black" Text='<%# Bind("From") %>'></asp:Label>
                                     </ItemTemplate>                                          
                                 </asp:TemplateField> 
 
-                            <asp:TemplateField HeaderText="Subject" ShowHeader="False" ConvertEmptyStringToNull="true">
+                            <asp:TemplateField HeaderText="Subject" ShowHeader="False" ItemStyle-HorizontalAlign="Left" ConvertEmptyStringToNull="true">
                                     <ItemTemplate>
-                                        <asp:Label ID="subjectLabel" runat="server" Font-Size="Medium" ForeColor="Black" Text='<%# Bind("Subject") %>'></asp:Label>
+                                        <asp:Label ID="subjectLabel" runat="server" Font-Size="18px" ForeColor="Black" Text='<%# Bind("Subject") %>'></asp:Label>
+                                        <asp:Label ID="msgLabel" runat="server" Font-Size="Medium" ForeColor="Black" Text='<%# Bind("Msg") %>'></asp:Label>
                                     </ItemTemplate>                                          
                                 </asp:TemplateField> 
-
-                            <asp:TemplateField HeaderText="Msg" ShowHeader="False" ConvertEmptyStringToNull="true" ItemStyle-HorizontalAlign="Left">
-                                    <ItemTemplate>
-                                        <asp:Label ID="msgLabel" runat="server" Font-Size="Medium" ForeColor="#A9A9A9" Text='<%# Bind("Msg") %>'></asp:Label>
-                                    </ItemTemplate>                                          
-                                </asp:TemplateField>
 
                             <asp:TemplateField HeaderText="Datetime" ShowHeader="False" ConvertEmptyStringToNull="true" ItemStyle-HorizontalAlign="Right">
                                     <ItemTemplate>
-                                        <asp:Label ID="datetimeLabel" runat="server" Font-Size="Medium" ForeColor="#A9A9A9" Text='<%# Bind("Datetime") %>'></asp:Label>
+                                        <asp:Label ID="datetimeLabel" runat="server" Font-Size="Medium" ForeColor="Black" Text='<%# Bind("Datetime") %>'></asp:Label>
                                     </ItemTemplate>                                          
                                 </asp:TemplateField>
 
                             <asp:TemplateField HeaderText="Id" ShowHeader="False" ConvertEmptyStringToNull="true">
                                     <ItemTemplate>
                                         <asp:Label ID="idLabel" runat="server" Font-Size="0px" ForeColor="Black" Text='<%# Bind("Id") %>'></asp:Label>
+                                    </ItemTemplate>                                          
+                                </asp:TemplateField>
+
+                            <asp:TemplateField HeaderText="IsRead" ShowHeader="False" ConvertEmptyStringToNull="true">
+                                    <ItemTemplate>
+                                        <asp:Label ID="isReadLabel" runat="server" Font-Size="0px" ForeColor="Black" Text='<%# Bind("IsRead") %>'></asp:Label>
                                     </ItemTemplate>                                          
                                 </asp:TemplateField>
 
