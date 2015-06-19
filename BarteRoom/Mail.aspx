@@ -2,37 +2,107 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <link href="~/css/accordionCss.css" rel="stylesheet" type="text/css" runat="server"/>
-   <script type="text/javascript" src="Scripts/accordion.js"></script>
 
-     <section class="ac-container">
-				<div>
-					<input id="ac-1" name="accordion-1" type="radio" checked=""/>
-					<label for="ac-1">About us</label>
-					<article class="ac-small">
-						<p>Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.</p>
-					</article>
-				</div>
-				<div>
-					<input id="ac-2" name="accordion-1" type="radio"/>
-					<label for="ac-2">How we work</label>
-					<article class="ac-medium">
-						<p>Like you, I used to think the world was this great place where everybody lived by the same standards I did, then some kid with a nail showed me I was living in his world, a world where chaos rules not order, a world where righteousness is not rewarded. That's Cesar's world, and if you're not willing to play by his rules, then you're gonna have to pay the price. </p>
-					</article>
-				</div>
-				<div>
-					<input id="ac-3" name="accordion-1" type="radio"/>
-					<label for="ac-3">References</label>
-					<article class="ac-large">
-						<p>You think water moves fast? You should see ice. It moves like it has a mind. Like it knows it killed the world once and got a taste for murder. After the avalanche, it took us a week to climb out. Now, I don't know exactly when we turned on each other, but I know that seven of us survived the slide... and only five made it out. Now we took an oath, that I'm breaking now. We said we'd say it was the snow that killed the other two, but it wasn't. Nature is lethal but it doesn't hold a candle to man. </p>
-					</article>
-				</div>
-				<div>
-					<input id="ac-4" name="accordion-1" type="radio"/>
-					<label for="ac-4">Contact us</label>
-					<article class="ac-large">
-						<p>You see? It's curious. Ted did figure it out - time travel. And when we get back, we gonna tell everyone. How it's possible, how it's done, what the dangers are. But then why fifty years in the future when the spacecraft encounters a black hole does the computer call it an 'unknown entry event'? Why don't they know? If they don't know, that means we never told anyone. And if we never told anyone it means we never made it back. Hence we die down here. Just as a matter of deductive logic. </p>
-					</article>
-				</div>
-			</section>
+    <link href="mailStyle.css" rel="stylesheet" />
+
+    <style>
+        .tb{
+            width:50px;
+        }
+    </style>
+    <div class="mailBox" runat="server" id="mailBoxID">
+        <table>
+            <tr>
+                <td class="td"></td>
+                <td>
+                    <asp:GridView ID="inboxView" ShowHeader="false" Width="80%" runat="server"></asp:GridView>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="area">
+
+    </div>
+    <nav class="main-menu">
+            <ul>
+               <li class="has-subnav">
+                    <a href="#">
+                       <i class="fa fa-pencil fa-2x"></i>
+                        <span class="nav-text">
+                            New message
+                        </span>
+                    </a>
+                </li>
+
+                <li class="has-subnav">
+                    <asp:LinkButton ID="InboxCmd" runat="server" OnClick="InboxCmd_Click">
+                        <i class="fa fa-inbox fa-2x"></i>
+                        <span class="nav-text">
+                            <asp:Label ID="InboxLabel" runat="server" ForeColor="Red" Font-Bold="true" Text="Inbox"></asp:Label>
+                            <asp:Label ID="numOfLabel" runat="server" ForeColor="Red" Font-Bold="true" Text=""></asp:Label>
+                        </span>
+                    </asp:LinkButton>
+                    
+                </li>
+
+                <li class="has-subnav">
+                    <a href="#">
+                       <i class="fa fa-share fa-2x""></i>
+                        <span class="nav-text">
+                            Sent mail
+                        </span>
+                    </a>
+                   
+                </li>
+
+                 <li>
+                    <a href="#">
+                        <i class="fa fa-user fa-2x"></i>
+                        <span class="nav-text">
+                            Connections
+                        </span>
+                    </a>
+                </li>
+
+                 <li>
+                    <a href="#">
+                        <i class="fa fa-star fa-2x"></i>
+                        <span class="nav-text">
+                            Favourites
+                        </span>
+                    </a>
+                </li>
+
+                <li>
+                   <a href="#">
+                       <i class="fa fa-file fa-2x"></i>
+                        <span class="nav-text">
+                            Drafts
+                        </span>
+                    </a>
+                </li>
+
+                <li class="has-subnav">
+                    <a href="#">
+                       <i class="fa fa-wrench fa-2x"></i>
+                        <span class="nav-text">
+                            Settings
+                        </span>
+                    </a>
+                   
+                </li>
+
+                <li>
+                    <a href="#">
+                       <i class="fa fa-info fa-2x"></i>
+                        <span class="nav-text">
+                            Help
+                        </span>
+                    </a>
+                </li>
+            </ul>
+
+        </nav>
+
 </asp:Content>

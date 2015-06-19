@@ -64,6 +64,7 @@
     <Content Include="About.aspx" />
     <Content Include="BarterList.aspx" />
     <Content Include="Bids.aspx" />
+    <Content Include="Content\styles.css" />
     <Content Include="css\accordionCss.css" />
     <Content Include="Home.aspx" />
     <Content Include="css\Hover.css" />
@@ -96,6 +97,7 @@
     <Content Include="img\search.png" />
     <Content Include="Landing.html" />
     <Content Include="Mail.aspx" />
+    <Content Include="mailStyle.css" />
     <Content Include="MakeBid.aspx" />
     <Content Include="Manager.aspx" />
     <Content Include="MasterPage.Master" />

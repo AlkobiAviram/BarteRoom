@@ -11,8 +11,6 @@
      <link href="css/icons.css" rel="stylesheet" type="text/css" runat="server"/>
      <link href="css/imageHover.css" rel="stylesheet" type="text/css" runat="server"/>
 
-
-
     <title>BarteRoom</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -345,7 +343,7 @@
                      </div>
                      <div class="modal-body">
                          
-                         <span><asp:ValidationSummary ID="LoginValidationSummary" runat="server" ForeColor="Red" ValidationGroup="LoginGroup" /></span>
+                         <span><asp:ValidationSummary ID="LoginValidationSummary" DisplayMode="BulletList" runat="server" ForeColor="Red" ValidationGroup="LoginGroup" /></span>
                          <span>UserName</span>
                          <div class="input-group">
                           <span class="input-group-addon" id="basic_addon1"></span>
@@ -420,8 +418,8 @@
                      </div>
                      <div class="modal-body">
                          
-                    
-                        <span><asp:ValidationSummary ID="SignUpValidationSummary" runat="server" ValidationGroup="SignUpGroup" ForeColor="Red" /></span>
+                   
+                         <asp:ValidationSummary ID="SignUpValidationSummary" runat="server" DisplayMode="BulletList" ValidationGroup="SignUpGroup" ForeColor="Red" />
                    
                          <span>UserName</span>
                          <div class="input-group">

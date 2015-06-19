@@ -324,10 +324,10 @@ namespace BarteRoom
             data.readIndex(id);
         }
 
-        public DataTable getAllMessages(string usr)
+        public DataTable getAllMessages(string usr, int flag)
         {
             data = new DB();
-            return data.getAllMessages(usr);
+            return data.getAllMessages(usr, flag);
         }
 
         public void addMessage(Message msg)

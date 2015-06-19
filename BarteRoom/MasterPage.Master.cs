@@ -73,7 +73,7 @@ namespace BarteRoom
                     recentBids.DataSource = logic.getAllBids(Session["usr"].ToString());
                     recentBids.DataBind();
 
-                    recentmsg.DataSource = logic.getAllMessages(Session["usr"].ToString());
+                    recentmsg.DataSource = logic.getAllMessages(Session["usr"].ToString(), 0);
                     recentmsg.DataBind();
 
                     for (int i = 0; i < notRead_Msg; i++)

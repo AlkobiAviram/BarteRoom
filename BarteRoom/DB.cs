@@ -1273,7 +1273,7 @@ namespace BarteRoom
         //public LinkedList<Message> getAllSentMessages
 
 
-        public DataTable getAllMessages(string usr)
+        public DataTable getAllMessages(string usr, int flag)
         {
             DataTable dtable = new DataTable();
             DataColumn dt = new DataColumn("From");
@@ -1288,7 +1288,15 @@ namespace BarteRoom
             dtable.Columns.Add(dt3);
             dtable.Columns.Add(dt4);
 
-            query = "select fromUsr, subject, msg_body, datetime, Id, isRead from dbo.msg where toUsr = '" + usr + "' order by  isRead, datetime DESC;";
+            if (flag == 0)
+            {
+                query = "select DISTINCT fromUsr, subject, msg_body, datetime, Id, isRead from dbo.msg where toUsr = '" + usr + "' order by  isRead, datetime DESC;";
+            }
+
+            else if (flag == 1)
+            {
+                query = "select fromUsr, subject, msg_body, datetime, Id, isRead from dbo.msg where toUsr = '" + usr + "' order by  isRead, datetime DESC;";
+            }
 
             try
             {
@@ -1444,6 +1452,8 @@ namespace BarteRoom
 
             catch (Exception e) { }
         }
+
+        
 
     }
 

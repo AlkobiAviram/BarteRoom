@@ -169,8 +169,7 @@ namespace BarteRoom
         //search button event handler
         void searchBtn_Click(Object sender, EventArgs e)
         {
-            //welcomeHome.Visible = false;
-           // homePhotos.Visible = false;
+            imgSlider.Visible = false;
         }
 
         protected void image3_Click(object sender, ImageClickEventArgs e)
