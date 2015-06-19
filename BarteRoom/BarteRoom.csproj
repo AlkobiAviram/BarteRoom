@@ -64,7 +64,6 @@
     <Content Include="About.aspx" />
     <Content Include="BarterList.aspx" />
     <Content Include="Bids.aspx" />
-    <Content Include="Content\styles.css" />
     <Content Include="css\accordionCss.css" />
     <Content Include="Home.aspx" />
     <Content Include="css\Hover.css" />
@@ -72,22 +71,43 @@
     <Content Include="css\ImageHover.css" />
     <Content Include="css\imageSlider.css" />
     <Content Include="img\%24_57 %281%29.JPG" />
+    <Content Include="img\%24_57111.JPG" />
+    <Content Include="img\1.JPG" />
+    <Content Include="img\1111.JPG" />
+    <Content Include="img\22121.JPG" />
     <Content Include="img\2222.jpg" />
     <Content Include="img\4444.JPG" />
+    <Content Include="img\4445544554.JPG" />
+    <Content Include="img\5556666666.JPG" />
+    <Content Include="img\777777777.JPG" />
     <Content Include="img\arrow.jpg" />
     <Content Include="img\arrow1.jpg" />
     <Content Include="img\arrow2.jpg" />
     <Content Include="img\cod-aw-ps4.jpg" />
+    <Content Include="img\hover.gif" />
     <Content Include="img\img4.JPG" />
     <Content Include="img\maxresdefault.jpg" />
     <Content Include="img\OriginalSize_%24_57 %281%29.JPG" />
+    <Content Include="img\OriginalSize_%24_57111.JPG" />
+    <Content Include="img\OriginalSize_1.JPG" />
     <Content Include="img\OriginalSize_11.JPG" />
+    <Content Include="img\OriginalSize_1111.JPG" />
+    <Content Include="img\OriginalSize_22121.JPG" />
     <Content Include="img\OriginalSize_2222.jpg" />
+    <Content Include="img\OriginalSize_22222265655656.jpg" />
     <Content Include="img\OriginalSize_4444.JPG" />
+    <Content Include="img\OriginalSize_4445544554.JPG" />
+    <Content Include="img\OriginalSize_5556666666.JPG" />
     <Content Include="img\OriginalSize_66666.jpg" />
+    <Content Include="img\OriginalSize_777777777.JPG" />
     <Content Include="img\OriginalSize_cod-aw-ps4.jpg" />
     <Content Include="img\OriginalSize_maxresdefault.jpg" />
+    <Content Include="img\OriginalSize_rrrrrrrrr.jpg" />
+    <Content Include="img\rrrrrrrrr.jpg" />
     <Content Include="img\search.png" />
+    <Content Include="img\seperator.gif" />
+    <Content Include="img\temp.jpg" />
+    <Content Include="img\tempSmall.jpg" />
     <Content Include="Landing.html" />
     <Content Include="Mail.aspx" />
     <Content Include="mailStyle.css" />
@@ -242,9 +262,7 @@
       <DependentUpon>ItemView.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="img\App_LocalResources\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

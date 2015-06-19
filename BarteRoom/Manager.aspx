@@ -26,6 +26,8 @@
 <asp:Content ID="Content2" runat="server" contentplaceholderid="ContentPlaceHolder1">
 
     <!-- ======================================================Managers table================================================================== -->
+     <label>Delete All Images</label><br />
+    <asp:Button ID="del_imgs" runat="server" Text="Delete Images" OnClick="del_imgs_Click" />
     <table class="nav-justified">
         <tr>
             <td class="auto-style10">&nbsp;</td>
@@ -356,6 +358,7 @@ where usr=@usr">
     
     <br /><br />
     <asp:Label ID="tmpLabel" runat="server" Text="Label" Visible="false"></asp:Label>
+   
     <br />
     <!--=======================================================classes====================================================================== -->
 

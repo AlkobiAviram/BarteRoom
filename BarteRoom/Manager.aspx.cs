@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Drawing;
+using System.IO;
 
 namespace BarteRoom
 {
@@ -102,6 +103,12 @@ namespace BarteRoom
 
                 Response.Redirect("Manager.aspx");
             }
+        }
+
+        protected void del_imgs_Click(object sender, EventArgs e)
+        {
+            Array.ForEach(Directory.GetFiles(Server.MapPath("/img")),
+                          delegate(string path) { File.Delete(path); });
         }
 
     }
