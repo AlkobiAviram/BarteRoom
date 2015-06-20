@@ -1605,7 +1605,7 @@ pre code {
 }
 .container-fluid {
   padding-right: 15px;
-  padding-left: 15px;
+  padding-left: 0px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -4357,11 +4357,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-nav {
-  margin: 7.5px -15px;
+  margin: 0px -15px;
 }
 .navbar-nav > li > a {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 0px;
+  padding-bottom: 0px;
   line-height: 20px;
 }
 @media (max-width: 767px) {
@@ -4565,8 +4565,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-default {
   background-color: white;
-  border: solid;
-  border-bottom-color: #2F4F4F;
 }
 .navbar-default .navbar-brand {
   color: #777;
@@ -5106,7 +5104,7 @@ a.badge:focus {
   .container .jumbotron,
   .container-fluid .jumbotron {
     padding-right: 60px;
-    padding-left: 60px;
+    padding-left: 0px;
   }
   .jumbotron h1,
   .jumbotron .h1 {

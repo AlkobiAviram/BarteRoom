@@ -331,7 +331,8 @@ namespace BarteRoom
 
         protected void AddItem_Click(object sender, EventArgs e)
         {
-            Session["add_item"] = "true";
+            Guid newGuid = Guid.NewGuid();
+            Session["add_item"] = newGuid.ToString(); 
             Response.Redirect("/AddItem.aspx");
         }
 
