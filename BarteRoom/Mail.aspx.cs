@@ -62,7 +62,10 @@ namespace BarteRoom
                         e.Row.Attributes.Add("onmouseover", "this.style.cursor='pointer';");
                         e.Row.Attributes.Add("onclick", Page.ClientScript.GetPostBackEventReference(inboxView, "Select$" + e.Row.RowIndex));
 
-
+                        if ((((Label)e.Row.FindControl("msgLabel")).Text).Length > 125)
+                        {
+                            ((Label)e.Row.FindControl("msgLabel")).Text = ((Label)e.Row.FindControl("msgLabel")).Text.Substring(0, 125) + "....";
+                        }
 
                         if ((((Label)e.Row.FindControl("isReadLabel")).Text).Equals("0"))
                         {

@@ -38,6 +38,9 @@
          .note-SeaAllstyle {
             width: 155px;
         }
+         .lefpad{
+             padding-left: 20px;
+         }
 
     </style>
 
@@ -189,7 +192,7 @@
                                     </ItemTemplate>                                          
                                 </asp:TemplateField>                                               
 
-                                     <asp:TemplateField HeaderText="Msg" ShowHeader="False" ItemStyle-HorizontalAlign="Left" ConvertEmptyStringToNull="true">
+                                     <asp:TemplateField HeaderText="Msg" ShowHeader="False" ItemStyle-HorizontalAlign="Left" ConvertEmptyStringToNull="true" ItemStyle-CssClass="lefpad">
                                     <ItemTemplate>
                                         <asp:Label ID="msgLabel" runat="server" ForeColor="Black" Font-Size="14px" Text='<%# Bind("Msg") %>'></asp:Label> 
                                         <br />
