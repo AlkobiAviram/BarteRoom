@@ -11,7 +11,12 @@
         <div class="col-md-3 border-css">
             
              <div class="zoom_img" >
-            <asp:Image  id="item_pic3" CssClass="img-responsive"  runat="server"/>
+             <asp:Image  id="item_pic3" CssClass="img-responsive"  runat="server"/>
+                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">
+             <Columns>
+             <asp:ImageField DataImageUrlField ="Images" NullDisplayText="no image" ReadOnly="True"  />
+             </Columns>
+                </asp:GridView>
             <asp:FileUpload ID="newImage" runat="server" />
             <asp:Label ID="uploadNewImageLabel" Text="Upload new image" runat="server" />
             <asp:Button ID="edit_cmd" runat="server" CssClass="btn hvr-wobble-to-bottom-right" Text="Edit" OnClick="edit_cmd_Click" Height="26px" Width="158px"></asp:Button>

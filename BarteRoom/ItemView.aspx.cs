@@ -90,9 +90,19 @@ namespace BarteRoom
                 }
             }
 
-         
+            if (!IsPostBack)
+            {
+                bind();
+            }
         }
+        private void bind()
+        {
 
+            GridView1.DataSource = lg.getImagesOfItem(id);
+            GridView1.DataBind();
+
+
+        }
         protected void offer_cmd_Click(object sender, EventArgs e)
         {
             Response.Redirect("/MakeBid.aspx?" + "id=" + Request.QueryString["id"].ToString());

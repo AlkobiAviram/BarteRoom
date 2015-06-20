@@ -352,6 +352,27 @@ namespace BarteRoom
             return dtable;
         }
 
+        public int numOfImages(string item_id)
+        {
+            int images = 0;
+
+            query = "select COUNT(*) from dbo.images where item_id ='" + item_id+ "';";
+
+            try
+            {
+                connect.Open();
+
+
+                command = new SqlCommand(query, connect);
+
+               images = Convert.ToInt32(command.ExecuteScalar().ToString());
+                connect.Close();
+            }
+
+            catch (Exception e) { }
+
+            return images;
+        }
 
         public string setImagePath(String id)
         {

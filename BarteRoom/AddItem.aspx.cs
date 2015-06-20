@@ -15,11 +15,13 @@ using System.Net;
 using System.Drawing.Imaging;
 namespace BarteRoom
 {
+    
     public partial class BarterList2 : System.Web.UI.Page
     {
 
         private Logic lg = new Logic();
-        private Item newItem = new Item();
+       
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             //searech button event catch
@@ -46,7 +48,7 @@ namespace BarteRoom
 
         protected void commit_cmd_Click(object sender, EventArgs e)
         {
-                 
+                Session["add_item"] = "false";
                 newItem.Usr=Session["usr"].ToString();
                 newItem.Name=name_textBox.Text; 
                 newItem.Clss=classes_list.SelectedValue.ToString();
@@ -179,7 +181,15 @@ namespace BarteRoom
                     Bitmap target = FixedSize(System.Drawing.Image.FromFile(path), 225, 225) as Bitmap;
                     path = Server.MapPath("~/img/" + file_name);
                     target.Save(path);
-                    Imag img = new Imag(newItem.Id, "img/" + file_name, 1);
+                    int numOfPictures = lg.numOfImages(newItem.Id);
+                    int isProfile;
+                    if (numOfPictures == 0)
+                    {
+                        isProfile = 1;
+                    }
+                    else
+                        isProfile=0;
+                    Imag img = new Imag(newItem.Id, "img/" + file_name, isProfile);
                     lg.addImage(img);
                 }
                }
@@ -187,8 +197,9 @@ namespace BarteRoom
             {
             }
 
-            bind();
-      
+         
+                bind();
+            
         }
 
     }

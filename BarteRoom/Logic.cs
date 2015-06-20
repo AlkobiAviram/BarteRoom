@@ -215,7 +215,12 @@ namespace BarteRoom
             data = new DB();
             data.addImage(img);
         }
+        public int numOfImages(string item_id)
+        {
 
+            data = new DB();
+            return data.numOfImages(item_id);
+        }
         public string setImagePath(String id)
         {
              data = new DB();
