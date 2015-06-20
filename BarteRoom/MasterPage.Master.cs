@@ -561,5 +561,20 @@ namespace BarteRoom
             Response.Redirect("/Offers.aspx");
         }
 
+        protected void recentmsg_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            logic = new Logic();
+            string msgId;
+
+            recentmsg.DataSource = logic.getAllMessages(Session["usr"].ToString(), 0);
+            recentmsg.DataBind();
+
+            int index = Convert.ToInt32(recentmsg.SelectedIndex);
+            GridViewRow row = recentmsg.Rows[index];
+            msgId = ((Label)recentmsg.Rows[index].FindControl("idLabel")).Text;
+
+            Response.Redirect("/Mail.aspx? id=" + Server.UrlEncode(msgId));
+        }
+
     }
 }

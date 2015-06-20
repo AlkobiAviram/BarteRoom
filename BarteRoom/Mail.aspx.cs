@@ -11,30 +11,42 @@ namespace BarteRoom
     public partial class Mail : System.Web.UI.Page
     {
         private Logic logic;
+        
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            logic = new Logic();
+            string id;
             if (Session["usr"] == null)
             {
                 Response.Redirect("/Home.aspx");
             }
             
-            else{
-            logic = new Logic();
+            else
+            {
+                ((LinkButton)Master.FindControl("MyAccount")).BackColor = Color.Gainsboro;
+                ((LinkButton)Master.FindControl("MyMail")).BackColor = Color.Gainsboro;
+                ((TextBox)Master.FindControl("SearchTextBox")).Visible = false;
+                ((DropDownList)Master.FindControl("catagories")).Visible = false;
+                ((Button)Master.FindControl("Button1")).Visible = false;
+                ((LinkButton)Master.FindControl("AdvancedSearch")).Visible = false;
+                ((GridView)Master.FindControl("homeGridView")).Visible = false;
 
-            ((LinkButton)Master.FindControl("MyAccount")).BackColor = Color.Gainsboro;
-            ((LinkButton)Master.FindControl("MyMail")).BackColor = Color.Gainsboro;
-            ((TextBox)Master.FindControl("SearchTextBox")).Visible = false;
-            ((DropDownList)Master.FindControl("catagories")).Visible = false;
-            ((Button)Master.FindControl("Button1")).Visible = false;
-            ((LinkButton)Master.FindControl("AdvancedSearch")).Visible = false;
-            ((GridView)Master.FindControl("homeGridView")).Visible = false;
+                int notRead = logic.notReadMsg(Session["usr"].ToString());
+                numOfLabel.Text = "(" + notRead.ToString() + ")";
 
-            int notRead = logic.notReadMsg(Session["usr"].ToString());
-            numOfLabel.Text = "(" + notRead.ToString() + ")";
+                if (Request.QueryString["id"] != null)
+                {
+                    id = Request.QueryString["id"].ToString();
+                    inboxView.DataSource = logic.getAllMessages(id, 2);
+                }
 
-            inboxView.DataSource = logic.getAllMessages(Session["usr"].ToString(), 1);
-            inboxView.DataBind();
+                else
+                {
+                    inboxView.DataSource = logic.getAllMessages(Session["usr"].ToString(), 1);
+                }
+                
+                inboxView.DataBind();
             }
         }
 
@@ -100,7 +112,7 @@ namespace BarteRoom
             msgId = ((Label)inboxView.Rows[index].FindControl("idLabel")).Text;
             msgViewFrom.Text = from + " - " + email;
             msgViewDate.Text = ((Label)inboxView.Rows[index].FindControl("datetimeLabel")).Text;
-            msgViewTxt.Text = ((Label)inboxView.Rows[index].FindControl("msgLabel")).Text;
+            msgViewTxt.Text = logic.getMsgById(msgId);
             sub = (((Label)inboxView.Rows[index].FindControl("subjectLabel")).Text).Split('-');
             msgSubView.Text = sub[0];
 

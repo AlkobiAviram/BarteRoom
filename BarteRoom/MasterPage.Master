@@ -181,7 +181,7 @@
                                        
                                 </table>
                                
-                               <asp:GridView ID="recentmsg" runat="server" Width="100%" GridLines="Horizontal" RowStyle-BorderStyle="Solid" RowStyle-BorderColor="#F8F8FF" ShowHeader="False" RowStyle-HorizontalAlign="Center" AllowCustomPaging="True" AutoGenerateColumns="False" OnRowDataBound="recentmsg_RowDataBound">
+                               <asp:GridView ID="recentmsg" runat="server" Width="100%" GridLines="Horizontal" RowStyle-BorderStyle="Solid" RowStyle-BorderColor="#F8F8FF" ShowHeader="False" RowStyle-HorizontalAlign="Center" AllowCustomPaging="True" AutoGenerateColumns="False" OnRowDataBound="recentmsg_RowDataBound" OnSelectedIndexChanged="recentmsg_SelectedIndexChanged">
                                         <Columns>
 
                                 <asp:TemplateField HeaderText="From" ShowHeader="False" ConvertEmptyStringToNull="true">

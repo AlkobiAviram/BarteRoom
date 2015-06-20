@@ -20,7 +20,7 @@
             width: 300px;
         }
         .auto-style8 {
-            width: 838px;
+            width: 853px;
             padding-left: 50px;
             border-bottom-color: darkgrey;
             border-top-color: darkgrey;
@@ -30,14 +30,15 @@
             border-bottom-width: medium;
         }
         .auto-style10 {
-            border-bottom: solid;
-            border-top: solid;
             border-bottom-color: darkgrey;
             border-top-color: darkgrey; 
-            width: 371px;
+            width: 364px;
+            border-top-style: solid;
+            border-top-width: medium;
+            border-bottom-style: solid;
+            border-bottom-width: medium;
         }
         .auto-style11 {
-            padding-left: 50px;
             width: 120px;
         }
         .replayStyle{
@@ -45,11 +46,8 @@
             padding-top: 8px;
             padding-left: 8px;
         }
-        .auto-style14 {
-            width: 172px;
-        }
-        .auto-style15 {
-            width: 275px;
+        .auto-style19 {
+            width: 221px;
         }
     </style>
 </asp:Content>
@@ -66,7 +64,7 @@
                     <div class="msgView" visible="false" runat="server" id="msgViewID">
                         <table class="nav-justified">
                             <tr>
-                                <td class="auto-style14">&nbsp;</td>
+                                <td class="auto-style11">&nbsp;</td>
                                 <td class="auto-style5">
 
                                     <asp:Label ID="msgSubView" Font-Bold="true" Font-Size="22px" runat="server" Text="Label"></asp:Label>
@@ -75,10 +73,10 @@
                                 
                             </tr>
                         </table>
-                        <asp:Panel ID="msgViewPanel" runat="server" Width="988px">
+                        <asp:Panel ID="msgViewPanel" runat="server" Width="956px">
                             <table class="nav-justified">
                                 <tr>
-                                    <td class="auto-style15">&nbsp;</td>
+                                    <td class="auto-style19">&nbsp;</td>
                                     <td class="auto-style8">     
                                         <asp:Label ID="msgViewFrom" Font-Bold="true" Font-Size="18px" runat="server" Text="from"></asp:Label>
                                     </td>
@@ -115,7 +113,7 @@
                             <tr>
                                 <td class="auto-style11">&nbsp;</td>
                                 <td>
-                                    <asp:Panel ID="replayPanel" Width="832px" CssClass="replayStyle" BackColor="#fbfbfb" runat="server">
+                                    <asp:Panel ID="replayPanel" Width="832px" CssClass="replayStyle" BackColor="#D3D3D3" runat="server">
                                         <asp:Button ID="replayButton" CssClass="btn btn-info" runat="server" Text="Replay" OnClick="replayButton_Click" />
                                     </asp:Panel>
                                 </td>
