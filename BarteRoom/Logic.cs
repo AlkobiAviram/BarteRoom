@@ -385,5 +385,11 @@ namespace BarteRoom
             data = new DB();
             return data.getImagesOfItem(item_id);
         }
+
+        public string getMsgById(string id)
+        {
+            data = new DB();
+            return data.getMsgById(id);
+        }
     }
 }

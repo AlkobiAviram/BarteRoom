@@ -1512,6 +1512,26 @@ namespace BarteRoom
             catch (Exception e) { }
         }
 
+        public string getMsgById(string id)
+        {
+            string msgID = "";
+            query = "select msg_body from dbo.msg where Id = '" + id + "';";
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+
+                msgID = command.ExecuteScalar().ToString();
+                connect.Close();
+            }
+
+            catch (Exception e) { }
+
+            return msgID;
+        }
+
         
 
     }
