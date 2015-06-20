@@ -20,30 +20,25 @@ namespace BarteRoom
             this.isProfile = isProfile;
 
         }
-        public int getIsProfile()
+        public string Path
         {
-            return this.isProfile;
+            get { return this.path; }
+            set { this.path = value; }
         }
-        public void setImage_id(int new_bool)
+        public string Item_id
         {
-            this.isProfile= new_bool;
+            get { return this.item_id; }
+            set { this.item_id = value; }
         }
-
-
-        public string getImage_id(){
-            return this.image_id;
-        }
-        public void setImage_id(string new_id)
+        public string Image_id
         {
-            this.image_id=new_id;
+            get { return this.image_id; }
+            set { this.image_id = value; }
         }
-        public string getItem_id()
+        public int IsProfile
         {
-            return this.item_id;
-        }
-        public string getPath()
-        {
-            return this.path;
+            get { return this.isProfile; }
+            set { this.isProfile = value; }
         }
     }
 }

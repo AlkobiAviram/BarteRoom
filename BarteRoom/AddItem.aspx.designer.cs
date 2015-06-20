@@ -94,13 +94,13 @@ namespace BarteRoom {
         protected global::System.Web.UI.WebControls.FileUpload image_upload;
         
         /// <summary>
-        /// previe_button control.
+        /// upload_cmd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button previe_button;
+        protected global::System.Web.UI.WebControls.Button upload_cmd;
         
         /// <summary>
         /// GridView1 control.

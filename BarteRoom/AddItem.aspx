@@ -56,9 +56,13 @@
       <br />
      <asp:FileUpload  CssClass="btn hvr hvr-wobble-skew" ID="image_upload" runat="server" OnLoad="image_upload_Load" Width="252px" />
      <br />
-      <asp:Button CssClass="btn hvr hvr-wobble-skew" ID="previe_button" runat="server" Text="preview" OnClick="previe_button_Click" />
+      <asp:Button CssClass="btn hvr hvr-wobble-skew" ID="upload_cmd" runat="server" Text="preview" OnClick="upload_cmd_Click" />
       <br />
-         <asp:GridView ID="GridView1" runat="server">
+         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">
+             <Columns>
+             <asp:ImageField DataImageUrlField ="Images" NullDisplayText="no image" ReadOnly="True"  />
+
+             </Columns>
 
          </asp:GridView>
        </td > 

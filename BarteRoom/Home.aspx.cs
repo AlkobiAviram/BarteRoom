@@ -29,36 +29,36 @@ namespace BarteRoom
             {
                 //setting the image slider images.
                 //note: first i save a copy of a item's imagein 620x320 dimension and then displaies it in the image slider 
-                string[] split = images.ElementAt(0).getPath().Split('/');
+                string[] split = images.ElementAt(0).Path.Split('/');
                 Bitmap target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath("img/OriginalSize_" + split[1])), 640, 320) as Bitmap;
                 string path = Server.MapPath("~/img/resizeImage0.jpg");
                 target.Save(path);
                 image1.ImageUrl = "img/resizeImage0.jpg";
-                image1Link.Text = lg.getItemById(lg.getIdByImagePath(images.ElementAt(0).getPath())).Comments;
-                string id = lg.getIdByImagePath(images.ElementAt(0).getPath());
+                image1Link.Text = lg.getItemById(lg.getIdByImagePath(images.ElementAt(0).Path)).Comments;
+                string id = lg.getIdByImagePath(images.ElementAt(0).Path);
                 image1Link.NavigateUrl = "/ItemView.aspx?id=" + id;
 
 
 
-                split = images.ElementAt(1).getPath().Split('/');
+                split = images.ElementAt(1).Path.Split('/');
                 target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath("img/OriginalSize_" + split[1])), 640, 320) as Bitmap;
                 path = Server.MapPath("~/img/resizeImage1.jpg");
                 target.Save(path);
                 image2.ImageUrl = "img/resizeImage1.jpg";
-                image2Link.Text = lg.getItemById(lg.getIdByImagePath(images.ElementAt(1).getPath())).Comments;
-                id = lg.getIdByImagePath(images.ElementAt(1).getPath());
+                image2Link.Text = lg.getItemById(lg.getIdByImagePath(images.ElementAt(1).Path)).Comments;
+                id = lg.getIdByImagePath(images.ElementAt(1).Path);
                 image2Link.NavigateUrl = "/ItemView.aspx?id=" + id;
 
 
 
 
-                split = images.ElementAt(2).getPath().Split('/');
+                split = images.ElementAt(2).Path.Split('/');
                 target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath("img/OriginalSize_" + split[1])), 640, 320) as Bitmap;
                 path = Server.MapPath("~/img/resizeImage2.jpg");
                 target.Save(path);
                 image3.ImageUrl = "img/resizeImage2.jpg";
-                image3Link.Text = lg.getItemById(lg.getIdByImagePath(images.ElementAt(2).getPath())).Comments;
-                id = lg.getIdByImagePath(images.ElementAt(2).getPath());
+                image3Link.Text = lg.getItemById(lg.getIdByImagePath(images.ElementAt(2).Path)).Comments;
+                id = lg.getIdByImagePath(images.ElementAt(2).Path);
                 image3Link.NavigateUrl = "/ItemView.aspx?id=" + id;
            
 
@@ -174,21 +174,21 @@ namespace BarteRoom
 
         protected void image3_Click(object sender, ImageClickEventArgs e)
         {
-            string id = lg.getIdByImagePath(images.ElementAt(2).getPath());
+            string id = lg.getIdByImagePath(images.ElementAt(2).Path);
             Response.Redirect("/ItemView.aspx?id=" + id);
 
         }
 
         protected void image2_Click(object sender, ImageClickEventArgs e)
         {
-            string id = lg.getIdByImagePath(images.ElementAt(1).getPath());
+            string id = lg.getIdByImagePath(images.ElementAt(1).Path);
             Response.Redirect("/ItemView.aspx?id=" + id);
 
         }
 
         protected void image1_Click(object sender, ImageClickEventArgs e)
         {
-            string id = lg.getIdByImagePath(images.ElementAt(0).getPath());
+            string id = lg.getIdByImagePath(images.ElementAt(0).Path);
             Response.Redirect("/ItemView.aspx?id=" + id);
 
         }

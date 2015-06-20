@@ -18,7 +18,7 @@ namespace BarteRoom
     public partial class BarterList2 : System.Web.UI.Page
     {
 
-        private Logic lg;
+        private Logic lg = new Logic();
         private Item newItem = new Item();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -37,67 +37,27 @@ namespace BarteRoom
 
         private void bind()
         {
-            
+         
             GridView1.DataSource = lg.getImagesOfItem(newItem.Id);
             GridView1.DataBind();
+        
 
         }
 
         protected void commit_cmd_Click(object sender, EventArgs e)
         {
-            Boolean fileOK = false;
-            if (image_upload.HasFile)
-            {
-                String fileExtension =
-                    System.IO.Path.GetExtension(image_upload.FileName).ToLower();
-                String[] allowedExtensions = { ".gif", ".png", ".jpeg", ".jpg" };
-                for (int i = 0; i < allowedExtensions.Length; i++)
-                {
-                    if (fileExtension == allowedExtensions[i])
-                    {
-                        fileOK = true;
-                    }
-                }
-            }
-
-
-            try
-            {
-
-
-
-
-                lg = new Logic();
+                 
                 newItem.Usr=Session["usr"].ToString();
                 newItem.Name=name_textBox.Text; 
                 newItem.Clss=classes_list.SelectedValue.ToString();
                 newItem.Comments=comnts_textBox.Text;
                 newItem.Description=desc_textBox.Text;
                
-                if (fileOK)
-                {
-                    string file_name = image_upload.FileName;
-
-                    //saving original size image
-                    string path = Server.MapPath("~/img/OriginalSize_" + file_name);
-                    image_upload.PostedFile.SaveAs(path);
-
-
-
-                    //saving display size copy
-                    Bitmap target = FixedSize(System.Drawing.Image.FromFile(path), 225, 225) as Bitmap;
-                    path = Server.MapPath("~/img/" + file_name);
-                    target.Save(path);
-                    Imag img = new Imag(newItem.Id, "img/" + file_name, 1);
-                    lg.addImage(img);
-                }
+              
                 lg.addItem(newItem);
                 Response.Redirect("/BarterList.aspx");
 
-            }
-            catch (Exception ex)
-            {
-            }
+         
         }
 
 
@@ -182,32 +142,53 @@ namespace BarteRoom
             Response.Redirect("/BarterList.aspx");
         }
 
-        protected void previe_button_Click(object sender, EventArgs e)
+        protected void upload_cmd_Click(object sender, EventArgs e)
         {
 
-
-
-            /*
+            Boolean fileOK = false;
             if (image_upload.HasFile)
             {
-                image_preview.Visible = true;
-                string path = Server.MapPath("~/img/temp.jpg");
-                image_upload.PostedFile.SaveAs(path);
-
-                Bitmap target = FixedSize(System.Drawing.Image.FromFile(path), 225, 225) as Bitmap;
-                path = Server.MapPath("~/img/tempSmall.jpg");
-                target.Save(path);
-
-                image_preview.ImageUrl = "img/tempSmall.jpg";
-                previe_button.Visible = false;
+                String fileExtension =
+                    System.IO.Path.GetExtension(image_upload.FileName).ToLower();
+                String[] allowedExtensions = {".jpg",".gif", ".png", ".jpeg"};
+                for (int i = 0; i < allowedExtensions.Length; i++)
+                {
+                    if (fileExtension == allowedExtensions[i])
+                    {
+                        fileOK = true;
+                        break;
+                    }
+                }
             }
-            else
+
+
+            try
             {
-                image_preview.Visible = false;
-                previe_button.Visible = true;
 
+              if (fileOK)
+                {
+                    string file_name = image_upload.FileName;
+
+                    //saving original size image
+                    string path = Server.MapPath("~/img/OriginalSize_" + file_name);
+                    image_upload.PostedFile.SaveAs(path);
+
+
+
+                    //saving display size copy
+                    Bitmap target = FixedSize(System.Drawing.Image.FromFile(path), 225, 225) as Bitmap;
+                    path = Server.MapPath("~/img/" + file_name);
+                    target.Save(path);
+                    Imag img = new Imag(newItem.Id, "img/" + file_name, 1);
+                    lg.addImage(img);
+                }
+               }
+            catch (Exception ex)
+            {
             }
-            */
+
+            bind();
+      
         }
 
     }

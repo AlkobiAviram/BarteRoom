@@ -128,41 +128,7 @@ namespace BarteRoom
                 return false;
         }
 
-        //upload image
-        public void uploadNewImage(string item_id, string newImage)
-        {
-            query = "update dbo.images set path ='" + newImage + "' where id = '" + item_id + "';";
-            //removing the picture from the folder
-            string completePath = System.Web.HttpContext.Current.Server.MapPath("~/" + setImagePath(item_id));
-            if (System.IO.File.Exists(completePath))
-            {
-
-                System.IO.File.Delete(completePath);
-
-            }
-            string[] split = setImagePath(item_id).Split('/');
-           
-            completePath = System.Web.HttpContext.Current.Server.MapPath("~/img/OriginalSize_" + split[1]);
-            if (System.IO.File.Exists(completePath))
-            {
-
-                System.IO.File.Delete(completePath);
-
-            }
-
-
-
-            try
-            {
-                connect.Open();
-
-                command = new SqlCommand(query, connect);
-                command.ExecuteNonQuery();
-                connect.Close();
-            }
-
-            catch (Exception ex) { }
-        }
+     
 
 
         //return the E-mail of the correct user
@@ -433,24 +399,40 @@ namespace BarteRoom
             return true;
         }
 
-        public bool addImage(Imag img)
+        public void addImage(Imag img)
         {
-            query = "insert into dbo.images values('" + img.getItem_id() + "','" + img.getPath() + "','" + img.getImage_id() +"',"+img.getIsProfile()+ ");";
+            query = "insert into dbo.images values('" + img.Item_id + "','" + img.Path + "','" + img.Image_id + "'," + img.IsProfile + ");";
+            /*
+             //removing the picture from the folder
+             string completePath = System.Web.HttpContext.Current.Server.MapPath("~/" + setImagePath(item_id));
+             if (System.IO.File.Exists(completePath))
+             {
+
+                 System.IO.File.Delete(completePath);
+
+             }
+             string[] split = setImagePath(item_id).Split('/');
+           
+             completePath = System.Web.HttpContext.Current.Server.MapPath("~/img/OriginalSize_" + split[1]);
+             if (System.IO.File.Exists(completePath))
+             {
+
+                 System.IO.File.Delete(completePath);
+
+             }
 
 
-
+             */
             try
             {
                 connect.Open();
 
                 command = new SqlCommand(query, connect);
-
                 command.ExecuteNonQuery();
                 connect.Close();
             }
-            catch (Exception e) { return false; }
-            return true;
 
+            catch (Exception ex) { }
         }
 
 
@@ -921,7 +903,7 @@ namespace BarteRoom
             while (rdr.Read())
             {
                 Imag img = new Imag(rdr[0].ToString(), rdr[1].ToString(), Convert.ToInt32(rdr[3].ToString()));
-                img.setImage_id(rdr[2].ToString());
+                img.Image_id=rdr[2].ToString();
                 images.AddLast(img);
             }
 
@@ -1351,7 +1333,10 @@ namespace BarteRoom
             {
                 query = "select fromUsr, subject, msg_body, datetime, Id, isRead from dbo.msg where toUsr = '" + usr + "' order by  isRead, datetime DESC;";
             }
-
+            else if (flag == 2)
+            {
+                query = "select fromUsr, subject, msg_body, datetime, Id, isRead from dbo.msg where Id = '" + usr + "' order by  isRead, datetime DESC;";
+            }
             try
             {
                 connect.Open();

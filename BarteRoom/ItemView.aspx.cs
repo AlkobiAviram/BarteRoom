@@ -214,7 +214,8 @@ namespace BarteRoom
                     path = Server.MapPath("~/img/" + file_name);
                     target.Save(path);
                   
-                    lg.uploadNewImage(Request.QueryString["id"].ToString(), "img/" + file_name);
+
+                    lg.addImage(new Imag(Request.QueryString["id"].ToString(), "img/" + file_name,0));
                     
                     Response.Redirect("/BarterList.aspx");
 

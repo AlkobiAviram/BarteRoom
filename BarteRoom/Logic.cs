@@ -221,12 +221,7 @@ namespace BarteRoom
              data = new DB();
              return data.setImagePath(id);
         }
-        public void uploadNewImage(string item_id, string newImage)
-        {
-            data = new DB();
-            data.uploadNewImage(item_id,newImage);
-            return;
-        }
+       
 
         ///transaction section
         public void addTransaction(Transaction transaction)
