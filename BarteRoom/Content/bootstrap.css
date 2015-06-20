@@ -4134,7 +4134,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-left: 0;
 }
 .nav-justified {
-  width: 97%;
+  width: 100%;
 }
 .nav-justified > li {
   float: none;

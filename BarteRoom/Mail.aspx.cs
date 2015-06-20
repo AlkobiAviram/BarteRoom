@@ -90,6 +90,7 @@ namespace BarteRoom
             logic = new Logic();
             string msgId;
             string email;
+            string[] sub;
             string from = ((Label)inboxView.Rows[index].FindControl("fromLabel")).Text;
 
             email = logic.getEmail(from);
@@ -97,9 +98,28 @@ namespace BarteRoom
             msgViewFrom.Text = from + " - " + email;
             msgViewDate.Text = ((Label)inboxView.Rows[index].FindControl("datetimeLabel")).Text;
             msgViewTxt.Text = ((Label)inboxView.Rows[index].FindControl("msgLabel")).Text;
+            sub = (((Label)inboxView.Rows[index].FindControl("subjectLabel")).Text).Split('-');
+            msgSubView.Text = sub[0];
 
             inboxViewID.Visible = false;
             msgViewID.Visible = true;
+        }
+
+        protected void replayButton_Click(object sender, EventArgs e)
+        {
+            logic = new Logic();
+            string from, subject, body;
+            string[] to;
+
+            from = Session["usr"].ToString();
+            to = (msgViewFrom.Text).Split(' ');
+            subject = msgSubView.Text;
+            body = replayTxt.Text;
+            Response.Write(to[0]);
+
+            Message repMessage = new Message(from, to[0], subject, body);
+
+            logic.addMessage(repMessage);
         }
 
         

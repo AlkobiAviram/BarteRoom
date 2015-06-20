@@ -1345,9 +1345,9 @@ namespace BarteRoom
                 
                 String tmpMsg = rdr[2].ToString();
 
-                if (tmpMsg.Length > 47)
+                if (tmpMsg.Length > 60 && flag == 0)
                 {
-                    tmpMsg = tmpMsg.Substring(0, 47) + "...";
+                    tmpMsg = tmpMsg.Substring(0, 60) + "...";
                 }
 
                 RowValues[2] = tmpMsg;
