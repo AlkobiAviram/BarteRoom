@@ -16,6 +16,37 @@
         .readStyle{
             font-weight: normal;
         }
+        .msgViweStyle1{
+            width: 300px;
+        }
+        .auto-style8 {
+            width: 1212px;
+            padding-left: 50px;
+            border-bottom-color: darkgrey;
+            border-top-color: darkgrey;
+            border-top-style: solid;
+            border-top-width: medium;
+            border-bottom-style: solid;
+            border-bottom-width: medium;
+        }
+        .auto-style10 {
+            border-bottom: solid;
+            border-top: solid;
+            border-bottom-color: darkgrey;
+            border-top-color: darkgrey; 
+            width: 371px;
+        }
+        .auto-style11 {
+            width: 120px;
+        }
+        .auto-style13 {
+            width: 253px;
+        }
+        .replayStyle{
+            padding-bottom: 8px;
+            padding-top: 8px;
+            padding-left: 8px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -28,9 +59,60 @@
                 <td class="auto-style7">&nbsp;</td>
                 <td class="auto-style6">
 
+                    <div class="msgView" visible="false" runat="server" id="msgViewID">
 
-    
-                    <asp:GridView ID="inboxView" ShowHeader="false" Width="97%" GridLines="Horizontal" AutoGenerateColumns="False" OnRowDataBound="inboxView_RowDataBound" runat="server">
+                        <asp:Panel ID="msgViewPanel" runat="server" Width="965px">
+                            <table class="nav-justified">
+                                <tr>
+                                    <td class="auto-style13">&nbsp;</td>
+                                    <td class="auto-style8">     
+                                        <asp:Label ID="msgViewFrom" Font-Bold="true" Font-Size="18px" runat="server" Text="from"></asp:Label>
+                                    </td>
+                                    <td class="auto-style10">
+                                        <asp:Label ID="msgViewDate" Font-Bold="true" Font-Size="18px" runat="server" Text="date"></asp:Label>
+                                    </td>
+                                    </tr>
+                                </table>
+                        </asp:Panel>
+
+                        <table class="nav-justified">
+                            <tr>
+                                <td class="auto-style11">&nbsp;</td>
+                                <td>
+
+                                    <asp:TextBox ID="msgViewTxt" TextMode="MultiLine" Font-Size="16px" ReadOnly="true" Height="400px" runat="server" Width="832px"></asp:TextBox>
+
+                                </td>
+                         
+                            </tr>
+                            <tr>
+                               
+                                <td class="auto-style11">&nbsp;</td>
+                                <td><br />
+                                    <asp:Panel ID="line" Width="832px" Height="1px" BackColor="DarkGray" runat="server"></asp:Panel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="auto-style11">&nbsp;</td>
+                                <td><br /><br />
+                                    <asp:TextBox ID="replayTxt" TextMode="MultiLine" Font-Size="16px" Height="100px" Width="832px" runat="server"></asp:TextBox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="auto-style11">&nbsp;</td>
+                                <td>
+                                    <asp:Panel ID="replayPanel" Width="832px" CssClass="replayStyle" BackColor="#fbfbfb" runat="server">
+                                        <asp:Button ID="replayButton" CssClass="btn-info" runat="server" Text="Replay" />
+                                    </asp:Panel>
+                                </td>
+                            </tr>
+                        </table>
+                        <br /><br /><br /><br />
+                    </div>
+
+
+    <div class="inboxView" runat="server" id="inboxViewID">
+                    <asp:GridView ID="inboxView" ShowHeader="false" Width="97%" GridLines="Horizontal" AutoGenerateColumns="False" OnRowDataBound="inboxView_RowDataBound" OnSelectedIndexChanged="inboxView_SelectedIndexChanged" runat="server">
                         <Columns>
 
                             <asp:TemplateField HeaderText="From" ShowHeader="False" ConvertEmptyStringToNull="true" ItemStyle-HorizontalAlign="Left">
@@ -67,7 +149,7 @@
                         </Columns>
                     </asp:GridView>
     
-
+        </div>
                 </td>
                 <td>&nbsp;</td>
             </tr>

@@ -44,6 +44,9 @@ namespace BarteRoom
 
             inboxView.DataSource = logic.getAllMessages(Session["usr"].ToString(), 1);
             inboxView.DataBind();
+
+            inboxViewID.Visible = true;
+            msgViewID.Visible = false;
         }
 
         protected void inboxView_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -79,6 +82,24 @@ namespace BarteRoom
                 }
             }
             catch { }
+        }
+
+        protected void inboxView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int index = Convert.ToInt32(inboxView.SelectedIndex);
+            logic = new Logic();
+            string msgId;
+            string email;
+            string from = ((Label)inboxView.Rows[index].FindControl("fromLabel")).Text;
+
+            email = logic.getEmail(from);
+            msgId = ((Label)inboxView.Rows[index].FindControl("idLabel")).Text;
+            msgViewFrom.Text = from + " - " + email;
+            msgViewDate.Text = ((Label)inboxView.Rows[index].FindControl("datetimeLabel")).Text;
+            msgViewTxt.Text = ((Label)inboxView.Rows[index].FindControl("msgLabel")).Text;
+
+            inboxViewID.Visible = false;
+            msgViewID.Visible = true;
         }
 
         
