@@ -331,6 +331,7 @@ namespace BarteRoom
 
         protected void AddItem_Click(object sender, EventArgs e)
         {
+            Session["add_item"] = "true";
             Response.Redirect("/AddItem.aspx");
         }
 
@@ -564,16 +565,16 @@ namespace BarteRoom
         protected void recentmsg_SelectedIndexChanged(object sender, EventArgs e)
         {
             logic = new Logic();
-            string msgId;
+            string id;
 
             recentmsg.DataSource = logic.getAllMessages(Session["usr"].ToString(), 0);
             recentmsg.DataBind();
 
             int index = Convert.ToInt32(recentmsg.SelectedIndex);
             GridViewRow row = recentmsg.Rows[index];
-            msgId = ((Label)recentmsg.Rows[index].FindControl("idLabel")).Text;
+            id = ((Label)recentmsg.Rows[index].FindControl("idLabel")).Text;
 
-            Response.Redirect("/Mail.aspx? id=" + Server.UrlEncode(msgId));
+            Response.Redirect("/Mail.aspx?id=" + Server.UrlEncode(id));
         }
 
     }

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Drawing;
+using System.Data;
 
 namespace BarteRoom
 {
@@ -38,15 +39,26 @@ namespace BarteRoom
                 if (Request.QueryString["id"] != null)
                 {
                     id = Request.QueryString["id"].ToString();
-                    inboxView.DataSource = logic.getAllMessages(id, 2);
+                    DataTable dt = logic.getAllMessages(id, 2);
+
+                    string from = dt.Rows[0][0].ToString(); ;
+                    string email = logic.getEmail(from);
+                    msgViewFrom.Text = from + " - " + email;
+                    dt.Rows[0][0].ToString();
+                    msgViewDate.Text = dt.Rows[0][3].ToString();
+                    msgViewTxt.Text = logic.getMsgById(dt.Rows[0][4].ToString());
+                    string[] sub = (dt.Rows[0][1].ToString()).Split('-');
+                    msgSubView.Text = sub[0];
+                    inboxViewID.Visible = false;
+                    msgViewID.Visible = true;
                 }
 
                 else
                 {
                     inboxView.DataSource = logic.getAllMessages(Session["usr"].ToString(), 1);
+                    inboxView.DataBind();
                 }
                 
-                inboxView.DataBind();
             }
         }
 
@@ -101,23 +113,11 @@ namespace BarteRoom
 
         protected void inboxView_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string id;
             int index = Convert.ToInt32(inboxView.SelectedIndex);
-            logic = new Logic();
-            string msgId;
-            string email;
-            string[] sub;
-            string from = ((Label)inboxView.Rows[index].FindControl("fromLabel")).Text;
 
-            email = logic.getEmail(from);
-            msgId = ((Label)inboxView.Rows[index].FindControl("idLabel")).Text;
-            msgViewFrom.Text = from + " - " + email;
-            msgViewDate.Text = ((Label)inboxView.Rows[index].FindControl("datetimeLabel")).Text;
-            msgViewTxt.Text = logic.getMsgById(msgId);
-            sub = (((Label)inboxView.Rows[index].FindControl("subjectLabel")).Text).Split('-');
-            msgSubView.Text = sub[0];
-
-            inboxViewID.Visible = false;
-            msgViewID.Visible = true;
+            id = ((Label)inboxView.Rows[index].FindControl("idLabel")).Text;
+            Response.Redirect("/Mail.aspx?id=" + Server.UrlEncode(id));
         }
 
         protected void replayButton_Click(object sender, EventArgs e)
