@@ -20,7 +20,7 @@ namespace BarteRoom
     {
         
         private Logic lg = new Logic();
-        private Item newItem;
+        private string id="";
         
         
         protected void Page_Load(object sender, EventArgs e)
@@ -31,22 +31,23 @@ namespace BarteRoom
             ((LinkButton)Master.FindControl("MyAccount")).BackColor = Color.Gainsboro;
             ((LinkButton)Master.FindControl("AddItem")).BackColor = Color.Gainsboro;
 
+            
+
+
             if (!IsPostBack)
             {
-
+              
                 bind();
             }
-            if (Session["add_item"].ToString() == "true")
-            {
-                newItem = new Item();
-                Session["add_item"] = "false";
-            }
+         
+        
 
         }
 
         private void bind()
         {
-         
+
+      
             GridView1.DataSource = lg.getImagesOfItem(newItem.Id);
             GridView1.DataBind();
         
@@ -55,7 +56,7 @@ namespace BarteRoom
 
         protected void commit_cmd_Click(object sender, EventArgs e)
         {
-                Session["add_item"] = "false";
+                 Item newItem = new Item();
                 newItem.Usr=Session["usr"].ToString();
                 newItem.Name=name_textBox.Text; 
                 newItem.Clss=classes_list.SelectedValue.ToString();
