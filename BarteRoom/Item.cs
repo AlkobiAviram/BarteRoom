@@ -13,6 +13,11 @@ namespace BarteRoom
         private String comments;
         private String description;
         private String id;
+        public Item()
+        {
+            Guid newGuid = Guid.NewGuid();
+            this.id = newGuid.ToString(); 
+        }
         public Item(String usr, String name, String clss, String comments, String description)
         {
             this.usr = usr;
@@ -23,34 +28,35 @@ namespace BarteRoom
             Guid newGuid = Guid.NewGuid();
             this.id = newGuid.ToString(); 
         }
-        public String getUsr()
+        public string Clss
         {
-            return this.usr;
+            get { return this.clss; }
+            set { this.clss= value; }
         }
-        public String getName()
+        public string Usr
         {
-            return this.name;
+            get { return this.usr; }
+            set { this.usr = value; }
         }
-        public String getClass()
+        public string Name
         {
-            return this.clss;
+            get { return this.name; }
+            set { this.name= value; }
         }
-        public String getComments()
+        public string Comments
         {
-            return this.comments;
+            get { return this.comments; }
+            set { this.comments = value; }
         }
-        public String getDescription()
+        public string Description
         {
-            return this.description;
+            get { return this.description; }
+            set { this.description = value; }
         }
-     
-        public String getId()
+        public string Id
         {
-            return this.id;
-        }
-        public void setId(string newId)
-        {
-            this.id=newId; ;
+            get { return this.id; }
+            set { this.id = value; }
         }
     }
 }

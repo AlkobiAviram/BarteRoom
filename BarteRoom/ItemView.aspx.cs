@@ -39,12 +39,12 @@ namespace BarteRoom
             }
             //setting labels
             Item item = lg.getItemById(id);
-            item.setId(id);
+            item.Id=id;
       
-            nameLabel.Text = item.getName();   
-            comLabel.Text = item.getComments();
-            idLabel1.Text = item.getId();  
-            desLabel.Text=item.getDescription();
+            nameLabel.Text = item.Name;   
+            comLabel.Text = item.Comments;
+            idLabel1.Text = item.Id;  
+            desLabel.Text=item.Description;
 
 
             if (!IsPostBack)
@@ -76,7 +76,7 @@ namespace BarteRoom
                 Label2.Visible = false;
                 offer_cmd.Visible = true;
 
-                if (Session["usr"].ToString() == item.getUsr())//this means that the item is owned by the user who logged in
+                if (Session["usr"].ToString() == item.Usr)//this means that the item is owned by the user who logged in
                 {
                     edit_cmd.Visible = true;
                     offer_cmd.Visible = false;
@@ -127,15 +127,15 @@ namespace BarteRoom
 
             Logic lg_temp = new Logic();
             Item item = lg.getItemById(id);
-            item.setId(id);
-            name_textBox.Text = item.getName();
+            item.Id=id;
+            name_textBox.Text = item.Name;
             name_textBox.Visible = true;
 
 
-            comments_textBox.Text = item.getComments();
+            comments_textBox.Text = item.Comments;
             comments_textBox.Visible = true;
 
-            description_textBox.Text = item.getDescription();
+            description_textBox.Text = item.Description;
             description_textBox.Height = 400;
             description_textBox.Width = 400;
             description_textBox.Visible = true;

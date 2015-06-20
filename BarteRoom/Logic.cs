@@ -380,6 +380,10 @@ namespace BarteRoom
             data = new DB();
             data.msgMarkAsRead(usr);
         }
-
+        public DataTable getImagesOfItem(string item_id)
+        {
+            data = new DB();
+            return data.getImagesOfItem(item_id);
+        }
     }
 }

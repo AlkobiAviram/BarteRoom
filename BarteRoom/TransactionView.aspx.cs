@@ -24,10 +24,10 @@ namespace BarteRoom
             //////////////////////regarding the item
             item_pic.ImageUrl = lg.setImagePath(trns.getItem_id());
             Item item = lg.getItemById(trns.getItem_id());
-            itemName.Text = item.getName();
-            itemDescription.Text = item.getDescription();
-            itemBarCode.Text = item.getId();
-            itemOwner.Text = item.getUsr();
+            itemName.Text = item.Name;
+            itemDescription.Text = item.Description;
+            itemBarCode.Text = item.Id;
+            itemOwner.Text = item.Usr;
             /////////////////////////////////
 
 

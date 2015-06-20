@@ -19,8 +19,7 @@ namespace BarteRoom
     {
 
         private Logic lg;
-        private string image_path="";
-        private Boolean hasFile=false;
+        private Item newItem = new Item();
         protected void Page_Load(object sender, EventArgs e)
         {
             //searech button event catch
@@ -28,11 +27,21 @@ namespace BarteRoom
 
             ((LinkButton)Master.FindControl("MyAccount")).BackColor = Color.Gainsboro;
             ((LinkButton)Master.FindControl("AddItem")).BackColor = Color.Gainsboro;
-     
 
+            if (!IsPostBack)
+            {
+
+                bind();
+            }
         }
 
+        private void bind()
+        {
+            
+            GridView1.DataSource = lg.getImagesOfItem(newItem.Id);
+            GridView1.DataBind();
 
+        }
 
         protected void commit_cmd_Click(object sender, EventArgs e)
         {
@@ -51,45 +60,50 @@ namespace BarteRoom
                 }
             }
 
-         
-                try
+
+            try
+            {
+
+
+
+
+                lg = new Logic();
+                newItem.Usr=Session["usr"].ToString();
+                newItem.Name=name_textBox.Text; 
+                newItem.Clss=classes_list.SelectedValue.ToString();
+                newItem.Comments=comnts_textBox.Text;
+                newItem.Description=desc_textBox.Text;
+               
+                if (fileOK)
                 {
+                    string file_name = image_upload.FileName;
+
+                    //saving original size image
+                    string path = Server.MapPath("~/img/OriginalSize_" + file_name);
+                    image_upload.PostedFile.SaveAs(path);
 
 
 
-                   
-                    lg = new Logic();
-                    Item newItem = new Item(Session["usr"].ToString(), name_textBox.Text, classes_list.SelectedValue.ToString(), comnts_textBox.Text, desc_textBox.Text);
-                    if (fileOK)
-                    {
-                        string file_name = image_upload.FileName;
-
-                        //saving original size image
-                        string path = Server.MapPath("~/img/OriginalSize_" + file_name);
-                        image_upload.PostedFile.SaveAs(path);
-                       
-
-
-                        //saving display size copy
-                        Bitmap target = FixedSize(System.Drawing.Image.FromFile(path), 225, 225) as Bitmap;
-                        path = Server.MapPath("~/img/" + file_name);
-                        target.Save(path);
-                        Imag img = new Imag(newItem.getId(), "img/" + file_name, 1);
-                        lg.addImage(img);
-                    }
-                    lg.addItem(newItem);
-                    Response.Redirect("/BarterList.aspx");
-                   
+                    //saving display size copy
+                    Bitmap target = FixedSize(System.Drawing.Image.FromFile(path), 225, 225) as Bitmap;
+                    path = Server.MapPath("~/img/" + file_name);
+                    target.Save(path);
+                    Imag img = new Imag(newItem.Id, "img/" + file_name, 1);
+                    lg.addImage(img);
                 }
-                catch (Exception ex)
-                {
-                }
+                lg.addItem(newItem);
+                Response.Redirect("/BarterList.aspx");
+
             }
+            catch (Exception ex)
+            {
+            }
+        }
 
 
 
-        
-        
+
+
 
 
 
@@ -170,7 +184,10 @@ namespace BarteRoom
 
         protected void previe_button_Click(object sender, EventArgs e)
         {
-            
+
+
+
+            /*
             if (image_upload.HasFile)
             {
                 image_preview.Visible = true;
@@ -190,7 +207,7 @@ namespace BarteRoom
                 previe_button.Visible = true;
 
             }
-              
+            */
         }
 
     }

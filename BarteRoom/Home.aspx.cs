@@ -34,7 +34,7 @@ namespace BarteRoom
                 string path = Server.MapPath("~/img/resizeImage0.jpg");
                 target.Save(path);
                 image1.ImageUrl = "img/resizeImage0.jpg";
-                image1Link.Text = lg.getItemById(lg.getIdByImagePath(images.ElementAt(0).getPath())).getComments();
+                image1Link.Text = lg.getItemById(lg.getIdByImagePath(images.ElementAt(0).getPath())).Comments;
                 string id = lg.getIdByImagePath(images.ElementAt(0).getPath());
                 image1Link.NavigateUrl = "/ItemView.aspx?id=" + id;
 
@@ -45,7 +45,7 @@ namespace BarteRoom
                 path = Server.MapPath("~/img/resizeImage1.jpg");
                 target.Save(path);
                 image2.ImageUrl = "img/resizeImage1.jpg";
-                image2Link.Text = lg.getItemById(lg.getIdByImagePath(images.ElementAt(1).getPath())).getComments();
+                image2Link.Text = lg.getItemById(lg.getIdByImagePath(images.ElementAt(1).getPath())).Comments;
                 id = lg.getIdByImagePath(images.ElementAt(1).getPath());
                 image2Link.NavigateUrl = "/ItemView.aspx?id=" + id;
 
@@ -57,7 +57,7 @@ namespace BarteRoom
                 path = Server.MapPath("~/img/resizeImage2.jpg");
                 target.Save(path);
                 image3.ImageUrl = "img/resizeImage2.jpg";
-                image3Link.Text = lg.getItemById(lg.getIdByImagePath(images.ElementAt(2).getPath())).getComments();
+                image3Link.Text = lg.getItemById(lg.getIdByImagePath(images.ElementAt(2).getPath())).Comments;
                 id = lg.getIdByImagePath(images.ElementAt(2).getPath());
                 image3Link.NavigateUrl = "/ItemView.aspx?id=" + id;
            

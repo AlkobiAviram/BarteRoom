@@ -344,6 +344,47 @@ namespace BarteRoom
 
             return dtable;
         }
+        public DataTable getImagesOfItem(string item_id)
+        {
+            DataTable dtable = new DataTable();
+            DataColumn dt = new DataColumn("Images");
+    
+
+
+            dtable.Columns.Add(dt);
+       
+
+          
+                query = "select i.path from dbo.images i where i.item_id='"+item_id+"';";
+           
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+                rdr = command.ExecuteReader();
+
+
+            }
+
+            catch (Exception e) { }
+
+            while (rdr.Read())
+            {
+
+                object[] RowValues = { ""};
+                RowValues[0] = rdr[0].ToString();
+              
+                DataRow dRow;
+                dRow = dtable.Rows.Add(RowValues);
+                dtable.AcceptChanges();
+
+            }
+
+            connect.Close();
+            return dtable;
+        }
 
 
         public string setImagePath(String id)
@@ -371,7 +412,7 @@ namespace BarteRoom
         public bool addItem(Item item)
         {
 
-            query = "insert into dbo.items values('" + item.getUsr() + "','" + item.getName() + "','" + item.getClass() + "','" + item.getComments() + "','" + item.getDescription() + "','" + item.getId() + "');";
+            query = "insert into dbo.items values('" + item.Usr + "','" + item.Name + "','" + item.Clss + "','" + item.Comments + "','" + item.Description + "','" + item.Id + "');";
 
 
             try
@@ -843,7 +884,7 @@ namespace BarteRoom
             while (rdr.Read())
             {
                 Item itm = new Item(rdr[0].ToString(), rdr[1].ToString(), rdr[2].ToString(), rdr[3].ToString(), rdr[4].ToString());
-                itm.setId(rdr[5].ToString());
+                itm.Id=rdr[5].ToString();
                 items.AddLast(itm);
 
 
