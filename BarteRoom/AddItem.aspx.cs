@@ -18,9 +18,10 @@ namespace BarteRoom
     
     public partial class BarterList2 : System.Web.UI.Page
     {
-
+        
         private Logic lg = new Logic();
-       
+        private Item newItem;
+        
         
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -35,6 +36,12 @@ namespace BarteRoom
 
                 bind();
             }
+            if (Session["add_item"].ToString() == "true")
+            {
+                newItem = new Item();
+                Session["add_item"] = "false";
+            }
+
         }
 
         private void bind()
