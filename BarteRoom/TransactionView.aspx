@@ -3,24 +3,34 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
                   <link href="imageHover.css" rel="stylesheet" type="text/css" runat="server"/>
-
+        <style>
+   
+       .customTable{
+          background-color:white;
+          border:1px solid #4682B4;
+       }
+   </style>
       <div class="container" runat="server" id="transactionsPage">
-    <div class="row">
-        <div class="col-md-3 border-css">
-             <div class="zoom_img" >
+    
+
+          <table class="customTable table-condensed" >
+              <tr>
+
+         <td>
+             <span class="zoom_img" >
             <asp:Image ID="item_pic" CssClass="img-responsive" runat="server" />
-              </div>
-        </div>
-        <div class="col-md-6">
-            <div class="row">
+              </span>
+       
+       
                <h2>Bidded Item</h2>
                 <p></p>
                 <h3>Item Name</h3>
                  <p>
                      <asp:Label ID="itemName" runat="server"></asp:Label>
                 </p>
-            </div>
-             <div class="row">
+       
+
+
                 <h3><asp:Label ID="descriptionHeader" Text="Description" runat="server"></asp:Label></h3>
                    <p>
                        <asp:Label ID="itemDescription" runat="server"></asp:Label>
@@ -33,24 +43,29 @@
                    <p>
                       <asp:Label ID="itemOwner" runat="server" OnDataBinding="Page_Load"></asp:Label>
                 </p>
-            </div>
-                <div class="row">
-                <h2><asp:Label ID="BidOrOfferHeader" Text="" runat="server"></asp:Label></h2>
-                   <p>
-                       <asp:Button ID="cancel_cmd" runat="server" Text="Cancel Bid" CssClass=" btn btn-success" OnClick="cancel_cmd_Click"/>      
-                </p>
-                    <p>
-                        <asp:Button ID="BackToList" runat="server" Text="<< Back to list" CssClass=" btn btn-primary" OnClick="BackToList_Click"/>
-                    </p>
-                    <p>
-                        <asp:Button ID="Confirm_cmd" runat="server" Text="Confirm Offer" CssClass=" btn btn-primary" OnClick="Confirm_cmd_Click"/>
-                        <asp:Label ID="confirm_label" Text="Note:By confirming the offer ,You commite to the Transaction" runat="server"></asp:Label>
-                    </p>
-            </div>
 
-               <div class="row">
+             </td>
+                  <td>
+                <h2><asp:Label ID="OwnerOrBidderInformationHeader"  runat="server"></asp:Label></h2>
+                
+               
+                        <h3>Contact's User Tag</h3>
+                  <p>
+                     <asp:Label ID="contact_usr" runat="server"></asp:Label>
+                  </p>  <h3>Contact's Full Name</h3><p>
+                     <asp:Label ID="contact_fullName" runat="server"></asp:Label>
+                   </p>  <h3>Contact's Email</h3><p>
+                     <asp:Label ID="contact_email" runat="server"></asp:Label>
+                   </p>  
+
+
+                  </td>
+        </tr>
+              
+                <tr>
+                    <td colspan="2">
                 <h2><asp:Label ID="OfferdItemsHeader"  runat="server"></asp:Label></h2>
-                   <asp:GridView ID="GridView1"  CssClass="table table-responsive table-striped"  runat="server" AllowSorting="True"  AllowPaging="True"  AutoGenerateColumns="False" GridLines="None"  >
+                   <asp:GridView ID="GridView1"  CssClass="table table-responsive table-hover" HorizontalAlign="Center" GridLines="None"  runat="server" AllowSorting="True"  AllowPaging="True"  AutoGenerateColumns="False"  >
                         <Columns>                                 
 
                             <asp:ImageField DataImageUrlField ="Image" NullDisplayText="no image" ControlStyle-CssClass="img-responsive img-css" >
@@ -63,24 +78,32 @@
 
                         </Columns>
                 </asp:GridView>
-            </div>
-        </div>
-           <div class="col-md-2">
+        
+                </td>
+
              
-                <h2><asp:Label ID="OwnerOrBidderInformationHeader"  runat="server"></asp:Label></h2>
-                
-               
-                        <h3>Contact's User Tag</h3>
-                  <p>
-                     <asp:Label ID="contact_usr" runat="server"></asp:Label>
-                  </p>  <h3>Contact's Full Name</h3><p>
-                     <asp:Label ID="contact_fullName" runat="server"></asp:Label>
-                   </p>  <h3>Contact's Email</h3><p>
-                     <asp:Label ID="contact_email" runat="server"></asp:Label>
-                   </p>  
-                       
-          </div>
-        <div class="col-md-2">
+                 </tr>
+                   
+              
+              
+              
+              <tr>
+                  <td>
+                <h2><asp:Label ID="BidOrOfferHeader" Text="" runat="server"></asp:Label></h2>
+                   <p>
+                       <asp:Button ID="cancel_cmd" runat="server" Text="Cancel Bid" CssClass=" btn btn-success" OnClick="cancel_cmd_Click"/>      
+                </p>
+                    <p>
+                        <asp:Button ID="BackToList" runat="server" Text="<< Back to list" CssClass=" btn btn-primary" OnClick="BackToList_Click"/>
+                    </p>
+                    <p>
+                        <asp:Button ID="Confirm_cmd" runat="server" Text="Confirm Offer" CssClass=" btn btn-primary" OnClick="Confirm_cmd_Click"/>
+                        <asp:Label ID="confirm_label" Text="Note:By confirming the offer ,You commite to the Transaction" runat="server"></asp:Label>
+                    </p>
+         
+                  </td>
+              </tr>    
+      <!--
              
               <h2>Side news</h2>
                <ul class="list-group"> 
@@ -90,24 +113,14 @@
                    <li class="list-group-item"><a  href="index.html"><label>Terms of Use</label></a></li>
                </ul>
            <br/> 
-           <br/> <!--- /n/n --->
-            
-          </div>
-        
-      </div>
-       
+           <br/>  /n/n --->
+  
+     </table>  
 
 </div>
 
 
 
 
-    <!--
-We will make a slider with stylized thumbnails using CSS3
-The markup is very simple:
-Radio Inputs
-Labels with thumbnails to detect click event
-Main Image
--->
        
 </asp:Content>

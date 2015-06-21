@@ -38,43 +38,41 @@ namespace BarteRoom
 
         }
 
-        public String getComments()
+        public String Comments
         {
-            return this.comments;
+           get { return this.comments;}
+            set {this.comments=value;}
         }
-        public String getBidder()
+        public String Bidder
         {
-            return this.bidder;
+            get { return this.bidder;}
+            set {this.bidder=value;}
         }
-        public String getOwner()
+        public String Owner
         {
-            return this.owner;
+            get { return this.owner;}
+            set {this.owner=value;}
         }
-        public String getItem_id()
+        public String Item_id
         {
-            return this.item_id;
+            get { return this.item_id;}
+            set {this.item_id=value;}
         }
-        public String getTransaction_id()
+        public String Transaction_id
         {
-            return this.transaction_id;
+            get { return this.transaction_id;}
+            set {this.transaction_id=value;}
         }
-        public void setTransaction_id(string newId)
+        public int ReadBid
         {
-             this.transaction_id=newId;
-             return;
+            get { return this.readBid;}
+            set { this.readBid = value; }
         }
-        public void setReadBid(int newReadBid)
+        public LinkedList<string> OfferdItemsList
         {
-            this.readBid= newReadBid;
-            return;
+            get { return this.offerdItemsList; }
+            set { this.offerdItemsList = value; }
         }
-        public LinkedList<string> getOfferdItemsList()
-        {
-            return this.offerdItemsList;
-        }
-        public int getReadBid()
-        {
-            return this.readBid;
-        }
+  
     }
 }

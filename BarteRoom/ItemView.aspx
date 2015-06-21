@@ -15,6 +15,7 @@
        }
    </style>
 
+           <link href="css/navbar.css" rel="stylesheet"/>
 
                <link href="~/css/ImageHover.css" rel="stylesheet" type="text/css" runat="server"/>
    <div class="container" runat="server" id="itemViewPage">
@@ -55,7 +56,7 @@
              
                <tr class="customTd1">
       <td colspan="3">
-             <ul class="nav nav-tabs">
+             <ul role="tablist" class="nav nav-tabs bs-adaptive-tabs">
               <li id="desc_li" class="active" onclick="onclick2()" >
                <asp:LinkButton ID="description_tab"   runat="server"  OnClick="description_tab_Click">Description</asp:LinkButton>
                </li>

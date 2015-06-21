@@ -289,7 +289,7 @@
                             <tr>
                                 <td class="auto-style2"></td>
                                 <td>
-                        <asp:GridView ID="homeGridView" CssClass="table table-responsive table-hover" HorizontalAlign="Center" GridLines="None" AutoGenerateColumns="False" runat="server" DataKeyNames="Id" ShowFooter="True" OnSelectedIndexChanged="homeGridView_SelectedIndexChanged" AllowPaging="True" OnPageIndexChanging="homeGridView_PageIndexChanging" ShowHeader="False" >
+                        <asp:GridView ID="homeGridView" BackColor="White" CssClass="table table-responsive table-hover" HorizontalAlign="Center" GridLines="None" AutoGenerateColumns="False" runat="server" DataKeyNames="Id" ShowFooter="True" OnSelectedIndexChanged="homeGridView_SelectedIndexChanged" AllowPaging="True" OnPageIndexChanging="homeGridView_PageIndexChanging" ShowHeader="False" >
                             <Columns>
                            
                                 <asp:TemplateField>

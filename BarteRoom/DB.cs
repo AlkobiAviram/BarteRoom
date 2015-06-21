@@ -563,17 +563,17 @@ namespace BarteRoom
             {
                 connect.Open();
                 //insert to transaction table
-                query = "insert into dbo.transactions values('" + transaction.getTransaction_id() + "','" + transaction.getItem_id() + "','" + transaction.getOwner() + "','" + transaction.getBidder() + "','" + transaction.getComments() + "', 0,'" + transaction.Date + "');";
+                query = "insert into dbo.transactions values('" + transaction.Transaction_id + "','" + transaction.Item_id + "','" + transaction.Owner + "','" + transaction.Bidder + "','" + transaction.Comments + "', 0,'" + transaction.Date + "');";
                 command = new SqlCommand(query, connect);
                 command.ExecuteNonQuery();
 
                 //insert to transactionItems table
                 query = "";
-                foreach (string item_id in transaction.getOfferdItemsList())
+                foreach (string item_id in transaction.OfferdItemsList)
                 {
                     Guid newGuid = Guid.NewGuid();
 
-                    query += "insert into dbo.transactionItems values('" + transaction.getTransaction_id() + "','" + item_id + "','" + newGuid.ToString() + "');";
+                    query += "insert into dbo.transactionItems values('" + transaction.Transaction_id + "','" + item_id + "','" + newGuid.ToString() + "');";
 
                 }
                 command = new SqlCommand(query, connect);
@@ -1137,8 +1137,8 @@ namespace BarteRoom
                 comments = rdr[4].ToString();
                 readBid = Convert.ToInt32(rdr[5].ToString());
                 trsct = new Transaction(item_id, owner, bidder, offerdItemsList, comments);
-                trsct.setTransaction_id(rdr[0].ToString());
-                trsct.setReadBid(readBid);
+                trsct.Transaction_id=rdr[0].ToString();
+                trsct.ReadBid=readBid;
             }
 
             connect.Close();
@@ -1166,7 +1166,7 @@ namespace BarteRoom
             dtable.Columns.Add(dt4);
 
 
-            LinkedList<string> offeredItems = trns.getOfferdItemsList();
+            LinkedList<string> offeredItems = trns.OfferdItemsList;
             query = "select * from dbo.items where id =";
             for (int i = 0; i < offeredItems.Count; i++)
             {

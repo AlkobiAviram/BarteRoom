@@ -22,8 +22,8 @@ namespace BarteRoom
             
             
             //////////////////////regarding the item
-            item_pic.ImageUrl = lg.setImagePath(trns.getItem_id());
-            Item item = lg.getItemById(trns.getItem_id());
+            item_pic.ImageUrl = lg.setImagePath(trns.Item_id);
+            Item item = lg.getItemById(trns.Item_id);
             itemName.Text = item.Name;
             itemDescription.Text = item.Description;
             itemBarCode.Text = item.Id;
@@ -31,10 +31,11 @@ namespace BarteRoom
             /////////////////////////////////
 
 
-
+            User usr;
             //////////////////////regarding the bid or offer 
             if (Session["transaction_type"].ToString() == "bid")
             {
+                usr = lg.getUserInformation(trns.Owner);
                 BidOrOfferHeader.Text = "Bid Information";
                 OfferdItemsHeader.Text = "The Items That You Offered To The Owner:";
                 OwnerOrBidderInformationHeader.Text = "Owner Information";
@@ -44,6 +45,7 @@ namespace BarteRoom
             }
             else
             {
+                usr = lg.getUserInformation(trns.Bidder);
                 BidOrOfferHeader.Text = "Offer Information";
                 OfferdItemsHeader.Text = "The Items That The Bidder Offered To You:";
                 OwnerOrBidderInformationHeader.Text = "Bidder Information";
@@ -57,7 +59,6 @@ namespace BarteRoom
 
 
             ///////////////////////////////regarding the contact information
-            User usr = lg.getUserInformation(trns.getBidder());
             contact_usr.Text = usr.Usr;
             contact_fullName.Text = usr.FullName;
             contact_email.Text = usr.Email;
@@ -80,7 +81,7 @@ namespace BarteRoom
         }
         protected void cancel_cmd_Click(object sender, EventArgs e)
         {
-            lg.removeTransaction(trns.getTransaction_id());
+            lg.removeTransaction(trns.Transaction_id);
             Response.Redirect("/Bids.aspx");
         }
 

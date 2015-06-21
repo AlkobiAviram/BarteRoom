@@ -2,12 +2,23 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+        <style>
+       .customTd {
+           width:400px;
+           height:400px;
+    
+       }
+       .customTable{
+          background-color:white;
+          border:1px solid #4682B4;
+       }
+   </style>
 <div class="container" runat="server" id="offerPage">
-        <div class="col-md-4">
-            <div class="row">
-                   <h1>Offers List</h1>
-                <asp:GridView ID="GridView1" CssClass="table table-responsive table-hover" GridLines="None" AutoGenerateColumns="False" runat="server" OnRowCommand="GridView1_RowCommand" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnSelectedIndexChanging="GridView1_SelectedIndexChanging" >
+        <table>
+            <tr>
+                <td>
+                  <h2><asp:Label ID="bid_header" Text="Offers List" Font-Bold="true" runat="server" /></h2> <br />
+                <asp:GridView ID="GridView1" BackColor="White" CssClass="table table-responsive table-hover" GridLines="None" AutoGenerateColumns="False" runat="server" OnRowCommand="GridView1_RowCommand" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnSelectedIndexChanging="GridView1_SelectedIndexChanging" >
                        <Columns>
                            <asp:CommandField ButtonType="Button" SelectText="View" HeaderText="View Bid" ShowSelectButton="True">
                                  <ControlStyle CssClass="btn hvr hvr-wobble-to-bottom-right"></ControlStyle>
@@ -21,10 +32,9 @@
                            <asp:BoundField DataField="Date Created" HeaderText="Date Submitted"/>
                        </Columns>
                    </asp:GridView>
-                                   
-            </div>
-        </div>
-
+                    </td>
+              </tr>                     
+         </table>
       </div>
 
 </asp:Content>

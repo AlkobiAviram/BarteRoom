@@ -4,10 +4,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
  
      <div class="container" runat="server" id="BidsPage">
-        <div class="col-md-4">
-            <div class="row">
-               <h1>Bids List</h1>
-                   <asp:GridView ID="GridView1" CssClass="table table-responsive table-hover" GridLines="None" runat="server" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnSelectedIndexChanging="GridView1_SelectedIndexChanging" >
+            <table>
+            <tr>
+                <td>
+                  <h2><asp:Label ID="bid_header" Text="Bids List" Font-Bold="true" runat="server" /></h2> <br />
+                   <asp:GridView ID="GridView1" BackColor="White" CssClass="table table-responsive table-hover" GridLines="None" runat="server" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnSelectedIndexChanging="GridView1_SelectedIndexChanging" >
                        <Columns>
                            <asp:CommandField ButtonType="Button" SelectText="View" HeaderText="View Bid" ShowSelectButton="True">
                               <ControlStyle CssClass="btn hvr hvr-wobble-to-bottom-right"></ControlStyle>
@@ -21,7 +22,9 @@
                            <asp:BoundField DataField="Date Created" HeaderText="Date Submitted" />
                        </Columns>
                    </asp:GridView>
-                   
+                   </td>
+              </tr>                     
+         </table> 
             </div>
         </div>
 
