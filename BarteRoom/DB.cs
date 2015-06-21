@@ -1307,7 +1307,7 @@ namespace BarteRoom
         public void addMessage(Message msg, string dt)
         {
 
-            query = "insert into dbo.msg values('" + msg.Id + "','" + msg.From + "','" + msg.To + "','" + msg.Subject + "','" + msg.Msg_body + "', 0, '" + dt + "');";
+            query = "insert into dbo.msg values('" + msg.Id + "','" + msg.From + "','" + msg.To + "','" + msg.Subject + "','" + msg.Msg_body + "', 0, '" + dt + "', 0, 0);";
 
             try
             {
@@ -1335,7 +1335,6 @@ namespace BarteRoom
 
             catch (Exception e) { }
         }
-        //public LinkedList<Message> getAllSentMessages
 
 
         public DataTable getAllMessages(string usr, int flag)
@@ -1612,7 +1611,56 @@ namespace BarteRoom
             return msgID;
         }
 
-        
+        public void deleteMsg(string id)
+        {
+            query = "DELETE FROM dbo.msg WHERE Id='" + id + "';";
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+
+                command.ExecuteNonQuery();
+                connect.Close();
+            }
+
+            catch (Exception e) { }
+        }
+
+        public void deleteSentMsg(string id)
+        {
+            query = "DELETE FROM dbo.sentmsg WHERE Id='" + id + "';";
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+
+                command.ExecuteNonQuery();
+                connect.Close();
+            }
+
+            catch (Exception e) { }
+        }
+
+        public void markAsStar(string id)
+        {
+            query = "UPDATE dbo.msg SET star = 1 WHERE Id='" + id + "';";
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+
+                command.ExecuteNonQuery();
+                connect.Close();
+            }
+
+            catch (Exception e) { }
+        }
 
     }
 

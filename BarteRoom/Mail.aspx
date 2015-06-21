@@ -170,7 +170,7 @@
         </div>
 
                     <div class="SentView" runat="server" id="SentViewID">
-                    <asp:GridView ID="SentGridView" ShowHeader="false" Width="97%" GridLines="Horizontal" AutoGenerateColumns="False" OnSelectedIndexChanged="inboxView_SelectedIndexChanged" runat="server">
+                    <asp:GridView ID="SentGridView" ShowHeader="false" Width="97%" GridLines="Horizontal" AutoGenerateColumns="False" OnRowDataBound="SentGridView_RowDataBound" OnSelectedIndexChanged="SentGridView_SelectedIndexChanged" runat="server">
                         <Columns>
 
                             <asp:TemplateField HeaderText="From" ShowHeader="False" ConvertEmptyStringToNull="true" ItemStyle-HorizontalAlign="Left">
@@ -194,7 +194,7 @@
 
                             <asp:TemplateField HeaderText="Id" ShowHeader="False" ConvertEmptyStringToNull="true">
                                     <ItemTemplate>
-                                        <asp:Label ID="idLabel" runat="server" Font-Size="0px" ForeColor="Black" Text='<%# Bind("Id") %>'></asp:Label>
+                                        <asp:Label ID="sentidLabel" runat="server" Font-Size="0px" ForeColor="Black" Text='<%# Bind("Id") %>'></asp:Label>
                                     </ItemTemplate>                                          
                                 </asp:TemplateField>
 

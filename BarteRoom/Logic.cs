@@ -397,5 +397,23 @@ namespace BarteRoom
             data = new DB();
             return data.getAllSentMessages(usr);
         }
+
+        public void deleteMsg(string id)
+        {
+            data = new DB();
+            data.deleteMsg(id);
+        }
+
+        public void deleteSentMsg(string id)
+        {
+            data = new DB();
+            data.deleteSentMsg(id);
+        }
+
+        public void markAsStar(string id)
+        {
+            data = new DB();
+            data.markAsStar(id);
+        }
     }
 }

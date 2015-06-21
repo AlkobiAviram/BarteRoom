@@ -88,9 +88,9 @@ namespace BarteRoom
                         e.Row.Attributes.Add("onmouseover", "this.style.cursor='pointer';");
                         e.Row.Attributes.Add("onclick", Page.ClientScript.GetPostBackEventReference(inboxView, "Select$" + e.Row.RowIndex));
              
-                        if ((((Label)e.Row.FindControl("msgLabel")).Text).Length > 125)
+                        if ((((Label)e.Row.FindControl("msgLabel")).Text).Length > 100)
                         {
-                            ((Label)e.Row.FindControl("msgLabel")).Text = ((Label)e.Row.FindControl("msgLabel")).Text.Substring(0, 120) + "....";
+                            ((Label)e.Row.FindControl("msgLabel")).Text = ((Label)e.Row.FindControl("msgLabel")).Text.Substring(0, 100) + "....";
                         }
 
                         if ((((Label)e.Row.FindControl("isReadLabel")).Text).Equals("0"))
@@ -143,12 +143,45 @@ namespace BarteRoom
         {
             logic = new Logic();
 
-            inboxView.DataSource = logic.getAllSentMessages(Session["usr"].ToString());
-            inboxView.DataBind();
+            SentGridView.DataSource = logic.getAllSentMessages(Session["usr"].ToString());
+            SentGridView.DataBind();
 
             inboxViewID.Visible = false;
             SentViewID.Visible = true;
             msgViewID.Visible = false;
+        }
+
+        protected void SentGridView_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            try
+            {
+                switch (e.Row.RowType)
+                {
+                    case DataControlRowType.Header:
+
+                        break;
+                    case DataControlRowType.DataRow:
+                        e.Row.Attributes.Add("onmouseover", "this.style.cursor='pointer';");
+                        e.Row.Attributes.Add("onclick", Page.ClientScript.GetPostBackEventReference(SentGridView, "Select$" + e.Row.RowIndex));
+
+                        if ((((Label)e.Row.FindControl("sentmsgLabel")).Text).Length > 100)
+                        {
+                            ((Label)e.Row.FindControl("sentmsgLabel")).Text = ((Label)e.Row.FindControl("sentmsgLabel")).Text.Substring(0, 100) + "....";
+                        }
+
+                        break;
+                }
+            }
+            catch { }
+        }
+
+        protected void SentGridView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string id;
+            int index = Convert.ToInt32(SentGridView.SelectedIndex);
+
+            id = ((Label)SentGridView.Rows[index].FindControl("sentidLabel")).Text;
+            Response.Redirect("/Mail.aspx?id=" + Server.UrlEncode(id));
         }
 
         
