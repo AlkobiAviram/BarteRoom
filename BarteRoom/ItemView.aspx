@@ -37,7 +37,7 @@
                     
                     <h3> <asp:Label ID="makeBidHeader" Text="Make A Bid" runat="server" OnDataBinding="Page_Load"></asp:Label></h3>
                    
-                       <asp:Button ID="offer_cmd" Visible="true" runat="server" Text="Make a Bid" CssClass=" fa icon-next" OnClick="offer_cmd_Click"/>
+                       <asp:Button ID="offer_cmd" Visible="true" runat="server" Text="Make a Bid" CssClass=" btn hvr-icon-wobble-horizontal" OnClick="offer_cmd_Click"/>
                        <asp:Label ID="Label2" Visible="true" runat="server" Text="Please"></asp:Label>
                        <asp:HyperLink ID="logInHyperLink" Visible="true" runat="server" OnDataBinding="Page_Load" NavigateUrl="#login" data-toggle="modal" CssClass="change"> log in </asp:HyperLink>
                        <asp:Label ID="Label1" Visible="true" runat="server" Text="to make a bid"></asp:Label>
