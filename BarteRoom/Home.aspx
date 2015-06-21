@@ -3,13 +3,24 @@
             </asp:Content>
             <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
                     <link href="css/imageSlider.css" rel="stylesheet" type="text/css" runat="server"/>
+      <style>
+       .customTd {
+           width:200px;
+           height:200px;
 
+           
+       }
+       .customTd1{
+          background-color:white;
+          border:1px solid #4682B4;
+       }
+   </style>
          
-
+  <div  runat="server" id="welcomeHome">
 <table class="table-hover">
     <tr>
-        <td>
-         <h2><asp:Label ID="Label1" runat="server" Text="New Items"></asp:Label></h2><br />
+        <td class="customTd">
+         <h2><asp:Label ID="Label1" runat="server" Text="Check out our latest Items"></asp:Label></h2><br />
 <!-----------------------------Image Silder------------------------------------------------------>
         <section class='galeria' id="imgSlider" runat="server">
         <input type="radio" id="uno" value="1" name="tractor" checked='checked' />    
@@ -51,24 +62,27 @@
     </section>
 <!----------------------------------------------------------------------------------------->
         </td>
-        <td>
-
+        </tr>
+        <tr>
+            <td class="customTd">
 <!-----------------------------MostViewedItems------------------------------------------------------>
-
-
+         <h2><asp:Label ID="Label2" runat="server" Text="Most Viewed Items"></asp:Label></h2><br />
+         <asp:GridView ID="GridView1" BackColor="White" CssClass="table table-responsive table-hover" GridLines="None" runat="server" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnSelectedIndexChanging="GridView1_SelectedIndexChanging" >
+             <Columns>
+                 <asp:ImageField DataImageUrlField="image">
+                 </asp:ImageField>
+                 <asp:BoundField DataField="comments" />
+                 <asp:BoundField DataField="id" Visible="false" />
+             </Columns>
+         </asp:GridView>
 
 
 <!----------------------------------------------------------------------------------->
-
-        </td>
-    </tr>
-
-
-
+          </td>
+        </tr>
+ 
 </table>
 
-
-    <div>
 
 </div>
             </asp:Content>

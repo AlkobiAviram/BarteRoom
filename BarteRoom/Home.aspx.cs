@@ -60,29 +60,51 @@ namespace BarteRoom
                 image3Link.Text = lg.getItemById(lg.getIdByImagePath(images.ElementAt(2).Path)).Comments;
                 id = lg.getIdByImagePath(images.ElementAt(2).Path);
                 image3Link.NavigateUrl = "/ItemView.aspx?id=" + id;
-           
 
-
-
-              //  split = images.ElementAt(3).getPath().Split('/');
-              //  target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath("img/OriginalSize_" + split[1])), 640, 320) as Bitmap; path = Server.MapPath("~/img/resizeImage3.jpg");
-               // target.Save(path);
-               // img3333.ImageUrl = "~/img/resizeImage3.jpg";
-               // img333.ImageUrl = "~/img/resizeImage3.jpg";
-
-
-
-               // split = images.ElementAt(4).getPath().Split('/');
-               // target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath("img/OriginalSize_" + split[1])), 640, 320) as Bitmap; path = Server.MapPath("~/img/resizeImage4.jpg");
-               // target.Save(path);
-               // img44444.ImageUrl = "~/img/resizeImage4.jpg";
-              //  img444.ImageUrl = "~/img/resizeImage4.jpg";
 
             }
             catch (Exception exp)
+            { }
+
+       
+            if (!IsPostBack)
             {
 
+                bind();
             }
+        }
+        private void bind()
+        {
+
+            GridView1.DataSource = lg.getDataSourceForMostViewedItems();
+            GridView1.DataBind();
+
+        }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
+            if (e.CommandName == "Select")
+            {
+            }
+        }
+
+
+        protected void GridView1_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        {
+            int index = Convert.ToInt32(e.NewSelectedIndex);
+            GridViewRow row = GridView1.Rows[index];
+            Session["transaction_type"] = "bid";
+            Session["bid_id"] = row.Cells[1].Text;
+            Response.Redirect("/TransactionView.aspx");
+            GridView1.EditIndex = -1;
+            bind();
+
+        }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
 
      
@@ -192,5 +214,7 @@ namespace BarteRoom
             Response.Redirect("/ItemView.aspx?id=" + id);
 
         }
+
+     
     }
 }

@@ -454,5 +454,10 @@ namespace BarteRoom
             data = new DB();
             data.AddView(item_id);
         }
+        public DataTable getDataSourceForMostViewedItems()
+        {
+            data = new DB();
+            return data.getDataSourceForMostViewedItems();
+        }
     }
 }

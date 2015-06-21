@@ -214,7 +214,7 @@ namespace BarteRoom
 
 
 
-            query = "select itm.comments,img.path,mvi.item_id mvi.views " +
+            query = "select itm.comments,img.path,mvi.item_id ,mvi.views " +
                     "from dbo.items itm, dbo.images img,dbo.mostViewedItems mvi " +
                     "where itm.id=img.item_id and img.item_id=mvi.item_id and img.isProfile=1 " +
                     "order by mvi.views DESC";
