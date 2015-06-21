@@ -36,7 +36,10 @@ namespace BarteRoom
                 CheckBox chk = (CheckBox)i.FindControl("checkBox");
                 if (chk.Checked)
                 {
-                    items.AddLast(i.Cells[5].Text);
+                    if (!lg.isItemAlreadyBiddedByUsrOrOfferedToUsr(i.Cells[5].Text, Session["usr"].ToString(),"bid"))
+                        items.AddLast(i.Cells[5].Text);
+                    else
+                        Response.Write("Item: " + i.Cells[5].Text + " already bidded before,therefore it will not be added");
                 }
             }
             return items;

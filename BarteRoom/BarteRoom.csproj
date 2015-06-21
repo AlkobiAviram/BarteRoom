@@ -65,6 +65,7 @@
     <Content Include="BarterList.aspx" />
     <Content Include="Bids.aspx" />
     <Content Include="css\accordionCss.css" />
+    <Content Include="css\css_forAddItem.css" />
     <Content Include="css\navbar.css" />
     <Content Include="Home.aspx" />
     <Content Include="css\Hover.css" />

@@ -16,6 +16,8 @@ namespace BarteRoom
     {
         Logic lg = new Logic();
         string id = "";
+        string bid_id = "";
+        string bid_type = "";
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -85,7 +87,33 @@ namespace BarteRoom
                     edit_cmd.Visible = true;
                     offer_cmd.Visible = false;
                     makeBidHeader.Visible = false;
+                    //checking for offers
+                      if (lg.isItemAlreadyBiddedByUsrOrOfferedToUsr(id, Session["usr"].ToString(), "offer")) //this means that the user who logged in has an offer on that item
+                         {
+                             edit_cmd.Visible = false;
+                             offer_cmd.Visible = false;
+                             viewTransaction_cmd.Visible = true;
+                             makeBidHeader.Visible = true;
+                             makeBidHeader.Text = "You Have An Offer On That Item!";
+                             bid_id = lg.getBidIdByBidderOrOwner(id, Session["usr"].ToString(), "offer");
+                             bid_type = "offer";
+                        }
+
+
+
+
                 }
+                else if (lg.isItemAlreadyBiddedByUsrOrOfferedToUsr(id, Session["usr"].ToString(), "bid")) //this means that the user who logged in bidded before on that item
+                {
+                    edit_cmd.Visible = false;
+                    offer_cmd.Visible = false;
+                    viewTransaction_cmd.Visible = true;
+                    makeBidHeader.Visible = true;
+                    makeBidHeader.Text = "You Bidded on The Item!";
+                    bid_id = lg.getBidIdByBidderOrOwner(id, Session["usr"].ToString(), "bid");
+                    bid_type = "bid";
+                }
+              
                 else//this means that the item is not owned by the user who logged in
                 {
                     edit_cmd.Visible = false;
@@ -465,6 +493,13 @@ namespace BarteRoom
          
 
           
+        }
+
+        protected void viewTransaction_cmd_Click(object sender, EventArgs e)
+        {
+            Session["transaction_type"] = bid_type;
+            Session["bid_id"] = bid_id;
+            Response.Redirect("/TransactionView.aspx");
         }
 
     }

@@ -838,9 +838,9 @@ namespace BarteRoom
             dtable.Columns.Add(dt6);
             //getting only the bid id and the item id
             if (BidOrOffer == "bid")
-                query = "select t.id,t.item_id,t.owner,t.comments,t.readBid ,t.datetime from dbo.transactions t where t.bidder='" + usr + "';";
+                query = "select t.id,t.item_id,t.owner,t.comments,t.readBid ,t.datetime from dbo.transactions t where t.bidder='" + usr + "' order by t.datetime DESC;";
             else
-                query = "select t.id,t.item_id,t.bidder,t.comments,t.readBid,t.datetime from dbo.transactions t where t.owner='" + usr + "';";
+                query = "select t.id,t.item_id,t.bidder,t.comments,t.readBid,t.datetime from dbo.transactions t where t.owner='" + usr + "' order by t.datetime DESC;";
             try
             {
                 connect.Open();
@@ -1085,6 +1085,52 @@ namespace BarteRoom
             catch (Exception e) { }
 
             return bids;
+        }
+
+        public Boolean isItemAlreadyBiddedByUsrOrOfferedToUsr(string item_id,string usr,string type)
+        {
+            if(type=="bid")
+                query = "select COUNT(*) from dbo.transactions where item_id='"+ item_id+"' and bidder='"+usr+"';";
+            else
+                query = "select COUNT(*) from dbo.transactions where item_id='" + item_id + "' and owner='" + usr + "';";
+
+            int num=0;
+            try
+            {
+                connect.Open();
+
+
+                command = new SqlCommand(query, connect);
+             
+                num = Convert.ToInt32(command.ExecuteScalar().ToString());
+                connect.Close();
+            }
+
+            catch (Exception e) { }
+            if (num == 0)
+                return false;
+            return true;
+        }
+        public string getBidIdByBidderOrOwner(string item_id, string usr,string type)
+        {
+            string bid="";
+            if (type == "bid")
+                query = "select id from dbo.transactions where item_id='" + item_id + "' and bidder='" + usr + "';";
+            else
+                query = "select id from dbo.transactions where item_id='" + item_id + "' and owner='" + usr + "';";
+            try
+            {
+                connect.Open();
+
+
+                command = new SqlCommand(query, connect);
+
+                bid = command.ExecuteScalar().ToString();
+                connect.Close();
+            }
+
+            catch (Exception e) { }
+            return bid; 
         }
 
         public DataTable getAllBids(string usr)

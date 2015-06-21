@@ -228,12 +228,23 @@ namespace BarteRoom
        
 
         ///transaction section
+        ///
+        public string getBidIdByBidderOrOwner(string item_id, string usr, string type)
+        {
+            data = new DB();
+            return data.getBidIdByBidderOrOwner(item_id, usr, type);
+        }
+
         public void addTransaction(Transaction transaction)
         {
             data = new DB();
             data.addTransaction(transaction);
         }
-
+        public Boolean isItemAlreadyBiddedByUsrOrOfferedToUsr(string item_id, string usr, string type)
+        {
+            data = new DB();
+            return data.isItemAlreadyBiddedByUsrOrOfferedToUsr(item_id, usr, type);
+        }
         public DataTable getDataSourceForSearch(String usr, String search, String catagory)
         {
             data = new DB();
