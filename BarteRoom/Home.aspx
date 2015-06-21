@@ -6,7 +6,9 @@
 
          
 
-
+<table class="table-hover">
+    <tr>
+        <td>
 <!-----------------------------Image Silder------------------------------------------------------>
          <section class='galeria' id="imgSlider" runat="server">
         <input type="radio" id="uno" value="1" name="tractor" checked='checked' />    
@@ -47,6 +49,16 @@
 
     </section>
 <!----------------------------------------------------------------------------------------->
+        </td>
+        <td>
+
+        </td>
+    </tr>
+
+
+
+</table>
+
 
     <div>
 
