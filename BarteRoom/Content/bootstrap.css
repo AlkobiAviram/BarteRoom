@@ -6805,6 +6805,10 @@ button.close {
     background-color: transparent;
     text-decoration:underline;
 }
+.change2:hover{
+    color: gray;
+    background-color: transparent;
+}
 
 .HomePage{
   background-image: url(backGround.PNG);

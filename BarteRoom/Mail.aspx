@@ -1,6 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Mail.aspx.cs" Inherits="BarteRoom.Mail" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
+    <style type="text/css">
+        .auto-style20 {
+            width: 574px;
+        }
+        .auto-style21 {
+            width: 268px;
+        }
+    </style>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -76,15 +85,40 @@
 
 
     <div class="inboxView" runat="server" id="inboxViewID">
+        <table class="nav-justified">
+                      <tr>
+                            <td class="auto-style22">
+                                <asp:LinkButton ID="deleteCmd" CssClass="change2" runat="server" OnClick="deleteCmd_Click"><h2><span class="glyphicon glyphicon-trash"></span></h2></asp:LinkButton>
+                            </td>
+                            <td class="auto-style21">
+                                <asp:Button ID="StarCmd" CssClass="btn btn-warning" runat="server" Text="Mark as important" />
+                            </td>
+                            <td>
+                                <asp:Button ID="markMsgAsRead" CssClass="btn btn-success" runat="server" Text="Mark all as read" OnClick="markMsgAsRead_Click" />
+                            </td>
+                          
+                        </tr>
+                       </table>
+                        
+                       <table class="nav-justified">
+                        <tr>
+                            <td class="auto-style20">
+                                <br />
+                                <h1>Inbox</h1>
+                            </td>
+                        </tr>
+                    
+
+                    </table>
                     <asp:GridView ID="inboxView" ShowHeader="false" Width="97%" GridLines="Horizontal" AutoGenerateColumns="False" OnRowDataBound="inboxView_RowDataBound" OnSelectedIndexChanged="inboxView_SelectedIndexChanged" runat="server">
                         <Columns>
 
                             <asp:TemplateField HeaderText="From" ShowHeader="False" ConvertEmptyStringToNull="true" ItemStyle-HorizontalAlign="Left">
                                     <ItemTemplate>
-                                        <asp:CheckBox ID="CheckBox1" CssClass="checkboxStyle" runat="server" />
+                                        <asp:CheckBox ID="CheckMsg" CssClass="checkboxStyle" runat="server" />
                                     </ItemTemplate>                                          
                                 </asp:TemplateField> 
-
+                          
 
                             <asp:TemplateField HeaderText="From" ShowHeader="False" ConvertEmptyStringToNull="true" ItemStyle-HorizontalAlign="Left">
                                     <ItemTemplate>

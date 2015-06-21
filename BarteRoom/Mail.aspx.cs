@@ -86,14 +86,14 @@ namespace BarteRoom
                         break;
                     case DataControlRowType.DataRow:
 
+                        e.Row.Cells[1].Attributes.Add("onmouseover", "this.style.cursor='pointer';");
+                        e.Row.Cells[1].Attributes.Add("onclick", Page.ClientScript.GetPostBackEventReference(inboxView, "Select$" + e.Row.RowIndex));
                         e.Row.Cells[2].Attributes.Add("onmouseover", "this.style.cursor='pointer';");
                         e.Row.Cells[2].Attributes.Add("onclick", Page.ClientScript.GetPostBackEventReference(inboxView, "Select$" + e.Row.RowIndex));
                         e.Row.Cells[3].Attributes.Add("onmouseover", "this.style.cursor='pointer';");
                         e.Row.Cells[3].Attributes.Add("onclick", Page.ClientScript.GetPostBackEventReference(inboxView, "Select$" + e.Row.RowIndex));
                         e.Row.Cells[4].Attributes.Add("onmouseover", "this.style.cursor='pointer';");
                         e.Row.Cells[4].Attributes.Add("onclick", Page.ClientScript.GetPostBackEventReference(inboxView, "Select$" + e.Row.RowIndex));
-                        e.Row.Cells[5].Attributes.Add("onmouseover", "this.style.cursor='pointer';");
-                        e.Row.Cells[5].Attributes.Add("onclick", Page.ClientScript.GetPostBackEventReference(inboxView, "Select$" + e.Row.RowIndex));
 
                         if ((((Label)e.Row.FindControl("msgLabel")).Text).Length > 100)
                         {
@@ -189,6 +189,32 @@ namespace BarteRoom
 
             id = ((Label)SentGridView.Rows[index].FindControl("sentidLabel")).Text;
             Response.Redirect("/Mail.aspx?id=" + Server.UrlEncode(id));
+        }
+
+        protected void markMsgAsRead_Click(object sender, EventArgs e)
+        {
+            logic = new Logic();
+            logic.msgMarkAsRead(Session["usr"].ToString());
+
+            Response.Redirect("/Mail.aspx");
+        }
+
+        protected void deleteCmd_Click(object sender, EventArgs e)
+        {
+            logic = new Logic();
+
+            foreach (GridViewRow row in inboxView.Rows)
+            {
+                Response.Write("num ");
+                CheckBox cb = (CheckBox)row.FindControl("CheckMsg");
+                if (cb.Checked)
+                {
+                    Response.Write("ggggggggg");
+                        
+                }
+            }
+
+            //inboxView.DataBind();
         }
 
         

@@ -112,6 +112,33 @@ namespace BarteRoom {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl inboxViewID;
         
         /// <summary>
+        /// deleteCmd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton deleteCmd;
+        
+        /// <summary>
+        /// StarCmd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button StarCmd;
+        
+        /// <summary>
+        /// markMsgAsRead control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button markMsgAsRead;
+        
+        /// <summary>
         /// inboxView control.
         /// </summary>
         /// <remarks>
