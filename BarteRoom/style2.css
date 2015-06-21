@@ -1,0 +1,56 @@
+﻿
+.auto-style4 {
+            width: 69px;
+        }
+.auto-style6 {
+            width: 1137px;
+        }
+.auto-style7 {
+            width: 150px;
+        }
+.notReadStyle{
+            font-weight: bold;
+        }
+.readStyle{
+            font-weight: normal;
+        }
+.msgViweStyle1{
+            width: 300px;
+        }
+.auto-style8 {
+            width: 853px;
+            padding-left: 50px;
+            border-bottom-color: darkgrey;
+            border-top-color: darkgrey;
+            border-top-style: solid;
+            border-top-width: 1px;
+            border-bottom-style: solid;
+            border-bottom-width: 1px;
+        }
+.auto-style10 {
+            border-bottom-color: darkgrey;
+            border-top-color: darkgrey; 
+            width: 364px;
+            border-top-style: solid;
+            border-top-width: 1px;
+            border-bottom-style: solid;
+            border-bottom-width: 1px;
+        }
+.auto-style11 {
+            width: 120px;
+        }
+.replayStyle{
+            padding-bottom: 8px;
+            padding-top: 8px;
+            padding-left: 8px;
+        }
+.auto-style19 {
+            width: 221px;
+}
+.leftPad{
+            padding-left: 20px;
+            padding-right: 20px;
+}
+.checkboxStyle{
+    background-image: url(unchecked_checkbox.ico);
+}

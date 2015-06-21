@@ -154,6 +154,7 @@
     <Content Include="Scripts\myjs.js" />
     <Content Include="Scripts\npm.js" />
     <Content Include="ItemView.aspx" />
+    <Content Include="style2.css" />
     <Content Include="TermsOfUse.aspx" />
     <Content Include="TransactionView.aspx" />
     <Content Include="Web.config">

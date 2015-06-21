@@ -85,9 +85,16 @@ namespace BarteRoom
 
                         break;
                     case DataControlRowType.DataRow:
-                        e.Row.Attributes.Add("onmouseover", "this.style.cursor='pointer';");
-                        e.Row.Attributes.Add("onclick", Page.ClientScript.GetPostBackEventReference(inboxView, "Select$" + e.Row.RowIndex));
-             
+
+                        e.Row.Cells[2].Attributes.Add("onmouseover", "this.style.cursor='pointer';");
+                        e.Row.Cells[2].Attributes.Add("onclick", Page.ClientScript.GetPostBackEventReference(inboxView, "Select$" + e.Row.RowIndex));
+                        e.Row.Cells[3].Attributes.Add("onmouseover", "this.style.cursor='pointer';");
+                        e.Row.Cells[3].Attributes.Add("onclick", Page.ClientScript.GetPostBackEventReference(inboxView, "Select$" + e.Row.RowIndex));
+                        e.Row.Cells[4].Attributes.Add("onmouseover", "this.style.cursor='pointer';");
+                        e.Row.Cells[4].Attributes.Add("onclick", Page.ClientScript.GetPostBackEventReference(inboxView, "Select$" + e.Row.RowIndex));
+                        e.Row.Cells[5].Attributes.Add("onmouseover", "this.style.cursor='pointer';");
+                        e.Row.Cells[5].Attributes.Add("onclick", Page.ClientScript.GetPostBackEventReference(inboxView, "Select$" + e.Row.RowIndex));
+
                         if ((((Label)e.Row.FindControl("msgLabel")).Text).Length > 100)
                         {
                             ((Label)e.Row.FindControl("msgLabel")).Text = ((Label)e.Row.FindControl("msgLabel")).Text.Substring(0, 100) + "....";

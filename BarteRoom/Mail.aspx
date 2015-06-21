@@ -1,63 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Mail.aspx.cs" Inherits="BarteRoom.Mail" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <style type="text/css">
-        .auto-style4 {
-            width: 69px;
-        }
-        .auto-style6 {
-            width: 1137px;
-        }
-        .auto-style7 {
-            width: 150px;
-        }
-        .notReadStyle{
-            font-weight: bold;
-        }
-        .readStyle{
-            font-weight: normal;
-        }
-        .msgViweStyle1{
-            width: 300px;
-        }
-        .auto-style8 {
-            width: 853px;
-            padding-left: 50px;
-            border-bottom-color: darkgrey;
-            border-top-color: darkgrey;
-            border-top-style: solid;
-            border-top-width: 1px;
-            border-bottom-style: solid;
-            border-bottom-width: 1px;
-        }
-        .auto-style10 {
-            border-bottom-color: darkgrey;
-            border-top-color: darkgrey; 
-            width: 364px;
-            border-top-style: solid;
-            border-top-width: 1px;
-            border-bottom-style: solid;
-            border-bottom-width: 1px;
-        }
-        .auto-style11 {
-            width: 120px;
-        }
-        .replayStyle{
-            padding-bottom: 8px;
-            padding-top: 8px;
-            padding-left: 8px;
-        }
-        .auto-style19 {
-            width: 221px;
-        }
-        .leftPad{
-            padding-left: 20px;
-            padding-right: 20px;
-        }
 
-    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+    <link href="style2.css" rel="stylesheet" />
     <link href="mailStyle.css" rel="stylesheet" />
 
 
@@ -118,7 +65,7 @@
                             <tr>
                                 <td class="auto-style11">&nbsp;</td>
                                 <td>
-                                    <asp:Panel ID="replayPanel" Width="832px" CssClass="replayStyle" BackColor="#D3D3D3" runat="server">
+                                    <asp:Panel ID="replayPanel" Width="832px" CssClass="replayStyle" BackColor="#D3D3D3" runat="server" BorderStyle="None">
                                         <asp:Button ID="replayButton" CssClass="btn btn-info" runat="server" Text="Replay" OnClick="replayButton_Click" />
                                     </asp:Panel>
                                 </td>
@@ -131,6 +78,13 @@
     <div class="inboxView" runat="server" id="inboxViewID">
                     <asp:GridView ID="inboxView" ShowHeader="false" Width="97%" GridLines="Horizontal" AutoGenerateColumns="False" OnRowDataBound="inboxView_RowDataBound" OnSelectedIndexChanged="inboxView_SelectedIndexChanged" runat="server">
                         <Columns>
+
+                            <asp:TemplateField HeaderText="From" ShowHeader="False" ConvertEmptyStringToNull="true" ItemStyle-HorizontalAlign="Left">
+                                    <ItemTemplate>
+                                        <asp:CheckBox ID="CheckBox1" CssClass="checkboxStyle" runat="server" />
+                                    </ItemTemplate>                                          
+                                </asp:TemplateField> 
+
 
                             <asp:TemplateField HeaderText="From" ShowHeader="False" ConvertEmptyStringToNull="true" ItemStyle-HorizontalAlign="Left">
                                     <ItemTemplate>
