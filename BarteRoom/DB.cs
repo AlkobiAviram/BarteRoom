@@ -1383,6 +1383,10 @@ namespace BarteRoom
             {
                 query = "select fromUsr, subject, msg_body, datetime, Id, isRead, star from dbo.msg where Id = '" + usr + "' order by  isRead, datetime DESC;";
             }
+            else if (flag == 3)
+            {
+                query = "select fromUsr, subject, msg_body, datetime, Id, isRead, star from dbo.msg where toUsr = '" + usr + "' AND(star = 1) order by  isRead, datetime DESC;";
+            } 
             try
             {
                 connect.Open();
@@ -1433,6 +1437,72 @@ namespace BarteRoom
                 {
                     RowValues[6] = rdr[6].ToString();
                 }
+
+                DataRow dRow;
+                dRow = dtable.Rows.Add(RowValues);
+                dtable.AcceptChanges();
+
+            }
+
+            connect.Close();
+
+            return dtable;
+        }
+
+        public DataTable getAllDrafts(string usr)
+        {
+            DataTable dtable = new DataTable();
+            DataColumn dt = new DataColumn("To");
+            DataColumn dt1 = new DataColumn("Subject");
+            DataColumn dt2 = new DataColumn("Msg");
+            DataColumn dt3 = new DataColumn("Datetime");
+            DataColumn dt4 = new DataColumn("Id");
+
+            dtable.Columns.Add(dt);
+            dtable.Columns.Add(dt1);
+            dtable.Columns.Add(dt2);
+            dtable.Columns.Add(dt3);
+            dtable.Columns.Add(dt4);
+
+
+            query = "select toUsr, subject, msg_body, datetime, Id from dbo.msg where fromUsr = '" + usr + "' AND (draft = 1) order by  isRead, datetime DESC;";
+            
+            
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+                rdr = command.ExecuteReader();
+
+
+            }
+
+            catch (Exception e) { }
+
+            while (rdr.Read())
+            {
+
+                object[] RowValues = { "", "", "", "", "" };
+
+                RowValues[0] = rdr[0].ToString();
+
+                String tmpSub = rdr[1].ToString();
+
+                if (tmpSub.Length > 7)
+                {
+                    tmpSub = tmpSub.Substring(0, 7) + "...";
+                }
+
+                RowValues[1] = tmpSub;
+
+                String tmpMsg = rdr[2].ToString();
+
+                RowValues[2] = tmpMsg;
+
+                string[] tmp = rdr[3].ToString().Split(' ');
+                RowValues[3] = tmp[0] + " at " + tmp[1];
+                RowValues[4] = rdr[4].ToString();
 
                 DataRow dRow;
                 dRow = dtable.Rows.Add(RowValues);

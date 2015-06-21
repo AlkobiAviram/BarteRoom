@@ -198,6 +198,104 @@
                     </asp:GridView>
     
         </div>
+
+                    <div class="FavouritesView" runat="server" id="FavouritesID">
+
+                        <asp:GridView ID="FavourView" ShowHeader="false" Width="97%" GridLines="Horizontal" AutoGenerateColumns="False" runat="server">
+                        <Columns>
+
+                            <asp:TemplateField HeaderText="From" ShowHeader="False" ConvertEmptyStringToNull="true" ItemStyle-HorizontalAlign="Left">
+                                    <ItemTemplate>
+                                        <asp:CheckBox ID="FavourCheckMsg" CssClass="checkboxStyle" runat="server" />
+                                    </ItemTemplate>                                          
+                                </asp:TemplateField> 
+                          
+
+                            <asp:TemplateField HeaderText="From" ShowHeader="False" ConvertEmptyStringToNull="true" ItemStyle-HorizontalAlign="Left">
+                                    <ItemTemplate>
+                                        <asp:Label ID="FavourfromLabel" runat="server" Font-Size="18px" ForeColor="Black" Text='<%# Bind("From") %>'></asp:Label>
+                                    </ItemTemplate>                                          
+                                </asp:TemplateField> 
+
+                            <asp:TemplateField HeaderText="Subject" ShowHeader="False" ItemStyle-CssClass="leftPad" ItemStyle-HorizontalAlign="Left" ConvertEmptyStringToNull="true">
+                                    <ItemTemplate>
+                                        <asp:Label ID="FavoursubjectLabel" runat="server" Font-Size="18px" ForeColor="Black" Text='<%# Bind("Subject") %>'></asp:Label>
+                                        <asp:Label ID="FavourmsgLabel" runat="server" Font-Size="Medium" ForeColor="Black" Text='<%# Bind("Msg") %>'></asp:Label>
+                                    </ItemTemplate>                                          
+                                </asp:TemplateField> 
+
+                            <asp:TemplateField HeaderText="Datetime" ShowHeader="False" ConvertEmptyStringToNull="true" ItemStyle-HorizontalAlign="Right">
+                                    <ItemTemplate>
+                                        <asp:Label ID="FavourdatetimeLabel" runat="server" Font-Size="Medium" ForeColor="Black" Text='<%# Bind("Datetime") %>'></asp:Label>
+                                    </ItemTemplate>                                          
+                                </asp:TemplateField>
+
+                            <asp:TemplateField HeaderText="Id" ShowHeader="False" ConvertEmptyStringToNull="true">
+                                    <ItemTemplate>
+                                        <asp:Label ID="FavouridLabel" runat="server" Font-Size="0px" ForeColor="Black" Text='<%# Bind("Id") %>'></asp:Label>
+                                    </ItemTemplate>                                          
+                                </asp:TemplateField>
+
+                            <asp:TemplateField HeaderText="IsRead" ShowHeader="False" ConvertEmptyStringToNull="true">
+                                    <ItemTemplate>
+                                        <asp:Label ID="FavourisReadLabel" runat="server" Font-Size="0px" ForeColor="Black" Text='<%# Bind("IsRead") %>'></asp:Label>
+                                    </ItemTemplate>                                          
+                                </asp:TemplateField>
+
+                            <asp:TemplateField HeaderText="IsRead" ShowHeader="False" ConvertEmptyStringToNull="true">
+                                    <ItemTemplate>
+                                        <asp:Label ID="FavourisStarLabel" runat="server" Font-Size="0px" ForeColor="Black" Text='<%# Bind("isStar") %>'></asp:Label>
+                                    </ItemTemplate>                                          
+                                </asp:TemplateField>
+                          
+                        </Columns>
+                      
+                    </asp:GridView>
+
+                    </div>
+
+                    <div class="DraftView" runat="server" id="DraftViewID">
+
+                        <asp:GridView ID="drafView" ShowHeader="false" Width="97%" GridLines="Horizontal" AutoGenerateColumns="False" runat="server">
+                        <Columns>
+
+                            <asp:TemplateField HeaderText="From" ShowHeader="False" ConvertEmptyStringToNull="true" ItemStyle-HorizontalAlign="Left">
+                                    <ItemTemplate>
+                                        <asp:CheckBox ID="FavourCheckMsg" CssClass="checkboxStyle" runat="server" />
+                                    </ItemTemplate>                                          
+                                </asp:TemplateField> 
+                          
+
+                            <asp:TemplateField HeaderText="From" ShowHeader="False" ConvertEmptyStringToNull="true" ItemStyle-HorizontalAlign="Left">
+                                    <ItemTemplate>
+                                        <asp:Label ID="FavourfromLabel" runat="server" Font-Size="18px" ForeColor="Black" Text='<%# Bind("To") %>'></asp:Label>
+                                    </ItemTemplate>                                          
+                                </asp:TemplateField> 
+
+                            <asp:TemplateField HeaderText="Subject" ShowHeader="False" ItemStyle-CssClass="leftPad" ItemStyle-HorizontalAlign="Left" ConvertEmptyStringToNull="true">
+                                    <ItemTemplate>
+                                        <asp:Label ID="FavoursubjectLabel" runat="server" Font-Size="18px" ForeColor="Black" Text='<%# Bind("Subject") %>'></asp:Label>
+                                        <asp:Label ID="FavourmsgLabel" runat="server" Font-Size="Medium" ForeColor="Black" Text='<%# Bind("Msg") %>'></asp:Label>
+                                    </ItemTemplate>                                          
+                                </asp:TemplateField> 
+
+                            <asp:TemplateField HeaderText="Datetime" ShowHeader="False" ConvertEmptyStringToNull="true" ItemStyle-HorizontalAlign="Right">
+                                    <ItemTemplate>
+                                        <asp:Label ID="FavourdatetimeLabel" runat="server" Font-Size="Medium" ForeColor="Black" Text='<%# Bind("Datetime") %>'></asp:Label>
+                                    </ItemTemplate>                                          
+                                </asp:TemplateField>
+
+                            <asp:TemplateField HeaderText="Id" ShowHeader="False" ConvertEmptyStringToNull="true">
+                                    <ItemTemplate>
+                                        <asp:Label ID="FavouridLabel" runat="server" Font-Size="0px" ForeColor="Black" Text='<%# Bind("Id") %>'></asp:Label>
+                                    </ItemTemplate>                                          
+                                </asp:TemplateField>
+                          
+                        </Columns>
+                      
+                    </asp:GridView>
+
+                    </div>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -246,21 +344,21 @@
                 </li>
 
                  <li>
-                    <a href="#">
+                     <asp:LinkButton ID="FavouritesCmd" runat="server" OnClick="FavouritesCmd_Click">
                         <i class="fa fa-star fa-2x"></i>
                         <span class="nav-text">
                             Favourites
                         </span>
-                    </a>
+                    </asp:LinkButton>
                 </li>
 
                 <li>
-                   <a href="#">
+                   <asp:LinkButton ID="DraftsCmd" runat="server" OnClick="DraftsCmd_Click">
                        <i class="fa fa-file fa-2x"></i>
                         <span class="nav-text">
                             Drafts
                         </span>
-                    </a>
+                    </asp:LinkButton>
                 </li>
 
                 <li class="has-subnav">

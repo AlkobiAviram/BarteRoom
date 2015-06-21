@@ -421,5 +421,11 @@ namespace BarteRoom
             data = new DB();
             data.setMsgAsRead(id);
         }
+
+        public DataTable getAllDrafts(string usr)
+        {
+            data = new DB();
+            return data.getAllDrafts(usr);
+        }
     }
 }

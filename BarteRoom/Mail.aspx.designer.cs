@@ -148,6 +148,42 @@ namespace BarteRoom {
         protected global::System.Web.UI.WebControls.GridView SentGridView;
         
         /// <summary>
+        /// FavouritesID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl FavouritesID;
+        
+        /// <summary>
+        /// FavourView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView FavourView;
+        
+        /// <summary>
+        /// DraftViewID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DraftViewID;
+        
+        /// <summary>
+        /// drafView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView drafView;
+        
+        /// <summary>
         /// InboxCmd control.
         /// </summary>
         /// <remarks>
@@ -182,5 +218,23 @@ namespace BarteRoom {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton sentCmd;
+        
+        /// <summary>
+        /// FavouritesCmd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton FavouritesCmd;
+        
+        /// <summary>
+        /// DraftsCmd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton DraftsCmd;
     }
 }

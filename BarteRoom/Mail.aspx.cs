@@ -51,6 +51,8 @@ namespace BarteRoom
                     inboxViewID.Visible = false;
                     SentViewID.Visible = false;
                     msgViewID.Visible = true;
+                    FavouritesID.Visible = false;
+                    DraftViewID.Visible = false;
                 }
 
                 else
@@ -78,6 +80,8 @@ namespace BarteRoom
             inboxViewID.Visible = true;
             SentViewID.Visible = false;
             msgViewID.Visible = false;
+            FavouritesID.Visible = false;
+            DraftViewID.Visible = false;
         }
 
         protected void inboxView_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -170,6 +174,8 @@ namespace BarteRoom
             inboxViewID.Visible = false;
             SentViewID.Visible = true;
             msgViewID.Visible = false;
+            FavouritesID.Visible = false;
+            DraftViewID.Visible = false;
         }
 
         protected void SentGridView_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -259,6 +265,34 @@ namespace BarteRoom
             Message repMessage = new Message(from, to[0], subject, body);
 
             logic.addMessage(repMessage, 1);
+        }
+
+        protected void FavouritesCmd_Click(object sender, EventArgs e)
+        {
+            logic = new Logic();
+
+            FavourView.DataSource = logic.getAllMessages(Session["usr"].ToString(), 3);
+            FavourView.DataBind();
+
+            inboxViewID.Visible = false;
+            SentViewID.Visible = false;
+            msgViewID.Visible = false;
+            FavouritesID.Visible = true;
+            DraftViewID.Visible = false;
+        }
+
+        protected void DraftsCmd_Click(object sender, EventArgs e)
+        {
+            logic = new Logic();
+
+            drafView.DataSource = logic.getAllDrafts(Session["usr"].ToString());
+            drafView.DataBind();
+
+            inboxViewID.Visible = false;
+            SentViewID.Visible = false;
+            msgViewID.Visible = false;
+            FavouritesID.Visible = false;
+            DraftViewID.Visible = true;
         }
     }
 }
