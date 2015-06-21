@@ -75,8 +75,8 @@
                                 <td class="auto-style11">&nbsp;</td>
                                 <td>
                                     <asp:Panel ID="replayPanel" Width="832px" CssClass="replayStyle" BackColor="#D3D3D3" runat="server" BorderStyle="None">
-                                        <button id="replayButton" class="btn btn-success" onclick="replayButton_Click"> Replay <span class="glyphicon glyphicon-send"></span></button>
-                                        <button id="saveDraft" class="btn btn-primary" onclick="saveDraft_Click"> Draft <span class="glyphicon glyphicon-file"></span></button>
+                                        <asp:LinkButton ID="replayButton" CssClass="btn btn-success" OnClick="replayButton_Click" runat="server">Reply <span class="glyphicon glyphicon-send"></asp:LinkButton>
+                                        <asp:LinkButton ID="saveDraft" CssClass="btn btn-primary" OnClick="saveDraft_Click" runat="server">Draft <span class="glyphicon glyphicon-file"></span></asp:LinkButton>
                                     </asp:Panel>
                                 </td>
                             </tr>
@@ -89,10 +89,10 @@
         <table class="nav-justified">
                       <tr>
                             <td class="auto-style22">
-                                <asp:LinkButton ID="deleteCmd" CssClass="change2" runat="server" OnClick="deleteCmd_Click"><h2><span class="glyphicon glyphicon-trash"></span></h2></asp:LinkButton>
+                                <asp:LinkButton ID="deleteCmd" CssClass="btn btn-danger" OnClick="deleteCmd_Click" runat="server">Delete <span class="glyphicon glyphicon-trash"></span></asp:LinkButton>
                             </td>
                             <td class="auto-style21">
-                                <button id="StarCmd" class="btn btn-warning" onclick="StarCmd_Click"><span class="glyphicon glyphicon-star"></span></button>
+                                <asp:LinkButton ID="StarCmd" CssClass="btn btn-warning" OnClick="StarCmd_Click" runat="server">Mark Message <span class="glyphicon glyphicon-star"></span></asp:LinkButton>
                             </td>
                             <td>
                                 <asp:Button ID="markMsgAsRead" CssClass="btn btn-success" runat="server" Text="Mark all as read" OnClick="markMsgAsRead_Click" />
@@ -169,7 +169,7 @@
                         <table class="nav-justified">
                       <tr>
                             <td class="auto-style22">
-                                <asp:LinkButton ID="deleteOut" CssClass="change2" runat="server" OnClick="deleteOut_Click"><h2><span class="glyphicon glyphicon-trash"></span></h2></asp:LinkButton>
+                                <asp:LinkButton ID="deleteOut" CssClass="btn btn-danger" OnClick="deleteOut_Click" runat="server">Delete <span class="glyphicon glyphicon-trash"></span></asp:LinkButton>
                             </td>
                         </tr>
                        </table>
@@ -231,10 +231,10 @@
                          <table class="nav-justified">
                       <tr>
                             <td class="auto-style22">
-                                <asp:LinkButton ID="FavourDelete" CssClass="change2" runat="server" OnClick="FavourDelete_Click"><h2><span class="glyphicon glyphicon-trash"></span></h2></asp:LinkButton>
+                                <asp:LinkButton ID="FavourDelete" CssClass="btn btn-danger" OnClick="FavourDelete_Click" runat="server">Delete <span class="glyphicon glyphicon-trash"></span></asp:LinkButton>
                             </td>
                             <td class="auto-style21">
-                                <button id="FavourStarCmd" class="btn btn-warning" onclick="FavourStarCmd_Click"><span class="glyphicon glyphicon-star"></span></button>
+                                <asp:LinkButton ID="FavourStarCmd" CssClass="btn btn-warning" OnClick="FavourStarCmd_Click" runat="server">Cancel Mark <span class="glyphicon glyphicon-star"></span></asp:LinkButton>
                             </td>
                           
                         </tr>
@@ -307,38 +307,57 @@
 
                     <div class="DraftView" runat="server" id="DraftViewID">
 
+                          <table class="nav-justified">
+                      <tr>
+                            <td class="auto-style22">
+                                <asp:LinkButton ID="draftDelete" CssClass="btn btn-danger" OnClick="draftDelete_Click" runat="server">Delete <span class="glyphicon glyphicon-trash"></span></asp:LinkButton>
+                            </td>
+                        </tr>
+                       </table>
+                        
+                       <table class="nav-justified">
+                        <tr>
+                            <td class="auto-style20">
+                                <br />
+                                <h1><asp:Label ID="DraftsLabel" runat="server" Text="Drafts"></asp:Label></h1>
+                            </td>
+                        </tr>
+                    
+
+                    </table>
+
                         <asp:GridView ID="drafView" ShowHeader="false" Width="97%" GridLines="Horizontal" AutoGenerateColumns="False" runat="server">
                         <Columns>
 
                             <asp:TemplateField HeaderText="From" ShowHeader="False" ConvertEmptyStringToNull="true" ItemStyle-HorizontalAlign="Left">
                                     <ItemTemplate>
-                                        <asp:CheckBox ID="FavourCheckMsg" CssClass="checkboxStyle" runat="server" />
+                                        <asp:CheckBox ID="drafCheckMsg" CssClass="checkboxStyle" runat="server" />
                                     </ItemTemplate>                                          
                                 </asp:TemplateField> 
                           
 
                             <asp:TemplateField HeaderText="From" ShowHeader="False" ConvertEmptyStringToNull="true" ItemStyle-HorizontalAlign="Left">
                                     <ItemTemplate>
-                                        <asp:Label ID="FavourfromLabel" runat="server" Font-Size="18px" ForeColor="Black" Text='<%# Bind("To") %>'></asp:Label>
+                                        <asp:Label ID="drafromLabel" runat="server" Font-Size="18px" ForeColor="Black" Text='<%# Bind("To") %>'></asp:Label>
                                     </ItemTemplate>                                          
                                 </asp:TemplateField> 
 
                             <asp:TemplateField HeaderText="Subject" ShowHeader="False" ItemStyle-CssClass="leftPad" ItemStyle-HorizontalAlign="Left" ConvertEmptyStringToNull="true">
                                     <ItemTemplate>
-                                        <asp:Label ID="FavoursubjectLabel" runat="server" Font-Size="18px" ForeColor="Black" Text='<%# Bind("Subject") %>'></asp:Label>
-                                        <asp:Label ID="FavourmsgLabel" runat="server" Font-Size="Medium" ForeColor="Black" Text='<%# Bind("Msg") %>'></asp:Label>
+                                        <asp:Label ID="drafsubjectLabel" runat="server" Font-Size="18px" ForeColor="Black" Text='<%# Bind("Subject") %>'></asp:Label>
+                                        <asp:Label ID="drafmsgLabel" runat="server" Font-Size="Medium" ForeColor="Black" Text='<%# Bind("Msg") %>'></asp:Label>
                                     </ItemTemplate>                                          
                                 </asp:TemplateField> 
 
                             <asp:TemplateField HeaderText="Datetime" ShowHeader="False" ConvertEmptyStringToNull="true" ItemStyle-HorizontalAlign="Right">
                                     <ItemTemplate>
-                                        <asp:Label ID="FavourdatetimeLabel" runat="server" Font-Size="Medium" ForeColor="Black" Text='<%# Bind("Datetime") %>'></asp:Label>
+                                        <asp:Label ID="drafdatetimeLabel" runat="server" Font-Size="Medium" ForeColor="Black" Text='<%# Bind("Datetime") %>'></asp:Label>
                                     </ItemTemplate>                                          
                                 </asp:TemplateField>
 
                             <asp:TemplateField HeaderText="Id" ShowHeader="False" ConvertEmptyStringToNull="true">
                                     <ItemTemplate>
-                                        <asp:Label ID="FavouridLabel" runat="server" Font-Size="0px" ForeColor="Black" Text='<%# Bind("Id") %>'></asp:Label>
+                                        <asp:Label ID="drafidLabel" runat="server" Font-Size="0px" ForeColor="Black" Text='<%# Bind("Id") %>'></asp:Label>
                                     </ItemTemplate>                                          
                                 </asp:TemplateField>
                           

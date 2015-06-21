@@ -264,7 +264,14 @@ namespace BarteRoom
                 if (((CheckBox)row.FindControl("CheckMsg")).Checked)
                 {
                     string id = ((Label)row.FindControl("idLabel")).Text;
-                    logic.markAsStar(id);
+                    if ((((Label)row.FindControl("isStarLabel")).Text).Equals("0"))
+                    {
+                        logic.markAsStar(id);
+                    }
+                    else if ((((Label)row.FindControl("isStarLabel")).Text).Equals("1"))
+                    {
+                        logic.markAsnotStar(id);
+                    }
                 }
             }
 
@@ -381,6 +388,29 @@ namespace BarteRoom
             msgViewID.Visible = false;
             FavouritesID.Visible = true;
             DraftViewID.Visible = false;
+        }
+
+        protected void draftDelete_Click(object sender, EventArgs e)
+        {
+            logic = new Logic();
+
+            foreach (GridViewRow row in drafView.Rows)
+            {
+                if (((CheckBox)row.FindControl("drafCheckMsg")).Checked)
+                {
+                    string id = ((Label)row.FindControl("drafidLabel")).Text;
+                    logic.deleteMsg(id);
+                }
+            }
+
+            drafView.DataSource = logic.getAllDrafts(Session["usr"].ToString());
+            drafView.DataBind();
+
+            inboxViewID.Visible = false;
+            SentViewID.Visible = false;
+            msgViewID.Visible = false;
+            FavouritesID.Visible = false;
+            DraftViewID.Visible = true;
         }
     }
 }
