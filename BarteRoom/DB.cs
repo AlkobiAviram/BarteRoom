@@ -314,7 +314,7 @@ namespace BarteRoom
         {
             DataTable dtable = new DataTable();
             DataColumn dt = new DataColumn("Images");
-            dtable.Columns.Add(dt);
+         
        
 
           
@@ -332,11 +332,15 @@ namespace BarteRoom
             }
 
             catch (Exception e) { }
-
+            int i = 1;
             while (rdr.Read())
             {
-
-                object[] RowValues = { ""};
+                if (i == 1)
+                {
+                    dtable.Columns.Add(dt);
+                    i--;
+                }
+                object[] RowValues = {""};
                 RowValues[0] = rdr[0].ToString();
               
                 DataRow dRow;

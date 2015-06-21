@@ -59,21 +59,21 @@ namespace BarteRoom
                     {
                         ImageField img_fld = new ImageField();
                         img_fld.DataImageUrlField = Convert.ToString(i);
-                        img_fld.NullDisplayText = "NO PHOTO UPLOADED";
+                        
                         GridView1.Columns.Add(img_fld);
                     }
                 }
                 DataRow dr;
                 //get all the columns and make it as rows
-                for (int j = 0; j < dt.Columns.Count; j++)
+                dr = table.NewRow();
+                for (int j = 0; j < dt.Rows.Count; j++)
                 {
-                    dr = table.NewRow();
-                    dr[0] = dt.Columns[j].ToString();
-                    for (int k = 1; k <= dt.Rows.Count; k++)
-                        dr[k] = dt.Rows[k - 1][j];
-                    table.Rows.Add(dr);
+                   
+                    dr[j] = dt.Rows[j][0];
+                  
+                   
                 }
-
+                table.Rows.Add(dr);
                 GridView1.DataSource = table;
                 GridView1.DataBind();
 
@@ -232,8 +232,8 @@ namespace BarteRoom
             {
             }
 
-         
-                bind();
+            bind();
+          
             
         }
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
