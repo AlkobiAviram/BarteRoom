@@ -330,14 +330,14 @@ namespace BarteRoom
             return data.getAllMessages(usr, flag);
         }
 
-        public void addMessage(Message msg)
+        public void addMessage(Message msg, int flag)
         {
             DateTime dt = DateTime.Now;
             string newDatetimeFormat = changeDateFormat(dt.ToString());
 
             data = new DB();
 
-            data.addMessage(msg, newDatetimeFormat);
+            data.addMessage(msg, newDatetimeFormat, flag);
         }
 
         public int notReadMsg(string usr)
@@ -414,6 +414,12 @@ namespace BarteRoom
         {
             data = new DB();
             data.markAsStar(id);
+        }
+
+        public void setMsgAsRead(string id)
+        {
+            data = new DB();
+            data.setMsgAsRead(id);
         }
     }
 }

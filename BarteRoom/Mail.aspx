@@ -75,7 +75,8 @@
                                 <td class="auto-style11">&nbsp;</td>
                                 <td>
                                     <asp:Panel ID="replayPanel" Width="832px" CssClass="replayStyle" BackColor="#D3D3D3" runat="server" BorderStyle="None">
-                                        <asp:Button ID="replayButton" CssClass="btn btn-info" runat="server" Text="Replay" OnClick="replayButton_Click" />
+                                        <button id="replayButton" class="btn btn-success" onclick="replayButton_Click"> Replay <span class="glyphicon glyphicon-send"></span></button>
+                                        <button id="saveDraft" class="btn btn-primary" onclick="saveDraft_Click"> Draft <span class="glyphicon glyphicon-file"></span></button>
                                     </asp:Panel>
                                 </td>
                             </tr>
@@ -91,7 +92,7 @@
                                 <asp:LinkButton ID="deleteCmd" CssClass="change2" runat="server" OnClick="deleteCmd_Click"><h2><span class="glyphicon glyphicon-trash"></span></h2></asp:LinkButton>
                             </td>
                             <td class="auto-style21">
-                                <asp:Button ID="StarCmd" CssClass="btn btn-warning" runat="server" Text="Mark as important" />
+                                <button id="StarCmd" class="btn btn-warning" onclick="StarCmd_Click"><span class="glyphicon glyphicon-star"></span></button>
                             </td>
                             <td>
                                 <asp:Button ID="markMsgAsRead" CssClass="btn btn-success" runat="server" Text="Mark all as read" OnClick="markMsgAsRead_Click" />
@@ -151,6 +152,12 @@
                                     </ItemTemplate>                                          
                                 </asp:TemplateField>
 
+                            <asp:TemplateField HeaderText="IsRead" ShowHeader="False" ConvertEmptyStringToNull="true">
+                                    <ItemTemplate>
+                                        <asp:Label ID="isStarLabel" runat="server" Font-Size="0px" ForeColor="Black" Text='<%# Bind("isStar") %>'></asp:Label>
+                                    </ItemTemplate>                                          
+                                </asp:TemplateField>
+                          
                         </Columns>
                       
                     </asp:GridView>

@@ -33,13 +33,12 @@ namespace BarteRoom
                 ((LinkButton)Master.FindControl("AdvancedSearch")).Visible = false;
                 ((GridView)Master.FindControl("homeGridView")).Visible = false;
 
-                int notRead = logic.notReadMsg(Session["usr"].ToString());
-                numOfLabel.Text = "(" + notRead.ToString() + ")";
 
                 if (Request.QueryString["id"] != null)
                 {
                     id = Request.QueryString["id"].ToString();
                     DataTable dt = logic.getAllMessages(id, 2);
+                    logic.setMsgAsRead(id);
 
                     string from = dt.Rows[0][0].ToString(); ;
                     string email = logic.getEmail(from);
@@ -56,9 +55,15 @@ namespace BarteRoom
 
                 else
                 {
-                    inboxView.DataSource = logic.getAllMessages(Session["usr"].ToString(), 1);
-                    inboxView.DataBind();
+                    if (!Page.IsPostBack)
+                    {
+                        inboxView.DataSource = logic.getAllMessages(Session["usr"].ToString(), 1);
+                        inboxView.DataBind();
+                    }
                 }
+
+                int notRead = logic.notReadMsg(Session["usr"].ToString());
+                numOfLabel.Text = "(" + notRead.ToString() + ")";
                 
             }
         }
@@ -85,7 +90,7 @@ namespace BarteRoom
 
                         break;
                     case DataControlRowType.DataRow:
-
+                        
                         e.Row.Cells[1].Attributes.Add("onmouseover", "this.style.cursor='pointer';");
                         e.Row.Cells[1].Attributes.Add("onclick", Page.ClientScript.GetPostBackEventReference(inboxView, "Select$" + e.Row.RowIndex));
                         e.Row.Cells[2].Attributes.Add("onmouseover", "this.style.cursor='pointer';");
@@ -94,10 +99,20 @@ namespace BarteRoom
                         e.Row.Cells[3].Attributes.Add("onclick", Page.ClientScript.GetPostBackEventReference(inboxView, "Select$" + e.Row.RowIndex));
                         e.Row.Cells[4].Attributes.Add("onmouseover", "this.style.cursor='pointer';");
                         e.Row.Cells[4].Attributes.Add("onclick", Page.ClientScript.GetPostBackEventReference(inboxView, "Select$" + e.Row.RowIndex));
-
-                        if ((((Label)e.Row.FindControl("msgLabel")).Text).Length > 100)
+                        
+                        if ((((Label)e.Row.FindControl("msgLabel")).Text).Length > 80)
                         {
-                            ((Label)e.Row.FindControl("msgLabel")).Text = ((Label)e.Row.FindControl("msgLabel")).Text.Substring(0, 100) + "....";
+                            ((Label)e.Row.FindControl("msgLabel")).Text = ((Label)e.Row.FindControl("msgLabel")).Text.Substring(0, 80) + "....";
+                        }
+
+                        if ((((Label)e.Row.FindControl("isStarLabel")).Text).Equals("1"))
+                        {
+                            e.Row.CssClass = "starStyle";
+                        }
+
+                        else if ((((Label)e.Row.FindControl("isStarLabel")).Text).Equals("0"))
+                        {
+                            e.Row.CssClass = "notstarStyle";
                         }
 
                         if ((((Label)e.Row.FindControl("isReadLabel")).Text).Equals("0"))
@@ -139,11 +154,10 @@ namespace BarteRoom
             to = (msgViewFrom.Text).Split(' ');
             subject = msgSubView.Text;
             body = replayTxt.Text;
-            Response.Write(to[0]);
 
             Message repMessage = new Message(from, to[0], subject, body);
 
-            logic.addMessage(repMessage);
+            logic.addMessage(repMessage, 0);
         }
 
         protected void sentCmd_Click(object sender, EventArgs e)
@@ -171,9 +185,9 @@ namespace BarteRoom
                         e.Row.Attributes.Add("onmouseover", "this.style.cursor='pointer';");
                         e.Row.Attributes.Add("onclick", Page.ClientScript.GetPostBackEventReference(SentGridView, "Select$" + e.Row.RowIndex));
 
-                        if ((((Label)e.Row.FindControl("sentmsgLabel")).Text).Length > 100)
+                        if ((((Label)e.Row.FindControl("sentmsgLabel")).Text).Length > 80)
                         {
-                            ((Label)e.Row.FindControl("sentmsgLabel")).Text = ((Label)e.Row.FindControl("sentmsgLabel")).Text.Substring(0, 100) + "....";
+                            ((Label)e.Row.FindControl("sentmsgLabel")).Text = ((Label)e.Row.FindControl("sentmsgLabel")).Text.Substring(0, 80) + "....";
                         }
 
                         break;
@@ -205,18 +219,46 @@ namespace BarteRoom
 
             foreach (GridViewRow row in inboxView.Rows)
             {
-                Response.Write("num ");
-                CheckBox cb = (CheckBox)row.FindControl("CheckMsg");
-                if (cb.Checked)
+                if(((CheckBox)row.FindControl("CheckMsg")).Checked)
                 {
-                    Response.Write("ggggggggg");
-                        
+                    string id = ((Label)row.FindControl("idLabel")).Text;
+                    logic.deleteMsg(id);
+                }                
+            }
+
+            Response.Redirect("/Mail.aspx");
+        }
+
+        protected void StarCmd_Click(object sender, EventArgs e)
+        {
+            logic = new Logic();
+
+            foreach (GridViewRow row in inboxView.Rows)
+            {
+                if (((CheckBox)row.FindControl("CheckMsg")).Checked)
+                {
+                    string id = ((Label)row.FindControl("idLabel")).Text;
+                    logic.markAsStar(id);
                 }
             }
 
-            //inboxView.DataBind();
+            Response.Redirect("/Mail.aspx");
         }
 
-        
+        protected void saveDraft_Click(object sender, EventArgs e)
+        {
+            logic = new Logic();
+            string from, subject, body;
+            string[] to;
+
+            from = Session["usr"].ToString();
+            to = (msgViewFrom.Text).Split(' ');
+            subject = msgSubView.Text;
+            body = replayTxt.Text;
+
+            Message repMessage = new Message(from, to[0], subject, body);
+
+            logic.addMessage(repMessage, 1);
+        }
     }
 }

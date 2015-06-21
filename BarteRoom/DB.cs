@@ -1308,10 +1308,17 @@ namespace BarteRoom
         //this section is related to messages
 
 
-        public void addMessage(Message msg, string dt)
+        public void addMessage(Message msg, string dt, int flag)
         {
+            if (flag == 0)
+            {
+                query = "insert into dbo.msg values('" + msg.Id + "','" + msg.From + "','" + msg.To + "','" + msg.Subject + "','" + msg.Msg_body + "', 0, '" + dt + "', 0, 0);";
+            }
 
-            query = "insert into dbo.msg values('" + msg.Id + "','" + msg.From + "','" + msg.To + "','" + msg.Subject + "','" + msg.Msg_body + "', 0, '" + dt + "', 0, 0);";
+            else if(flag == 1)
+            {
+                query = "insert into dbo.msg values('" + msg.Id + "','" + msg.From + "','" + msg.To + "','" + msg.Subject + "','" + msg.Msg_body + "', 0, '" + dt + "', 1, 0);";
+            }
 
             try
             {
@@ -1325,19 +1332,22 @@ namespace BarteRoom
 
             catch (Exception e) { }
 
-            query = "insert into dbo.sentmsg values('" + msg.Id + "','" + msg.From + "','" + msg.To + "','" + msg.Subject + "','" + msg.Msg_body + "','" + dt + "');";
-
-            try
+            if (flag == 0)
             {
-                connect.Open();
+                query = "insert into dbo.sentmsg values('" + msg.Id + "','" + msg.From + "','" + msg.To + "','" + msg.Subject + "','" + msg.Msg_body + "','" + dt + "');";
 
-                command = new SqlCommand(query, connect);
+                try
+                {
+                    connect.Open();
 
-                command.ExecuteNonQuery();
-                connect.Close();
+                    command = new SqlCommand(query, connect);
+
+                    command.ExecuteNonQuery();
+                    connect.Close();
+                }
+
+                catch (Exception e) { }
             }
-
-            catch (Exception e) { }
         }
 
 
@@ -1350,6 +1360,7 @@ namespace BarteRoom
             DataColumn dt3 = new DataColumn("Datetime");
             DataColumn dt4 = new DataColumn("Id");
             DataColumn dt5 = new DataColumn("IsRead");
+            DataColumn dt6 = new DataColumn("IsStar");
 
             dtable.Columns.Add(dt);
             dtable.Columns.Add(dt1);
@@ -1357,6 +1368,7 @@ namespace BarteRoom
             dtable.Columns.Add(dt3);
             dtable.Columns.Add(dt4);
             dtable.Columns.Add(dt5);
+            dtable.Columns.Add(dt6);
 
             if (flag == 0)
             {
@@ -1365,11 +1377,11 @@ namespace BarteRoom
 
             else if (flag == 1)
             {
-                query = "select fromUsr, subject, msg_body, datetime, Id, isRead from dbo.msg where toUsr = '" + usr + "' order by  isRead, datetime DESC;";
+                query = "select fromUsr, subject, msg_body, datetime, Id, isRead, star from dbo.msg where toUsr = '" + usr + "' order by  isRead, datetime DESC;";
             }
             else if (flag == 2)
             {
-                query = "select fromUsr, subject, msg_body, datetime, Id, isRead from dbo.msg where Id = '" + usr + "' order by  isRead, datetime DESC;";
+                query = "select fromUsr, subject, msg_body, datetime, Id, isRead, star from dbo.msg where Id = '" + usr + "' order by  isRead, datetime DESC;";
             }
             try
             {
@@ -1386,7 +1398,7 @@ namespace BarteRoom
             while (rdr.Read())
             {
 
-                object[] RowValues = { "", "", "", "", "", "" };
+                object[] RowValues = { "", "", "", "", "", "", "" };
 
                 RowValues[0] = rdr[0].ToString();
 
@@ -1416,6 +1428,11 @@ namespace BarteRoom
                 RowValues[3] = tmp[0] + " at " + tmp[1];
                 RowValues[4] = rdr[4].ToString();
                 RowValues[5] = rdr[5].ToString();
+
+                if (flag != 0)
+                {
+                    RowValues[6] = rdr[6].ToString();
+                }
 
                 DataRow dRow;
                 dRow = dtable.Rows.Add(RowValues);
@@ -1652,6 +1669,23 @@ namespace BarteRoom
         public void markAsStar(string id)
         {
             query = "UPDATE dbo.msg SET star = 1 WHERE Id='" + id + "';";
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+
+                command.ExecuteNonQuery();
+                connect.Close();
+            }
+
+            catch (Exception e) { }
+        }
+
+        public void setMsgAsRead(string id)
+        {
+            query = "UPDATE dbo.msg SET isRead = 1 WHERE Id='" + id + "';";
 
             try
             {
