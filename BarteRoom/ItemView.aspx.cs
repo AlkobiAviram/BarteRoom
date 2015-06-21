@@ -363,8 +363,64 @@ namespace BarteRoom
             grPhoto.Dispose();
             return bmPhoto;
         }
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            // if (e.CommandName == "Update")
+            // {
+            //Convert.ToInt16(e.CommandArgument);
+
+            //}
+
+            if (e.CommandName == "Delete")
+            {
+                // Convert the row index stored in the CommandArgument
+                // property to an Integer.
+                int index = Convert.ToInt32(e.CommandArgument);
+
+                // Retrieve the row that contains the button clicked 
+                // by the user from the Rows collection.
+                GridViewRow row = GridView1.Rows[index];
 
 
+                // TextBox delete_id = new TextBox();
+                string delete_id = row.Cells[6].Text;
+                lg.removeItem(delete_id);
+
+
+            }
+            
+
+            
+          
+            if (e.CommandName == "Select")
+            {
+            }
+        }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        protected void GridView1_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        {
+            int index = Convert.ToInt32(e.NewSelectedIndex);
+            GridViewRow row = GridView1.Rows[index];
+            string id = row.Cells[6].Text;
+            Response.Redirect("/ItemView.aspx?" + "id=" + Server.UrlEncode(id));
+            GridView1.EditIndex = -1;
+            bind();
+
+        }
+        protected void GridView1_RowDeleted(object sender, GridViewDeletedEventArgs e)
+        {
+
+        }
+
+        protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+
+            bind();
+        }
 
     }
 }

@@ -46,26 +46,32 @@ namespace BarteRoom
 
         private void bind()
         {
-            DataTable dt2 = new DataTable();
-            //rotating the table
+            DataTable table = new DataTable();
             DataTable dt = lg.getImagesOfItem(Session["add_item"].ToString());
+
+            //rotating the table:
+
+
+            //Get all the rows and change into columns
             for (int i = 0; i <= dt.Rows.Count; i++)
             {
-                dt2.Columns.Add();
+                table.Columns.Add(Convert.ToString(i));
+                ImageField img_fld = new ImageField();
+                img_fld.DataImageUrlField = Convert.ToString(i);
+                GridView1.Columns.Add(img_fld);
             }
-            for (int i = 0; i < dt.Columns.Count; i++)
+            DataRow dr;
+            //get all the columns and make it as rows
+            for (int j = 0; j < dt.Columns.Count; j++)
             {
-                dt2.Rows.Add();
-                dt2.Rows[i][0] = dt.Columns[i].ColumnName;
+                dr = table.NewRow();
+                dr[0] = dt.Columns[j].ToString();
+                for (int k = 1; k <= dt.Rows.Count; k++)
+                    dr[k] = dt.Rows[k - 1][j];
+                table.Rows.Add(dr);
             }
-            for (int i = 0; i < dt.Columns.Count; i++)
-            {
-                for (int j = 0; j < dt.Rows.Count; j++)
-                {
-                    dt2.Rows[i][j + 1] = dt.Rows[j][i];
-                }
-            }
-            GridView1.DataSource = dt2;
+
+            GridView1.DataSource = table;
             GridView1.DataBind();
       
 
@@ -227,6 +233,35 @@ namespace BarteRoom
                 bind();
             
         }
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+      
 
+            if (e.CommandName == "Delete")
+            {
+             
+
+
+
+            }
+
+
+
+
+        
+        }
+
+      
+        
+        protected void GridView1_RowDeleted(object sender, GridViewDeletedEventArgs e)
+        {
+
+        }
+
+        protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+
+            bind();
+        }
     }
 }

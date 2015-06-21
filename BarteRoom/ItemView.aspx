@@ -13,7 +13,7 @@
              <div class="zoom_img" >
              <asp:Image  id="item_pic3" CssClass="img-responsive"  runat="server"/>
                  </div>
-                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">
+                 <asp:GridView ID="GridView1" CssClass="table table-responsive table-hover" HorizontalAlign="Center" GridLines="None" runat="server" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand" OnSelectedIndexChanged="GridView1_SelectedIndexChanged"  OnRowDeleted="GridView1_RowDeleted" OnRowDeleting="GridView1_RowDeleting"  OnSelectedIndexChanging="GridView1_SelectedIndexChanging">
                 
                 </asp:GridView>
             <asp:FileUpload ID="newImage" runat="server" />
