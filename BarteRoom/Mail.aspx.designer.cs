@@ -112,6 +112,60 @@ namespace BarteRoom {
         protected global::System.Web.UI.WebControls.LinkButton saveDraft;
         
         /// <summary>
+        /// deleteMsgView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton deleteMsgView;
+        
+        /// <summary>
+        /// msg_body_Required control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator msg_body_Required;
+        
+        /// <summary>
+        /// inboxEmptyID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl inboxEmptyID;
+        
+        /// <summary>
+        /// favourEmptyID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl favourEmptyID;
+        
+        /// <summary>
+        /// sentEmptyID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl sentEmptyID;
+        
+        /// <summary>
+        /// draftEmptyID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl draftEmptyID;
+        
+        /// <summary>
         /// inboxViewID control.
         /// </summary>
         /// <remarks>

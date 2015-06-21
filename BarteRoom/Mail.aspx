@@ -75,15 +75,68 @@
                                 <td class="auto-style11">&nbsp;</td>
                                 <td>
                                     <asp:Panel ID="replayPanel" Width="832px" CssClass="replayStyle" BackColor="#D3D3D3" runat="server" BorderStyle="None">
-                                        <asp:LinkButton ID="replayButton" CssClass="btn btn-success" OnClick="replayButton_Click" runat="server">Reply <span class="glyphicon glyphicon-send"></asp:LinkButton>
-                                        <asp:LinkButton ID="saveDraft" CssClass="btn btn-primary" OnClick="saveDraft_Click" runat="server">Draft <span class="glyphicon glyphicon-file"></span></asp:LinkButton>
+                                        <asp:LinkButton ID="replayButton" CssClass="btn btn-success" OnClick="replayButton_Click" runat="server" ValidationGroup="replyGroup"> Reply <span class="glyphicon glyphicon-send"></span></asp:LinkButton>
+                                        <asp:LinkButton ID="saveDraft" CssClass="btn btn-primary" OnClick="saveDraft_Click" runat="server" ValidationGroup="replyGroup"> Draft <span class="glyphicon glyphicon-file"></span></asp:LinkButton>
+                                        <asp:LinkButton ID="deleteMsgView" CssClass="btn btn-danger" OnClick="deleteMsgView_Click" runat="server"> Delete <span class="glyphicon glyphicon-trash"></span></asp:LinkButton>
                                     </asp:Panel>
                                 </td>
                             </tr>
                         </table>
+                        <asp:RequiredFieldValidator ID="msg_body_Required" ControlToValidate="replayTxt" ForeColor="Red" runat="server" ErrorMessage="Your message is empty!" ValidationGroup="replyGroup" Display="Dynamic"></asp:RequiredFieldValidator>
                         <br /><br /><br /><br />
                     </div>
 
+                    <div class="inboxEmpty" id="inboxEmptyID" runat="server">
+
+                        <table class="nav-justified">
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <h1>Your Inbox Is Empty</h1>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+
+                    <div class="favourEmpty" id="favourEmptyID" runat="server">
+
+                        <table class="nav-justified">
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <h1>You don't have any favourites messages</h1>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+
+                    <div class="sentEmpty" id="sentEmptyID" runat="server">
+
+                        <table class="nav-justified">
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <h1>You don't have any out messages</h1>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+
+                    <div class="draftEmpty" id="draftEmptyID" runat="server">
+
+                        <table class="nav-justified">
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <h1>You don't have any out messages</h1>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
 
     <div class="inboxView" runat="server" id="inboxViewID">
         <table class="nav-justified">
@@ -252,7 +305,7 @@
                     </table>
 
 
-                        <asp:GridView ID="FavourView" ShowHeader="false" Width="97%" GridLines="Horizontal" AutoGenerateColumns="False" runat="server">
+                        <asp:GridView ID="FavourView" ShowHeader="false" Width="97%" GridLines="Horizontal" AutoGenerateColumns="False" runat="server" OnRowDataBound="FavourView_RowDataBound" OnSelectedIndexChanged="FavourView_SelectedIndexChanged">
                         <Columns>
 
                             <asp:TemplateField HeaderText="From" ShowHeader="False" ConvertEmptyStringToNull="true" ItemStyle-HorizontalAlign="Left">
