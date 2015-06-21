@@ -15,7 +15,7 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body>
+<body class="HomePage">
 
      <script type="text/javascript" src="Scripts/jquery-1.9.1.js"> </script>
     <script type="text/javascript" src="Scripts/bootstrap.min.js"> </script>
@@ -593,13 +593,6 @@
 
              <!-- ===================================================Info Modal========================================================  -->
 
-            <div class="navbar navbar-default navbar-fixed-bottom"> 
-                 <div class="container">
-                     <p class="navbar-text"><asp:HyperLink ID="ButtomAbout" runat="server" NavigateUrl="~/About.aspx" CssClass="change">About Us</asp:HyperLink></p>
-                     <p class="navbar-text"> Copyrights </p>
-                     <p class="navbar-text"> Site is Powered by BarteRoom team </p>
-                  </div>
-          </div>
 
     <script type="text/javascript">
 

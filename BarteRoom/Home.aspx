@@ -4,8 +4,7 @@
             <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
                     <link href="css/imageSlider.css" rel="stylesheet" type="text/css" runat="server"/>
 
-
-
+         
 
 
 <!-----------------------------Image Silder------------------------------------------------------>
@@ -50,7 +49,7 @@
 <!----------------------------------------------------------------------------------------->
 
     <div>
-    </div>
 
+</div>
             </asp:Content>
 
