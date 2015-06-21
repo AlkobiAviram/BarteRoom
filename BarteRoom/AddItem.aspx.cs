@@ -20,7 +20,7 @@ namespace BarteRoom
     {
         
         private Logic lg = new Logic();
-        private string id="";
+       
         
         
         protected void Page_Load(object sender, EventArgs e)
@@ -46,23 +46,41 @@ namespace BarteRoom
 
         private void bind()
         {
-
-      
-            GridView1.DataSource = lg.getImagesOfItem(newItem.Id);
+            DataTable dt2 = new DataTable();
+            //rotating the table
+            DataTable dt = lg.getImagesOfItem(Session["add_item"].ToString());
+            for (int i = 0; i <= dt.Rows.Count; i++)
+            {
+                dt2.Columns.Add();
+            }
+            for (int i = 0; i < dt.Columns.Count; i++)
+            {
+                dt2.Rows.Add();
+                dt2.Rows[i][0] = dt.Columns[i].ColumnName;
+            }
+            for (int i = 0; i < dt.Columns.Count; i++)
+            {
+                for (int j = 0; j < dt.Rows.Count; j++)
+                {
+                    dt2.Rows[i][j + 1] = dt.Rows[j][i];
+                }
+            }
+            GridView1.DataSource = dt2;
             GridView1.DataBind();
-        
+      
+
 
         }
 
         protected void commit_cmd_Click(object sender, EventArgs e)
         {
-                 Item newItem = new Item();
+                Item newItem = new Item();
                 newItem.Usr=Session["usr"].ToString();
                 newItem.Name=name_textBox.Text; 
                 newItem.Clss=classes_list.SelectedValue.ToString();
                 newItem.Comments=comnts_textBox.Text;
                 newItem.Description=desc_textBox.Text;
-               
+                newItem.Id = Session["add_item"].ToString();
               
                 lg.addItem(newItem);
                 Response.Redirect("/BarterList.aspx");
@@ -189,7 +207,7 @@ namespace BarteRoom
                     Bitmap target = FixedSize(System.Drawing.Image.FromFile(path), 225, 225) as Bitmap;
                     path = Server.MapPath("~/img/" + file_name);
                     target.Save(path);
-                    int numOfPictures = lg.numOfImages(newItem.Id);
+                    int numOfPictures = lg.numOfImages(Session["add_item"].ToString());
                     int isProfile;
                     if (numOfPictures == 0)
                     {
@@ -197,7 +215,7 @@ namespace BarteRoom
                     }
                     else
                         isProfile=0;
-                    Imag img = new Imag(newItem.Id, "img/" + file_name, isProfile);
+                    Imag img = new Imag(Session["add_item"].ToString(), "img/" + file_name, isProfile);
                     lg.addImage(img);
                 }
                }

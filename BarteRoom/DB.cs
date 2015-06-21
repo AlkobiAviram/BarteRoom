@@ -314,9 +314,6 @@ namespace BarteRoom
         {
             DataTable dtable = new DataTable();
             DataColumn dt = new DataColumn("Images");
-    
-
-
             dtable.Columns.Add(dt);
        
 

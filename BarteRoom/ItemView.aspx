@@ -12,17 +12,16 @@
             
              <div class="zoom_img" >
              <asp:Image  id="item_pic3" CssClass="img-responsive"  runat="server"/>
+                 </div>
                  <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">
-             <Columns>
-             <asp:ImageField DataImageUrlField ="Images" NullDisplayText="no image" ReadOnly="True"  />
-             </Columns>
+                
                 </asp:GridView>
             <asp:FileUpload ID="newImage" runat="server" />
             <asp:Label ID="uploadNewImageLabel" Text="Upload new image" runat="server" />
             <asp:Button ID="edit_cmd" runat="server" CssClass="btn hvr-wobble-to-bottom-right" Text="Edit" OnClick="edit_cmd_Click" Height="26px" Width="158px"></asp:Button>
             <asp:Button ID="commit_cmd" runat="server" CssClass="btn-default" Visible="false" Text="Commit changes" OnClick="commit_cmd_Click"></asp:Button>
              <asp:Button ID="cancel_cmd" runat="server" CssClass="btn-default" Visible="false" Text="cancel" OnClick="cancel_cmd_Click" Width="114px"></asp:Button>
-             </div>
+             
         </div>
         <div class="col-md-6">
             <div class="row">

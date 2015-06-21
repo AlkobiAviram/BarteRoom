@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Net;
 using System.Drawing.Imaging;
+using System.Data;
 namespace BarteRoom
 {
     public partial class viewItem : System.Web.UI.Page
@@ -97,8 +98,32 @@ namespace BarteRoom
         }
         private void bind()
         {
+            DataTable table = new DataTable();
+            DataTable dt = lg.getImagesOfItem(id);
 
-            GridView1.DataSource = lg.getImagesOfItem(id);
+            //rotating the table:
+            
+
+            //Get all the rows and change into columns
+            for (int i = 0; i <= dt.Rows.Count; i++)
+            {
+                table.Columns.Add(Convert.ToString(i));
+                ImageField img_fld = new ImageField();
+                img_fld.DataImageUrlField = Convert.ToString(i);
+                GridView1.Columns.Add(img_fld); 
+            }
+            DataRow dr;
+            //get all the columns and make it as rows
+            for (int j = 0; j < dt.Columns.Count; j++)
+            {
+                dr = table.NewRow();
+                dr[0] = dt.Columns[j].ToString();
+                for (int k = 1; k <= dt.Rows.Count; k++)
+                    dr[k] = dt.Rows[k - 1][j];
+                table.Rows.Add(dr);
+            }
+ 
+            GridView1.DataSource = table;
             GridView1.DataBind();
 
 
