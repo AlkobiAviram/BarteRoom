@@ -25,8 +25,10 @@ namespace BarteRoom
         {
             //searech button event catch
             ((Button)Master.FindControl("Button1")).Click += new EventHandler(this.searchBtn_Click);
+            
             try
             {
+               
                 //setting the image slider images.
                 //note: first i save a copy of a item's imagein 620x320 dimension and then displaies it in the image slider 
                 string[] split = images.ElementAt(0).Path.Split('/');
@@ -72,6 +74,7 @@ namespace BarteRoom
 
                 bind();
             }
+                 
         }
         private void bind()
         {
