@@ -191,12 +191,12 @@
                 </li>
 
                 <li class="has-subnav">
-                    <a href="#">
+                    <asp:LinkButton ID="sentCmd" runat="server" OnClick="sentCmd_Click">
                        <i class="fa fa-share fa-2x""></i>
                         <span class="nav-text">
                             Sent mail
                         </span>
-                    </a>
+                    </asp:LinkButton>
                    
                 </li>
 

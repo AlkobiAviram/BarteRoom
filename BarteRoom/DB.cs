@@ -1412,6 +1412,72 @@ namespace BarteRoom
             return dtable;
         }
 
+        public DataTable getAllSentMessages(string usr)
+        {
+            DataTable dtable = new DataTable();
+            DataColumn dt = new DataColumn("From");
+            DataColumn dt1 = new DataColumn("Subject");
+            DataColumn dt2 = new DataColumn("Msg");
+            DataColumn dt3 = new DataColumn("Datetime");
+            DataColumn dt4 = new DataColumn("Id");
+            DataColumn dt5 = new DataColumn("IsRead");
+
+            dtable.Columns.Add(dt);
+            dtable.Columns.Add(dt1);
+            dtable.Columns.Add(dt2);
+            dtable.Columns.Add(dt3);
+            dtable.Columns.Add(dt4);
+            dtable.Columns.Add(dt5);
+
+            query = "select toUsr, subject, msg_body, datetime, Id, isRead from dbo.msg where fromUsr = '" + usr + "' order by datetime DESC;";
+            
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+                rdr = command.ExecuteReader();
+
+
+            }
+
+            catch (Exception e) { }
+
+            while (rdr.Read())
+            {
+
+                object[] RowValues = { "", "", "", "", "", "" };
+
+                RowValues[0] = rdr[0].ToString();
+
+                String tmpSub = rdr[1].ToString();
+
+                if (tmpSub.Length > 7)
+                {
+                    tmpSub = tmpSub.Substring(0, 7) + "...";
+                }
+
+                tmpSub += "-";
+                
+                RowValues[1] = tmpSub;
+
+                RowValues[2] = rdr[2].ToString();
+
+                string[] tmp = rdr[3].ToString().Split(' ');
+                RowValues[3] = tmp[0] + " at " + tmp[1];
+                RowValues[4] = rdr[4].ToString();
+                RowValues[5] = "";
+
+                DataRow dRow;
+                dRow = dtable.Rows.Add(RowValues);
+                dtable.AcceptChanges();
+            }
+
+            connect.Close();
+
+            return dtable;
+        }
+
         public int notReadMsg(string usr)
         {
             int bids = 0;

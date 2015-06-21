@@ -85,7 +85,7 @@ namespace BarteRoom
                     case DataControlRowType.DataRow:
                         e.Row.Attributes.Add("onmouseover", "this.style.cursor='pointer';");
                         e.Row.Attributes.Add("onclick", Page.ClientScript.GetPostBackEventReference(inboxView, "Select$" + e.Row.RowIndex));
-
+             
                         if ((((Label)e.Row.FindControl("msgLabel")).Text).Length > 125)
                         {
                             ((Label)e.Row.FindControl("msgLabel")).Text = ((Label)e.Row.FindControl("msgLabel")).Text.Substring(0, 125) + "....";
@@ -135,6 +135,17 @@ namespace BarteRoom
             Message repMessage = new Message(from, to[0], subject, body);
 
             logic.addMessage(repMessage);
+        }
+
+        protected void sentCmd_Click(object sender, EventArgs e)
+        {
+            logic = new Logic();
+
+            inboxView.DataSource = logic.getAllSentMessages(Session["usr"].ToString());
+            inboxView.DataBind();
+
+            inboxViewID.Visible = true;
+            msgViewID.Visible = false;
         }
 
         

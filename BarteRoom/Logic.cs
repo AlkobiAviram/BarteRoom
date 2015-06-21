@@ -391,5 +391,11 @@ namespace BarteRoom
             data = new DB();
             return data.getMsgById(id);
         }
+
+        public DataTable getAllSentMessages(string usr)
+        {
+            data = new DB();
+            return data.getAllSentMessages(usr);
+        }
     }
 }
