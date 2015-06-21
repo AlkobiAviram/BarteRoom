@@ -11,6 +11,7 @@
        }
        .customTd1{
           background-color:white;
+          border:1px solid #4682B4;
        }
    </style>
 
@@ -47,24 +48,26 @@
            
                 
         </td>
+          <td>
+               <asp:Label ID="Label3" Visible="false" runat="server" Text="to make a bid"></asp:Label>
+          </td>  
                 </tr>
              
-               <tr>
-         <td>
+               <tr class="customTd1">
+      <td colspan="3">
              <ul class="nav nav-tabs">
-              <li class="active">
-              <a href="#">Description</a>
+              <li id="desc_li" class="active" onclick="onclick2()" >
+               <asp:LinkButton ID="description_tab"   runat="server"  OnClick="description_tab_Click">Description</asp:LinkButton>
                </li>
-              <li><a href="#">Owner Information</a></li>
-              
+              <li id="owner_li" onclick="onclick1()" ><asp:LinkButton ID="OwnerInformation_tab"   runat="server" OnClick="OwnerInformation_tab_Click">Owner Information</asp:LinkButton></li>
                 </ul>
-               <h3>Name</h3>
+               <h3><asp:Label ID="name_header" runat="server" /></h3>
                  <p>
                         <asp:TextBox  id="name_textBox" AutoPostBack="true" TextMode="multiline" BorderStyle="Dashed"  runat="server" Width="100%" OnTextChanged="name_textBox_TextChanged"/>
                         <asp:Label ID="nameLabel" runat="server" />
                  </p>
  
-               <h3>Comments</h3>
+              <h3><asp:Label ID="comments_header" runat="server" /></h3>
                  <p>
                        <asp:TextBox id="comments_textBox" TextMode="multiline" BorderStyle="Dashed"  runat="server" Width="100%" OnTextChanged="comments_textBox_TextChanged"/>
                        <asp:Label ID="comLabel" runat="server" />
@@ -72,7 +75,7 @@
                  </p>
             
     
-                <h3>Description</h3>
+              <h3><asp:Label ID="description_header" runat="server" /></h3>
                    <p>
                         <asp:TextBox  id="description_textBox" TextMode="multiline" BorderStyle="Dashed" runat="server" OnTextChanged="description_textBox_TextChanged" />
                         <asp:Label ID="desLabel" runat="server" />
@@ -81,7 +84,7 @@
 
         
 
-                <h3>Item BarCode</h3>
+             <h3><asp:Label ID="itemId_header" runat="server" /></h3>
                    <p>
                       
                         <asp:Label  id="idLabel1" runat="server"/>
@@ -96,6 +99,17 @@
        
 
 </div>
-
+<script>
+    function onclick1() {
+        document.getElementById("desc_li").className = "affix";
+        document.getElementById("owner_li").className = "active";
+        return false;
+    }
+    function onclick2() {
+        document.getElementById("desc_li").className = "active";
+        document.getElementById("owner_li").className = "affix";
+        return false;
+    }
+</script>
 
 </asp:Content>

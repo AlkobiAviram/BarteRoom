@@ -130,6 +130,42 @@ namespace BarteRoom {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
+        /// Label3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label3;
+        
+        /// <summary>
+        /// description_tab control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton description_tab;
+        
+        /// <summary>
+        /// OwnerInformation_tab control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton OwnerInformation_tab;
+        
+        /// <summary>
+        /// name_header control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label name_header;
+        
+        /// <summary>
         /// name_textBox control.
         /// </summary>
         /// <remarks>
@@ -146,6 +182,15 @@ namespace BarteRoom {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label nameLabel;
+        
+        /// <summary>
+        /// comments_header control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label comments_header;
         
         /// <summary>
         /// comments_textBox control.
@@ -166,6 +211,15 @@ namespace BarteRoom {
         protected global::System.Web.UI.WebControls.Label comLabel;
         
         /// <summary>
+        /// description_header control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label description_header;
+        
+        /// <summary>
         /// description_textBox control.
         /// </summary>
         /// <remarks>
@@ -182,6 +236,15 @@ namespace BarteRoom {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label desLabel;
+        
+        /// <summary>
+        /// itemId_header control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label itemId_header;
         
         /// <summary>
         /// idLabel1 control.

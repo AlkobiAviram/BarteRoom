@@ -27,21 +27,28 @@ namespace BarteRoom
         
          
         }
-        public string getUser()
+
+        public string Usr
         {
-            return this.usr;
+            get { return this.usr; }
+            set { this.usr = value; }
         }
-        public string getFullName()
+        public string FullName
         {
-            return this.fullName;
+            get { return this.fullName; }
+            set { this.fullName = value; }
         }
-        public string getEmail()
+        public string Email
         {
-            return this.email;
+            get { return this.email; }
+            set { this.email = value; }
         }
-        public int getManager()
+        
+        public int Manager
         {
-            return this.manager;
+            get { return this.manager; }
+            set { this.manager = value; }
         }
+        
     }
 }

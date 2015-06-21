@@ -58,9 +58,9 @@ namespace BarteRoom
 
             ///////////////////////////////regarding the contact information
             User usr = lg.getUserInformation(trns.getBidder());
-            contact_usr.Text = usr.getUser();
-            contact_fullName.Text = usr.getFullName();
-            contact_email.Text = usr.getEmail();
+            contact_usr.Text = usr.Usr;
+            contact_fullName.Text = usr.FullName;
+            contact_email.Text = usr.Email;
             ////////////////////////////////
 
 

@@ -46,7 +46,10 @@ namespace BarteRoom
             comLabel.Text = item.Comments;
             idLabel1.Text = item.Id;  
             desLabel.Text=item.Description;
-
+            name_header.Text = "Item Name";
+            comments_header.Text = "Comments";
+            description_header.Text = "Description";
+            itemId_header.Text = "Item Bar-Code";
 
             if (!IsPostBack)
             {
@@ -424,6 +427,44 @@ namespace BarteRoom
         {
 
             bind();
+        }
+
+        protected void description_tab_Click(object sender, EventArgs e)
+        {
+
+            
+
+            Item item = lg.getItemById(id);
+            item.Id = id;
+
+            nameLabel.Text = item.Name;
+            comLabel.Text = item.Comments;
+            idLabel1.Text = item.Id;
+            desLabel.Text = item.Description;
+
+            name_header.Text = "Item Name";
+            comments_header.Text = "Comments";
+            description_header.Text = "Description";
+            itemId_header.Text = "Item Bar-Code";
+        }
+
+        protected void OwnerInformation_tab_Click(object sender, EventArgs e)
+        {
+
+           
+            string owner = lg.getItemById(id).Usr;
+            User usr = lg.getUserInformation(owner);
+            nameLabel.Text=usr.Usr;
+            comLabel.Text =usr.FullName;
+            desLabel.Text =  usr.Email;
+
+
+            name_header.Text = "Owner User Name";
+            comments_header.Text = "Owner Full Name";
+            description_header.Text = "Owner Email Address";
+         
+
+          
         }
 
     }
