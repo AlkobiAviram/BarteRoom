@@ -9,9 +9,8 @@
            height:400px;
            
        }
-       .customSpan{
-           position:absolute;
-           padding: 40px;
+       .customTd1{
+          background-color:white;
        }
    </style>
 
@@ -19,7 +18,7 @@
                <link href="~/css/ImageHover.css" rel="stylesheet" type="text/css" runat="server"/>
    <div class="container" runat="server" id="itemViewPage">
         
-       <table>
+       <table >
             <tr>
              <td class="customTd">
              <span class="img-responsive zoom_img .customSpan"  >
@@ -35,16 +34,16 @@
            </td>
         <td>
                     
-                    <span class="jumbotron" runat="server" >
+                    
                     <h3> <asp:Label ID="makeBidHeader" Text="Make A Bid" runat="server" OnDataBinding="Page_Load"></asp:Label></h3>
-                   <p>
-                       <asp:Button ID="offer_cmd" runat="server" Text="Make a Bid" CssClass=" fa icon-next" OnClick="offer_cmd_Click"/>
-                       <asp:Label ID="Label2" runat="server" Text="Please"></asp:Label>
-                       <asp:HyperLink ID="logInHyperLink" runat="server" OnDataBinding="Page_Load" NavigateUrl="#login" data-toggle="modal" CssClass="change"> log in </asp:HyperLink>
-                       <asp:Label ID="Label1" runat="server" Text="to make a bid"></asp:Label>
+                   
+                       <asp:Button ID="offer_cmd" Visible="true" runat="server" Text="Make a Bid" CssClass=" fa icon-next" OnClick="offer_cmd_Click"/>
+                       <asp:Label ID="Label2" Visible="true" runat="server" Text="Please"></asp:Label>
+                       <asp:HyperLink ID="logInHyperLink" Visible="true" runat="server" OnDataBinding="Page_Load" NavigateUrl="#login" data-toggle="modal" CssClass="change"> log in </asp:HyperLink>
+                       <asp:Label ID="Label1" Visible="true" runat="server" Text="to make a bid"></asp:Label>
 
-                </p>
-                    </span>
+               
+                 
            
                 
         </td>
@@ -52,6 +51,13 @@
              
                <tr>
          <td>
+             <ul class="nav nav-tabs">
+              <li class="active">
+              <a href="#">Description</a>
+               </li>
+              <li><a href="#">Owner Information</a></li>
+              
+                </ul>
                <h3>Name</h3>
                  <p>
                         <asp:TextBox  id="name_textBox" AutoPostBack="true" TextMode="multiline" BorderStyle="Dashed"  runat="server" Width="100%" OnTextChanged="name_textBox_TextChanged"/>
