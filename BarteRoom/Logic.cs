@@ -427,5 +427,23 @@ namespace BarteRoom
             data = new DB();
             return data.getAllDrafts(usr);
         }
+
+        public bool isMsgExists(string id)
+        {
+            data = new DB();
+            return data.isMsgExists(id);
+        }
+
+        public DataTable getSentMessage(string id)
+        {
+            data = new DB();
+            return data.getSentMessage(id);
+        }
+
+        public void markAsnotStar(string id)
+        {
+            data = new DB();
+            data.markAsnotStar(id);
+        }
     }
 }

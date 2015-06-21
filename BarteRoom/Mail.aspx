@@ -154,7 +154,7 @@
 
                             <asp:TemplateField HeaderText="IsRead" ShowHeader="False" ConvertEmptyStringToNull="true">
                                     <ItemTemplate>
-                                        <asp:Label ID="isStarLabel" runat="server" Font-Size="0px" ForeColor="Black" Text='<%# Bind("isStar") %>'></asp:Label>
+                                        <asp:Label ID="isStarLabel" runat="server" Font-Size="0px" ForeColor="Black" Text='<%# Bind("IsStar") %>'></asp:Label>
                                     </ItemTemplate>                                          
                                 </asp:TemplateField>
                           
@@ -165,8 +165,35 @@
         </div>
 
                     <div class="SentView" runat="server" id="SentViewID">
+
+                        <table class="nav-justified">
+                      <tr>
+                            <td class="auto-style22">
+                                <asp:LinkButton ID="deleteOut" CssClass="change2" runat="server" OnClick="deleteOut_Click"><h2><span class="glyphicon glyphicon-trash"></span></h2></asp:LinkButton>
+                            </td>
+                        </tr>
+                       </table>
+                        
+                       <table class="nav-justified">
+                        <tr>
+                            <td class="auto-style20">
+                                <br />
+                                <h1><asp:Label ID="OutBoxLabel" runat="server" Text="OutBox"></asp:Label></h1>
+                            </td>
+                        </tr>
+                    
+
+                    </table>
+
+
                     <asp:GridView ID="SentGridView" ShowHeader="false" Width="97%" GridLines="Horizontal" AutoGenerateColumns="False" OnRowDataBound="SentGridView_RowDataBound" OnSelectedIndexChanged="SentGridView_SelectedIndexChanged" runat="server">
                         <Columns>
+
+                            <asp:TemplateField HeaderText="From" ShowHeader="False" ConvertEmptyStringToNull="true" ItemStyle-HorizontalAlign="Left">
+                                    <ItemTemplate>
+                                        <asp:CheckBox ID="CheckOutMsg" CssClass="checkboxStyle" runat="server" />
+                                    </ItemTemplate>                                          
+                                </asp:TemplateField> 
 
                             <asp:TemplateField HeaderText="From" ShowHeader="False" ConvertEmptyStringToNull="true" ItemStyle-HorizontalAlign="Left">
                                     <ItemTemplate>
@@ -200,6 +227,30 @@
         </div>
 
                     <div class="FavouritesView" runat="server" id="FavouritesID">
+
+                         <table class="nav-justified">
+                      <tr>
+                            <td class="auto-style22">
+                                <asp:LinkButton ID="FavourDelete" CssClass="change2" runat="server" OnClick="FavourDelete_Click"><h2><span class="glyphicon glyphicon-trash"></span></h2></asp:LinkButton>
+                            </td>
+                            <td class="auto-style21">
+                                <button id="FavourStarCmd" class="btn btn-warning" onclick="FavourStarCmd_Click"><span class="glyphicon glyphicon-star"></span></button>
+                            </td>
+                          
+                        </tr>
+                       </table>
+                        
+                       <table class="nav-justified">
+                        <tr>
+                            <td class="auto-style20">
+                                <br />
+                                <h1>Favourites</h1>
+                            </td>
+                        </tr>
+                    
+
+                    </table>
+
 
                         <asp:GridView ID="FavourView" ShowHeader="false" Width="97%" GridLines="Horizontal" AutoGenerateColumns="False" runat="server">
                         <Columns>
@@ -244,7 +295,7 @@
 
                             <asp:TemplateField HeaderText="IsRead" ShowHeader="False" ConvertEmptyStringToNull="true">
                                     <ItemTemplate>
-                                        <asp:Label ID="FavourisStarLabel" runat="server" Font-Size="0px" ForeColor="Black" Text='<%# Bind("isStar") %>'></asp:Label>
+                                        <asp:Label ID="FavourisStarLabel" runat="server" Font-Size="0px" ForeColor="Black" Text='<%# Bind("IsStar") %>'></asp:Label>
                                     </ItemTemplate>                                          
                                 </asp:TemplateField>
                           

@@ -139,6 +139,24 @@ namespace BarteRoom {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl SentViewID;
         
         /// <summary>
+        /// deleteOut control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton deleteOut;
+        
+        /// <summary>
+        /// OutBoxLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label OutBoxLabel;
+        
+        /// <summary>
         /// SentGridView control.
         /// </summary>
         /// <remarks>
@@ -155,6 +173,15 @@ namespace BarteRoom {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl FavouritesID;
+        
+        /// <summary>
+        /// FavourDelete control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton FavourDelete;
         
         /// <summary>
         /// FavourView control.

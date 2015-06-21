@@ -6815,7 +6815,11 @@ button.close {
   background-position: 30px 30px, 0% 0%, 0% 0%;
   background-repeat: repeat;
 }
-
-
+.starStyle{
+    background-color: #DCDCDC;
+}
+.notstarStyle {
+    background-color: transparent;
+}
 
 /*# sourceMappingURL=bootstrap.css.map */

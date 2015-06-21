@@ -18,6 +18,7 @@ namespace BarteRoom
         {
             logic = new Logic();
             string id;
+            DataTable dt;
             if (Session["usr"] == null)
             {
                 Response.Redirect("/Home.aspx");
@@ -32,39 +33,52 @@ namespace BarteRoom
                 ((Button)Master.FindControl("Button1")).Visible = false;
                 ((LinkButton)Master.FindControl("AdvancedSearch")).Visible = false;
                 ((GridView)Master.FindControl("homeGridView")).Visible = false;
+                
 
-
-                if (Request.QueryString["id"] != null)
-                {
-                    id = Request.QueryString["id"].ToString();
-                    DataTable dt = logic.getAllMessages(id, 2);
-                    logic.setMsgAsRead(id);
-
-                    string from = dt.Rows[0][0].ToString(); ;
-                    string email = logic.getEmail(from);
-                    msgViewFrom.Text = from + " - " + email;
-                    dt.Rows[0][0].ToString();
-                    msgViewDate.Text = dt.Rows[0][3].ToString();
-                    msgViewTxt.Text = logic.getMsgById(dt.Rows[0][4].ToString());
-                    string[] sub = (dt.Rows[0][1].ToString()).Split('-');
-                    msgSubView.Text = sub[0];
-                    inboxViewID.Visible = false;
-                    SentViewID.Visible = false;
-                    msgViewID.Visible = true;
-                    FavouritesID.Visible = false;
-                    DraftViewID.Visible = false;
-                }
-
-                else
-                {
-                    if (!Page.IsPostBack)
+                    if (Request.QueryString["id"] != null)
                     {
-                        inboxView.DataSource = logic.getAllMessages(Session["usr"].ToString(), 1);
-                        inboxView.DataBind();
-                    }
-                }
+                        id = Request.QueryString["id"].ToString();
+                        if (logic.isMsgExists(id))
+                        {
+                            dt = logic.getAllMessages(id, 2);
+                        }
+                        else
+                        {
+                            dt = logic.getSentMessage(id);
+                        }
+                        logic.setMsgAsRead(id);
 
-                int notRead = logic.notReadMsg(Session["usr"].ToString());
+                        string from = dt.Rows[0][0].ToString();
+                        string email = logic.getEmail(from);
+                        msgViewFrom.Text = from + " - " + email;
+                        dt.Rows[0][0].ToString();
+                        msgViewDate.Text = dt.Rows[0][3].ToString();
+                        msgViewTxt.Text = logic.getMsgById(dt.Rows[0][4].ToString());
+                        string[] sub = (dt.Rows[0][1].ToString()).Split('-');
+                        msgSubView.Text = sub[0];
+                        inboxViewID.Visible = false;
+                        SentViewID.Visible = false;
+                        msgViewID.Visible = true;
+                        FavouritesID.Visible = false;
+                        DraftViewID.Visible = false;
+                    }
+
+                    else
+                    {
+                        if (!Page.IsPostBack)
+                        {
+                            inboxView.DataSource = logic.getAllMessages(Session["usr"].ToString(), 1);
+                            inboxView.DataBind();
+                        }
+
+                        inboxViewID.Visible = true;
+                        SentViewID.Visible = false;
+                        msgViewID.Visible = false;
+                        FavouritesID.Visible = false;
+                        DraftViewID.Visible = false;
+                    }
+
+                    int notRead = logic.notReadMsg(Session["usr"].ToString());
                 numOfLabel.Text = "(" + notRead.ToString() + ")";
                 
             }
@@ -188,8 +202,14 @@ namespace BarteRoom
 
                         break;
                     case DataControlRowType.DataRow:
-                        e.Row.Attributes.Add("onmouseover", "this.style.cursor='pointer';");
-                        e.Row.Attributes.Add("onclick", Page.ClientScript.GetPostBackEventReference(SentGridView, "Select$" + e.Row.RowIndex));
+                        e.Row.Cells[1].Attributes.Add("onmouseover", "this.style.cursor='pointer';");
+                        e.Row.Cells[1].Attributes.Add("onclick", Page.ClientScript.GetPostBackEventReference(SentGridView, "Select$" + e.Row.RowIndex));
+                        e.Row.Cells[2].Attributes.Add("onmouseover", "this.style.cursor='pointer';");
+                        e.Row.Cells[2].Attributes.Add("onclick", Page.ClientScript.GetPostBackEventReference(SentGridView, "Select$" + e.Row.RowIndex));
+                        e.Row.Cells[3].Attributes.Add("onmouseover", "this.style.cursor='pointer';");
+                        e.Row.Cells[3].Attributes.Add("onclick", Page.ClientScript.GetPostBackEventReference(SentGridView, "Select$" + e.Row.RowIndex));
+                        e.Row.Cells[4].Attributes.Add("onmouseover", "this.style.cursor='pointer';");
+                        e.Row.Cells[4].Attributes.Add("onclick", Page.ClientScript.GetPostBackEventReference(SentGridView, "Select$" + e.Row.RowIndex));
 
                         if ((((Label)e.Row.FindControl("sentmsgLabel")).Text).Length > 80)
                         {
@@ -293,6 +313,74 @@ namespace BarteRoom
             msgViewID.Visible = false;
             FavouritesID.Visible = false;
             DraftViewID.Visible = true;
+        }
+
+        protected void deleteOut_Click(object sender, EventArgs e)
+        {
+            logic = new Logic();
+
+            foreach (GridViewRow row in SentGridView.Rows)
+            {
+                if (((CheckBox)row.FindControl("CheckOutMsg")).Checked)
+                {
+                    string id = ((Label)row.FindControl("sentidLabel")).Text;
+                    logic.deleteSentMsg(id);
+                }
+            }
+
+            SentGridView.DataSource = logic.getAllSentMessages(Session["usr"].ToString());
+            SentGridView.DataBind();
+
+            inboxViewID.Visible = false;
+            SentViewID.Visible = true;
+            msgViewID.Visible = false;
+            FavouritesID.Visible = false;
+            DraftViewID.Visible = false;
+        }
+
+        protected void FavourDelete_Click(object sender, EventArgs e)
+        {
+            logic = new Logic();
+
+            foreach (GridViewRow row in FavourView.Rows)
+            {
+                if (((CheckBox)row.FindControl("FavourCheckMsg")).Checked)
+                {
+                    string id = ((Label)row.FindControl("FavouridLabel")).Text;
+                    logic.deleteMsg(id);
+                }
+            }
+
+            FavourView.DataSource = logic.getAllMessages(Session["usr"].ToString(), 3);
+            FavourView.DataBind();
+
+            inboxViewID.Visible = false;
+            SentViewID.Visible = false;
+            msgViewID.Visible = false;
+            FavouritesID.Visible = true;
+            DraftViewID.Visible = false;
+        }
+
+        protected void FavourStarCmd_Click(object sender, EventArgs e)
+        {
+            logic = new Logic();
+
+            foreach (GridViewRow row in FavourView.Rows)
+            {
+                if (((CheckBox)row.FindControl("FavourCheckMsg")).Checked)
+                {
+                    string id = ((Label)row.FindControl("FavouridLabel")).Text;
+                    logic.markAsnotStar(id);
+                }
+            }
+            FavourView.DataSource = logic.getAllMessages(Session["usr"].ToString(), 3);
+            FavourView.DataBind();
+
+            inboxViewID.Visible = false;
+            SentViewID.Visible = false;
+            msgViewID.Visible = false;
+            FavouritesID.Visible = true;
+            DraftViewID.Visible = false;
         }
     }
 }

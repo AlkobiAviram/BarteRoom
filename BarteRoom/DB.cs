@@ -1398,11 +1398,11 @@ namespace BarteRoom
             }
 
             catch (Exception e) { }
-
+            
             while (rdr.Read())
             {
-
                 object[] RowValues = { "", "", "", "", "", "", "" };
+
 
                 RowValues[0] = rdr[0].ToString();
 
@@ -1433,7 +1433,7 @@ namespace BarteRoom
                 RowValues[4] = rdr[4].ToString();
                 RowValues[5] = rdr[5].ToString();
 
-                if (flag != 0)
+                if (flag == 3 || flag == 1)
                 {
                     RowValues[6] = rdr[6].ToString();
                 }
@@ -1753,6 +1753,23 @@ namespace BarteRoom
             catch (Exception e) { }
         }
 
+        public void markAsnotStar(string id)
+        {
+            query = "UPDATE dbo.msg SET star = 0 WHERE Id='" + id + "';";
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+
+                command.ExecuteNonQuery();
+                connect.Close();
+            }
+
+            catch (Exception e) { }
+        }
+
         public void setMsgAsRead(string id)
         {
             query = "UPDATE dbo.msg SET isRead = 1 WHERE Id='" + id + "';";
@@ -1768,6 +1785,87 @@ namespace BarteRoom
             }
 
             catch (Exception e) { }
+        }
+
+        public bool isMsgExists(string id)
+        {
+            int tmp = 0;
+
+            try
+            {
+                connect.Open();
+
+                query = "select COUNT(*) from dbo.msg where Id = '" + id + "';";
+                command = new SqlCommand(query, connect);
+
+                tmp = Convert.ToInt32(command.ExecuteScalar().ToString());
+                connect.Close();
+            }
+
+            catch (Exception e) { }
+
+            if (tmp == 1)
+                return true;
+
+            else
+                return false;
+        }
+
+        public DataTable getSentMessage(string id)
+        {
+            DataTable dtable = new DataTable();
+            DataColumn dt = new DataColumn("To");
+            DataColumn dt1 = new DataColumn("Subject");
+            DataColumn dt2 = new DataColumn("Msg");
+            DataColumn dt3 = new DataColumn("Datetime");
+            DataColumn dt4 = new DataColumn("Id");
+
+            dtable.Columns.Add(dt);
+            dtable.Columns.Add(dt1);
+            dtable.Columns.Add(dt2);
+            dtable.Columns.Add(dt3);
+            dtable.Columns.Add(dt4);
+
+            query = "select toUsr, subject, msg_body, datetime, Id from dbo.sentmsg where Id = '" + id + "' order by datetime DESC;";
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+                rdr = command.ExecuteReader();
+
+
+            }
+
+            catch (Exception e) { }
+
+
+            while (rdr.Read())
+            {
+
+                object[] RowValues = { "", "", "", "", "" };
+
+                RowValues[0] = rdr[0].ToString();
+
+                String tmpSub = rdr[1].ToString();
+
+                RowValues[1] = tmpSub;
+
+                RowValues[2] = rdr[2].ToString();
+
+                string[] tmp = rdr[3].ToString().Split(' ');
+                RowValues[3] = tmp[0] + " at " + tmp[1];
+                RowValues[4] = rdr[4].ToString();
+
+                DataRow dRow;
+                dRow = dtable.Rows.Add(RowValues);
+                dtable.AcceptChanges();
+            }
+
+            connect.Close();
+
+            return dtable;
         }
 
     }
