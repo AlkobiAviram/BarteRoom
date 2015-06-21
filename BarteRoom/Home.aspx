@@ -9,8 +9,9 @@
 <table class="table-hover">
     <tr>
         <td>
+         <h2><asp:Label ID="Label1" runat="server" Text="New Items"></asp:Label></h2><br />
 <!-----------------------------Image Silder------------------------------------------------------>
-         <section class='galeria' id="imgSlider" runat="server">
+        <section class='galeria' id="imgSlider" runat="server">
         <input type="radio" id="uno" value="1" name="tractor" checked='checked' />    
         <input type="radio" id="dole" value="2" name="tractor" />      
         <input type="radio" id="tele" value="3" name="tractor" />
@@ -51,6 +52,13 @@
 <!----------------------------------------------------------------------------------------->
         </td>
         <td>
+
+<!-----------------------------MostViewedItems------------------------------------------------------>
+
+
+
+
+<!----------------------------------------------------------------------------------->
 
         </td>
     </tr>

@@ -15,8 +15,7 @@ namespace BarteRoom
     public class Logic
     {
         private DB data;
-        private LinkedList<Item> itemList;
-        private DataTable dtable;
+      
         public Logic() {
 
         }
@@ -444,6 +443,16 @@ namespace BarteRoom
         {
             data = new DB();
             data.markAsnotStar(id);
+        }
+
+
+
+        /////////////////////////////////////////////////////////
+        //regarding most viewed items
+        public void AddView(string item_id)
+        {
+            data = new DB();
+            data.AddView(item_id);
         }
     }
 }

@@ -155,7 +155,8 @@ namespace BarteRoom
         {
             int index = Convert.ToInt32(e.NewSelectedIndex);
             GridViewRow row = GridView1.Rows[index];
-           string id= row.Cells[6].Text;
+            string id= row.Cells[6].Text;
+            lg.AddView(id);
             Response.Redirect("/ItemView.aspx?"+"id="+Server.UrlEncode(id));
             GridView1.EditIndex = -1;
             bind();

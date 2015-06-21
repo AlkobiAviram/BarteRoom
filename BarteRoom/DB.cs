@@ -177,6 +177,84 @@ namespace BarteRoom
         }
 
 
+        public void AddView(string item_id)
+        {
+            int curr_value;
+            try
+            {
+                connect.Open();
+                //getting the value
+                query = "select views from dbo.mostViewedItems where item_id = '" + item_id + "';";
+                command = new SqlCommand(query, connect);
+                curr_value= Convert.ToInt32(command.ExecuteScalar().ToString());
+
+                //inc the value
+                query = "update dbo.mostViewedItems set views="+(curr_value+1)+" where item_id = '" + item_id + "';";
+                command = new SqlCommand(query, connect);
+                command.ExecuteNonQuery();
+                connect.Close();
+            }
+
+            catch (Exception e) { }
+        }
+
+        public DataTable getDataSourceForMostViewedItems()
+        {
+            DataTable dtable = new DataTable();
+
+            DataColumn dt = new DataColumn("comments");
+            DataColumn dt1 = new DataColumn("image");
+            DataColumn dt2 = new DataColumn("id");
+            DataColumn dt3= new DataColumn("views");
+
+            dtable.Columns.Add(dt);
+            dtable.Columns.Add(dt1);
+            dtable.Columns.Add(dt2);
+            dtable.Columns.Add(dt3);
+
+
+
+            query = "select itm.comments,img.path,mvi.item_id mvi.views " +
+                    "from dbo.items itm, dbo.images img,dbo.mostViewedItems mvi " +
+                    "where itm.id=img.item_id and img.item_id=mvi.item_id and img.isProfile=1 " +
+                    "order by mvi.views DESC";
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+                rdr = command.ExecuteReader();
+
+
+            }
+
+            catch (Exception e) { }
+
+            while (rdr.Read())
+            {
+                object[] RowValues = { "", "", "" ,""};
+                RowValues[0] = rdr[0].ToString();
+                RowValues[1] = rdr[1].ToString();
+                RowValues[2] = rdr[2].ToString();
+                RowValues[3] = rdr[3].ToString();
+
+
+
+
+                DataRow dRow;
+                dRow = dtable.Rows.Add(RowValues);
+                dtable.AcceptChanges();
+            }
+
+            connect.Close();
+        
+
+
+
+
+            return dtable;   
+        }
 
         public DataTable getDataSourceForItemsByChoice(int whichItems, string name, string clas)
         {
@@ -400,7 +478,8 @@ namespace BarteRoom
         public bool addItem(Item item)
         {
 
-            query = "insert into dbo.items values('" + item.Usr + "','" + item.Name + "','" + item.Clss + "','" + item.Comments + "','" + item.Description + "','" + item.Id + "');";
+            query = "insert into dbo.items values('" + item.Usr + "','" + item.Name + "','" + item.Clss + "','" + item.Comments + "','" + item.Description + "','" + item.Id + "'); "+
+                    "insert into dbo.mostViewedItems values('" + item.Id + "',0);";
 
 
             try

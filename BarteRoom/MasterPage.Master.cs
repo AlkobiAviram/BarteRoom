@@ -321,6 +321,8 @@ namespace BarteRoom
             int index = Convert.ToInt32(homeGridView.SelectedIndex);
             GridViewRow row = homeGridView.Rows[index];
             string id= row.Cells[3].Text;
+            logic = new Logic();
+            logic.AddView(id);
             Response.Redirect("/ItemView.aspx?" + "id=" + Server.UrlEncode(id));
         }
 
