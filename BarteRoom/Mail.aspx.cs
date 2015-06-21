@@ -50,6 +50,7 @@ namespace BarteRoom
                     string[] sub = (dt.Rows[0][1].ToString()).Split('-');
                     msgSubView.Text = sub[0];
                     inboxViewID.Visible = false;
+                    SentViewID.Visible = false;
                     msgViewID.Visible = true;
                 }
 
@@ -70,6 +71,7 @@ namespace BarteRoom
             inboxView.DataBind();
 
             inboxViewID.Visible = true;
+            SentViewID.Visible = false;
             msgViewID.Visible = false;
         }
 
@@ -88,7 +90,7 @@ namespace BarteRoom
              
                         if ((((Label)e.Row.FindControl("msgLabel")).Text).Length > 125)
                         {
-                            ((Label)e.Row.FindControl("msgLabel")).Text = ((Label)e.Row.FindControl("msgLabel")).Text.Substring(0, 125) + "....";
+                            ((Label)e.Row.FindControl("msgLabel")).Text = ((Label)e.Row.FindControl("msgLabel")).Text.Substring(0, 120) + "....";
                         }
 
                         if ((((Label)e.Row.FindControl("isReadLabel")).Text).Equals("0"))
@@ -144,7 +146,8 @@ namespace BarteRoom
             inboxView.DataSource = logic.getAllSentMessages(Session["usr"].ToString());
             inboxView.DataBind();
 
-            inboxViewID.Visible = true;
+            inboxViewID.Visible = false;
+            SentViewID.Visible = true;
             msgViewID.Visible = false;
         }
 

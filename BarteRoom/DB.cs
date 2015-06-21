@@ -1321,6 +1321,19 @@ namespace BarteRoom
 
             catch (Exception e) { }
 
+            query = "insert into dbo.sentmsg values('" + msg.Id + "','" + msg.From + "','" + msg.To + "','" + msg.Subject + "','" + msg.Msg_body + "','" + dt + "');";
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+
+                command.ExecuteNonQuery();
+                connect.Close();
+            }
+
+            catch (Exception e) { }
         }
         //public LinkedList<Message> getAllSentMessages
 
@@ -1415,21 +1428,19 @@ namespace BarteRoom
         public DataTable getAllSentMessages(string usr)
         {
             DataTable dtable = new DataTable();
-            DataColumn dt = new DataColumn("From");
+            DataColumn dt = new DataColumn("To");
             DataColumn dt1 = new DataColumn("Subject");
             DataColumn dt2 = new DataColumn("Msg");
             DataColumn dt3 = new DataColumn("Datetime");
             DataColumn dt4 = new DataColumn("Id");
-            DataColumn dt5 = new DataColumn("IsRead");
 
             dtable.Columns.Add(dt);
             dtable.Columns.Add(dt1);
             dtable.Columns.Add(dt2);
             dtable.Columns.Add(dt3);
             dtable.Columns.Add(dt4);
-            dtable.Columns.Add(dt5);
 
-            query = "select toUsr, subject, msg_body, datetime, Id, isRead from dbo.msg where fromUsr = '" + usr + "' order by datetime DESC;";
+            query = "select toUsr, subject, msg_body, datetime, Id from dbo.sentmsg where fromUsr = '" + usr + "' order by datetime DESC;";
             
             try
             {
@@ -1441,12 +1452,13 @@ namespace BarteRoom
 
             }
 
-            catch (Exception e) { }
+            catch (Exception e) {  }
 
+            
             while (rdr.Read())
             {
 
-                object[] RowValues = { "", "", "", "", "", "" };
+                object[] RowValues = { "", "", "", "", "" };
 
                 RowValues[0] = rdr[0].ToString();
 
@@ -1466,7 +1478,6 @@ namespace BarteRoom
                 string[] tmp = rdr[3].ToString().Split(' ');
                 RowValues[3] = tmp[0] + " at " + tmp[1];
                 RowValues[4] = rdr[4].ToString();
-                RowValues[5] = "";
 
                 DataRow dRow;
                 dRow = dtable.Rows.Add(RowValues);

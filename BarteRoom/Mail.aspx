@@ -25,18 +25,18 @@
             border-bottom-color: darkgrey;
             border-top-color: darkgrey;
             border-top-style: solid;
-            border-top-width: medium;
+            border-top-width: 1px;
             border-bottom-style: solid;
-            border-bottom-width: medium;
+            border-bottom-width: 1px;
         }
         .auto-style10 {
             border-bottom-color: darkgrey;
             border-top-color: darkgrey; 
             width: 364px;
             border-top-style: solid;
-            border-top-width: medium;
+            border-top-width: 1px;
             border-bottom-style: solid;
-            border-bottom-width: medium;
+            border-bottom-width: 1px;
         }
         .auto-style11 {
             width: 120px;
@@ -49,6 +49,11 @@
         .auto-style19 {
             width: 221px;
         }
+        .leftPad{
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -133,7 +138,7 @@
                                     </ItemTemplate>                                          
                                 </asp:TemplateField> 
 
-                            <asp:TemplateField HeaderText="Subject" ShowHeader="False" ItemStyle-HorizontalAlign="Left" ConvertEmptyStringToNull="true">
+                            <asp:TemplateField HeaderText="Subject" ShowHeader="False" ItemStyle-CssClass="leftPad" ItemStyle-HorizontalAlign="Left" ConvertEmptyStringToNull="true">
                                     <ItemTemplate>
                                         <asp:Label ID="subjectLabel" runat="server" Font-Size="18px" ForeColor="Black" Text='<%# Bind("Subject") %>'></asp:Label>
                                         <asp:Label ID="msgLabel" runat="server" Font-Size="Medium" ForeColor="Black" Text='<%# Bind("Msg") %>'></asp:Label>
@@ -159,6 +164,42 @@
                                 </asp:TemplateField>
 
                         </Columns>
+                      
+                    </asp:GridView>
+    
+        </div>
+
+                    <div class="SentView" runat="server" id="SentViewID">
+                    <asp:GridView ID="SentGridView" ShowHeader="false" Width="97%" GridLines="Horizontal" AutoGenerateColumns="False" OnSelectedIndexChanged="inboxView_SelectedIndexChanged" runat="server">
+                        <Columns>
+
+                            <asp:TemplateField HeaderText="From" ShowHeader="False" ConvertEmptyStringToNull="true" ItemStyle-HorizontalAlign="Left">
+                                    <ItemTemplate>
+                                        <asp:Label ID="toLabel" runat="server" Font-Size="18px" ForeColor="Black" Text='<%# Bind("To") %>'></asp:Label>
+                                    </ItemTemplate>                                          
+                                </asp:TemplateField> 
+
+                            <asp:TemplateField HeaderText="Subject" ShowHeader="False" ItemStyle-CssClass="leftPad" ItemStyle-HorizontalAlign="Left" ConvertEmptyStringToNull="true">
+                                    <ItemTemplate>
+                                        <asp:Label ID="sentsubjectLabel" runat="server" Font-Size="18px" ForeColor="Black" Text='<%# Bind("Subject") %>'></asp:Label>
+                                        <asp:Label ID="sentmsgLabel" runat="server" Font-Size="Medium" ForeColor="Black" Text='<%# Bind("Msg") %>'></asp:Label>
+                                    </ItemTemplate>                                          
+                                </asp:TemplateField> 
+
+                            <asp:TemplateField HeaderText="Datetime" ShowHeader="False" ConvertEmptyStringToNull="true" ItemStyle-HorizontalAlign="Right">
+                                    <ItemTemplate>
+                                        <asp:Label ID="sentdatetimeLabel" runat="server" Font-Size="Medium" ForeColor="Black" Text='<%# Bind("Datetime") %>'></asp:Label>
+                                    </ItemTemplate>                                          
+                                </asp:TemplateField>
+
+                            <asp:TemplateField HeaderText="Id" ShowHeader="False" ConvertEmptyStringToNull="true">
+                                    <ItemTemplate>
+                                        <asp:Label ID="idLabel" runat="server" Font-Size="0px" ForeColor="Black" Text='<%# Bind("Id") %>'></asp:Label>
+                                    </ItemTemplate>                                          
+                                </asp:TemplateField>
+
+                        </Columns>
+                      
                     </asp:GridView>
     
         </div>

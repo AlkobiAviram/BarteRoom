@@ -121,6 +121,24 @@ namespace BarteRoom {
         protected global::System.Web.UI.WebControls.GridView inboxView;
         
         /// <summary>
+        /// SentViewID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SentViewID;
+        
+        /// <summary>
+        /// SentGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView SentGridView;
+        
+        /// <summary>
         /// InboxCmd control.
         /// </summary>
         /// <remarks>
