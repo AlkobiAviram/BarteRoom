@@ -66,6 +66,7 @@ namespace BarteRoom
                         FavouritesID.Visible = false;
                         DraftViewID.Visible = false;
                         draftEmptyID.Visible = false;
+                        newMessageID.Visible = false;
                     }
 
                     else
@@ -87,6 +88,7 @@ namespace BarteRoom
                             msgViewID.Visible = false;
                             FavouritesID.Visible = false;
                             DraftViewID.Visible = false;
+                            newMessageID.Visible = false;
                         }
 
                         else
@@ -100,6 +102,7 @@ namespace BarteRoom
                             msgViewID.Visible = false;
                             FavouritesID.Visible = false;
                             DraftViewID.Visible = false;
+                            newMessageID.Visible = false;
                         }
                     }
                 }
@@ -127,6 +130,7 @@ namespace BarteRoom
                 msgViewID.Visible = false;
                 FavouritesID.Visible = false;
                 DraftViewID.Visible = false;
+                newMessageID.Visible = false;
             }
 
             else
@@ -140,6 +144,7 @@ namespace BarteRoom
                 msgViewID.Visible = false;
                 FavouritesID.Visible = false;
                 DraftViewID.Visible = false;
+                newMessageID.Visible = false;
             }
         }
 
@@ -244,6 +249,7 @@ namespace BarteRoom
                 msgViewID.Visible = false;
                 FavouritesID.Visible = false;
                 DraftViewID.Visible = false;
+                newMessageID.Visible = false;
             }
 
             else
@@ -257,6 +263,7 @@ namespace BarteRoom
                 msgViewID.Visible = false;
                 FavouritesID.Visible = false;
                 DraftViewID.Visible = false;
+                newMessageID.Visible = false;
             }
         }
 
@@ -381,6 +388,7 @@ namespace BarteRoom
                 msgViewID.Visible = false;
                 FavouritesID.Visible = false;
                 DraftViewID.Visible = false;
+                newMessageID.Visible = false;
             }
 
             else
@@ -394,6 +402,7 @@ namespace BarteRoom
                 msgViewID.Visible = false;
                 FavouritesID.Visible = true;
                 DraftViewID.Visible = false;
+                newMessageID.Visible = false;
             }
         }
 
@@ -415,6 +424,7 @@ namespace BarteRoom
                 msgViewID.Visible = false;
                 FavouritesID.Visible = false;
                 DraftViewID.Visible = false;
+                newMessageID.Visible = false;
             }
 
             else
@@ -428,6 +438,7 @@ namespace BarteRoom
                 msgViewID.Visible = false;
                 FavouritesID.Visible = false;
                 DraftViewID.Visible = true;
+                newMessageID.Visible = false;
             }
         }
 
@@ -459,6 +470,7 @@ namespace BarteRoom
                 msgViewID.Visible = false;
                 FavouritesID.Visible = false;
                 DraftViewID.Visible = false;
+                newMessageID.Visible = false;
             }
 
             else
@@ -472,6 +484,7 @@ namespace BarteRoom
                 msgViewID.Visible = false;
                 FavouritesID.Visible = false;
                 DraftViewID.Visible = false;
+                newMessageID.Visible = false;
             }
         }
 
@@ -503,6 +516,7 @@ namespace BarteRoom
                 msgViewID.Visible = false;
                 FavouritesID.Visible = false;
                 DraftViewID.Visible = false;
+                newMessageID.Visible = false;
             }
 
             else
@@ -516,6 +530,7 @@ namespace BarteRoom
                 msgViewID.Visible = false;
                 FavouritesID.Visible = true;
                 DraftViewID.Visible = false;
+                newMessageID.Visible = false;
             }
         }
 
@@ -545,6 +560,7 @@ namespace BarteRoom
                 msgViewID.Visible = false;
                 FavouritesID.Visible = false;
                 DraftViewID.Visible = false;
+                newMessageID.Visible = false;
             }
 
             else
@@ -558,6 +574,7 @@ namespace BarteRoom
                 msgViewID.Visible = false;
                 FavouritesID.Visible = true;
                 DraftViewID.Visible = false;
+                newMessageID.Visible = false;
             }
         }
 
@@ -589,6 +606,7 @@ namespace BarteRoom
                 FavouritesID.Visible = false;
                 DraftViewID.Visible = false;
                 draftEmptyID.Visible = true;
+                newMessageID.Visible = false;
             }
 
             else
@@ -602,6 +620,7 @@ namespace BarteRoom
                 DraftViewID.Visible = true;
                 draftEmptyID.Visible = false;
                 sentEmptyID.Visible = false;
+                newMessageID.Visible = false;
             }
         }
 
@@ -658,6 +677,36 @@ namespace BarteRoom
 
                 ClientScript.RegisterStartupScript(typeof(Page), "MessagePopUp", "alert('Message Deleteed!');", true);
             }
+        }
+
+        protected void newMsgCmd_Click(object sender, EventArgs e)
+        {
+            favourEmptyID.Visible = false;
+            inboxViewID.Visible = false;
+            inboxEmptyID.Visible = false;
+            SentViewID.Visible = false;
+            msgViewID.Visible = false;
+            FavouritesID.Visible = false;
+            DraftViewID.Visible = false;
+            draftEmptyID.Visible = false;
+            sentEmptyID.Visible = false;
+            newMessageID.Visible = true;
+        }
+
+        protected void sendMsg_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void newDraft_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void clearMsg_Click(object sender, EventArgs e)
+        {
+            newSubTxt.Text = "";
+            newMsgTxt.Text = "";
         }   
     }
 }

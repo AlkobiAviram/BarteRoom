@@ -22,6 +22,55 @@
                 <td class="auto-style7">&nbsp;</td>
                 <td class="auto-style6">
 
+                    <div class="newMessage" runat="server" id="newMessageID">
+
+                        <table class="nav-justified">
+                            <tr>
+                                <td class="auto-style11">&nbsp;</td>
+                                <td>
+                                    <h1>New Message</h1>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="auto-style11">&nbsp;</td>
+                                <td>
+                                    <asp:TextBox ID="newSubTxt" class="form-control" placeholder="Subject" Font-Size="18px" Font-Bold="true" Width="832px" runat="server"></asp:TextBox>
+                                </td>
+                            </tr>
+
+                            <tr>                   
+                                <td class="auto-style11">&nbsp;</td>
+                                <td><br />
+                                    <asp:Panel ID="Panel1" Width="832px" Height="1px" BackColor="DarkGray" runat="server"></asp:Panel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="auto-style11">&nbsp;</td>
+                                <td><br /><br />
+                                    <asp:TextBox ID="newMsgTxt" class="form-control" placeholder="Write your message" TextMode="MultiLine" Font-Size="18px" Height="300px" Width="832px" runat="server"></asp:TextBox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="auto-style11">&nbsp;</td>
+                                <td>
+                                    <asp:Panel ID="Panel2" Width="832px" CssClass="replayStyle" BackColor="#D3D3D3" runat="server" BorderStyle="None">
+                                        <asp:LinkButton ID="sendMsg" CssClass="btn btn-success" OnClick="sendMsg_Click" runat="server" ValidationGroup="sendGroup"> Send <span class="glyphicon glyphicon-send"></span></asp:LinkButton>
+                                        <asp:LinkButton ID="newDraft" CssClass="btn btn-primary" OnClick="newDraft_Click" runat="server" ValidationGroup="sendGroup"> Draft <span class="glyphicon glyphicon-file"></span></asp:LinkButton>
+                                        <asp:LinkButton ID="clearMsg" CssClass="btn btn-danger" OnClick="clearMsg_Click" runat="server"> Clear <span class="glyphicon glyphicon-trash"></span></asp:LinkButton>
+                                    </asp:Panel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="auto-style11">&nbsp;</td>
+                                <td>
+                                    <asp:RequiredFieldValidator ID="newMsgRequired" runat="server" ForeColor="Red" ControlToValidate="newMsgTxt" ErrorMessage="Your message body is empty" ValidationGroup="sendGroup"></asp:RequiredFieldValidator>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+
+
                     <div class="msgView" visible="false" runat="server" id="msgViewID">
                         <table class="nav-justified">
                             <tr>
@@ -53,7 +102,7 @@
                                 <td class="auto-style11">&nbsp;</td>
                                 <td>
 
-                                    <asp:TextBox ID="msgViewTxt" TextMode="MultiLine" Font-Size="18px" ReadOnly="true" Height="400px" runat="server" Width="832px"></asp:TextBox>
+                                    <asp:TextBox ID="msgViewTxt" TextMode="MultiLine" class="form-control" Font-Size="18px" ReadOnly="true" Height="400px" runat="server" Width="832px"></asp:TextBox>
 
                                 </td>
                          
@@ -68,7 +117,7 @@
                             <tr>
                                 <td class="auto-style11">&nbsp;</td>
                                 <td><br /><br />
-                                    <asp:TextBox ID="replayTxt" TextMode="MultiLine" Font-Size="18px" Height="100px" Width="832px" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="replayTxt" TextMode="MultiLine" class="form-control" placeholder="Reply a message" Font-Size="18px" Height="100px" Width="832px" runat="server"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
@@ -77,12 +126,18 @@
                                     <asp:Panel ID="replayPanel" Width="832px" CssClass="replayStyle" BackColor="#D3D3D3" runat="server" BorderStyle="None">
                                         <asp:LinkButton ID="replayButton" CssClass="btn btn-success" OnClick="replayButton_Click" runat="server" ValidationGroup="replyGroup"> Reply <span class="glyphicon glyphicon-send"></span></asp:LinkButton>
                                         <asp:LinkButton ID="saveDraft" CssClass="btn btn-primary" OnClick="saveDraft_Click" runat="server" ValidationGroup="replyGroup"> Draft <span class="glyphicon glyphicon-file"></span></asp:LinkButton>
-                                        <asp:LinkButton ID="deleteMsgView" CssClass="btn btn-danger" OnClick="deleteMsgView_Click" runat="server"> Delete <span class="glyphicon glyphicon-trash"></span></asp:LinkButton>
+                                        <asp:LinkButton ID="deleteMsgView" CssClass="btn btn-danger" OnClick="deleteMsgView_Click" runat="server"> Delete <span class="glyphicon glyphicon-trash"></span></asp:LinkButton>                                      
                                     </asp:Panel>
                                 </td>
                             </tr>
+                            <tr>
+                                <td class="auto-style11">&nbsp;</td>
+                                <td>
+                                    <asp:RequiredFieldValidator ID="msg_body_Required" ControlToValidate="replayTxt" ForeColor="Red" runat="server" ErrorMessage="Your message is empty!" ValidationGroup="replyGroup" Display="Dynamic"></asp:RequiredFieldValidator>
+                                </td>
+                            </tr>
                         </table>
-                        <asp:RequiredFieldValidator ID="msg_body_Required" ControlToValidate="replayTxt" ForeColor="Red" runat="server" ErrorMessage="Your message is empty!" ValidationGroup="replyGroup" Display="Dynamic"></asp:RequiredFieldValidator>
+                        
                         <br /><br /><br /><br />
                     </div>
 
@@ -131,7 +186,7 @@
                             <tr>
                                 <td></td>
                                 <td>
-                                    <h1>You don't have any out messages</h1>
+                                    <h1>You don't have any Drafts</h1>
                                 </td>
                             </tr>
                         </table>
@@ -428,12 +483,12 @@
     <nav class="main-menu">
             <ul>
                <li class="has-subnav">
-                    <a href="#">
+                    <asp:LinkButton ID="newMsgCmd" runat="server" OnClick="newMsgCmd_Click">
                        <i class="fa fa-pencil fa-2x"></i>
                         <span class="nav-text">
                             New message
                         </span>
-                    </a>
+                    </asp:LinkButton>
                 </li>
 
                 <li class="has-subnav">
