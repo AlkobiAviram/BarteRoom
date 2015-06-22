@@ -8,6 +8,22 @@
         .auto-style21 {
             width: 268px;
         }
+
+        .auto-style22 {
+            width: 947px;
+        }
+        .auto-style23 {
+            width: 371px;
+        }
+
+        .auto-style25 {
+            width: 129px;
+        }
+
+        .auto-style26 {
+            width: 565px;
+        }
+
     </style>
 
 </asp:Content>
@@ -24,46 +40,66 @@
 
                     <div class="newMessage" runat="server" id="newMessageID">
 
-                        <table class="nav-justified">
+                       <table class="nav-justified">
+
+                           <tr>
+                               <td class="auto-style25">&nbsp;</td>
+                               <td class="auto-style26">
+                                   <h1>New Message</h1>
+                               </td>
+                               <td>
+                                    <h1>To:</h1>
+                               </td>
+                               <td>
+                                    <h1><asp:DropDownList ID="connectionsList" class="form-control" runat="server" Width="201px"></asp:DropDownList></h1>
+                               </td>
+                           </tr>
+
+                       </table>
+                        
+                        
+                         <table class="nav-justified">
                             <tr>
                                 <td class="auto-style11">&nbsp;</td>
-                                <td>
-                                    <h1>New Message</h1>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="auto-style11">&nbsp;</td>
-                                <td>
+                                <td class="auto-style23">
                                     <asp:TextBox ID="newSubTxt" class="form-control" placeholder="Subject" Font-Size="18px" Font-Bold="true" Width="832px" runat="server"></asp:TextBox>
                                 </td>
                             </tr>
 
                             <tr>                   
                                 <td class="auto-style11">&nbsp;</td>
-                                <td><br />
+                                <td class="auto-style23"><br />
                                     <asp:Panel ID="Panel1" Width="832px" Height="1px" BackColor="DarkGray" runat="server"></asp:Panel>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="auto-style11">&nbsp;</td>
-                                <td><br /><br />
+                                <td class="auto-style23">
+                                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectToDb %>" SelectCommand="SELECT connection FROM connections WHERE (usr = @myUsr)">
+                                        <SelectParameters>
+                                            <asp:SessionParameter Name="myUsr" SessionField="usr" Type="String" />
+                                        </SelectParameters>
+                                    </asp:SqlDataSource>
+                                    <br /><br />
                                     <asp:TextBox ID="newMsgTxt" class="form-control" placeholder="Write your message" TextMode="MultiLine" Font-Size="18px" Height="300px" Width="832px" runat="server"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="auto-style11">&nbsp;</td>
-                                <td>
+                                <td class="auto-style23">
                                     <asp:Panel ID="Panel2" Width="832px" CssClass="replayStyle" BackColor="#D3D3D3" runat="server" BorderStyle="None">
                                         <asp:LinkButton ID="sendMsg" CssClass="btn btn-success" OnClick="sendMsg_Click" runat="server" ValidationGroup="sendGroup"> Send <span class="glyphicon glyphicon-send"></span></asp:LinkButton>
                                         <asp:LinkButton ID="newDraft" CssClass="btn btn-primary" OnClick="newDraft_Click" runat="server" ValidationGroup="sendGroup"> Draft <span class="glyphicon glyphicon-file"></span></asp:LinkButton>
-                                        <asp:LinkButton ID="clearMsg" CssClass="btn btn-danger" OnClick="clearMsg_Click" runat="server"> Clear <span class="glyphicon glyphicon-trash"></span></asp:LinkButton>
+                                        <input id="Reset1" type="reset" class="btn btn-danger" value="Clear" />
                                     </asp:Panel>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="auto-style11">&nbsp;</td>
-                                <td>
-                                    <asp:RequiredFieldValidator ID="newMsgRequired" runat="server" ForeColor="Red" ControlToValidate="newMsgTxt" ErrorMessage="Your message body is empty" ValidationGroup="sendGroup"></asp:RequiredFieldValidator>
+                                <td class="auto-style23">
+                                    <asp:RequiredFieldValidator ID="newMsgRequired" runat="server" ForeColor="Red" ControlToValidate="newMsgTxt" ErrorMessage="Your message body is empty" Display="None" ValidationGroup="sendGroup"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="noConnection" ControlToValidate="connectionsList" ForeColor="Red" runat="server" ErrorMessage="You don't have any connections" Display="None" ValidationGroup="sendGroup"></asp:RequiredFieldValidator>
+                                    <asp:ValidationSummary ID="newMsgSummary" ValidationGroup="sendGroup" DisplayMode="BulletList" runat="server" />
                                 </td>
                             </tr>
                         </table>

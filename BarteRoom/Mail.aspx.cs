@@ -695,18 +695,56 @@ namespace BarteRoom
 
         protected void sendMsg_Click(object sender, EventArgs e)
         {
+            string to;
+            string sub;
+            string msg_body;
 
+            to = connectionsList.SelectedValue;
+            msg_body = newMsgTxt.Text;
+
+            if (newSubTxt.Text == null)
+            {
+                sub = "null";
+            }
+
+            else
+            {
+                sub = newSubTxt.Text;
+            }
+
+            Message newMsg = new Message(Session["usr"].ToString(), to, sub, msg_body);
+
+            logic = new Logic();
+
+            logic.addMessage(newMsg, 0);
+            ClientScript.RegisterStartupScript(typeof(Page), "MessagePopUp", "alert('Message Sent!');", true);
         }
 
         protected void newDraft_Click(object sender, EventArgs e)
         {
+            string to;
+            string sub;
+            string msg_body;
 
-        }
+            to = connectionsList.SelectedValue;
+            msg_body = newMsgTxt.Text;
 
-        protected void clearMsg_Click(object sender, EventArgs e)
-        {
-            newSubTxt.Text = "";
-            newMsgTxt.Text = "";
-        }   
+            if (newSubTxt.Text == null)
+            {
+                sub = "null";
+            }
+
+            else
+            {
+                sub = newSubTxt.Text;
+            }
+
+            Message newMsg = new Message(Session["usr"].ToString(), to, sub, msg_body);
+
+            logic = new Logic();
+
+            logic.addMessage(newMsg, 1);
+            ClientScript.RegisterStartupScript(typeof(Page), "MessagePopUp", "alert('Save as draft!');", true);
+        } 
     }
 }

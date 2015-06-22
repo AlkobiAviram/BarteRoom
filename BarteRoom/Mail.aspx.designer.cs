@@ -22,6 +22,15 @@ namespace BarteRoom {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl newMessageID;
         
         /// <summary>
+        /// connectionsList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList connectionsList;
+        
+        /// <summary>
         /// newSubTxt control.
         /// </summary>
         /// <remarks>
@@ -38,6 +47,15 @@ namespace BarteRoom {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel Panel1;
+        
+        /// <summary>
+        /// SqlDataSource2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource2;
         
         /// <summary>
         /// newMsgTxt control.
@@ -76,15 +94,6 @@ namespace BarteRoom {
         protected global::System.Web.UI.WebControls.LinkButton newDraft;
         
         /// <summary>
-        /// clearMsg control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton clearMsg;
-        
-        /// <summary>
         /// newMsgRequired control.
         /// </summary>
         /// <remarks>
@@ -92,6 +101,24 @@ namespace BarteRoom {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator newMsgRequired;
+        
+        /// <summary>
+        /// noConnection control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator noConnection;
+        
+        /// <summary>
+        /// newMsgSummary control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary newMsgSummary;
         
         /// <summary>
         /// msgViewID control.
