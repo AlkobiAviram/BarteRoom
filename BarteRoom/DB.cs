@@ -1048,7 +1048,7 @@ namespace BarteRoom
             return item_id;
         
         }
-
+        
         public void deleteClass(string className)
         {
             query = "DELETE FROM dbo.classes WHERE cls_name = '" + className + "';";

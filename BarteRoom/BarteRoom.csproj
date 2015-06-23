@@ -149,7 +149,6 @@
     <Content Include="Scripts\jquery.parallax-scroll.js" />
     <Content Include="Scripts\jquery.parallax-scroll.min.js" />
     <Content Include="Scripts\myjs.js" />
-    <Content Include="Scripts\ninja-slider.js" />
     <Content Include="Scripts\npm.js" />
     <Content Include="ItemView.aspx" />
     <Content Include="style2.css" />

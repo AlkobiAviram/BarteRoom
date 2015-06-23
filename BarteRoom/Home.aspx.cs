@@ -112,6 +112,7 @@ namespace BarteRoom
 
             GridView1.DataSource = lg.getDataSourceForMostViewedItems();
             GridView1.DataBind();
+      
 
         }
 
