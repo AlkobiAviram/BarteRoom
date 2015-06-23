@@ -230,8 +230,8 @@ namespace BarteRoom
             }
 
             catch (Exception e) { }
-
-            while (rdr.Read())
+            int i = 3;
+            while (rdr.Read()&&i>0)
             {
                 object[] RowValues = { "", "", "" ,""};
                 RowValues[0] = rdr[0].ToString();
@@ -245,6 +245,7 @@ namespace BarteRoom
                 DataRow dRow;
                 dRow = dtable.Rows.Add(RowValues);
                 dtable.AcceptChanges();
+                i--;
             }
 
             connect.Close();

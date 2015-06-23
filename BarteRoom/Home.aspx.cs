@@ -30,15 +30,20 @@ namespace BarteRoom
             {
                
                 //setting the image slider images.
-                //note: first i save a copy of a item's imagein 620x320 dimension and then displaies it in the image slider 
+                //note: first i save a copy of a item's imagein 640x320 dimension and then displaies it in the image slider 
                 string[] split = images.ElementAt(0).Path.Split('/');
                 Bitmap target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath("img/OriginalSize_" + split[1])), 640, 320) as Bitmap;
                 string path = Server.MapPath("~/img/resizeImage0.jpg");
                 target.Save(path);
-                image1.ImageUrl = "img/resizeImage0.jpg";
-                image1Link.Text = lg.getItemById(lg.getIdByImagePath(images.ElementAt(0).Path)).Comments;
-                string id = lg.getIdByImagePath(images.ElementAt(0).Path);
-                image1Link.NavigateUrl = "/ItemView.aspx?id=" + id;
+
+                target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath("img/OriginalSize_" + split[1])), 100, 100) as Bitmap;
+                path = Server.MapPath("~/img/resizeImage_tab0.jpg");
+                target.Save(path);
+
+                ImageButton1.ImageUrl = "img/resizeImage_tab0.jpg";
+                slider.ImageUrl = "img/resizeImage0.jpg";
+
+            
 
 
 
@@ -46,11 +51,15 @@ namespace BarteRoom
                 target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath("img/OriginalSize_" + split[1])), 640, 320) as Bitmap;
                 path = Server.MapPath("~/img/resizeImage1.jpg");
                 target.Save(path);
-                image2.ImageUrl = "img/resizeImage1.jpg";
-                image2Link.Text = lg.getItemById(lg.getIdByImagePath(images.ElementAt(1).Path)).Comments;
-                id = lg.getIdByImagePath(images.ElementAt(1).Path);
-                image2Link.NavigateUrl = "/ItemView.aspx?id=" + id;
 
+                target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath("img/OriginalSize_" + split[1])), 100, 100) as Bitmap;
+                path = Server.MapPath("~/img/resizeImage_tab1.jpg");
+                target.Save(path);
+
+                ImageButton2.ImageUrl = "img/resizeImage_tab1.jpg";
+
+
+         
 
 
 
@@ -58,12 +67,34 @@ namespace BarteRoom
                 target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath("img/OriginalSize_" + split[1])), 640, 320) as Bitmap;
                 path = Server.MapPath("~/img/resizeImage2.jpg");
                 target.Save(path);
-                image3.ImageUrl = "img/resizeImage2.jpg";
+
+                target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath("img/OriginalSize_" + split[1])), 100, 100) as Bitmap;
+                path = Server.MapPath("~/img/resizeImage_tab2.jpg");
+                target.Save(path);
+
+                ImageButton3.ImageUrl = "img/resizeImage_tab2.jpg";
+
+
+
+
+
+                split = images.ElementAt(3).Path.Split('/');
+                target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath("img/OriginalSize_" + split[1])), 640, 320) as Bitmap;
+                path = Server.MapPath("~/img/resizeImage3.jpg");
+                target.Save(path);
+
+                target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath("img/OriginalSize_" + split[1])), 100, 100) as Bitmap;
+                path = Server.MapPath("~/img/resizeImage_tab3.jpg");
+                target.Save(path);
+
+                ImageButton4.ImageUrl = "img/resizeImage_tab3.jpg";
+
+                /*
                 image3Link.Text = lg.getItemById(lg.getIdByImagePath(images.ElementAt(2).Path)).Comments;
                 id = lg.getIdByImagePath(images.ElementAt(2).Path);
                 image3Link.NavigateUrl = "/ItemView.aspx?id=" + id;
-
-
+                */
+                
             }
             catch (Exception exp)
             { }
@@ -194,30 +225,42 @@ namespace BarteRoom
         //search button event handler
         void searchBtn_Click(Object sender, EventArgs e)
         {
-            imgSlider.Visible = false;
+            welcomeHome.Visible = false;
         }
 
-        protected void image3_Click(object sender, ImageClickEventArgs e)
+        protected void slider_Click(object sender, ImageClickEventArgs e)
         {
-            string id = lg.getIdByImagePath(images.ElementAt(2).Path);
-            Response.Redirect("/ItemView.aspx?id=" + id);
-
+            int slider_img_num;
+            if (Session["slider_img_num"] == null)
+                slider_img_num = 0;
+            else
+                slider_img_num = Convert.ToInt32(Session["slider_img_num"].ToString());
+            Response.Redirect("/ItemView.aspx?id=" + lg.getIdByImagePath(images.ElementAt(slider_img_num).Path));
         }
 
-        protected void image2_Click(object sender, ImageClickEventArgs e)
+        protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
         {
-            string id = lg.getIdByImagePath(images.ElementAt(1).Path);
-            Response.Redirect("/ItemView.aspx?id=" + id);
-
+            Session["slider_img_num"] = 0;
+            slider.ImageUrl = "img/resizeImage0.jpg";
         }
 
-        protected void image1_Click(object sender, ImageClickEventArgs e)
+        protected void ImageButton2_Click(object sender, ImageClickEventArgs e)
         {
-            string id = lg.getIdByImagePath(images.ElementAt(0).Path);
-            Response.Redirect("/ItemView.aspx?id=" + id);
-
+            Session["slider_img_num"] = 1;
+            slider.ImageUrl = "img/resizeImage1.jpg";
         }
 
-     
+        protected void ImageButton3_Click(object sender, ImageClickEventArgs e)
+        {
+            Session["slider_img_num"] = 2;
+            slider.ImageUrl = "img/resizeImage2.jpg";
+        }
+
+        protected void ImageButton4_Click(object sender, ImageClickEventArgs e)
+        {
+            Session["slider_img_num"] = 3;
+            slider.ImageUrl = "img/resizeImage3.jpg";
+        }
+
     }
 }

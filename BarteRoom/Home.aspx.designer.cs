@@ -31,67 +31,49 @@ namespace BarteRoom {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// imgSlider control.
+        /// slider control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl imgSlider;
+        protected global::System.Web.UI.WebControls.ImageButton slider;
         
         /// <summary>
-        /// image1 control.
+        /// ImageButton1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton image1;
+        protected global::System.Web.UI.WebControls.ImageButton ImageButton1;
         
         /// <summary>
-        /// image1Link control.
+        /// ImageButton2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink image1Link;
+        protected global::System.Web.UI.WebControls.ImageButton ImageButton2;
         
         /// <summary>
-        /// image2 control.
+        /// ImageButton3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton image2;
+        protected global::System.Web.UI.WebControls.ImageButton ImageButton3;
         
         /// <summary>
-        /// image2Link control.
+        /// ImageButton4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink image2Link;
-        
-        /// <summary>
-        /// image3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton image3;
-        
-        /// <summary>
-        /// image3Link control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink image3Link;
+        protected global::System.Web.UI.WebControls.ImageButton ImageButton4;
         
         /// <summary>
         /// Label2 control.
