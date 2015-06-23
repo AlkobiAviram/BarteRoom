@@ -20,8 +20,12 @@
          <td>
             <label>Choose Category</label>
             <br />
-            <asp:DropDownList ID="classes_list" runat="server" DataSourceID="SqlDataSource1" DataTextField="cls_name" DataValueField="cls_name" Height="23px" Width="189px" ></asp:DropDownList>
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectToDb %>" SelectCommand="SELECT cls_name FROM classes WHERE (cls_name &lt;&gt; 'All Catagories')"></asp:SqlDataSource>         
+            <asp:DropDownList ID="classes_list" runat="server" DataSourceID="SqlDataSource1" DataTextField="main_category" DataValueField="main_category" Height="23px" Width="189px" OnSelectedIndexChanged="classes_list_SelectedIndexChanged" OnTextChanged="classes_list_TextChanged" ></asp:DropDownList>
+             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectToDb %>" SelectCommand="SELECT DISTINCT [main_category] FROM [classes]"></asp:SqlDataSource>
+             <asp:DropDownList ID="sub_classes_list" runat="server"  DataTextField="sub_category" DataValueField="sub_category" Height="23px" Width="189px" AutoPostBack="True" DataMember="sub_category" OnSelectedIndexChanged="sub_classes_list_SelectedIndexChanged" >
+                 <asp:ListItem>sub_catgeory</asp:ListItem>
+             </asp:DropDownList>
+               
          </td>
                  
             <td> 

@@ -255,7 +255,7 @@
                                 </td>
 
                                 <td class="auto-style4">
-                                    <asp:DropDownList ID="catagories" class="form-control" Height="45px" Width="97%" runat="server" DataSourceID="SqlDataSource1" DataTextField="cls_name" DataValueField="cls_name">
+                                    <asp:DropDownList ID="catagories" class="form-control" Height="45px" Width="97%" runat="server" DataSourceID="SqlDataSource1" DataTextField="main_category" DataValueField="main_category">
                                         </asp:DropDownList>
                                 </td>
 
@@ -267,7 +267,7 @@
                             </tr>
                          </table>
                         <br />
-                       <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectToDb %>" SelectCommand="SELECT cls_name FROM classes WHERE (cls_name &lt;&gt; 'Choose Class')"></asp:SqlDataSource>
+                       <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectToDb %>" SelectCommand="SELECT distinct main_category FROM classes WHERE (main_category &lt;&gt; 'Choose Class')"></asp:SqlDataSource>
                        <br />
 
                         <table class="nav-justified">

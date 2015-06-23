@@ -292,7 +292,7 @@ where usr=@usr">
         <tr>
             <td class="auto-style10">&nbsp;</td>
             <td class="auto-style3">
-                <asp:GridView ID="ClassesTable" runat="server" AutoGenerateColumns="False" DataKeyNames="cls_name" DataSourceID="classesSource" GridLines="Horizontal" ShowFooter="True" Width="685px" AllowSorting="True" BorderStyle="Inset" HorizontalAlign="Center" CellPadding="5" AllowPaging="True" OnRowCommand="ClassesTable_RowCommand">
+                <asp:GridView ID="ClassesTable" runat="server" AutoGenerateColumns="False" DataKeyNames="main_category" DataSourceID="classesSource" GridLines="Horizontal" ShowFooter="True" Width="685px" AllowSorting="True" BorderStyle="Inset" HorizontalAlign="Center" CellPadding="5" AllowPaging="True" OnRowCommand="ClassesTable_RowCommand">
                     <Columns>
 
                         <asp:TemplateField ShowHeader="False">
@@ -312,13 +312,13 @@ where usr=@usr">
 
                          
 
-                            <asp:TemplateField HeaderText="class Name" SortExpression="cls_name">
+                            <asp:TemplateField HeaderText="class Name" SortExpression="main_category">
                                 <EditItemTemplate>
                                     <asp:RequiredFieldValidator ID="classRequired" ControlToValidate="classEditTxt" ForeColor="Red" runat="server" ErrorMessage="Class Name Required" ValidationGroup="classeditGroup"></asp:RequiredFieldValidator>
-                                    <asp:TextBox ID="classEditTxt" class="form-control" runat="server" Text='<%# Eval("cls_name") %>'></asp:TextBox>
+                                    <asp:TextBox ID="classEditTxt" class="form-control" runat="server" Text='<%# Eval("main_category") %>'></asp:TextBox>
                                 </EditItemTemplate>
                                 <ItemTemplate>
-                                    <asp:Label ID="Label" runat="server" Text='<%# Bind("cls_name") %>'></asp:Label>
+                                    <asp:Label ID="Label" runat="server" Text='<%# Bind("main_category") %>'></asp:Label>
                                 </ItemTemplate>
                                 <FooterTemplate>
                                     <asp:RequiredFieldValidator ID="class_UserRequired" runat="server" ErrorMessage="class Required" ControlToValidate="classInsert" ForeColor="Red" ValidationGroup="insertClass" Display="None"></asp:RequiredFieldValidator>
@@ -338,13 +338,13 @@ where usr=@usr">
                 <asp:ValidationSummary ID="insertClassValidationSummary" runat="server" ValidationGroup="insertClass" ForeColor="red"/>
                 <asp:ValidationSummary ID="editClassValidationSummary" runat="server" ValidationGroup="classeditGroup" ForeColor="red"/>
 
-                <asp:SqlDataSource ID="classesSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectToDb %>" SelectCommand="SELECT * FROM classes" InsertCommand="INSERT INTO classes(cls_name) VALUES (@class_name)" DeleteCommand="DELETE FROM classes WHERE  cls_name = @cls_name AND cls_name != 'All Catagories' AND cls_name != 'choose class'" UpdateCommand="UPDATE classes SET cls_name = @class_name WHERE (cls_name = @tmp)
+                <asp:SqlDataSource ID="classesSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectToDb %>" SelectCommand="SELECT * FROM classes" InsertCommand="INSERT INTO classes(main_category) VALUES (@class_name)" DeleteCommand="DELETE FROM classes WHERE  main_category = @main_category AND main_category != 'All Catagories' AND main_category != 'choose class'" UpdateCommand="UPDATE classes SET main_category = @class_name WHERE (main_category= @tmp)
 ">
                     <InsertParameters>
                         <asp:Parameter Name="class_name" Type="String" />
                     </InsertParameters>
                           <DeleteParameters>
-                        <asp:Parameter Name="cls_name" type="String"/>
+                        <asp:Parameter Name="main_category" type="String"/>
                     </DeleteParameters>
                     <UpdateParameters>
                         <asp:Parameter Name="class_name" Type="String" />

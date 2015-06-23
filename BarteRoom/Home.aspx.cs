@@ -88,12 +88,6 @@ namespace BarteRoom
                 target.Save(path);
 
                 ImageButton4.ImageUrl = "img/resizeImage_tab3.jpg";
-
-                /*
-                image3Link.Text = lg.getItemById(lg.getIdByImagePath(images.ElementAt(2).Path)).Comments;
-                id = lg.getIdByImagePath(images.ElementAt(2).Path);
-                image3Link.NavigateUrl = "/ItemView.aspx?id=" + id;
-                */
                 
             }
             catch (Exception exp)

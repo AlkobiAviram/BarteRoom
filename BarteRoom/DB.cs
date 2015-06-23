@@ -943,6 +943,43 @@ namespace BarteRoom
             return item;
         }
 
+        public DataTable getAllSubCategory(string main_category){
+            DataTable dtable = new DataTable();
+            DataColumn dt = new DataColumn("sub_category");
+    
+
+            dtable.Columns.Add(dt);
+
+
+            query = "select sub_category from dbo.classes where main_category='" + main_category + "';";
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+                rdr = command.ExecuteReader();
+
+
+            }
+
+            catch (Exception e) { }
+
+            while (rdr.Read())
+            {
+                object[] RowValues = {""};
+                RowValues[0] = rdr[0].ToString();
+
+               
+                DataRow dRow;
+                dRow = dtable.Rows.Add(RowValues);
+                dtable.AcceptChanges();
+            }
+
+            connect.Close();
+
+            return dtable;
+        }
 
         public LinkedList<Item> getAllItems()
         {
@@ -1051,7 +1088,7 @@ namespace BarteRoom
         
         public void deleteClass(string className)
         {
-            query = "DELETE FROM dbo.classes WHERE cls_name = '" + className + "';";
+            query = "DELETE FROM dbo.classes WHERE main_category = '" + className + "';";
 
             try
             {
@@ -1133,7 +1170,13 @@ namespace BarteRoom
             catch (Exception e) { }
             return bid; 
         }
-
+        /*
+        public DataTable getAllClasses()
+        {
+            DataTable dtable = new DataTable();
+            DataColumn dt = new DataColumn("Image");
+        }
+         * */
         public DataTable getAllBids(string usr)
         {
 

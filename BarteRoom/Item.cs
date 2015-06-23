@@ -13,6 +13,7 @@ namespace BarteRoom
         private String comments;
         private String description;
         private String id;
+        private String sub_clss;
         public Item()
         {
             Guid newGuid = Guid.NewGuid();
@@ -26,7 +27,8 @@ namespace BarteRoom
             this.comments = comments;
             this.description = description;
             Guid newGuid = Guid.NewGuid();
-            this.id = newGuid.ToString(); 
+            this.id = newGuid.ToString();
+            this.sub_clss = sub_clss;
         }
         public string Clss
         {
@@ -57,6 +59,11 @@ namespace BarteRoom
         {
             get { return this.id; }
             set { this.id = value; }
+        }
+        public string Sub_clss
+        {
+            get { return this.sub_clss; }
+            set { this.sub_clss = value; }
         }
     }
 }

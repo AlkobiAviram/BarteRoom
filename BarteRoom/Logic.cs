@@ -208,7 +208,11 @@ namespace BarteRoom
 
             return -1;
         }
-
+        public DataTable getAllSubCategory(string main_category)
+        {
+            data = new DB();
+            return data.getAllSubCategory(main_category);
+        }
         public void addImage(Imag img)
         {
             data = new DB();

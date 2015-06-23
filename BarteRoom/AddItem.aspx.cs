@@ -39,9 +39,11 @@ namespace BarteRoom
               
                 bind();
             }
-         
-        
 
+            //updating the subclasses droplist
+            sub_classes_list.DataSource = lg.getAllSubCategory(classes_list.SelectedValue);
+            sub_classes_list.DataBind();
+            
         }
 
         private void bind()
@@ -77,8 +79,10 @@ namespace BarteRoom
                 GridView1.DataSource = table;
                 GridView1.DataBind();
 
-            
-
+                //updating the subclasses droplist
+                sub_classes_list.DataSource = lg.getAllSubCategory(classes_list.SelectedValue);
+                sub_classes_list.DataBind();
+           
         }
 
         protected void commit_cmd_Click(object sender, EventArgs e)
@@ -265,6 +269,25 @@ namespace BarteRoom
         {
 
             bind();
+        }
+
+        protected void sub_classes_list_SelectedIndexChanged(object sender, EventArgs e)
+        {
+       
+        }
+
+        protected void classes_list_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //updating the subclasses droplist
+            sub_classes_list.DataSource = lg.getAllSubCategory(classes_list.SelectedValue);
+            sub_classes_list.DataBind();
+        }
+
+        protected void classes_list_TextChanged(object sender, EventArgs e)
+        {
+            //updating the subclasses droplist
+            sub_classes_list.DataSource = lg.getAllSubCategory(classes_list.SelectedValue);
+            sub_classes_list.DataBind();
         }
     }
 }
