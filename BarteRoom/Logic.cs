@@ -479,5 +479,11 @@ namespace BarteRoom
             data = new DB();
             return data.getDataSourceForMostViewedItems();
         }
+
+        public int getType(string id)
+        {
+            data = new DB();
+            return 0;// data.getType(id);
+        }
     }
 }

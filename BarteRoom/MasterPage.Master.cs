@@ -54,7 +54,7 @@ namespace BarteRoom
                     signInMsg1.Visible = true;
                     signInMsg1.Visible = true;
                     msgLinkButton.Visible = true;
-                    seeAllNoteCmd.Visible = false;
+                    seeAllMsg.Visible = false;
 
                     SendFirstRequired.Visible = true;
                     SendLastRequired.Visible = true;
@@ -99,7 +99,7 @@ namespace BarteRoom
                     signInMsg1.Visible = false;
                     signInMsg2.Visible = false;
                     msgLinkButton.Visible = false;
-                    seeAllNoteCmd.Visible = true;
+                    seeAllMsg.Visible = true;
 
                     MyAccount.Text = Session["name"].ToString() + caret.Text;
 
@@ -429,11 +429,14 @@ namespace BarteRoom
 
             int index = Convert.ToInt32(recentBids.SelectedIndex);
             GridViewRow row = recentBids.Rows[index];
-            logic.readIndex(row.Cells[2].Text);
-            Session["transaction_type"] = "offer";
-            Session["bid_id"] = row.Cells[2].Text;
-
-            Response.Redirect("/TransactionView.aspx");
+            string id = row.Cells[2].Text;
+            logic.readIndex(id);
+            if (logic.getType(id) == 1)
+            {
+                Session["transaction_type"] = "offer";
+                Session["bid_id"] = id;
+                Response.Redirect("/TransactionView.aspx");
+            }
         }
 
         protected void AboutCmd_Click(object sender, EventArgs e)
@@ -563,10 +566,6 @@ namespace BarteRoom
             Response.Redirect(Page.Request.Url.ToString(), true);
         }
 
-        protected void seeAllNoteCmd_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("/Offers.aspx");
-        }
 
         protected void recentmsg_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -627,6 +626,11 @@ namespace BarteRoom
 
                 advanced.Controls.Add(tb);
             //advanced.Controls.Add(new Literal() { ID = "row", Text = "</table>" });
+        }
+
+        protected void seeAllMsg_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Mail.aspx");
         }
 
     }

@@ -32,6 +32,14 @@
         .note-style {
             width: 1000px;
         }
+        .note-style4 {
+            width: 125px;
+        }
+        .auto-style5 {
+            width: 100px;
+            padding-left: 6px;
+            margin-left: 6px;
+        }
         .note-SignInstyle {
             width: 65px;
         }
@@ -149,15 +157,6 @@
                                             <asp:Label ID="SignInLabel2" runat="server" Font-Size="Medium" Text=" to view notifications."></asp:Label>
                                        </td>
                                    </tr>
-                               </table>  
-                               
-                               <table>
-                                   <tr>
-                                       <td class="note-SeaAllstyle"></td>
-                                       <td>
-                                           <asp:LinkButton ID="seeAllNoteCmd" CssClass="change" runat="server" Font-Size="Medium" OnClick="seeAllNoteCmd_Click">See All</asp:LinkButton>
-                                       </td>
-                                   </tr>
                                </table>     
   
                            </li>                     
@@ -232,6 +231,15 @@
                                    </tr>
                                </table> 
 
+                                <table>
+                                   <tr>
+                                       <td class="note-SeaAllstyle"></td>
+                                       <td>
+                                           <asp:LinkButton ID="seeAllMsg" CssClass="change" runat="server" Font-Size="Medium" OnClick="seeAllMsg_Click">See All</asp:LinkButton>
+                                       </td>
+                                   </tr>
+                               </table> 
+
                                 </li>                     
                            </ul> 
                     
@@ -266,7 +274,9 @@
                                 </td>
 
                                 <td class="auto-style4">
-                                    <asp:Button ID="Button1" CssClass="btn hvr-pulse-grow btn-info" Height="45px" Width="120px" runat="server" Text="Search" OnClick="searchCmd_Click"/>
+                                    <asp:Button ID="Button1" CssClass="btn hvr-pulse-grow btn-info" Height="45px" Width="120px" runat="server" Text="Search" OnClick="searchCmd_Click"/> 
+                                </td>
+                                <td class="auto-style5">
                                     <asp:LinkButton ID="AdvancedSearch" runat="server" CssClass="change" ForeColor="Blue" OnClick="AdvancedSearch_Click">Advanced</asp:LinkButton>
                                 </td>
 
@@ -295,6 +305,7 @@
                             <tr>
                                 <td class="auto-style2"></td>
                                 <td>
+
                         <asp:GridView ID="homeGridView" BackColor="White" CssClass="table table-responsive table-hover" HorizontalAlign="Center" GridLines="None" AutoGenerateColumns="False" runat="server" DataKeyNames="Id" ShowFooter="True" OnSelectedIndexChanged="homeGridView_SelectedIndexChanged" AllowPaging="True" OnPageIndexChanging="homeGridView_PageIndexChanging" ShowHeader="False" >
                             <Columns>
                            
@@ -347,6 +358,7 @@
          <div class="modal fade" id="login" role="dialog" runat="server" >
              <div class="modal-dialog ">
                  <div class="modal-content">
+
                      <div class="modal-header">
                          <h3>Login</h3>
                      </div>
@@ -662,6 +674,7 @@
         
         </asp:ContentPlaceHolder>
     </div>
+                                            <br /><br /><br /><br />
     </form>
 </body>
 </html>

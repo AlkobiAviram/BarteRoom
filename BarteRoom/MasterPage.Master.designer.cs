@@ -220,15 +220,6 @@ namespace BarteRoom {
         protected global::System.Web.UI.WebControls.Label SignInLabel2;
         
         /// <summary>
-        /// seeAllNoteCmd control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton seeAllNoteCmd;
-        
-        /// <summary>
         /// message control.
         /// </summary>
         /// <remarks>
@@ -290,6 +281,15 @@ namespace BarteRoom {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label signInMsg2;
+        
+        /// <summary>
+        /// seeAllMsg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton seeAllMsg;
         
         /// <summary>
         /// SearchTextBox control.
