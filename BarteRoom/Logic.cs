@@ -481,5 +481,17 @@ namespace BarteRoom
             data = new DB();
             return data.getType(id);
         }
+
+        public string getTrans_id(string id)
+        {
+            data = new DB();
+            return data.getTrans_id(id);
+        }
+
+        public void markBidAsRead(string t_id)
+        {
+            data = new DB();
+            data.markBidAsRead(t_id);
+        }
     }
 }

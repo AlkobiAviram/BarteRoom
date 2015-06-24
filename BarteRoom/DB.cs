@@ -2025,6 +2025,43 @@ namespace BarteRoom
             catch (Exception e) { }
         }
 
+        public string getTrans_id(string id)
+        {
+            string ID = "";
+            query = "select t.id from transactions t, notifications n where t.item_id = n.item_id and n.Id = '" + id + "';";
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+
+                ID = command.ExecuteScalar().ToString();
+                connect.Close();
+            }
+
+            catch (Exception e) { }
+
+            return ID;
+        }
+
+        public void markBidAsRead(string t_id)
+        {
+            query = "UPDATE dbo.notifications SET isRead = 1 WHERE Id IN(select n.Id from notifications n, transactions t where n.item_id = t.item_id and t.id = '" + t_id + "');";
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+
+                command.ExecuteNonQuery();
+                connect.Close();
+            }
+
+            catch (Exception e) { }
+        }
+
     }
 
 

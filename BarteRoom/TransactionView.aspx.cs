@@ -19,7 +19,7 @@ namespace BarteRoom
 
             Logic lg = new Logic();
             trns=lg.getTransactionById(Session["bid_id"].ToString());
-            
+            lg.markBidAsRead(Session["bid_id"].ToString());
             
             //////////////////////regarding the item
             item_pic.ImageUrl = lg.setImagePath(trns.Item_id);

@@ -434,7 +434,7 @@ namespace BarteRoom
             if (logic.getType(id) == 1)
             {
                 Session["transaction_type"] = "offer";
-                Session["bid_id"] = id;
+                Session["bid_id"] = logic.getTrans_id(id);
                 Response.Redirect("/TransactionView.aspx");
             }
         }
