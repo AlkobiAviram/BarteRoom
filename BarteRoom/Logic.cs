@@ -483,7 +483,7 @@ namespace BarteRoom
         public int getType(string id)
         {
             data = new DB();
-            return 0;// data.getType(id);
+            return data.getType(id);
         }
     }
 }

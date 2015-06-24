@@ -1467,7 +1467,7 @@ namespace BarteRoom
 
         public void readIndex(string id)
         {
-            query = "UPDATE dbo.transactions SET readBid = 1 WHERE id = '" + id + "';";
+            query = "UPDATE dbo.notifications SET isRead = 1 WHERE Id = '" + id + "';";
 
             try
             {
@@ -1480,6 +1480,28 @@ namespace BarteRoom
 
             }
             catch (Exception e) { }
+        }
+
+        public int getType(string id)
+        {
+            int type = 0;
+
+            query = "select type from dbo.notifications where Id ='" + id + "';";
+
+            try
+            {
+                connect.Open();
+
+
+                command = new SqlCommand(query, connect);
+
+                type = Convert.ToInt32(command.ExecuteScalar().ToString());
+                connect.Close();
+            }
+
+            catch (Exception e) { }
+
+            return type;
         }
 
 
