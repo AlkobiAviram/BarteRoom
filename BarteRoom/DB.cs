@@ -345,8 +345,8 @@ namespace BarteRoom
 
 
 
-            query = "select * from dbo.items where usr = '" + usr + "';";
-
+           
+            query = "select name,itm.comments,itm.description,img.path,itm.Id from dbo.items itm,dbo.images img where (itm.usr ='" + usr + "') AND (itm.Id=img.item_id) AND (img.isProfile=1)";
             try
             {
                 connect.Open();
@@ -362,12 +362,11 @@ namespace BarteRoom
             while (rdr.Read())
             {
                 object[] RowValues = { "", "", "", "", "" };
-                RowValues[0] = rdr[1].ToString();
-                RowValues[1] = rdr[3].ToString();
-                RowValues[2] = rdr[4].ToString();
-                string id = rdr[5].ToString();
-                RowValues[3] = id;
-                RowValues[4] = id;
+                RowValues[0] = rdr[0].ToString();
+                RowValues[1] = rdr[1].ToString();
+                RowValues[2] = rdr[2].ToString();
+                RowValues[3] = rdr[3].ToString();
+                RowValues[4] = rdr[4].ToString();
 
 
 
@@ -378,14 +377,7 @@ namespace BarteRoom
             }
 
             connect.Close();
-            //setting image url
-            foreach (DataRow row in dtable.Rows)
-            {
-                row[3] = setImagePath(row[3].ToString());
-            }
-
-
-
+       
 
             return dtable;
         }
@@ -457,7 +449,7 @@ namespace BarteRoom
         public string setImagePath(String id)
         {
             string path = "";
-            query = "select i.path from dbo.images i where i.item_id = '" + id + "' and i.isProfile=1;";
+            query = "select i.path from dbo.images i where i.item_id = '" + id + "';";
 
             try
             {
@@ -1141,7 +1133,7 @@ namespace BarteRoom
         {
             int bids = 0;
 
-            query = "select COUNT(*) from dbo.notifications where usr = " + usr + " AND isRead = 0;";
+            query = "select COUNT(*) from dbo.notifications where usr = '" + usr + "' AND isRead = 0;";
 
             try
             {
