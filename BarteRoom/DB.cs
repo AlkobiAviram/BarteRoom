@@ -638,7 +638,7 @@ namespace BarteRoom
             {
                 connect.Open();
                 //insert to transaction table
-                query = "insert into dbo.transactions values('" + transaction.Transaction_id + "','" + transaction.Item_id + "','" + transaction.Owner + "','" + transaction.Bidder + "','" + transaction.Comments + "', 0,'" + transaction.Date + "');";
+                query = "insert into dbo.transactions values('" + transaction.Transaction_id + "','" + transaction.Item_id + "','" + transaction.Owner + "','" + transaction.Bidder + "','" + transaction.Comments + "', 0,'" + Logic.changeDateFormat(transaction.Date) + "');";
                 command = new SqlCommand(query, connect);
                 command.ExecuteNonQuery();
 
@@ -829,9 +829,9 @@ namespace BarteRoom
             dtable.Columns.Add(dt6);
             //getting only the bid id and the item id
             if (BidOrOffer == "bid")
-                query = "select t.id,t.item_id,t.owner,t.comments,t.readBid ,t.datetime from dbo.transactions t where t.bidder='" + usr + "' order by t.datetime DESC;";
+                query = "select t.id,t.item_id,i.path,t.owner,t.comments,t.readBid ,t.datetime from dbo.transactions t,dbo.images i where t.bidder='" + usr + "' and i.item_id=t.item_id order order by t.datetime DESC;";
             else
-                query = "select t.id,t.item_id,t.bidder,t.comments,t.readBid,t.datetime from dbo.transactions t where t.owner='" + usr + "' order by t.datetime DESC;";
+                query = "select t.id,t.item_id,i.path,t.bidder,t.comments,t.readBid,t.datetime from dbo.transactions t,dbo.images i where t.owner='" + usr + "' and i.item_id=t.item_id order by t.datetime DESC;";
             try
             {
                 connect.Open();
@@ -840,35 +840,31 @@ namespace BarteRoom
                 rdr = command.ExecuteReader();
 
 
-            }
+            
 
-            catch (Exception e) { }
+     
 
             while (rdr.Read())
             {
                 object[] RowValues = { "", "", "", "", "", "", "" };
                 RowValues[0] = rdr[0].ToString();
                 RowValues[1] = rdr[1].ToString();
-                RowValues[2] = rdr[1].ToString();
-                RowValues[3] = rdr[2].ToString();
-                RowValues[4] = rdr[3].ToString();
-                if (Convert.ToInt32(rdr[4].ToString()) == 1)
+                RowValues[2] = rdr[2].ToString();
+                RowValues[3] = rdr[3].ToString();
+                RowValues[4] = rdr[4].ToString();
+                if (Convert.ToInt32(rdr[5].ToString()) == 1)
                     RowValues[5] = "yes";
                 else
                     RowValues[5] = "no";
-                RowValues[6] = rdr[5].ToString();
+                RowValues[6] = rdr[6].ToString();
                 DataRow dRow;
                 dRow = dtable.Rows.Add(RowValues);
                 dtable.AcceptChanges();
             }
-
-
-            connect.Close();
-            //setting image url
-            foreach (DataRow row in dtable.Rows)
-            {
-                row[2] = setImagePath(row[2].ToString());
             }
+            catch (Exception e) { }
+            connect.Close();
+       
             return dtable;
         }
 
@@ -1101,7 +1097,7 @@ namespace BarteRoom
             {
                 item_id = rdr[0].ToString();
             }
-
+          
 
 
 
@@ -1357,12 +1353,12 @@ namespace BarteRoom
 
 
             LinkedList<string> offeredItems = trns.OfferdItemsList;
-            query = "select * from dbo.items where id =";
+            query = "select itm.name,itm.comments,itm.description,img.path,itm.Id from dbo.items itm,dbo.images img where itm.Id=img.item_id and itm.Id=";
             for (int i = 0; i < offeredItems.Count; i++)
             {
                 query += "'" + offeredItems.ElementAt(i) + "'";
                 if (i != offeredItems.Count - 1)
-                    query += " or id= ";
+                    query += " or itm.Id= ";
             }
             query += ";";
             try
@@ -1373,19 +1369,18 @@ namespace BarteRoom
                 rdr = command.ExecuteReader();
 
 
-            }
+           
 
-            catch (Exception e) { }
+        
 
             while (rdr.Read())
             {
                 object[] RowValues = { "", "", "", "", "" };
-                RowValues[0] = rdr[1].ToString();
-                RowValues[1] = rdr[3].ToString();
-                RowValues[2] = rdr[4].ToString();
-                string id = rdr[5].ToString();
-                RowValues[3] = id;
-                RowValues[4] = id;
+                RowValues[0] = rdr[0].ToString();
+                RowValues[1] = rdr[1].ToString();
+                RowValues[2] = rdr[2].ToString();
+                RowValues[3] = rdr[3].ToString();
+                RowValues[4] = rdr[4].ToString();
 
 
 
@@ -1394,13 +1389,11 @@ namespace BarteRoom
                 dRow = dtable.Rows.Add(RowValues);
                 dtable.AcceptChanges();
             }
-
-            connect.Close();
-            //setting image url
-            foreach (DataRow row in dtable.Rows)
-            {
-                row[3] = setImagePath(row[3].ToString());
             }
+            
+            catch (Exception e) { }
+            connect.Close();
+           
 
 
 
