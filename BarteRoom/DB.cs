@@ -735,7 +735,7 @@ namespace BarteRoom
             dtable.Columns.Add(dt3);
             dtable.Columns.Add(dt4);
 
-            if (catagory.Equals("All Catagories"))
+            if (catagory.Equals("All Categories"))
             {
                 query = "select * from dbo.items where ([name] LIKE '%'+'" + search + "'+'%') AND (usr != '" + usr + "') order by Id;";
             }
@@ -793,7 +793,7 @@ namespace BarteRoom
         {
             int numOf = 0;
 
-            if (catagory.Equals("All Catagories"))
+            if (catagory.Equals("All Categories"))
             {
                 query = "select count(*) from dbo.items where ([name] LIKE '%'+'" + search + "'+'%')  AND (usr != '" + usr + "');";
             }
@@ -1146,7 +1146,7 @@ namespace BarteRoom
         {
             int bids = 0;
 
-            query = "select COUNT(*) from dbo.notifications where usr = " + usr + " isRead = 0;";
+            query = "select COUNT(*) from dbo.notifications where usr = " + usr + " AND isRead = 0;";
 
             try
             {
@@ -1230,7 +1230,7 @@ namespace BarteRoom
             dtable.Columns.Add(dt2);
             dtable.Columns.Add(dt3);
 
-            query = "select img.path, n.comments, n.Id, n.datetime, n.isRead from dbo.images img, dbo.notifications n where (img.item_id = n.item_Id) AND (n.usr = '" + usr + "') order by n.isRead, n.datetime DESC;";
+            query = "select img.path, n.comments, n.Id, n.datetime, n.isRead from dbo.images img, dbo.notifications n where (img.item_id = n.item_Id) AND (n.usr = '" + usr + "') AND (isProfile = 1) order by n.isRead, n.datetime DESC;";
 
             try
             {
