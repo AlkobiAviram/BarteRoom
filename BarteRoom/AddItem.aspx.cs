@@ -39,10 +39,11 @@ namespace BarteRoom
               
                 bind();
                 //updating the subclasses droplist
+                
                
             }
 
-            BindDropDownListToDataTable();
+            
         }
 
         private void bind()
@@ -86,9 +87,9 @@ namespace BarteRoom
 
         private void BindDropDownListToDataTable()
         {
-            
+
             sub_classes_list.DataTextField = "sub_category";
-            sub_classes_list.DataValueField = "id";
+            sub_classes_list.DataValueField = "sub_category";
             
             sub_classes_list.DataSource = lg.getAllSubCategory(classes_list.SelectedValue.ToString());
             sub_classes_list.DataBind();
@@ -289,13 +290,13 @@ namespace BarteRoom
 
         protected void classes_list_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+            BindDropDownListToDataTable();
             
         }
 
         protected void classes_list_TextChanged(object sender, EventArgs e)
         {
-            
+            BindDropDownListToDataTable();
         }
     }
 }

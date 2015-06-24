@@ -479,7 +479,7 @@ namespace BarteRoom
         public bool addItem(Item item)
         {
 
-            query = "insert into dbo.items values('" + item.Usr + "','" + item.Name + "','" + item.Clss + "','" + item.Comments + "','" + item.Description + "','" + item.Id + "'); "+
+            query = "insert into dbo.items values('" + item.Usr + "','" + item.Name + "','" + item.Clss + "','" + item.Comments + "','" + item.Description + "','" + item.Id +"','"+item.Sub_clss+ "'); "+
                     "insert into dbo.mostViewedItems values('" + item.Id + "',0);";
 
 
@@ -540,24 +540,27 @@ namespace BarteRoom
 
         public bool removeItem(String id)
         {
-            //removing the picture from the folder
-            string completePath = System.Web.HttpContext.Current.Server.MapPath("~/" + setImagePath(id));
-            if (System.IO.File.Exists(completePath))
+            try
             {
+                //removing the picture from the folder
+                string completePath = System.Web.HttpContext.Current.Server.MapPath("~/" + setImagePath(id));
+                if (System.IO.File.Exists(completePath))
+                {
 
-                System.IO.File.Delete(completePath);
+                    System.IO.File.Delete(completePath);
+
+                }
+                string[] split = setImagePath(id).Split('/');
+                completePath = System.Web.HttpContext.Current.Server.MapPath("~/img/OriginalSize_" + split[1]);
+                if (System.IO.File.Exists(completePath))
+                {
+
+                    System.IO.File.Delete(completePath);
+
+                }
 
             }
-            string[] split = setImagePath(id).Split('/');
-            completePath = System.Web.HttpContext.Current.Server.MapPath("~/img/OriginalSize_" + split[1]);
-            if (System.IO.File.Exists(completePath))
-            {
-
-                System.IO.File.Delete(completePath);
-
-            }
-
-
+            catch (Exception e) {  }
 
 
             try

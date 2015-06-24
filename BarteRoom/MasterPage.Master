@@ -41,7 +41,13 @@
          .lefpad{
              padding-left: 20px;
          }
-
+       .toppad{
+             padding-top: 20px;
+         }
+       .naticell{
+           border-spacing:20px;
+           border-collapse:separate; 
+       }
     </style>
 
     <form id="form1" runat="server">
@@ -261,7 +267,7 @@
 
                                 <td class="auto-style4">
                                     <asp:Button ID="Button1" CssClass="btn hvr-pulse-grow btn-info" Height="45px" Width="120px" runat="server" Text="Search" OnClick="searchCmd_Click"/>
-                                    <asp:LinkButton ID="AdvancedSearch" runat="server" CssClass="change" ForeColor="Blue">Advanced</asp:LinkButton>
+                                    <asp:LinkButton ID="AdvancedSearch" runat="server" CssClass="change" ForeColor="Blue" OnClick="AdvancedSearch_Click">Advanced</asp:LinkButton>
                                 </td>
 
                             </tr>
@@ -379,6 +385,14 @@
          </div>
       
          <!-- ===================================================Login Modal=======================================================  -->
+        <!-- ===================================================advanced=======================================================  -->
+
+             <asp:ContentPlaceHolder ID="advanced" runat="server"></asp:ContentPlaceHolder>
+
+
+
+
+        <!-- ==========================================================================================================  -->
 
          <!-- ===============================================Forgot Password Modal==================================================  -->
 

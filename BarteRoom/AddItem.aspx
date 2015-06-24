@@ -3,12 +3,13 @@
         </asp:Content>
         <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
            <link href="~/css/css_forAddItem.css" rel="stylesheet" type="text/css" runat="server"/>
+            
+            
+            
+            
             <div class="container" runat="server" id="AddItem">
-
-                  
              <h2>Add Item</h2>
     
-  
              <table  class="table-bordered">
 
 
@@ -22,7 +23,7 @@
             <br />
             <asp:DropDownList ID="classes_list" runat="server" AutoPostBack="true" DataSourceID="SqlDataSource1" DataTextField="main_category" DataValueField="main_category" Height="23px" Width="189px" OnSelectedIndexChanged="classes_list_SelectedIndexChanged" OnTextChanged="classes_list_TextChanged" ></asp:DropDownList>
              <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectToDb %>" SelectCommand="SELECT DISTINCT [main_category] FROM [classes]"></asp:SqlDataSource>
-             <asp:DropDownList ID="sub_classes_list" runat="server" AutoPostBack="true"   Height="23px" Width="189px" OnSelectedIndexChanged="sub_classes_list_SelectedIndexChanged"  />
+             <asp:DropDownList ID="sub_classes_list" CssClass=""  runat="server" AutoPostBack="true"  Height="23px" Width="189px" OnSelectedIndexChanged="sub_classes_list_SelectedIndexChanged"  />
               
                
          </td>

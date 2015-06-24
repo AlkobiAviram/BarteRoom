@@ -7,8 +7,16 @@
             .img_slider{
                 box-shadow: 0 0 6rem rgba(0,0,0,1);
                 border-radius: 3px;
+          -webkit-transition: all 1s ease;
+          -moz-transition: all 1s ease;
+           -o-transition: all 1s ease;
+           -ms-transition: all 1s ease;
+             transition: all 1s ease;
              }
-
+ 
+         .img_slider:hover {
+          -webkit-filter: blur(5px);
+          }
             </style>
          
   <div  runat="server" id="welcomeHome">
@@ -23,9 +31,9 @@
     
             <tr>
             
-            <td style="text-align:center">
+            <td style="text-align:center" >
             
-         <asp:ImageButton CssClass="img_slider" ID="slider" ImageUrl="~/img/ipad.jpg" runat="server"  OnClick="slider_Click"/>
+         <asp:ImageButton  CssClass="img_slider" ID="slider" ImageUrl="~/img/ipad.jpg" runat="server"  OnClick="slider_Click"/>
           </td> 
                 <td>
                     <h2><asp:Label ID="Label3" runat="server" Text="Browse with Categories"></asp:Label></h2><br />

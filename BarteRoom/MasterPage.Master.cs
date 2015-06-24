@@ -116,7 +116,10 @@ namespace BarteRoom
                 }
             //}
         }
-
+     
+         
+                
+            
         protected void Login_Click(object sender, EventArgs e)
         {
             String usrName;
@@ -578,6 +581,52 @@ namespace BarteRoom
             id = ((Label)recentmsg.Rows[index].FindControl("idLabel")).Text;
 
             Response.Redirect("/Mail.aspx?id=" + Server.UrlEncode(id));
+        }
+
+        protected void AdvancedSearch_Click(object sender, EventArgs e)
+        {
+                logic = new Logic();
+                LinkedList<string> cats = logic.getAllMainCategories();
+                Table tb = new Table();
+                foreach (string str in cats)
+                {
+                   
+                    DataTable dt = logic.getAllSubCategory(str);
+
+                    TableRow tr0 = new TableRow();
+                    TableCell tCell0 = new TableCell();
+                    Label main_cat = new Label();
+                    main_cat.Text = str;
+                    tCell0.Controls.Add(main_cat);
+                    tr0.Cells.Add(tCell0);
+                    tb.Rows.Add(tr0);
+
+
+                    TableRow tr = new TableRow();
+                    TableCell tCell = new TableCell();
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        DataRow dr = dt.Rows[i];
+                        Button bt = new Button();
+                        bt.Text = dr[0].ToString();
+                        bt.ID = "cat" + i;
+                        bt.Visible = true;
+                       
+                        tCell.Controls.Add(bt);
+                        
+                        tCell.CssClass = "toppad naticell";
+                      
+                    }
+
+                    tr.Cells.Add(tCell);
+
+                    tb.Rows.Add(tr);
+             
+                }
+
+
+                advanced.Controls.Add(tb);
+            //advanced.Controls.Add(new Literal() { ID = "row", Text = "</table>" });
         }
 
     }
