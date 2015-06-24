@@ -66,10 +66,21 @@
             <h2><asp:Label ID="Label2" runat="server" Text="Most Viewed Items"></asp:Label></h2><br />
          <asp:GridView ID="GridView1" BackColor="White" CssClass="table table-responsive table-hover" GridLines="None" runat="server" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnSelectedIndexChanging="GridView1_SelectedIndexChanging" >
              <Columns>
-                 <asp:ImageField DataImageUrlField="image">
-                 </asp:ImageField>
+
+                  <asp:TemplateField HeaderText="image" ShowHeader="False">
+                      <ItemTemplate>
+                 <asp:LinkButton id="img_link" runat="server" CommandName="Select"><asp:Image id="item_img" ImageUrl='<%# Eval("image") %>' runat="server"/></asp:LinkButton>
+                      </ItemTemplate>
+                 </asp:TemplateField>
+
+                   <asp:TemplateField HeaderText="image" ShowHeader="False">
+                      <ItemTemplate>
                  <asp:BoundField DataField="comments" />
-                 <asp:BoundField DataField="id" Visible="false" />
+                    </ItemTemplate>
+                 </asp:TemplateField>
+                 
+                 
+                 <asp:BoundField DataField="id" ItemStyle-Font-Size="0px" />
              </Columns>
          </asp:GridView>
 

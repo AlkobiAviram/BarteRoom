@@ -257,74 +257,7 @@ namespace BarteRoom
             return dtable;
         }
 
-        public DataTable getDataSourceForItemsByChoice(int whichItems, string name, string clas)
-        {
-
-            DataTable dtable = new DataTable();
-            DataColumn dt = new DataColumn("Name");
-            DataColumn dt1 = new DataColumn("Comments");
-            DataColumn dt2 = new DataColumn("Description");
-            DataColumn dt3 = new DataColumn("Image");
-            DataColumn dt4 = new DataColumn("id");
-            DataColumn dt5 = new DataColumn("User");
-
-            dtable.Columns.Add(dt);
-            dtable.Columns.Add(dt1);
-            dtable.Columns.Add(dt2);
-            dtable.Columns.Add(dt3);
-            dtable.Columns.Add(dt4);
-            dtable.Columns.Add(dt5);
-
-
-            if (whichItems == 0)
-                query = "select * from dbo.items;";
-            else
-                query = "select * from dbo.items where name='" + name + "' and " + "class='" + clas + "'";
-
-            try
-            {
-                connect.Open();
-
-                command = new SqlCommand(query, connect);
-                rdr = command.ExecuteReader();
-
-
-            }
-
-            catch (Exception e) { }
-
-            while (rdr.Read())
-            {
-                object[] RowValues = { "", "", "", "", "", "" };
-                RowValues[0] = rdr[1].ToString();
-                RowValues[1] = rdr[3].ToString();
-                RowValues[2] = rdr[4].ToString();
-                string id = rdr[5].ToString();
-                RowValues[3] = id;
-                RowValues[4] = id;
-                RowValues[5] = rdr[0].ToString();
-
-
-
-
-                DataRow dRow;
-                dRow = dtable.Rows.Add(RowValues);
-                dtable.AcceptChanges();
-            }
-
-            connect.Close();
-            //setting image url
-            foreach (DataRow row in dtable.Rows)
-            {
-                row[3] = setImagePath(row[3].ToString());
-            }
-
-
-
-
-            return dtable;
-
-        }
+        
 
         public DataTable getDataSourceForUsr(String usr)
         {
@@ -449,7 +382,7 @@ namespace BarteRoom
         public string setImagePath(String id)
         {
             string path = "";
-            query = "select i.path from dbo.images i where i.item_id = '" + id + "';";
+            query = "select i.path from dbo.images i where i.item_id = '" + id + "' and i.isProfile=1;";
 
             try
             {
@@ -466,7 +399,7 @@ namespace BarteRoom
             return path;
         }
 
-
+        
 
         public bool addItem(Item item)
         {
@@ -638,7 +571,7 @@ namespace BarteRoom
             {
                 connect.Open();
                 //insert to transaction table
-                query = "insert into dbo.transactions values('" + transaction.Transaction_id + "','" + transaction.Item_id + "','" + transaction.Owner + "','" + transaction.Bidder + "','" + transaction.Comments + "', 0,'" + Logic.changeDateFormat(transaction.Date) + "');";
+                query = "insert into dbo.transactions values('" + transaction.Transaction_id + "','" + transaction.Item_id + "','" + transaction.Owner + "','" + transaction.Bidder + "','" + transaction.Comments + "', 0,'" +transaction.Date + "');";
                 command = new SqlCommand(query, connect);
                 command.ExecuteNonQuery();
 
@@ -829,9 +762,9 @@ namespace BarteRoom
             dtable.Columns.Add(dt6);
             //getting only the bid id and the item id
             if (BidOrOffer == "bid")
-                query = "select t.id,t.item_id,i.path,t.owner,t.comments,t.readBid ,t.datetime from dbo.transactions t,dbo.images i where t.bidder='" + usr + "' and i.item_id=t.item_id order order by t.datetime DESC;";
+                query = "select t.id,t.item_id,i.path,t.owner,t.comments,t.readBid ,t.datetime from dbo.transactions t,dbo.images i where t.bidder='" + usr + "' and i.item_id=t.item_id and i.isProfile=1 order by t.datetime DESC;";
             else
-                query = "select t.id,t.item_id,i.path,t.bidder,t.comments,t.readBid,t.datetime from dbo.transactions t,dbo.images i where t.owner='" + usr + "' and i.item_id=t.item_id order by t.datetime DESC;";
+                query = "select t.id,t.item_id,i.path,t.bidder,t.comments,t.readBid,t.datetime from dbo.transactions t,dbo.images i where t.owner='" + usr + "' and i.item_id=t.item_id and i.isProfile=1 order by t.datetime DESC;";
             try
             {
                 connect.Open();

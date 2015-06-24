@@ -187,11 +187,7 @@ namespace BarteRoom
             return data.getDataSourceForUsr(usr);
         }
 
-        public DataTable getDataSourceForItemsByChoice(int whichItems, string name, string clas)
-        {
-            data = new DB();
-            return data.getDataSourceForItemsByChoice(whichItems, name,clas);
-        }
+       
         public int numOf(int user_manager)
         {
             data = new DB();
@@ -371,7 +367,7 @@ namespace BarteRoom
 
             string[] tmp = date[0].Split('/');
 
-            string newFormat = tmp[2] + "-" + tmp[1] + "-" + tmp[0] + " " + date[1];
+            string newFormat = tmp[2] + "-" + tmp[0] + "-" + tmp[1] + " " + date[1];
 
             return newFormat;
         }
