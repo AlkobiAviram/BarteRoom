@@ -63,14 +63,14 @@ namespace BarteRoom
                 if (Session["usr"] != null)
                 {
                     int notRead_Msg = 0;
-                    int notRead_bids = 0;
+                    int notRead_notes = 0;
                     logic = new Logic();
                     notRead_Msg = logic.notReadMsg(Session["usr"].ToString());
-                    notRead_bids = logic.notReadBids(Session["usr"].ToString());
+                    notRead_notes = logic.notReadNotes(Session["usr"].ToString());
 
                     message.Text = notRead_Msg.ToString();
-                    note.Text = notRead_bids.ToString();
-                    recentBids.DataSource = logic.getAllBids(Session["usr"].ToString());
+                    note.Text = notRead_notes.ToString();
+                    recentBids.DataSource = logic.getAllNotes(Session["usr"].ToString());
                     recentBids.DataBind();
 
                     recentmsg.DataSource = logic.getAllMessages(Session["usr"].ToString(), 0);
@@ -81,7 +81,7 @@ namespace BarteRoom
                         recentmsg.Rows[i].BackColor = Color.Gainsboro;
                     }
 
-                    for (int i = 0; i < notRead_bids; i++)
+                    for (int i = 0; i < notRead_notes; i++)
                     {
                         recentBids.Rows[i].BackColor = Color.Gainsboro;
                     }
@@ -114,7 +114,7 @@ namespace BarteRoom
                     }
 
                 }
-            //}
+            
         }
      
          
@@ -424,7 +424,7 @@ namespace BarteRoom
         {
 
             logic = new Logic();
-            recentBids.DataSource = logic.getAllBids(Session["usr"].ToString());
+            recentBids.DataSource = logic.getAllNotes(Session["usr"].ToString());
             recentBids.DataBind();
 
             int index = Convert.ToInt32(recentBids.SelectedIndex);

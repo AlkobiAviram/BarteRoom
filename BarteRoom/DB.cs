@@ -665,6 +665,7 @@ namespace BarteRoom
             }
 
             catch (Exception e) { return false; }
+            addNote(transaction.Owner, 1, transaction.Item_id, "You have a new BID", transaction.Date, transaction.Bidder);
             return true;
 
         }
@@ -1141,11 +1142,11 @@ namespace BarteRoom
             catch (Exception e) { }
         }
 
-        public int notReadBids(string usr)
+        public int notReadNotes(string usr)
         {
             int bids = 0;
 
-            query = "select COUNT(*) from dbo.items i, dbo.transactions t where i.Id = t.item_id AND (i.usr = '" + usr + "') AND (t.readBid = 0);";
+            query = "select COUNT(*) from dbo.notifications where usr = " + usr + " isRead = 0;";
 
             try
             {
@@ -1215,7 +1216,7 @@ namespace BarteRoom
             DataColumn dt = new DataColumn("Image");
         }
          * */
-        public DataTable getAllBids(string usr)
+        public DataTable getAllNotes(string usr)
         {
 
             DataTable dtable = new DataTable();
@@ -1229,7 +1230,7 @@ namespace BarteRoom
             dtable.Columns.Add(dt2);
             dtable.Columns.Add(dt3);
 
-            query = "select img.path, t.bidder, t.id, t.datetime, t.readBid from dbo.images img, dbo.transactions t, dbo.items i where (img.item_id = i.Id) AND (i.Id = t.item_id) AND (i.usr = '" + usr + "') order by t.readBid,datetime DESC;";
+            query = "select img.path, n.comments, n.Id, n.datetime, n.isRead from dbo.images img, dbo.notifications n where (img.item_id = n.item_Id) AND (n.usr = '" + usr + "') order by n.isRead, n.datetime DESC;";
 
             try
             {
@@ -1247,15 +1248,10 @@ namespace BarteRoom
             {
                 object[] RowValues = { "", "", "", "" };
                 RowValues[0] = rdr[0].ToString();
-
-                if(Convert.ToInt32(rdr[4].ToString()) == 0)
-                {
-                RowValues[1] = "You have a new BID from " + rdr[1].ToString();
-                }
-                else
-                {
-                    RowValues[1] = "Already read BID from user " + rdr[1].ToString();
-                }
+                
+                RowValues[1] = rdr[1].ToString();
+                
+               
                 RowValues[2] = rdr[2].ToString();
 
                 string[] tmp = rdr[3].ToString().Split(' ');
@@ -2073,6 +2069,25 @@ namespace BarteRoom
             connect.Close();
 
             return dtable;
+        }
+
+        public void addNote(string usr, int type, string item_id, string comm, string dt, string from_usr)
+        {
+            Guid newGuid = Guid.NewGuid();
+
+            query = "insert into dbo.notifications values('" + newGuid + "','" + usr + "'," + type + ",'" + item_id + "','" + comm + "', 0 ,'" + dt + "','" + from_usr + "');";
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+
+                command.ExecuteNonQuery();
+                connect.Close();
+            }
+
+            catch (Exception e) { }
         }
 
     }

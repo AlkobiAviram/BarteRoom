@@ -299,16 +299,16 @@ namespace BarteRoom
             data.deleteClass(className);
         }
 
-        public int notReadBids(string usr)
+        public int notReadNotes(string usr)
         {
             data = new DB();
-            return data.notReadBids(usr);
+            return data.notReadNotes(usr);
         }
 
-        public DataTable getAllBids(string usr)
+        public DataTable getAllNotes(string usr)
         {
             data = new DB();
-            return data.getAllBids(usr);
+            return data.getAllNotes(usr);
         }
 
         public void MarkAsRead(string usr)
