@@ -298,29 +298,29 @@
                         <asp:GridView ID="homeGridView" BackColor="White" CssClass="table table-responsive table-hover" HorizontalAlign="Center" GridLines="None" AutoGenerateColumns="False" runat="server" DataKeyNames="Id" ShowFooter="True" OnSelectedIndexChanged="homeGridView_SelectedIndexChanged" AllowPaging="True" OnPageIndexChanging="homeGridView_PageIndexChanging" ShowHeader="False" >
                             <Columns>
                            
-                                <asp:TemplateField>
+                                <asp:TemplateField HeaderText="Image" ShowHeader="False">
                                     <EditItemTemplate>
                                       <asp:TextBox ID="TextBox3" runat="server" Text='<%# Eval("Image") %>'></asp:TextBox> 
                                     </EditItemTemplate>
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="LinkButton2" CommandName="Select" runat="server"><asp:Image ID="Image1" runat="server"  ImageUrl='<%# Eval("Image") %>' /></asp:LinkButton>         
+                                        <asp:LinkButton ID="LinkButton2" CommandName="Select" runat="server"><asp:Image ID="Image1" Width="225px" Height="225px" runat="server" ImageUrl='<%# Eval("Image") %>' /></asp:LinkButton>         
                                     </ItemTemplate>
 
                                 </asp:TemplateField>
                            
                                 <asp:TemplateField HeaderText="Name" ShowHeader="False">
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="LinkButton1" runat="server" CssClass="change" CausesValidation="False" CommandName="Select" Text='<%# Bind("name") %>' ></asp:LinkButton>
+                                        <asp:LinkButton ID="LinkButton1" runat="server" CssClass="change" CausesValidation="False" CommandName="Select" Text='<%# Bind("Name") %>' ></asp:LinkButton>
                                     </ItemTemplate>
                                     <ItemStyle ForeColor="#333300" />
                                 </asp:TemplateField>
                
                                 <asp:TemplateField HeaderText="Comments" SortExpression="comments">
                                     <EditItemTemplate>
-                                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("comments") %>'></asp:TextBox>
+                                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Comments") %>'></asp:TextBox>
                                     </EditItemTemplate>
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="LinkButton3" runat="server" CssClass="change" CausesValidation="False" CommandName="Select"><asp:Label ID="Label1" runat="server" Text='<%# Bind("comments") %>'></asp:Label></asp:LinkButton>
+                                        <asp:LinkButton ID="LinkButton3" runat="server" CssClass="change" CausesValidation="False" CommandName="Select"><asp:Label ID="Label1" runat="server" Text='<%# Bind("Comments") %>'></asp:Label></asp:LinkButton>
                                         
                                     </ItemTemplate>
                                     <ItemStyle Font-Bold="True" Font-Size="Large" ForeColor="#3366CC" />

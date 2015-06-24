@@ -726,7 +726,7 @@ namespace BarteRoom
             DataColumn dt1 = new DataColumn("Comments");
             DataColumn dt2 = new DataColumn("Description");
             DataColumn dt3 = new DataColumn("Image");
-            DataColumn dt4 = new DataColumn("id");
+            DataColumn dt4 = new DataColumn("Id");
 
 
             dtable.Columns.Add(dt);
@@ -1146,7 +1146,7 @@ namespace BarteRoom
         {
             int bids = 0;
 
-            query = "select COUNT(*) from dbo.notifications where usr = " + usr + " AND isRead = 0;";
+            query = "select COUNT(*) from dbo.notifications where usr = '" + usr + "' AND isRead = 0;";
 
             try
             {
