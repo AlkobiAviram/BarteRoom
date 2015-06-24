@@ -9,10 +9,12 @@ namespace BarteRoom
     {
         private string main_categoty;
         private string sub_categoty;
-        public Category(string main_categoty, string sub_categoty)
+        private int id;
+        public Category(string main_categoty, string sub_categoty,int id)
         {
             this.main_categoty = main_categoty;
             this.sub_categoty = sub_categoty;
+            this.id = id;
         }
         public string Main_categoty
         {
@@ -23,6 +25,11 @@ namespace BarteRoom
         {
             get { return this.sub_categoty; }
             set { this.sub_categoty = value; }
+        }
+        public int Id
+        {
+            get { return this.id; }
+            set { this.id = value; }
         }
     }
 }

@@ -64,6 +64,7 @@
     <Content Include="About.aspx" />
     <Content Include="BarterList.aspx" />
     <Content Include="Bids.aspx" />
+    <Content Include="Categories.aspx" />
     <Content Include="css\accordionCss.css" />
     <Content Include="css\css_forAddItem.css" />
     <Content Include="css\imageSlider.css" />
@@ -180,6 +181,13 @@
     </Compile>
     <Compile Include="Bids.aspx.designer.cs">
       <DependentUpon>Bids.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Categories.aspx.cs">
+      <DependentUpon>Categories.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Categories.aspx.designer.cs">
+      <DependentUpon>Categories.aspx</DependentUpon>
     </Compile>
     <Compile Include="Category.cs" />
     <Compile Include="Imag.cs" />

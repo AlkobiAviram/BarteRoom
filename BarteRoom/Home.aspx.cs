@@ -28,7 +28,7 @@ namespace BarteRoom
             
             try
             {
-               
+               //////////setting image slider////////////////////////////////////////////////////////////////
                 //setting the image slider images.
                 //note: first i save a copy of a item's imagein 640x320 dimension and then displaies it in the image slider 
                 string[] split = images.ElementAt(0).Path.Split('/');
@@ -88,7 +88,18 @@ namespace BarteRoom
                 target.Save(path);
 
                 ImageButton4.ImageUrl = "img/resizeImage_tab3.jpg";
+
                 
+///////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////setting categories
+                LinkedList<string> categories = lg.getAllMainCategories();
+                cat1.Text = categories.ElementAt(0).ToString();
+                cat2.Text = categories.ElementAt(1).ToString();
+                cat3.Text = categories.ElementAt(2).ToString();
+                cat4.Text = categories.ElementAt(3).ToString();
+                cat5.Text = categories.ElementAt(4).ToString();
+                cat6.Text = categories.ElementAt(5).ToString();
+                cat7.Text = categories.ElementAt(6).ToString();
             }
             catch (Exception exp)
             { }

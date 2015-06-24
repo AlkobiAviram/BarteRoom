@@ -247,6 +247,42 @@ namespace BarteRoom {
         protected global::System.Web.UI.WebControls.Label desLabel;
         
         /// <summary>
+        /// main_category_header control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label main_category_header;
+        
+        /// <summary>
+        /// main_category_label control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label main_category_label;
+        
+        /// <summary>
+        /// sub_category_header control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label sub_category_header;
+        
+        /// <summary>
+        /// sub_category_label control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label sub_category_label;
+        
+        /// <summary>
         /// itemId_header control.
         /// </summary>
         /// <remarks>

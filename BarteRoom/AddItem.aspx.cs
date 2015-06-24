@@ -38,12 +38,11 @@ namespace BarteRoom
             {
               
                 bind();
+                //updating the subclasses droplist
+               
             }
 
-            //updating the subclasses droplist
-            sub_classes_list.DataSource = lg.getAllSubCategory(classes_list.SelectedValue);
-            sub_classes_list.DataBind();
-            
+            BindDropDownListToDataTable();
         }
 
         private void bind()
@@ -79,10 +78,21 @@ namespace BarteRoom
                 GridView1.DataSource = table;
                 GridView1.DataBind();
 
-                //updating the subclasses droplist
-                sub_classes_list.DataSource = lg.getAllSubCategory(classes_list.SelectedValue);
-                sub_classes_list.DataBind();
+               
            
+        }
+
+
+
+        private void BindDropDownListToDataTable()
+        {
+            
+            sub_classes_list.DataTextField = "sub_category";
+            sub_classes_list.DataValueField = "id";
+            
+            sub_classes_list.DataSource = lg.getAllSubCategory(classes_list.SelectedValue.ToString());
+            sub_classes_list.DataBind();
+             
         }
 
         protected void commit_cmd_Click(object sender, EventArgs e)
@@ -91,10 +101,11 @@ namespace BarteRoom
                 newItem.Usr=Session["usr"].ToString();
                 newItem.Name=name_textBox.Text; 
                 newItem.Clss=classes_list.SelectedValue.ToString();
+                newItem.Sub_clss =sub_classes_list.SelectedValue.ToString();
                 newItem.Comments=comnts_textBox.Text;
                 newItem.Description=desc_textBox.Text;
                 newItem.Id = Session["add_item"].ToString();
-              
+                
                 lg.addItem(newItem);
                 Response.Redirect("/BarterList.aspx");
 
@@ -278,16 +289,13 @@ namespace BarteRoom
 
         protected void classes_list_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //updating the subclasses droplist
-            sub_classes_list.DataSource = lg.getAllSubCategory(classes_list.SelectedValue);
-            sub_classes_list.DataBind();
+           
+            
         }
 
         protected void classes_list_TextChanged(object sender, EventArgs e)
         {
-            //updating the subclasses droplist
-            sub_classes_list.DataSource = lg.getAllSubCategory(classes_list.SelectedValue);
-            sub_classes_list.DataBind();
+            
         }
     }
 }

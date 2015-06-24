@@ -946,12 +946,12 @@ namespace BarteRoom
         public DataTable getAllSubCategory(string main_category){
             DataTable dtable = new DataTable();
             DataColumn dt = new DataColumn("sub_category");
-    
+            DataColumn dt1 = new DataColumn("id");
 
             dtable.Columns.Add(dt);
+            dtable.Columns.Add(dt1);
 
-
-            query = "select sub_category from dbo.classes where main_category='" + main_category + "';";
+            query = "select sub_category,id from dbo.classes where main_category='" + main_category + "';";
 
             try
             {
@@ -967,9 +967,9 @@ namespace BarteRoom
 
             while (rdr.Read())
             {
-                object[] RowValues = {""};
+                object[] RowValues = {"",""};
                 RowValues[0] = rdr[0].ToString();
-
+                RowValues[1] = rdr[1].ToString();
                
                 DataRow dRow;
                 dRow = dtable.Rows.Add(RowValues);
@@ -981,6 +981,41 @@ namespace BarteRoom
             return dtable;
         }
 
+        public LinkedList<string> getAllMainCategories()
+        {
+            LinkedList<string> Categories = new LinkedList<string>();
+            //getting only the main categories
+            query = "select DISTINCT main_category from dbo.classes;";
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+                rdr = command.ExecuteReader();
+
+
+            }
+
+            catch (Exception e) { }
+
+            while (rdr.Read())
+            {
+
+                Categories.AddLast(rdr[0].ToString());
+
+
+            }
+
+
+
+
+
+            connect.Close();
+
+            return Categories;
+
+        }
         public LinkedList<Item> getAllItems()
         {
             LinkedList<Item> items = new LinkedList<Item>();

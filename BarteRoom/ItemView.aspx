@@ -56,13 +56,16 @@
                 </tr>
              
                <tr class="customTd1">
-      <td colspan="3">
+            <td colspan="3">
              <ul role="tablist" class="nav nav-tabs bs-adaptive-tabs">
               <li id="desc_li" class="active" onclick="onclick2()" >
-               <asp:LinkButton ID="description_tab"   runat="server"  OnClick="description_tab_Click">Description</asp:LinkButton>
+               <asp:LinkButton ID="description_tab"  Text="Description" runat="server"  OnClick="description_tab_Click"></asp:LinkButton>
                </li>
-              <li id="owner_li" onclick="onclick1()" ><asp:LinkButton ID="OwnerInformation_tab"   runat="server" OnClick="OwnerInformation_tab_Click">Owner Information</asp:LinkButton></li>
+              <li id="owner_li" onclick="onclick1()" ><asp:LinkButton ID="OwnerInformation_tab" Text="Owner Information"   runat="server" OnClick="OwnerInformation_tab_Click"></asp:LinkButton></li>
                 </ul>
+
+
+
                <h3><asp:Label ID="name_header" runat="server" /></h3>
                  <p>
                         <asp:TextBox  id="name_textBox" AutoPostBack="true" TextMode="multiline" BorderStyle="Dashed"  runat="server" Width="100%" OnTextChanged="name_textBox_TextChanged"/>
@@ -84,7 +87,18 @@
                      </p>
             
 
+           <h3><asp:Label ID="main_category_header" runat="server" /></h3>
+                   <p>
+                        <asp:Label ID="main_category_label" runat="server" />
+                     </p>
         
+
+
+           <h3><asp:Label ID="sub_category_header" runat="server" /></h3>
+                   <p>
+                        <asp:Label ID="sub_category_label" runat="server" />
+                     </p>
+
 
              <h3><asp:Label ID="itemId_header" runat="server" /></h3>
                    <p>

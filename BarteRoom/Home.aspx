@@ -28,14 +28,15 @@
          <asp:ImageButton CssClass="img_slider" ID="slider" ImageUrl="~/img/ipad.jpg" runat="server"  OnClick="slider_Click"/>
           </td> 
                 <td>
-
-                    <asp:Button ID="Button1" runat="server" Text="Button" />
-                    <asp:Button ID="Button2" runat="server" Text="Button" />
-                    <asp:Button ID="Button3" runat="server" Text="Button" />
-                    <asp:Button ID="Button4" runat="server" Text="Button" />
-                    <asp:Button ID="Button5" runat="server" Text="Button" />
-                    
-
+                    <h2><asp:Label ID="Label3" runat="server" Text="Browse with Categories"></asp:Label></h2><br />
+                    <asp:Button ID="cat1" runat="server" Text="Button" Width="100%"/><p />
+                    <asp:Button ID="cat2" runat="server" Text="Button" Width="100%" /><p />
+                    <asp:Button ID="cat3" runat="server" Text="Button" Width="100%"/><p />
+                    <asp:Button ID="cat4" runat="server" Text="Button" Width="100%"/><p />
+                    <asp:Button ID="cat5" runat="server" Text="Button" Width="100%"/><p />
+                    <asp:Button ID="cat6" runat="server" Text="Button" Width="100%"/><p />
+                    <asp:Button ID="cat7" runat="server" Text="Button" Width="100%"/>
+                 
                 </td>
             </tr>
             <tr>

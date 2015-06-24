@@ -48,10 +48,15 @@ namespace BarteRoom
             comLabel.Text = item.Comments;
             idLabel1.Text = item.Id;  
             desLabel.Text=item.Description;
+            main_category_label.Text = item.Clss;
+            sub_category_header.Text = item.Sub_clss;
             name_header.Text = "Item Name";
             comments_header.Text = "Comments";
             description_header.Text = "Description";
             itemId_header.Text = "Item Bar-Code";
+            sub_category_header.Text = "Sub Category";
+            main_category_header.Text = "main Category";
+
 
             if (!IsPostBack)
             {
@@ -216,7 +221,8 @@ namespace BarteRoom
             desLabel.Visible = false;
             nameLabel.Visible = false;
             comLabel.Visible=false;
-
+            main_category_label.Visible = false;
+            sub_category_label.Visible = false;
 
             commit_cmd.Visible = true;
             cancel_cmd.Visible = true;
@@ -244,6 +250,8 @@ namespace BarteRoom
             desLabel.Visible = true;
             nameLabel.Visible = true;
             comLabel.Visible = true;
+            main_category_label.Visible = true;
+            sub_category_label.Visible = true;
 
             commit_cmd.Visible = false;
             cancel_cmd.Visible = false;
@@ -323,7 +331,8 @@ namespace BarteRoom
             desLabel.Visible = true;
             nameLabel.Visible = true;
             comLabel.Visible = true;
-
+            main_category_label.Visible = true;
+            sub_category_label.Visible = true;
 
             commit_cmd.Visible = false;
             cancel_cmd.Visible = false;
@@ -459,21 +468,29 @@ namespace BarteRoom
 
         protected void description_tab_Click(object sender, EventArgs e)
         {
-
+            main_category_label.Visible = true;
+            main_category_header.Visible = true;
+            sub_category_label.Visible = true;
+            sub_category_header.Visible = true;
             
 
             Item item = lg.getItemById(id);
             item.Id = id;
-
             nameLabel.Text = item.Name;
             comLabel.Text = item.Comments;
             idLabel1.Text = item.Id;
             desLabel.Text = item.Description;
-
+            main_category_label.Text = item.Clss;
+            sub_category_header.Text = item.Sub_clss;
             name_header.Text = "Item Name";
             comments_header.Text = "Comments";
             description_header.Text = "Description";
             itemId_header.Text = "Item Bar-Code";
+            sub_category_header.Text = "Sub Category";
+            main_category_header.Text = "main Category";
+
+
+
         }
 
         protected void OwnerInformation_tab_Click(object sender, EventArgs e)
@@ -490,7 +507,11 @@ namespace BarteRoom
             name_header.Text = "Owner User Name";
             comments_header.Text = "Owner Full Name";
             description_header.Text = "Owner Email Address";
-         
+
+            main_category_label.Visible = false;
+            main_category_header.Visible = false;
+            sub_category_label.Visible = false;
+            sub_category_header.Visible = false;
 
           
         }
