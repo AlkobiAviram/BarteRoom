@@ -267,5 +267,12 @@ namespace BarteRoom
             slider.ImageUrl = "img/resizeImage3.jpg";
         }
 
+        protected void cat1_Click(object sender, EventArgs e)
+        {
+           // ((Button)Master.FindControl("Button1")).Click(this, EventArgs.Empty);
+            //cat1_Click(null, EventArgs.Empty);
+           // Master.Server.
+        }
+
     }
 }

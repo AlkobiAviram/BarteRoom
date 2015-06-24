@@ -37,7 +37,7 @@
           </td> 
                 <td>
                     <h2><asp:Label ID="Label3" runat="server" Text="Browse with Categories"></asp:Label></h2><br />
-                    <asp:Button ID="cat1" runat="server" Text="Button" Width="100%"/><p />
+                    <asp:Button ID="cat1" runat="server" Text="Button" Width="100%" OnClick="cat1_Click"/><p />
                     <asp:Button ID="cat2" runat="server" Text="Button" Width="100%" /><p />
                     <asp:Button ID="cat3" runat="server" Text="Button" Width="100%"/><p />
                     <asp:Button ID="cat4" runat="server" Text="Button" Width="100%"/><p />
@@ -67,16 +67,17 @@
          <asp:GridView ID="GridView1" BackColor="White" CssClass="table table-responsive table-hover" GridLines="None" runat="server" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnSelectedIndexChanging="GridView1_SelectedIndexChanging" >
              <Columns>
 
-                  <asp:TemplateField HeaderText="image" ShowHeader="False">
+                  <asp:TemplateField ShowHeader="False">
                       <ItemTemplate>
                  <asp:LinkButton id="img_link" runat="server" CommandName="Select"><asp:Image id="item_img" ImageUrl='<%# Eval("image") %>' runat="server"/></asp:LinkButton>
                       </ItemTemplate>
                  </asp:TemplateField>
 
-                   <asp:TemplateField HeaderText="image" ShowHeader="False">
+                   <asp:TemplateField  ShowHeader="False">
                       <ItemTemplate>
-                 <asp:BoundField DataField="comments" />
+                      <asp:LinkButton ID="comnt_link" runat="server" CssClass="change" CausesValidation="False" CommandName="Select"><asp:Label ID="Label1" runat="server" Text='<%# Bind("comments") %>'></asp:Label></asp:LinkButton>
                     </ItemTemplate>
+                   <ItemStyle Font-Bold="True" Font-Size="Large" ForeColor="#3366CC" />
                  </asp:TemplateField>
                  
                  
