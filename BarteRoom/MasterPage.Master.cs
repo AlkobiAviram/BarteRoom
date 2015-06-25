@@ -319,6 +319,59 @@ namespace BarteRoom
             }
         }
 
+        protected void AdvancedSearch_Click(object sender, EventArgs e)
+        {
+            logic = new Logic();
+            LinkedList<string> cats = logic.getAllMainCategories();
+            Table tb = new Table();
+            foreach (string str in cats)
+            {
+
+                DataTable dt = logic.getAllSubCategory(str);
+
+                TableRow tr0 = new TableRow();
+                TableCell tCell0 = new TableCell();
+                Label main_cat = new Label();
+                main_cat.Text = str;
+                tCell0.Controls.Add(main_cat);
+                tr0.Cells.Add(tCell0);
+                tb.Rows.Add(tr0);
+
+
+                TableRow tr = new TableRow();
+                TableCell tCell = new TableCell();
+                for (int i = 0; i < 1; i++)
+                {
+                    DataRow dr = dt.Rows[i];
+                    Button bt = new Button();
+                    bt.Text = dr[0].ToString();
+                    bt.ID = "cat" + i;
+                    bt.Visible = true;
+                    bt.Click += new EventHandler(bt_Click);
+                    tCell.Controls.Add(bt);
+
+                    tCell.CssClass = "toppad naticell";
+
+                }
+
+                tr.Cells.Add(tCell);
+
+                tb.Rows.Add(tr);
+
+            }
+
+
+            advanced.Controls.Add(tb);
+            //advanced.Controls.Add(new Literal() { ID = "row", Text = "</table>" });
+        }
+        protected void bt_Click(object sender, EventArgs e)
+        {
+            string category = ((Button)sender).Text;
+            SearchTextBox.Text = "";
+            catagories.Text = category;
+            searchCmd_Click(null, e);
+
+        }
         protected void homeGridView_SelectedIndexChanged(object sender, EventArgs e)
         {
             int index = Convert.ToInt32(homeGridView.SelectedIndex);
@@ -582,51 +635,8 @@ namespace BarteRoom
             Response.Redirect("/Mail.aspx?id=" + Server.UrlEncode(id));
         }
 
-        protected void AdvancedSearch_Click(object sender, EventArgs e)
-        {
-                logic = new Logic();
-                LinkedList<string> cats = logic.getAllMainCategories();
-                Table tb = new Table();
-                foreach (string str in cats)
-                {
-                   
-                    DataTable dt = logic.getAllSubCategory(str);
 
-                    TableRow tr0 = new TableRow();
-                    TableCell tCell0 = new TableCell();
-                    Label main_cat = new Label();
-                    main_cat.Text = str;
-                    tCell0.Controls.Add(main_cat);
-                    tr0.Cells.Add(tCell0);
-                    tb.Rows.Add(tr0);
-
-
-                    TableRow tr = new TableRow();
-                    TableCell tCell = new TableCell();
-                    for (int i = 0; i < dt.Rows.Count; i++)
-                    {
-                        DataRow dr = dt.Rows[i];
-                        Button bt = new Button();
-                        bt.Text = dr[0].ToString();
-                        bt.ID = "cat" + i;
-                        bt.Visible = true;
-                       
-                        tCell.Controls.Add(bt);
-                        
-                        tCell.CssClass = "toppad naticell";
-                      
-                    }
-
-                    tr.Cells.Add(tCell);
-
-                    tb.Rows.Add(tr);
-             
-                }
-
-
-                advanced.Controls.Add(tb);
-            //advanced.Controls.Add(new Literal() { ID = "row", Text = "</table>" });
-        }
+  
 
         protected void seeAllMsg_Click(object sender, EventArgs e)
         {
