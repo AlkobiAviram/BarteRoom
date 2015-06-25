@@ -2163,6 +2163,62 @@ namespace BarteRoom
             catch (Exception e) { }
         }
 
+        public DataTable getAllConnections(string usr)
+        {
+            DataTable dtable = new DataTable();
+            DataColumn dt = new DataColumn("User");
+
+            dtable.Columns.Add(dt);
+
+            query = "select connection from connections where usr = '" + usr + "';";
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+                rdr = command.ExecuteReader();
+
+
+            }
+
+            catch (Exception e) { }
+
+
+            while (rdr.Read())
+            {
+
+                object[] RowValues = { "" };
+
+                RowValues[0] = rdr[0].ToString();
+
+                DataRow dRow;
+                dRow = dtable.Rows.Add(RowValues);
+                dtable.AcceptChanges();
+            }
+
+            connect.Close();
+
+            return dtable;
+        }
+
+        public void deleteConn(string usr, string conn)
+        {
+            query = "DELETE FROM dbo.connections WHERE usr='" + usr + "' and connection = '" + conn + "';";
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+
+                command.ExecuteNonQuery();
+                connect.Close();
+            }
+
+            catch (Exception e) { }
+        }
+
 
     }
 

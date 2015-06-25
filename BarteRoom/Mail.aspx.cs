@@ -67,6 +67,8 @@ namespace BarteRoom
                         DraftViewID.Visible = false;
                         draftEmptyID.Visible = false;
                         newMessageID.Visible = false;
+                        connectionsViewID.Visible = false;
+                        connEmptyID.Visible = false;
                     }
 
                     else
@@ -89,6 +91,8 @@ namespace BarteRoom
                             FavouritesID.Visible = false;
                             DraftViewID.Visible = false;
                             newMessageID.Visible = false;
+                            connectionsViewID.Visible = false;
+                            connEmptyID.Visible = false;
                         }
 
                         else
@@ -103,6 +107,8 @@ namespace BarteRoom
                             FavouritesID.Visible = false;
                             DraftViewID.Visible = false;
                             newMessageID.Visible = false;
+                            connectionsViewID.Visible = false;
+                            connEmptyID.Visible = false;
                         }
                     }
                 }
@@ -131,6 +137,8 @@ namespace BarteRoom
                 FavouritesID.Visible = false;
                 DraftViewID.Visible = false;
                 newMessageID.Visible = false;
+                connectionsViewID.Visible = false;
+                connEmptyID.Visible = false;
             }
 
             else
@@ -145,6 +153,8 @@ namespace BarteRoom
                 FavouritesID.Visible = false;
                 DraftViewID.Visible = false;
                 newMessageID.Visible = false;
+                connectionsViewID.Visible = false;
+                connEmptyID.Visible = false;
             }
         }
 
@@ -250,6 +260,8 @@ namespace BarteRoom
                 FavouritesID.Visible = false;
                 DraftViewID.Visible = false;
                 newMessageID.Visible = false;
+                connectionsViewID.Visible = false;
+                connEmptyID.Visible = false;
             }
 
             else
@@ -264,6 +276,8 @@ namespace BarteRoom
                 FavouritesID.Visible = false;
                 DraftViewID.Visible = false;
                 newMessageID.Visible = false;
+                connectionsViewID.Visible = false;
+                connEmptyID.Visible = false;
             }
         }
 
@@ -389,6 +403,8 @@ namespace BarteRoom
                 FavouritesID.Visible = false;
                 DraftViewID.Visible = false;
                 newMessageID.Visible = false;
+                connectionsViewID.Visible = false;
+                connEmptyID.Visible = false;
             }
 
             else
@@ -403,6 +419,8 @@ namespace BarteRoom
                 FavouritesID.Visible = true;
                 DraftViewID.Visible = false;
                 newMessageID.Visible = false;
+                connectionsViewID.Visible = false;
+                connEmptyID.Visible = false;
             }
         }
 
@@ -425,6 +443,8 @@ namespace BarteRoom
                 FavouritesID.Visible = false;
                 DraftViewID.Visible = false;
                 newMessageID.Visible = false;
+                connectionsViewID.Visible = false;
+                connEmptyID.Visible = false;
             }
 
             else
@@ -439,6 +459,8 @@ namespace BarteRoom
                 FavouritesID.Visible = false;
                 DraftViewID.Visible = true;
                 newMessageID.Visible = false;
+                connectionsViewID.Visible = false;
+                connEmptyID.Visible = false;
             }
         }
 
@@ -471,6 +493,8 @@ namespace BarteRoom
                 FavouritesID.Visible = false;
                 DraftViewID.Visible = false;
                 newMessageID.Visible = false;
+                connectionsViewID.Visible = false;
+                connEmptyID.Visible = false;
             }
 
             else
@@ -485,6 +509,8 @@ namespace BarteRoom
                 FavouritesID.Visible = false;
                 DraftViewID.Visible = false;
                 newMessageID.Visible = false;
+                connectionsViewID.Visible = false;
+                connEmptyID.Visible = false;
             }
         }
 
@@ -517,6 +543,8 @@ namespace BarteRoom
                 FavouritesID.Visible = false;
                 DraftViewID.Visible = false;
                 newMessageID.Visible = false;
+                connectionsViewID.Visible = false;
+                connEmptyID.Visible = false;
             }
 
             else
@@ -531,6 +559,8 @@ namespace BarteRoom
                 FavouritesID.Visible = true;
                 DraftViewID.Visible = false;
                 newMessageID.Visible = false;
+                connectionsViewID.Visible = false;
+                connEmptyID.Visible = false;
             }
         }
 
@@ -561,6 +591,8 @@ namespace BarteRoom
                 FavouritesID.Visible = false;
                 DraftViewID.Visible = false;
                 newMessageID.Visible = false;
+                connectionsViewID.Visible = false;
+                connEmptyID.Visible = false;
             }
 
             else
@@ -575,6 +607,8 @@ namespace BarteRoom
                 FavouritesID.Visible = true;
                 DraftViewID.Visible = false;
                 newMessageID.Visible = false;
+                connectionsViewID.Visible = false;
+                connEmptyID.Visible = false;
             }
         }
 
@@ -607,6 +641,8 @@ namespace BarteRoom
                 DraftViewID.Visible = false;
                 draftEmptyID.Visible = true;
                 newMessageID.Visible = false;
+                connectionsViewID.Visible = false;
+                connEmptyID.Visible = false;
             }
 
             else
@@ -621,6 +657,8 @@ namespace BarteRoom
                 draftEmptyID.Visible = false;
                 sentEmptyID.Visible = false;
                 newMessageID.Visible = false;
+                connectionsViewID.Visible = false;
+                connEmptyID.Visible = false;
             }
         }
 
@@ -691,6 +729,8 @@ namespace BarteRoom
             draftEmptyID.Visible = false;
             sentEmptyID.Visible = false;
             newMessageID.Visible = true;
+            connectionsViewID.Visible = false;
+            connEmptyID.Visible = false;
         }
 
         protected void sendMsg_Click(object sender, EventArgs e)
@@ -784,6 +824,8 @@ namespace BarteRoom
                 FavouritesID.Visible = false;
                 DraftViewID.Visible = false;
                 newMessageID.Visible = false;
+                connectionsViewID.Visible = false;
+                connEmptyID.Visible = false;
             }
 
             else
@@ -798,6 +840,95 @@ namespace BarteRoom
                 FavouritesID.Visible = false;
                 DraftViewID.Visible = true;
                 newMessageID.Visible = false;
+                connectionsViewID.Visible = false;
+                connEmptyID.Visible = false;
+            }
+        }
+
+        protected void connectionsCmd_Click(object sender, EventArgs e)
+        {
+            logic = new Logic();
+
+            connectionView.DataSource = logic.getAllConnections(Session["usr"].ToString());
+            connectionView.DataBind();
+
+            if (connectionView.Rows.Count == 0)
+            {
+                draftEmptyID.Visible = false;
+                sentEmptyID.Visible = false;
+                favourEmptyID.Visible = false;
+                inboxViewID.Visible = false;
+                inboxEmptyID.Visible = false;
+                SentViewID.Visible = false;
+                msgViewID.Visible = false;
+                FavouritesID.Visible = false;
+                DraftViewID.Visible = false;
+                newMessageID.Visible = false;
+                connectionsViewID.Visible = false;
+                connEmptyID.Visible = true;
+            }
+
+            else
+            {
+                draftEmptyID.Visible = false;
+                sentEmptyID.Visible = false;
+                favourEmptyID.Visible = false;
+                inboxViewID.Visible = false;
+                inboxEmptyID.Visible = false;
+                SentViewID.Visible = false;
+                msgViewID.Visible = false;
+                FavouritesID.Visible = false;
+                DraftViewID.Visible = false;
+                newMessageID.Visible = false;
+                connectionsViewID.Visible = true;
+                connEmptyID.Visible = false;
+            }
+        }
+
+        protected void connectionView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string usr;
+            logic = new Logic();
+
+            int index = Convert.ToInt32(connectionView.SelectedIndex);
+
+            usr = ((Label)connectionView.Rows[index].FindControl("connUserLabel")).Text;
+
+            logic.deleteConn(Session["usr"].ToString(), usr);
+
+            connectionView.DataSource = logic.getAllConnections(Session["usr"].ToString());
+            connectionView.DataBind();
+
+            if (connectionView.Rows.Count == 0)
+            {
+                draftEmptyID.Visible = false;
+                sentEmptyID.Visible = false;
+                favourEmptyID.Visible = false;
+                inboxViewID.Visible = false;
+                inboxEmptyID.Visible = false;
+                SentViewID.Visible = false;
+                msgViewID.Visible = false;
+                FavouritesID.Visible = false;
+                DraftViewID.Visible = false;
+                newMessageID.Visible = false;
+                connectionsViewID.Visible = false;
+                connEmptyID.Visible = true;
+            }
+
+            else
+            {
+                draftEmptyID.Visible = false;
+                sentEmptyID.Visible = false;
+                favourEmptyID.Visible = false;
+                inboxViewID.Visible = false;
+                inboxEmptyID.Visible = false;
+                SentViewID.Visible = false;
+                msgViewID.Visible = false;
+                FavouritesID.Visible = false;
+                DraftViewID.Visible = false;
+                newMessageID.Visible = false;
+                connectionsViewID.Visible = true;
+                connEmptyID.Visible = false;
             }
         }
 

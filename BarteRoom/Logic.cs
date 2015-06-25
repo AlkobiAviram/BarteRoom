@@ -529,5 +529,17 @@ namespace BarteRoom
 
             data.sendDraft(id, message, datetimeFormat);
         }
+
+        public DataTable getAllConnections(string usr)
+        {
+            data = new DB();
+            return data.getAllConnections(usr);
+        }
+
+        public void deleteConn(string usr, string conn)
+        {
+            data = new DB();
+            data.deleteConn(usr, conn);
+        }
     }
 }

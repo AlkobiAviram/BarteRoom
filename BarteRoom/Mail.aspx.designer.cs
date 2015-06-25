@@ -274,6 +274,15 @@ namespace BarteRoom {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl draftEmptyID;
         
         /// <summary>
+        /// connEmptyID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl connEmptyID;
+        
+        /// <summary>
         /// inboxViewID control.
         /// </summary>
         /// <remarks>
@@ -427,6 +436,24 @@ namespace BarteRoom {
         protected global::System.Web.UI.WebControls.GridView drafView;
         
         /// <summary>
+        /// connectionsViewID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl connectionsViewID;
+        
+        /// <summary>
+        /// connectionView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView connectionView;
+        
+        /// <summary>
         /// newMsgCmd control.
         /// </summary>
         /// <remarks>
@@ -470,6 +497,15 @@ namespace BarteRoom {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton sentCmd;
+        
+        /// <summary>
+        /// connectionsCmd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton connectionsCmd;
         
         /// <summary>
         /// FavouritesCmd control.

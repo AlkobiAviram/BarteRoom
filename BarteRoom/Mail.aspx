@@ -23,6 +23,15 @@
         .auto-style26 {
             width: 565px;
         }
+        .padconn{
+            padding-left: 15px;
+            margin-right: 15px;
+        }
+
+        .padconn2{
+            padding-left: 7px;
+            margin-right: 7px;
+        }
 
     </style>
 
@@ -223,6 +232,19 @@
                                 <td></td>
                                 <td>
                                     <h1>You don't have any Drafts</h1>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+
+                    <div class="connEmpty" id="connEmptyID" runat="server">
+
+                        <table class="nav-justified">
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <h1>You don't have any Connections</h1>
                                 </td>
                             </tr>
                         </table>
@@ -530,6 +552,46 @@
                     </asp:GridView>
 
                     </div>
+
+                    <div class="connectionsView" runat="server" id="connectionsViewID">
+
+                        <table class="nav-justified">
+                        <tr>
+                            <td class="auto-style20">
+                                <br />
+                                <h1>Connections</h1>
+                            </td>
+                        </tr>
+                    
+
+                    </table>
+                        <asp:GridView ID="connectionView" GridLines="None" runat="server" AutoGenerateColumns="false" OnSelectedIndexChanged="connectionView_SelectedIndexChanged">
+
+                            <Columns>
+
+                                <asp:TemplateField ShowHeader="False" ConvertEmptyStringToNull="true">
+                                    <ItemTemplate>
+                                         <asp:LinkButton ID="conndeleteConCmd" CssClass="change3" ForeColor="Red" runat="server" CommandName="Select"> Delete </asp:LinkButton>       
+                                    </ItemTemplate>                                          
+                                </asp:TemplateField>
+
+                                <asp:TemplateField ShowHeader="False" ItemStyle-CssClass="padconn" ConvertEmptyStringToNull="true">
+                                    <ItemTemplate>
+                                        <span class="glyphicon glyphicon-user"></span>
+                                    </ItemTemplate>                                          
+                                </asp:TemplateField>
+
+                                <asp:TemplateField ShowHeader="False" ItemStyle-CssClass="padconn2" ConvertEmptyStringToNull="true">
+                                    <ItemTemplate>
+                                        <asp:Label ID="connUserLabel" runat="server" Font-Size="Medium" Font-Bold="true" ForeColor="Black" Text='<%# Bind("User") %>'></asp:Label>
+                                    </ItemTemplate>                                          
+                                </asp:TemplateField>
+
+                            </Columns>
+
+                        </asp:GridView>
+
+                    </div>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -562,19 +624,19 @@
                     <asp:LinkButton ID="sentCmd" runat="server" OnClick="sentCmd_Click">
                        <i class="fa fa-share fa-2x""></i>
                         <span class="nav-text">
-                            Sent mail
+                            Sent mails
                         </span>
                     </asp:LinkButton>
                    
                 </li>
 
                  <li>
-                    <a href="#">
+                    <asp:LinkButton ID="connectionsCmd" runat="server" OnClick="connectionsCmd_Click">
                         <i class="fa fa-user fa-2x"></i>
                         <span class="nav-text">
                             Connections
                         </span>
-                    </a>
+                    </asp:LinkButton>
                 </li>
 
                  <li>

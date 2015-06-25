@@ -6808,6 +6808,11 @@ button.close {
     background-color: transparent;
 }
 
+.change3:hover{
+    color: red;
+    background-color: transparent;
+}
+
 .HomePage{
   background-image: url(backGround.PNG);
   background-position: 30px 30px, 0% 0%, 0% 0%;
