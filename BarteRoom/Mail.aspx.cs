@@ -747,9 +747,58 @@ namespace BarteRoom
             ClientScript.RegisterStartupScript(typeof(Page), "MessagePopUp", "alert('Save as draft!');", true);
         }
 
-        protected void sendDraftButton_Click(object sender, EventArgs e)
+
+        protected void drafView_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            logic = new Logic();
+            string to;
+            string sub;
+            string msg_body;
+            string id;
+            int index = Convert.ToInt32(drafView.SelectedIndex);
+
+            to = ((Label)drafView.Rows[index].FindControl("drafromLabel")).Text;
+            sub = ((Label)drafView.Rows[index].FindControl("drafsubjectLabel")).Text;
+            msg_body = ((TextBox)drafView.Rows[index].FindControl("drafmsgLabel")).Text;
+
+            id = ((Label)drafView.Rows[index].FindControl("drafidLabel")).Text;
+
+            Message newMsg = new Message(Session["usr"].ToString(), to, sub, msg_body);
+
+            logic.sendDraft(id, newMsg);
+            ClientScript.RegisterStartupScript(typeof(Page), "MessagePopUp", "alert('draft Sent!');", true);
+
+
+            drafView.DataSource = logic.getAllDrafts(Session["usr"].ToString());
+            drafView.DataBind();
+
+            if (drafView.Rows.Count == 0)
+            {
+                draftEmptyID.Visible = true;
+                sentEmptyID.Visible = false;
+                favourEmptyID.Visible = false;
+                inboxViewID.Visible = false;
+                inboxEmptyID.Visible = false;
+                SentViewID.Visible = false;
+                msgViewID.Visible = false;
+                FavouritesID.Visible = false;
+                DraftViewID.Visible = false;
+                newMessageID.Visible = false;
+            }
+
+            else
+            {
+                draftEmptyID.Visible = false;
+                sentEmptyID.Visible = false;
+                favourEmptyID.Visible = false;
+                inboxViewID.Visible = false;
+                inboxEmptyID.Visible = false;
+                SentViewID.Visible = false;
+                msgViewID.Visible = false;
+                FavouritesID.Visible = false;
+                DraftViewID.Visible = true;
+                newMessageID.Visible = false;
+            }
         }
 
     }

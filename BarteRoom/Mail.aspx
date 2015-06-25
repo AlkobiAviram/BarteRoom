@@ -470,20 +470,33 @@
 
                     </table>
 
-                        <asp:GridView ID="drafView" ShowHeader="false" DataKeyNames="Id" Width="97%" GridLines="Horizontal" AutoGenerateColumns="False" runat="server">
+                        <asp:GridView ID="drafView" ShowHeader="False" DataKeyNames="Id" Width="97%" GridLines="Horizontal" AutoGenerateColumns="False" runat="server" OnSelectedIndexChanged="drafView_SelectedIndexChanged">
                         <Columns>
 
                             <asp:TemplateField HeaderText="From" ShowHeader="False" ConvertEmptyStringToNull="true" ItemStyle-HorizontalAlign="Left">
                                     <ItemTemplate>
                                         <asp:CheckBox ID="drafCheckMsg" CssClass="checkboxStyle" runat="server" />
                                     </ItemTemplate>                                          
+
+<ItemStyle HorizontalAlign="Left"></ItemStyle>
                                 </asp:TemplateField> 
+                          
+
+                            <asp:TemplateField ShowHeader="False">
+                                <EditItemTemplate>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="draftSend" CssClass="btn btn-success" runat="server" CausesValidation="False" CommandName="Select" > Send <span class="glyphicon glyphicon-send"></span> </asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                           
 
                             <asp:TemplateField HeaderText="From" ShowHeader="False" ConvertEmptyStringToNull="true" ItemStyle-HorizontalAlign="Left">
                                     <ItemTemplate>
                                         <asp:Label ID="drafromLabel" runat="server" Font-Size="18px" ForeColor="Black" Text='<%# Bind("To") %>'></asp:Label>
                                     </ItemTemplate>                                          
+
+<ItemStyle HorizontalAlign="Left"></ItemStyle>
                                 </asp:TemplateField> 
 
                             <asp:TemplateField HeaderText="Subject" ShowHeader="False" ItemStyle-CssClass="leftPad" ItemStyle-HorizontalAlign="Left" ConvertEmptyStringToNull="true">
@@ -492,14 +505,18 @@
                                 </EditItemTemplate>
                                     <ItemTemplate>
                                         <asp:Label ID="drafsubjectLabel" runat="server" Font-Size="18px" ForeColor="Black" Text='<%# Bind("Subject") %>'></asp:Label>
-                                        <asp:Label ID="drafmsgLabel" runat="server" Font-Size="Medium" ForeColor="Black" Text='<%# Bind("Msg") %>'></asp:Label>
+                                        <asp:TextBox ID="drafmsgLabel" Font-Size="Medium" ForeColor="Black" Text='<%# Bind("Msg") %>' Width="500px" runat="server"></asp:TextBox>
                                     </ItemTemplate>                                          
+
+<ItemStyle HorizontalAlign="Left" CssClass="leftPad"></ItemStyle>
                                 </asp:TemplateField> 
 
                             <asp:TemplateField HeaderText="Datetime" ShowHeader="False" ConvertEmptyStringToNull="true" ItemStyle-HorizontalAlign="Right">
                                     <ItemTemplate>
                                         <asp:Label ID="drafdatetimeLabel" runat="server" Font-Size="Medium" ForeColor="Black" Text='<%# Bind("Datetime") %>'></asp:Label>
                                     </ItemTemplate>                                          
+
+<ItemStyle HorizontalAlign="Right"></ItemStyle>
                                 </asp:TemplateField>
 
                             <asp:TemplateField HeaderText="Id" ShowHeader="False" ConvertEmptyStringToNull="true">

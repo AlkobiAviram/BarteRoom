@@ -2132,6 +2132,37 @@ namespace BarteRoom
             catch (Exception e) { }
         }
 
+        public void sendDraft(string id, Message msg, string dt)
+        {
+            query = "UPDATE dbo.msg set draft = 0 where Id = '" + id + "';";
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+
+                command.ExecuteNonQuery();
+                connect.Close();
+            }
+
+            catch (Exception e) { }
+
+            query = "insert into dbo.sentmsg values('" + msg.Id + "','" + msg.From + "','" + msg.To + "','" + msg.Subject + "','" + msg.Msg_body + "','" + dt + "');";
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+
+                command.ExecuteNonQuery();
+                connect.Close();
+            }
+
+            catch (Exception e) { }
+        }
+
 
     }
 

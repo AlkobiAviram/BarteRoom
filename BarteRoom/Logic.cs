@@ -520,5 +520,14 @@ namespace BarteRoom
             data = new DB();
             data.updateMsg(id, msg);
         }
+
+        public void sendDraft(string id, Message message)
+        {
+            data = new DB();
+            DateTime datetime = DateTime.Now;
+            string datetimeFormat = Logic.changeDateFormat(datetime.ToString());
+
+            data.sendDraft(id, message, datetimeFormat);
+        }
     }
 }
