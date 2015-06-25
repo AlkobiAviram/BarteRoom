@@ -9,7 +9,21 @@
           background-color:white;
           border:1px solid #4682B4;
        }
+      
    </style>
+     <script language ="javascript" type="text/javascript">
+         function SelectRadiobutton(radio) {
+             var rdBtn = document.getElementById(radio.id);
+             var rdBtnList = document.getElementsByTagName("input");
+             for (i = 0; i < rdBtnList.length; i++) {
+                 if (rdBtnList[i].type == "radio" && rdBtnList[i].id != rdBtn.id) {
+                     rdBtnList[i].checked = false;
+                 }
+
+             }
+         }
+         
+     </script>
       <div class="container" runat="server" id="transactionsPage">
     
 
@@ -68,7 +82,16 @@
                    <asp:GridView ID="GridView1"  CssClass="table table-responsive table-hover" HorizontalAlign="Center" GridLines="None"  runat="server" AllowSorting="True"  AllowPaging="True"  AutoGenerateColumns="False"  >
                         <Columns>                                 
 
+                            <asp:TemplateField>
+                                <ItemTemplate>
+
+                                    <asp:RadioButton ID="rdio_items" runat="server" GroupName="sel" OnClick="javascript:SelectRadiobutton(this)" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
                             <asp:ImageField DataImageUrlField ="Image" NullDisplayText="no image" ControlStyle-CssClass="img-responsive img-css" >
+                               
+                            <ControlStyle CssClass="img-responsive img-css"></ControlStyle>
                                
                             </asp:ImageField>
                             <asp:BoundField DataField="Name" HeaderText="Name" />

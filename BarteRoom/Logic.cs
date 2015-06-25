@@ -493,5 +493,16 @@ namespace BarteRoom
             data = new DB();
             data.markBidAsRead(t_id);
         }
+
+        public void addAMatch(string bidded_item_id, string offered_item_id)
+        {
+            data = new DB();
+            data.addAMatch(bidded_item_id, offered_item_id);
+        }
+        public void addAConnection(string usr, string connection)
+        {
+            data = new DB();
+            data.addAConnection(usr,connection);
+        }
     }
 }

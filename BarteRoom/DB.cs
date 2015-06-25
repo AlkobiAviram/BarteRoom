@@ -227,11 +227,11 @@ namespace BarteRoom
                 rdr = command.ExecuteReader();
 
 
-            }
+            
 
-            catch (Exception e) { }
-            int i = 3;
-            while (rdr.Read() && i > 0)
+            
+            
+            while (rdr.Read() )
             {
                 object[] RowValues = { "", "", "", "" };
                 RowValues[0] = rdr[0].ToString();
@@ -245,9 +245,10 @@ namespace BarteRoom
                 DataRow dRow;
                 dRow = dtable.Rows.Add(RowValues);
                 dtable.AcceptChanges();
-                i--;
+                
             }
-
+        }
+            catch (Exception e) { }
             connect.Close();
 
 
@@ -379,6 +380,10 @@ namespace BarteRoom
             return images;
         }
 
+
+
+
+
         public string setImagePath(String id)
         {
             string path = "";
@@ -389,6 +394,7 @@ namespace BarteRoom
                 connect.Open();
 
                 command = new SqlCommand(query, connect);
+                rdr = command.ExecuteReader();
                 if (rdr.Read())
                     path = rdr[0].ToString();
                 connect.Close();
@@ -2061,6 +2067,56 @@ namespace BarteRoom
 
             catch (Exception e) { }
         }
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+/// ////////////////////regards the matches
+        public void addAConnection(string usr, string connection)
+        {
+
+            query = "insert into dbo.connections values('" + usr+ "','" + connection + "'); ";
+
+
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+                command.ExecuteNonQuery();
+                connect.Close();
+            }
+
+            catch (Exception e) { }
+
+            return;
+        }
+        public void addAMatch(string bidded_item_id, string offered_item_id)
+        {
+
+            query = "insert into dbo.matches values('" + bidded_item_id + "','" + offered_item_id + "'); ";
+                    
+
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+                command.ExecuteNonQuery();
+                connect.Close();
+            }
+
+            catch (Exception e)  {}
+     
+            return;
+        }
+
+
+
 
     }
 

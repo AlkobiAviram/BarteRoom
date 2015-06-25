@@ -92,6 +92,16 @@ namespace BarteRoom
 
         protected void Confirm_cmd_Click(object sender, EventArgs e)
         {
+            string checked_itemId="";
+            //checking which cell selected
+            foreach (GridViewRow i in GridView1.Rows)
+            {
+                if (((RadioButton)i.FindControl("rdio_items")).Checked)
+                    checked_itemId = i.Cells[4].Text;
+            }
+            lg.addAMatch(trns.Item_id, checked_itemId);
+            lg.addAConnection(trns.Owner, trns.Bidder);
+            lg.addAConnection(trns.Bidder, trns.Owner);
 
         }
 
