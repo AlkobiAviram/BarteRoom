@@ -348,7 +348,7 @@ namespace BarteRoom
         public void addMessage(Message msg, int flag)
         {
             DateTime dt = DateTime.Now;
-            string newDatetimeFormat = changeDateFormat(dt.ToString());
+            string newDatetimeFormat = Logic.changeDateFormat(dt.ToString());
 
             data = new DB();
 
@@ -367,7 +367,7 @@ namespace BarteRoom
 
             string[] tmp = date[0].Split('/');
 
-            string newFormat = tmp[2] + "-" + tmp[0] + "-" + tmp[1] + " " + date[1];
+            string newFormat = tmp[2] + "-" + tmp[1] + "-" + tmp[0] + " " + date[1];
 
             return newFormat;
         }
@@ -499,10 +499,20 @@ namespace BarteRoom
             data = new DB();
             data.addAMatch(bidded_item_id, offered_item_id);
         }
+
         public void addAConnection(string usr, string connection)
         {
             data = new DB();
             data.addAConnection(usr,connection);
+        }
+
+        public void addNote(string usr, int type, string item_id, string comm, string from_usr)
+        {
+            data = new DB();
+            DateTime datetime = DateTime.Now;
+            string datetimeFormat = Logic.changeDateFormat(datetime.ToString());
+
+            data.addNote(usr, type, item_id, comm, datetimeFormat, from_usr);
         }
     }
 }

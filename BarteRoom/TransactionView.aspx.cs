@@ -103,6 +103,7 @@ namespace BarteRoom
             lg.addAConnection(trns.Owner, trns.Bidder);
             lg.addAConnection(trns.Bidder, trns.Owner);
 
+            lg.addNote(trns.Bidder, 2, trns.Item_id, "You are get a new offer", trns.Owner);
         }
 
         //search button event handler
