@@ -514,5 +514,11 @@ namespace BarteRoom
 
             data.addNote(usr, type, item_id, comm, datetimeFormat, from_usr);
         }
+
+        public void updateMsg(string id, string msg)
+        {
+            data = new DB();
+            data.updateMsg(id, msg);
+        }
     }
 }

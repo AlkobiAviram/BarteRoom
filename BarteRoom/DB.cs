@@ -2053,7 +2053,7 @@ namespace BarteRoom
 
         public void markBidAsRead(string t_id)
         {
-            query = "UPDATE dbo.notifications SET isRead = 1 WHERE Id IN(select n.Id from notifications n, transactions t where n.item_id = t.item_id and t.id = '" + t_id + "');";
+            query = "UPDATE dbo.notifications SET isRead = 1 WHERE Id IN(select n.Id from notifications n, transactions t where n.item_id = t.item_id and n.type = 1 and t.id = '" + t_id + "');";
 
             try
             {
@@ -2115,7 +2115,22 @@ namespace BarteRoom
             return;
         }
 
+        public void updateMsg(string id, string msg)
+        {
+            query = "UPDATE dbo.msg set msg_body = '" + msg + "' where Id = '" + id + "';";
 
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+
+                command.ExecuteNonQuery();
+                connect.Close();
+            }
+
+            catch (Exception e) { }
+        }
 
 
     }

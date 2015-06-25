@@ -745,6 +745,12 @@ namespace BarteRoom
 
             logic.addMessage(newMsg, 1);
             ClientScript.RegisterStartupScript(typeof(Page), "MessagePopUp", "alert('Save as draft!');", true);
-        } 
+        }
+
+        protected void sendDraftButton_Click(object sender, EventArgs e)
+        {
+            
+        }
+
     }
 }

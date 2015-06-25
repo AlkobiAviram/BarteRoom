@@ -470,7 +470,7 @@
 
                     </table>
 
-                        <asp:GridView ID="drafView" ShowHeader="false" Width="97%" GridLines="Horizontal" AutoGenerateColumns="False" runat="server">
+                        <asp:GridView ID="drafView" ShowHeader="false" DataKeyNames="Id" Width="97%" GridLines="Horizontal" AutoGenerateColumns="False" runat="server">
                         <Columns>
 
                             <asp:TemplateField HeaderText="From" ShowHeader="False" ConvertEmptyStringToNull="true" ItemStyle-HorizontalAlign="Left">
@@ -487,6 +487,9 @@
                                 </asp:TemplateField> 
 
                             <asp:TemplateField HeaderText="Subject" ShowHeader="False" ItemStyle-CssClass="leftPad" ItemStyle-HorizontalAlign="Left" ConvertEmptyStringToNull="true">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="editDraft" Text='<%# Bind("Msg") %>' TextMode="MultiLine" runat="server"></asp:TextBox>
+                                </EditItemTemplate>
                                     <ItemTemplate>
                                         <asp:Label ID="drafsubjectLabel" runat="server" Font-Size="18px" ForeColor="Black" Text='<%# Bind("Subject") %>'></asp:Label>
                                         <asp:Label ID="drafmsgLabel" runat="server" Font-Size="Medium" ForeColor="Black" Text='<%# Bind("Msg") %>'></asp:Label>
