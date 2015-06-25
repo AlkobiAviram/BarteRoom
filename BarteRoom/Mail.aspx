@@ -51,7 +51,7 @@
                                     <h1>To:</h1>
                                </td>
                                <td>
-                                    <h1><asp:DropDownList ID="connectionsList" class="form-control" runat="server" Width="201px"></asp:DropDownList></h1>
+                                    <h1><asp:DropDownList ID="connectionsList" class="form-control" runat="server" Width="201px" DataSourceID="SqlDataSource2" DataTextField="connection" DataValueField="connection"></asp:DropDownList></h1>
                                </td>
                            </tr>
 
