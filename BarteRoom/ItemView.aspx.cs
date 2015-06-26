@@ -23,7 +23,8 @@ namespace BarteRoom
 
             //searech button event catch
             ((Button)Master.FindControl("Button1")).Click += new EventHandler(this.searchBtn_Click);
-             
+            ((LinkButton)Master.FindControl("AdvancedSearch")).Click += new EventHandler(this.searchBtn_Click);
+
           
             //setting image
               if (Request.QueryString["id"] != null){

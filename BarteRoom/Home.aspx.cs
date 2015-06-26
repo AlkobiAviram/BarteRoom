@@ -23,9 +23,10 @@ namespace BarteRoom
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //searech button event catch
+            //search and advanced button event catch
             ((Button)Master.FindControl("Button1")).Click += new EventHandler(this.searchBtn_Click);
-            
+            ((LinkButton)Master.FindControl("AdvancedSearch")).Click += new EventHandler(this.searchBtn_Click);
+
             try
             {
                //////////setting image slider////////////////////////////////////////////////////////////////
@@ -232,7 +233,7 @@ namespace BarteRoom
         {
             welcomeHome.Visible = false;
         }
-
+     
         protected void slider_Click(object sender, ImageClickEventArgs e)
         {
             int slider_img_num;

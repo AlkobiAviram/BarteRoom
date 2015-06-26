@@ -14,7 +14,8 @@ namespace BarteRoom
     {
         private HttpCookie cookie;
         private Logic logic;
-
+        private string global_category;
+       
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -112,9 +113,9 @@ namespace BarteRoom
                     {
                         manage.Visible = true;
                     }
-
+                    
                 }
-            
+                advancedBind();
         }
      
          
@@ -279,17 +280,19 @@ namespace BarteRoom
         {
             logic = new Logic();
             String search = SearchTextBox.Text;
-            String catagory = catagories.Text;
+
+            if(Session["wasAdvancedButtonClicked"]==null ||!(Boolean)Session["wasAdvancedButtonClicked"])
+            global_category = catagories.Text;
             int res = 0;
-            ctagoriyLabel.Text = catagory;
+            ctagoriyLabel.Text = global_category;
 
             if (Session["usr"] != null)
             {
-                res = logic.numOfResults(Session["usr"].ToString(), search, catagory);
+                res = logic.numOfResults(Session["usr"].ToString(), search, global_category);
             }
             else
             {
-                res = logic.numOfResults("", search, catagory);
+                res = logic.numOfResults("", search, global_category);
             }
 
             if (!(search == null))
@@ -309,17 +312,17 @@ namespace BarteRoom
                 searchField.Visible = true;
                 if (Session["usr"] != null)
                 {
-                    homeGridView.DataSource = logic.getDataSourceForSearch(Session["usr"].ToString(), search, catagory);
+                    homeGridView.DataSource = logic.getDataSourceForSearch(Session["usr"].ToString(), search, global_category);
                 }
                 else
                 {
-                    homeGridView.DataSource = logic.getDataSourceForSearch("", search, catagory);
+                    homeGridView.DataSource = logic.getDataSourceForSearch("", search, global_category);
                 }
                 homeGridView.DataBind();
             }
         }
 
-        protected void AdvancedSearch_Click(object sender, EventArgs e)
+        private void advancedBind()
         {
             logic = new Logic();
             LinkedList<string> cats = logic.getAllMainCategories();
@@ -340,12 +343,12 @@ namespace BarteRoom
 
                 TableRow tr = new TableRow();
                 TableCell tCell = new TableCell();
-                for (int i = 0; i < 1; i++)
+                for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     DataRow dr = dt.Rows[i];
                     Button bt = new Button();
                     bt.Text = dr[0].ToString();
-                    bt.ID = "cat" + i;
+                    bt.ID = str+"cat" + i;
                     bt.Visible = true;
                     bt.Click += new EventHandler(bt_Click);
                     tCell.Controls.Add(bt);
@@ -362,15 +365,19 @@ namespace BarteRoom
 
 
             advanced.Controls.Add(tb);
-            //advanced.Controls.Add(new Literal() { ID = "row", Text = "</table>" });
+            advanced.Visible = false;
+        }
+        protected void AdvancedSearch_Click(object sender, EventArgs e)
+        {
+            Session["wasAdvancedButtonClicked"] = true;
+            advanced.Visible = true;
         }
         protected void bt_Click(object sender, EventArgs e)
         {
-            string category = ((Button)sender).Text;
+            global_category = ((Button)sender).Text;
             SearchTextBox.Text = "";
-            catagories.Text = category;
             searchCmd_Click(null, e);
-
+            Session["wasAdvancedButtonClicked"] = false;
         }
         protected void homeGridView_SelectedIndexChanged(object sender, EventArgs e)
         {

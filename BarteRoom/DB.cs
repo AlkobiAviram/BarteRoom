@@ -700,7 +700,7 @@ namespace BarteRoom
 
             else
             {
-                query = "select name,itm.comments,itm.description,img.path,itm.Id from dbo.items itm,dbo.images img where ([name] LIKE '%'+'" + search + "'+'%') AND (itm.usr != '" + usr + "') AND (itm.Id=img.item_id) AND (img.isProfile=1) AND ([class] = '" + catagory + "')";
+                query = "select name,itm.comments,itm.description,img.path,itm.Id from dbo.items itm,dbo.images img where ([name] LIKE '%'+'" + search + "'+'%') AND (itm.usr != '" + usr + "') AND (itm.Id=img.item_id) AND (img.isProfile=1) AND ( ([class] = '" + catagory + "') OR ([sub_class] = '" + catagory + "') )";
             }
 
             try
@@ -752,7 +752,7 @@ namespace BarteRoom
 
             else
             {
-                query = "select count(*) from dbo.items where ([name] LIKE '%'+'" + search + "'+'%')  AND (usr != '" + usr + "') AND ([class] = '" + catagory + "');";
+                query = "select count(*) from dbo.items where ([name] LIKE '%'+'" + search + "'+'%')  AND (usr != '" + usr + "') AND ( ([class] = '" + catagory + "') OR ([sub_class] = '" + catagory + "') );";
             }
             try
             {
