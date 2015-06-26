@@ -127,45 +127,34 @@ namespace BarteRoom
                 }
             }
 
-            if (!IsPostBack)
-            {
+           
                 bind();
-            }
+            
         }
         private void bind()
         {
-            DataTable table = new DataTable();
+  
             DataTable dt = lg.getImagesOfItem(id);
-
-            //rotating the table:
-
-            //Get all the rows and change into columns
-            for (int i = 0; i <= dt.Rows.Count; i++)
+            for (int i = 0; i < dt.Rows.Count; i++)
             {
-                table.Columns.Add(Convert.ToString(i));
-                if (GridView1.Columns.Count <= i)
-                {
-                    ImageField img_fld = new ImageField();
-                    img_fld.DataImageUrlField = Convert.ToString(i);
-
-                    GridView1.Columns.Add(img_fld);
-                }
+                ImageButton bt=new ImageButton();
+                bt.ImageUrl = dt.Rows[i][0].ToString();
+                bt.ID=""+i;
+                bt.CssClass="natiImage";
+                bt.Click+=new ImageClickEventHandler(pic_Click);
+                images.Controls.Add(bt);
+                images.Controls.Add(new LiteralControl("&nbsp"));
+                images.Controls.Add(new LiteralControl("&nbsp"));
             }
-            DataRow dr;
-            //get all the columns and make it as rows
-            dr = table.NewRow();
-            for (int j = 0; j < dt.Rows.Count; j++)
-            {
 
-                dr[j] = dt.Rows[j][0];
+        }
+        protected void pic_Click(object sender, EventArgs e)
+        {
+            DataTable dt = lg.getImagesOfItem(id);
+            string imgPath=dt.Rows[Convert.ToInt32(((ImageButton)sender).ID)][0].ToString();
+            item_pic3.ImageUrl = imgPath;
 
 
-            }
-            table.Rows.Add(dr);
-            GridView1.DataSource = table;
-            GridView1.DataBind();
-
-            
 
         }
         protected void offer_cmd_Click(object sender, EventArgs e)
@@ -417,6 +406,7 @@ namespace BarteRoom
 
             if (e.CommandName == "Delete")
             {
+                /*
                 // Convert the row index stored in the CommandArgument
                 // property to an Integer.
                 int index = Convert.ToInt32(e.CommandArgument);
@@ -430,7 +420,7 @@ namespace BarteRoom
                 string delete_id = row.Cells[6].Text;
                 lg.removeItem(delete_id);
 
-
+                */
             }
             
 
@@ -447,13 +437,14 @@ namespace BarteRoom
         }
         protected void GridView1_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
+            /*
             int index = Convert.ToInt32(e.NewSelectedIndex);
             GridViewRow row = GridView1.Rows[index];
             string id = row.Cells[6].Text;
             Response.Redirect("/ItemView.aspx?" + "id=" + Server.UrlEncode(id));
             GridView1.EditIndex = -1;
             bind();
-
+            */
         }
         protected void GridView1_RowDeleted(object sender, GridViewDeletedEventArgs e)
         {

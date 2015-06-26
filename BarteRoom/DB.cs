@@ -468,20 +468,47 @@ namespace BarteRoom
             catch (Exception ex) { }
         }
 
+        public LinkedList<string> getAllImagesPathsOfAItem(string item_id)
+        {
+
+            LinkedList<string> imgs = new LinkedList<string>();
+            query = "select path from dbo.images where item_id='"+item_id+"';";
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+                rdr = command.ExecuteReader();
+            while (rdr.Read())
+            {
+                imgs.AddFirst(rdr[0].ToString());    
+            }
+        }
+            catch (Exception e) { }
+            connect.Close();
+
+            return imgs;
+       
+        }
+
+
 
         public bool removeItem(String id)
         {
+            LinkedList<string> imgs = getAllImagesPathsOfAItem(id);
+            foreach (string s in imgs)
+            {
             try
             {
-                //removing the picture from the folder
-                string completePath = System.Web.HttpContext.Current.Server.MapPath("~/" + setImagePath(id));
+                //removing the pictures from the folder
+                string completePath = System.Web.HttpContext.Current.Server.MapPath("~/" + s);
                 if (System.IO.File.Exists(completePath))
                 {
 
                     System.IO.File.Delete(completePath);
 
                 }
-                string[] split = setImagePath(id).Split('/');
+                string[] split = s.Split('/');
                 completePath = System.Web.HttpContext.Current.Server.MapPath("~/img/OriginalSize_" + split[1]);
                 if (System.IO.File.Exists(completePath))
                 {
@@ -492,7 +519,7 @@ namespace BarteRoom
 
             }
             catch (Exception e) { }
-
+            }
 
             try
             {
