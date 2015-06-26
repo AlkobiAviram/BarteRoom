@@ -17,11 +17,18 @@
          .img_slider:hover {
           -webkit-filter: blur(5px);
           }
+         .cusColumn1{
+             padding-top:-100%;
+         }
+         .cusColumn2{
+             padding-bottom:-40%;
+         }
             </style>
          
   <div  runat="server" id="welcomeHome">
+      <br /> <br /> <br /><br /><br />
 <table>
-    <tr>
+    <tr class="cusColumn2">
         <td >
          <h2><asp:Label ID="Label1" runat="server" Text="Check out our latest Items"></asp:Label></h2><br />
         </td>
@@ -29,26 +36,20 @@
 <!-----------------------------Image Silder------------------------------------------------------>
         
     
-            <tr>
+            <tr class="cusColumn2">
             
-            <td style="text-align:center" >
+            <td style="text-align:center"  >
             
          <asp:ImageButton  CssClass="img_slider" ID="slider" ImageUrl="~/img/ipad.jpg" runat="server"  OnClick="slider_Click"/>
           </td> 
                 <td>
                     <h2><asp:Label ID="Label3" runat="server" Text="Browse with Categories"></asp:Label></h2><br />
-                    <asp:Button ID="cat1" runat="server" Text="Button" Width="100%" OnClick="cat1_Click"/><p />
-                    <asp:Button ID="cat2" runat="server" Text="Button" Width="100%" /><p />
-                    <asp:Button ID="cat3" runat="server" Text="Button" Width="100%"/><p />
-                    <asp:Button ID="cat4" runat="server" Text="Button" Width="100%"/><p />
-                    <asp:Button ID="cat5" runat="server" Text="Button" Width="100%"/><p />
-                    <asp:Button ID="cat6" runat="server" Text="Button" Width="100%"/><p />
-                    <asp:Button ID="cat7" runat="server" Text="Button" Width="100%"/>
-                 
+                    <div id="cats" runat="server">
+                    </div>
                 </td>
             </tr>
             <tr>
-            <td style="text-align:center">
+            <td style="text-align:center" class="cusColumn1">
          <asp:ImageButton ID="ImageButton1"  runat="server"  OnClick="ImageButton1_Click" />
            
          <asp:ImageButton ID="ImageButton2"  runat="server"  OnClick="ImageButton2_Click"/>

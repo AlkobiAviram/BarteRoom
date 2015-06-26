@@ -115,6 +115,7 @@ namespace BarteRoom
                     }
                     
                 }
+                else
                 advancedBind();
         }
      

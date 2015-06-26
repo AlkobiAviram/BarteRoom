@@ -32,6 +32,15 @@ namespace BarteRoom
                //////////setting image slider////////////////////////////////////////////////////////////////
                 //setting the image slider images.
                 //note: first i save a copy of a item's imagein 640x320 dimension and then displaies it in the image slider 
+
+                if (!IsPostBack)
+                {
+
+                    bind();
+                }
+
+                
+                
                 string[] split = images.ElementAt(0).Path.Split('/');
                 Bitmap target = FixedSize(System.Drawing.Image.FromFile(Server.MapPath("img/OriginalSize_" + split[1])), 640, 320) as Bitmap;
                 string path = Server.MapPath("~/img/resizeImage0.jpg");
@@ -94,23 +103,20 @@ namespace BarteRoom
 ///////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////setting categories
                 LinkedList<string> categories = lg.getAllMainCategories();
-                cat1.Text = categories.ElementAt(0).ToString();
-                cat2.Text = categories.ElementAt(1).ToString();
-                cat3.Text = categories.ElementAt(2).ToString();
-                cat4.Text = categories.ElementAt(3).ToString();
-                cat5.Text = categories.ElementAt(4).ToString();
-                cat6.Text = categories.ElementAt(5).ToString();
-                cat7.Text = categories.ElementAt(6).ToString();
+                foreach (string str in categories)
+                {
+                    LinkButton lb = new LinkButton();
+                    lb.Text = str;
+                    lb.Click += new EventHandler(cat_Click);
+                    cats.Controls.Add(new LiteralControl("<br/>"));
+                    cats.Controls.Add(lb);
+                }
             }
             catch (Exception exp)
             { }
 
        
-            if (!IsPostBack)
-            {
-
-                bind();
-            }
+            
                  
         }
         private void bind()
@@ -268,9 +274,10 @@ namespace BarteRoom
             slider.ImageUrl = "img/resizeImage3.jpg";
         }
 
-        protected void cat1_Click(object sender, EventArgs e)
+        protected void cat_Click(object sender, EventArgs e)
         {
-           
+            string catgry = ((LinkButton)sender).Text;
+            //Master.Page.
         }
 
     }
