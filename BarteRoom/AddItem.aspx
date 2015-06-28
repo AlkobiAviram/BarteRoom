@@ -10,7 +10,7 @@
             <div class="container" runat="server" id="AddItem">
              <h2>Add Item</h2>
     
-             <table  class="table-bordered">
+             <table  class="table">
 
 
             <tr> 
@@ -31,8 +31,12 @@
             <td> 
          <label>What Next</label>
           <br /> 
-          <asp:Button ID="commit_cmd" CssClass="btn hvr hvr-wobble-to-bottom-right" runat="server"   Text="Add" OnClick="commit_cmd_Click"  ValidationGroup="addGroup" />
-          <asp:Button ID="cancel_cmd" CssClass="btn hvr hvr-wobble-to-bottom-right" runat="server" Text="Cancel"  OnClick="cancel_cmd_Click"  ValidationGroup="addGroup" />
+          <asp:LinkButton ID="commit_cmd"  CssClass="btn change"  runat="server" Width="100%" OnClick="commit_cmd_Click"  ValidationGroup="addGroup">
+          <span aria-hidden="true" class="glyphicon glyphicon-floppy-save"></span>
+           <asp:Label ID="Lbl1" runat="server" Text="Save Item"></asp:Label></asp:LinkButton>
+          <asp:LinkButton ID="cancel_cmd"  CssClass="btn change"  runat="server" Width="100%" OnClick="commit_cmd_Click"  ValidationGroup="addGroup">
+          <span aria-hidden="true" class="glyphicon glyphicon-remove-sign"></span>
+           <asp:Label ID="Lbl2" runat="server" Text="Cancel"></asp:Label></asp:LinkButton>
           </td>
             </tr>
 
@@ -64,7 +68,9 @@
           <br />
          <asp:FileUpload  CssClass="btn hvr hvr-wobble-skew" ID="image_upload" runat="server" OnLoad="image_upload_Load" Width="252px" />
          <br />
-          <asp:Button CssClass="btn hvr hvr-wobble-skew" ID="upload_cmd" runat="server" Text="Upload Image" OnClick="upload_cmd_Click" />
+          <asp:LinkButton ID="upload_cmd"  CssClass="btn change"  runat="server" Width="100%" OnClick="upload_cmd_Click"  ValidationGroup="addGroup">
+          <span aria-hidden="true" class="glyphicon glyphicon-remove-sign"></span>
+           <asp:Label ID="Label1" runat="server" Text="Upload Image"></asp:Label></asp:LinkButton>
           <br />
              <asp:GridView ID="GridView1" CssClass="table table-responsive table-hover" HorizontalAlign="Center" GridLines="None" runat="server" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand"  OnRowDeleted="GridView1_RowDeleted" OnRowDeleting="GridView1_RowDeleting"  >
   

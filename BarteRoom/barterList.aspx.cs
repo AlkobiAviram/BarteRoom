@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Drawing;
-
+using System.Data;
 namespace BarteRoom
 {
     public partial class BarterList1 : System.Web.UI.Page
@@ -65,17 +65,8 @@ namespace BarteRoom
             
             if (e.CommandName == "Delete")
             {
-                // Convert the row index stored in the CommandArgument
-                // property to an Integer.
-                int index = Convert.ToInt32(e.CommandArgument);
-
-                // Retrieve the row that contains the button clicked 
-                // by the user from the Rows collection.
-                GridViewRow row = GridView1.Rows[index];
-              
-
-                // TextBox delete_id = new TextBox();
-                string delete_id = row.Cells[6].Text;
+             
+                string delete_id = e.CommandArgument.ToString();
                 lg.removeItem(delete_id);
 
                 
@@ -157,9 +148,9 @@ namespace BarteRoom
 
         protected void GridView1_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
-            int index = Convert.ToInt32(e.NewSelectedIndex);
-            GridViewRow row = GridView1.Rows[index];
-            string id= row.Cells[6].Text;
+            DataTable dt = lg.getDataSourceForUsr(Session["usr"].ToString());
+            int index = Convert.ToInt32(e.NewSelectedIndex);   
+            string id= dt.Rows[index]["id"].ToString();
             lg.AddView(id);
             Response.Redirect("/ItemView.aspx?"+"id="+Server.UrlEncode(id));
             GridView1.EditIndex = -1;

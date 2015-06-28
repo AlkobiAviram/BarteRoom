@@ -51,11 +51,13 @@ namespace BarteRoom
 
         private void bind()
         {
-            DataTable table = new DataTable();
-            DataTable dt = lg.getImagesOfItem(Session["add_item"].ToString());
+            try
+            {
+                DataTable table = new DataTable();
+                DataTable dt = lg.getImagesOfItem(Session["add_item"].ToString());
 
-            //rotating the table:
-    
+                //rotating the table:
+
                 //Get all the rows and change into columns
                 for (int i = 0; i <= dt.Rows.Count; i++)
                 {
@@ -64,7 +66,7 @@ namespace BarteRoom
                     {
                         ImageField img_fld = new ImageField();
                         img_fld.DataImageUrlField = Convert.ToString(i);
-                        
+
                         GridView1.Columns.Add(img_fld);
                     }
                 }
@@ -73,15 +75,16 @@ namespace BarteRoom
                 dr = table.NewRow();
                 for (int j = 0; j < dt.Rows.Count; j++)
                 {
-                   
+
                     dr[j] = dt.Rows[j][0];
-                  
-                   
+
+
                 }
                 table.Rows.Add(dr);
                 GridView1.DataSource = table;
                 GridView1.DataBind();
-
+            }
+            catch { }
                
            
         }
