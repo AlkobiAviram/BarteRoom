@@ -39,7 +39,7 @@
           <asp:LinkButton ID="commit_cmd"  CssClass="btn change"  runat="server" Width="100%" OnClick="commit_cmd_Click"  ValidationGroup="addGroup">
           <span aria-hidden="true" class="glyphicon glyphicon-floppy-save"></span>
            <asp:Label ID="Lbl1" runat="server" Text="Save Item"></asp:Label></asp:LinkButton>
-          <asp:LinkButton ID="cancel_cmd"  CssClass="btn change"  runat="server" Width="100%" OnClick="commit_cmd_Click"  ValidationGroup="addGroup">
+          <asp:LinkButton ID="cancel_cmd"  CssClass="btn change"  runat="server" Width="100%" OnClick="cancel_cmd_Click"  ValidationGroup="addGroup">
           <span aria-hidden="true" class="glyphicon glyphicon-remove-sign"></span>
            <asp:Label ID="Lbl2" runat="server" Text="Cancel"></asp:Label></asp:LinkButton>
         
@@ -81,10 +81,9 @@
           <span aria-hidden="true" class="glyphicon glyphicon-cloud-upload"></span>
            <asp:Label ID="Label1" runat="server" Text="Upload Image"></asp:Label></asp:LinkButton>
           <br />
-             <asp:GridView ID="GridView1" CssClass="table table-responsive table-hover" HorizontalAlign="Center" GridLines="None" runat="server" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand"  OnRowDeleted="GridView1_RowDeleted" OnRowDeleting="GridView1_RowDeleting"  >
-  
+             <div id="images" runat="server">
 
-             </asp:GridView>
+             </div>
            </td > 
             </tr>
              

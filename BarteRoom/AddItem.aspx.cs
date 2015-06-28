@@ -40,11 +40,12 @@ namespace BarteRoom
             if (!IsPostBack)
             {
               
-                bind();
+                
                 //updating the subclasses droplist
                 
                
             }
+            bind();
             error1.Visible = false;
             error2.Visible = false;
             error3.Visible = false;
@@ -56,41 +57,34 @@ namespace BarteRoom
             {
                 DataTable table = new DataTable();
                 DataTable dt = lg.getImagesOfItem(Session["add_item"].ToString());
-
-                //rotating the table:
-
-                //Get all the rows and change into columns
-                for (int i = 0; i <= dt.Rows.Count; i++)
+                for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    table.Columns.Add(Convert.ToString(i));
-                    if (GridView1.Columns.Count <= i)
-                    {
-                        ImageField img_fld = new ImageField();
-                        img_fld.DataImageUrlField = Convert.ToString(i);
-
-                        GridView1.Columns.Add(img_fld);
-                    }
+                    ///creating images:
+                    ImageButton ib = new ImageButton();
+                    ib.ID="ib"+i;
+                    ib.ImageUrl = dt.Rows[i]["Images"].ToString();
+                    ib.Click += new ImageClickEventHandler(this.img_Click);
+                    images.Controls.Add(new LiteralControl("&nbsp"));
+                    images.Controls.Add(ib);
                 }
-                DataRow dr;
-                //get all the columns and make it as rows
-                dr = table.NewRow();
-                for (int j = 0; j < dt.Rows.Count; j++)
-                {
-
-                    dr[j] = dt.Rows[j][0];
-
-
-                }
-                table.Rows.Add(dr);
-                GridView1.DataSource = table;
-                GridView1.DataBind();
+        
             }
             catch { }
                
            
         }
+        
+        protected void img_Click(object sender, EventArgs e)
+        {
+            string image_path=((ImageButton)sender).ImageUrl;
+            string control_id=((ImageButton)sender).ID;
+            FindControl(control_id).Dispose();
+            lg.deleteImage(Session["add_item"].ToString(), image_path);
+        }
+        protected void linkBtn_Click(object sender, EventArgs e)
+        {
 
-
+        }
 
         private void BindDropDownListToDataTable()
         {
@@ -217,6 +211,7 @@ namespace BarteRoom
 
         protected void cancel_cmd_Click(object sender, EventArgs e)
         {
+            lg.removeItem(Session["add_item"].ToString());
             Response.Redirect("/BarterList.aspx");
         }
 

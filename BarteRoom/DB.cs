@@ -383,7 +383,7 @@ namespace BarteRoom
 
 
 
-
+       
 
         public string setImagePath(String id)
         {
@@ -541,6 +541,54 @@ namespace BarteRoom
 
             return true;
         }
+
+
+         public void deleteImage(string item_id,string image_path)
+         {
+
+
+             //removing the picture from the folder
+                 try
+                 {
+                     
+                     string completePath = System.Web.HttpContext.Current.Server.MapPath("~/" + image_path);
+                     if (System.IO.File.Exists(completePath))
+                     {
+
+                         System.IO.File.Delete(completePath);
+
+                     }
+                     string[] split = image_path.Split('/');
+                     completePath = System.Web.HttpContext.Current.Server.MapPath("~/img/OriginalSize_" + split[1]);
+                     if (System.IO.File.Exists(completePath))
+                     {
+
+                         System.IO.File.Delete(completePath);
+
+                     }
+                 }
+                 
+                 catch (Exception e) { }
+             
+
+             try
+             {
+                 if (connect.State == ConnectionState.Closed)
+                     connect.Open();
+                 query = "DELETE FROM dbo.images WHERE item_id='" + item_id + "' AND path='"+image_path +"';";
+                 command = new SqlCommand(query, connect);
+                 command.ExecuteNonQuery();
+                 if (connect.State == ConnectionState.Open)
+                     connect.Close();
+             }
+
+             catch (Exception e) { return; }
+
+
+             return;
+         }
+
+
 
 
         public bool editItem(String name, String comments, String description, String id)

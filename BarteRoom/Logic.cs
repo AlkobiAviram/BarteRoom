@@ -278,6 +278,11 @@ namespace BarteRoom
             data = new DB();
             return data.getAllItems();
         }
+        public void deleteImage(string item_id, string image_path)
+        {
+            data = new DB();
+            data.deleteImage(item_id,image_path);
+        }
         public LinkedList<Imag> getAllImages()
         {
             data = new DB();
