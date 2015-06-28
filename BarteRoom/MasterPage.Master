@@ -281,6 +281,34 @@
                                 </td>
 
                             </tr>
+
+                            <tr>
+                              <td colspan="5">
+           <!--################### nav bar #######################################################-->                             
+                             <div id="navigation_bar" runat="server">
+                                  <br /><br />
+                               <nav class="navbar navbar-default" style="box-shadow:0px;" >
+                              <div class="container-fluid">
+                                <div class="navbar-header">
+                                  <a class="navbar-brand" href="#">Categories</a>
+                                </div>
+                               <div id="Div1" runat="server">
+                                  <ul class="nav navbar-nav" id="navigBar" runat="server">
+                                     <li> <asp:LinkButton ID="cat1" CssClass="btn hvr-buzz" runat="server" OnClick="catgry_Click"></asp:LinkButton></li>
+                                     <li> <asp:LinkButton ID="cat2" CssClass="btn hvr-buzz" runat="server" OnClick="catgry_Click"></asp:LinkButton></li>
+                                     <li> <asp:LinkButton ID="cat3" CssClass="btn hvr-buzz" runat="server" OnClick="catgry_Click"></asp:LinkButton></li>
+                                     <li> <asp:LinkButton ID="cat4" CssClass="btn hvr-buzz" runat="server" OnClick="catgry_Click"></asp:LinkButton></li>
+                                     <li> <asp:LinkButton ID="cat5" CssClass="btn hvr-buzz" runat="server" OnClick="catgry_Click"></asp:LinkButton></li>
+                                     <li> <asp:LinkButton ID="cat6" CssClass="btn hvr-buzz" runat="server" OnClick="catgry_Click"></asp:LinkButton></li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </nav>
+      <!--##########################################################################-->                             
+                                 </div>
+                              </td>
+                            </tr>
+
                          </table>
                         <br />
                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectToDb %>" SelectCommand="SELECT distinct main_category FROM classes WHERE (main_category &lt;&gt; 'Choose Class')"></asp:SqlDataSource>

@@ -11,7 +11,7 @@ namespace BarteRoom
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            (Master.FindControl("navigation_bar")).Visible = false;
         }
     }
 }

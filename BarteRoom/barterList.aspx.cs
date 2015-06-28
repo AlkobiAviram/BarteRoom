@@ -18,6 +18,9 @@ namespace BarteRoom
             //searech button event catch
             ((Button)Master.FindControl("Button1")).Click += new EventHandler(this.searchBtn_Click);
             ((LinkButton)Master.FindControl("AdvancedSearch")).Click += new EventHandler(this.searchBtn_Click);
+            (Master.FindControl("navigation_bar")).Visible = false;
+
+
 
             ((LinkButton)Master.FindControl("MyAccount")).BackColor = Color.Gainsboro;
             ((LinkButton)Master.FindControl("MyBarter")).BackColor = Color.Gainsboro;

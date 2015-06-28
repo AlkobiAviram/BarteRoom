@@ -26,6 +26,13 @@ namespace BarteRoom
             //search and advanced button event catch
             ((Button)Master.FindControl("Button1")).Click += new EventHandler(this.searchBtn_Click);
             ((LinkButton)Master.FindControl("AdvancedSearch")).Click += new EventHandler(this.searchBtn_Click);
+            
+            ((LinkButton)Master.FindControl("cat1")).Click += new EventHandler(this.searchBtn_Click);
+            ((LinkButton)Master.FindControl("cat2")).Click += new EventHandler(this.searchBtn_Click);
+            ((LinkButton)Master.FindControl("cat3")).Click += new EventHandler(this.searchBtn_Click);
+            ((LinkButton)Master.FindControl("cat4")).Click += new EventHandler(this.searchBtn_Click);
+            ((LinkButton)Master.FindControl("cat5")).Click += new EventHandler(this.searchBtn_Click);
+            ((LinkButton)Master.FindControl("cat6")).Click += new EventHandler(this.searchBtn_Click);
 
             try
             {
@@ -99,18 +106,7 @@ namespace BarteRoom
 
                 ImageButton4.ImageUrl = "img/resizeImage_tab3.jpg";
 
-                
-///////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////setting categories
-                LinkedList<string> categories = lg.getAllMainCategories();
-                foreach (string str in categories)
-                {
-                    LinkButton lb = new LinkButton();
-                    lb.Text = str;
-                    lb.Click += new EventHandler(cat_Click);
-                    cats.Controls.Add(new LiteralControl("<br/>"));
-                    cats.Controls.Add(lb);
-                }
+
             }
             catch (Exception exp)
             { }
@@ -274,11 +270,6 @@ namespace BarteRoom
             slider.ImageUrl = "img/resizeImage3.jpg";
         }
 
-        protected void cat_Click(object sender, EventArgs e)
-        {
-            string catgry = ((LinkButton)sender).Text;
-            //Master.Page.
-        }
-
+  
     }
 }

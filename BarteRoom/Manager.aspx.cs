@@ -15,6 +15,7 @@ namespace BarteRoom
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            (Master.FindControl("navigation_bar")).Visible = false;
             ((HyperLink)Master.FindControl("manage")).BackColor = Color.Gainsboro;
             ((TextBox)Master.FindControl("SearchTextBox")).Visible = false;
             ((DropDownList)Master.FindControl("catagories")).Visible = false;

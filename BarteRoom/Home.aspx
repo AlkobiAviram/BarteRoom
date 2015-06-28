@@ -28,6 +28,8 @@
   <div  runat="server" id="welcomeHome">
       <br /> <br /> <br /><br /><br />
 <table>
+     
+   
     <tr class="cusColumn2">
         <td >
          <h2><asp:Label ID="Label1" runat="server" Text="Check out our latest Items"></asp:Label></h2><br />
@@ -43,9 +45,7 @@
          <asp:ImageButton  CssClass="img_slider" ID="slider" ImageUrl="~/img/ipad.jpg" runat="server"  OnClick="slider_Click"/>
           </td> 
                 <td>
-                    <h2><asp:Label ID="Label3" runat="server" Text="Browse with Categories"></asp:Label></h2><br />
-                    <div id="cats" runat="server">
-                    </div>
+               
                 </td>
             </tr>
             <tr>
@@ -89,6 +89,13 @@
 
 <!----------------------------------------------------------------------------------->
           </td>
+           <td >
+         <h2><asp:Label ID="Label3" runat="server" Text="Browse with Categories"></asp:Label></h2><br />
+
+         <div id="cats" runat="server">
+                    
+          </div>
+           </td>
         </tr>
  
 </table>

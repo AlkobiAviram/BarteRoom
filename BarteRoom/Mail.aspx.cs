@@ -33,7 +33,7 @@ namespace BarteRoom
                 ((Button)Master.FindControl("Button1")).Visible = false;
                 ((LinkButton)Master.FindControl("AdvancedSearch")).Visible = false;
                 ((GridView)Master.FindControl("homeGridView")).Visible = false;
-
+                (Master.FindControl("navigation_bar")).Visible = false;
                 if (!Page.IsPostBack)
                 {
                     if (Request.QueryString["id"] != null)

@@ -8,7 +8,6 @@
  
     <div id="pic1" class="bg-holder" data-width="1024" data-height="768">
 	</div>
-
     <section>
 	     <div class="container">
             <h1>About Apps</h1>

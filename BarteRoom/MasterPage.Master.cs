@@ -20,6 +20,7 @@ namespace BarteRoom
         {
             if (!IsPostBack)
             {
+               
                 manage.Visible = false;
 
                 if (Session["usr"] == null)
@@ -116,7 +117,10 @@ namespace BarteRoom
                     
                 }
                 else
+                { 
                 advancedBind();
+                navBar(); 
+                }
         }
      
          
@@ -322,7 +326,28 @@ namespace BarteRoom
                 homeGridView.DataBind();
             }
         }
+        private void navBar()
+        {
 
+            LinkedList<string> categories = logic.getAllMainCategories();
+
+            
+           
+                    
+                    
+                    cat1.Text = categories.ElementAt(7);
+                    cat2.Text = categories.ElementAt(8);
+                    cat3.Text = categories.ElementAt(11);
+                    cat4.Text = categories.ElementAt(17);
+                    cat5.Text = categories.ElementAt(19);
+                    cat6.Text = categories.ElementAt(25);
+                
+            
+        }
+        protected void navBar_Click(object sender, EventArgs e)
+        {
+
+        }
         private void advancedBind()
         {
             logic = new Logic();
@@ -379,6 +404,15 @@ namespace BarteRoom
             SearchTextBox.Text = "";
             searchCmd_Click(null, e);
             Session["wasAdvancedButtonClicked"] = false;
+        }
+        protected void catgry_Click(object sender, EventArgs e)
+        {
+            Session["wasAdvancedButtonClicked"] = true;
+            global_category = ((LinkButton)sender).Text;
+            SearchTextBox.Text = "";
+            searchCmd_Click(null, e);
+            Session["wasAdvancedButtonClicked"] = false;
+           
         }
         protected void homeGridView_SelectedIndexChanged(object sender, EventArgs e)
         {
