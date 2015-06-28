@@ -29,18 +29,30 @@
          <asp:ScriptManager ID="script2" runat="server"></asp:ScriptManager>
         <asp:UpdatePanel id="panel" runat="server">
     <ContentTemplate>
-       <table >
+       <table class="table">
             <tr>
              <td class="natiColumn">
                    
-             <span class="img-responsive zoom_img .customSpan"  >
+             <span class=" zoom_img .customSpan"  >
              <asp:Image id="item_pic3"   runat="server"/>
              </span >
              <asp:FileUpload ID="newImage" runat="server" />
             <asp:Label ID="uploadNewImageLabel" Text="Upload new image" runat="server" />
-            <asp:Button ID="edit_cmd" runat="server" CssClass="btn hvr-wobble-to-bottom-right" Text="Edit" OnClick="edit_cmd_Click" Height="26px" Width="158px"></asp:Button>
-            <asp:Button ID="commit_cmd" runat="server" CssClass="btn-default" Visible="false" Text="Commit changes" OnClick="commit_cmd_Click"></asp:Button>
-             <asp:Button ID="cancel_cmd" runat="server" CssClass="btn-default" Visible="false" Text="cancel" OnClick="cancel_cmd_Click" Width="114px"></asp:Button>
+
+           <asp:LinkButton ID="edit_cmd"  CssClass="btn change"  runat="server" Width="100%" Text="Edit"  OnClick="edit_cmd_Click"  ValidationGroup="addGroup">
+          <span aria-hidden="true" class="glyphicon glyphicon-edit"></span>
+           <asp:Label ID="Lbl1" runat="server" Text="Edit Item"></asp:Label></asp:LinkButton>
+          
+           <asp:LinkButton ID="cancel_cmd"  Visible="false" CssClass="btn change"  runat="server" Width="100%" Text="Cancel" OnClick="cancel_cmd_Click"  ValidationGroup="addGroup">
+          <span aria-hidden="true" class="glyphicon glyphicon-remove-circle"></span>
+           <asp:Label ID="Lbl2" runat="server" Text="Cancel"></asp:Label></asp:LinkButton>                 
+
+           <asp:LinkButton ID="commit_cmd" Visible="false"  CssClass="btn change"  runat="server" Width="100%" Text="Commit changes" OnClick="commit_cmd_Click"  ValidationGroup="addGroup">
+          <span aria-hidden="true" class="glyphicon glyphicon-ok-circle"></span>
+           <asp:Label ID="Lbl3" runat="server" Text="Commit Changes"></asp:Label></asp:LinkButton>                   
+            
+                 
+
               
 
                 

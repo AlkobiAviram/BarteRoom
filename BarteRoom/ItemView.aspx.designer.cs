@@ -73,16 +73,16 @@ namespace BarteRoom {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button edit_cmd;
+        protected global::System.Web.UI.WebControls.LinkButton edit_cmd;
         
         /// <summary>
-        /// commit_cmd control.
+        /// Lbl1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button commit_cmd;
+        protected global::System.Web.UI.WebControls.Label Lbl1;
         
         /// <summary>
         /// cancel_cmd control.
@@ -91,7 +91,34 @@ namespace BarteRoom {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button cancel_cmd;
+        protected global::System.Web.UI.WebControls.LinkButton cancel_cmd;
+        
+        /// <summary>
+        /// Lbl2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Lbl2;
+        
+        /// <summary>
+        /// commit_cmd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton commit_cmd;
+        
+        /// <summary>
+        /// Lbl3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Lbl3;
         
         /// <summary>
         /// images control.

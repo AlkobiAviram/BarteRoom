@@ -45,8 +45,9 @@ namespace BarteRoom
                 
                
             }
-
-            
+            error1.Visible = false;
+            error2.Visible = false;
+            error3.Visible = false;
         }
 
         private void bind()
@@ -104,6 +105,24 @@ namespace BarteRoom
 
         protected void commit_cmd_Click(object sender, EventArgs e)
         {
+                error1.Visible = false;
+                error2.Visible = false;
+                error3.Visible = false;
+                if (lg.numOfImages(Session["add_item"].ToString()) < 1)
+                {
+                    error1.Visible = true;
+                    return;
+                }
+                if (classes_list.SelectedValue.ToString() == "" || classes_list.SelectedValue.ToString() == null)
+                {
+                    error2.Visible = true;
+                    return;
+                }
+                if (name_textBox.Text == "" || name_textBox.Text == null)
+                {
+                    error3.Visible = true;
+                    return;
+                }
                 Item newItem = new Item();
                 newItem.Usr=Session["usr"].ToString();
                 newItem.Name=name_textBox.Text; 
@@ -112,7 +131,7 @@ namespace BarteRoom
                 newItem.Comments=comnts_textBox.Text;
                 newItem.Description=desc_textBox.Text;
                 newItem.Id = Session["add_item"].ToString();
-                
+               
                 lg.addItem(newItem);
                 Response.Redirect("/BarterList.aspx");
 

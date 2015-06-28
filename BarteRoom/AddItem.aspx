@@ -8,6 +8,11 @@
             
             
             <div class="container" runat="server" id="AddItem">
+    
+
+           
+
+
              <h2>Add Item</h2>
     
              <table  class="table">
@@ -37,7 +42,11 @@
           <asp:LinkButton ID="cancel_cmd"  CssClass="btn change"  runat="server" Width="100%" OnClick="commit_cmd_Click"  ValidationGroup="addGroup">
           <span aria-hidden="true" class="glyphicon glyphicon-remove-sign"></span>
            <asp:Label ID="Lbl2" runat="server" Text="Cancel"></asp:Label></asp:LinkButton>
-          </td>
+        
+            <div class="alert alert-danger" id="error1" runat="server" role="alert">You must upload at least one image!</div>
+             <div class="alert alert-danger" id="error2" runat="server" role="alert">You must choose a category!</div>
+            <div class="alert alert-danger" id="error3" runat="server" role="alert">You must insert a tag name!</div>
+            </td>
             </tr>
 
 
@@ -69,7 +78,7 @@
          <asp:FileUpload  CssClass="btn hvr hvr-wobble-skew" ID="image_upload" runat="server" OnLoad="image_upload_Load" Width="252px" />
          <br />
           <asp:LinkButton ID="upload_cmd"  CssClass="btn change"  runat="server" Width="100%" OnClick="upload_cmd_Click"  ValidationGroup="addGroup">
-          <span aria-hidden="true" class="glyphicon glyphicon-remove-sign"></span>
+          <span aria-hidden="true" class="glyphicon glyphicon-cloud-upload"></span>
            <asp:Label ID="Label1" runat="server" Text="Upload Image"></asp:Label></asp:LinkButton>
           <br />
              <asp:GridView ID="GridView1" CssClass="table table-responsive table-hover" HorizontalAlign="Center" GridLines="None" runat="server" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand"  OnRowDeleted="GridView1_RowDeleted" OnRowDeleting="GridView1_RowDeleting"  >
@@ -85,9 +94,7 @@
 
 
         
-                        <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" DisplayMode="List" ValidationGroup="addGroup" />
-                         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="classes_list" ErrorMessage="please choose class" ForeColor="Red" Display="None" InitialValue="choose class" ValidationGroup="addGroup"></asp:RequiredFieldValidator>
-                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="name_textBox" ErrorMessage="please insert name" ForeColor="Red" Display="None" ValidationGroup="addGroup"></asp:RequiredFieldValidator>
+
                  
                      
                
