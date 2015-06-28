@@ -774,17 +774,17 @@ namespace BarteRoom
         {
 
             DataTable dtable = new DataTable();
-            DataColumn dt = new DataColumn("Bid ID");
-            DataColumn dt1 = new DataColumn("Item BarCode");
-            DataColumn dt2 = new DataColumn("Item Image");
+            DataColumn dt = new DataColumn("Bid_ID");
+            DataColumn dt1 = new DataColumn("Item_BarCode");
+            DataColumn dt2 = new DataColumn("Item_Image");
             DataColumn dt3;
             if (BidOrOffer.Equals("bid"))
-                dt3 = new DataColumn("Item Owner");
+                dt3 = new DataColumn("Item_Owner");
             else
                 dt3 = new DataColumn("Bidder");
             DataColumn dt4 = new DataColumn("Comments");
             DataColumn dt5 = new DataColumn("Seen");
-            DataColumn dt6 = new DataColumn("Date Created");
+            DataColumn dt6 = new DataColumn("Date_Created");
 
             dtable.Columns.Add(dt);
             dtable.Columns.Add(dt1);

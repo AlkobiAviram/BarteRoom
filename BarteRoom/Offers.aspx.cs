@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Drawing;
-
+using System.Data;
 namespace BarteRoom
 {
     public partial class Offers : System.Web.UI.Page
@@ -47,19 +47,22 @@ namespace BarteRoom
 
         protected void GridView1_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
-            int index = Convert.ToInt32(e.NewSelectedIndex);
-            GridViewRow row = GridView1.Rows[index];
-            Session["transaction_type"] = "offer";
-            Session["bid_id"] = row.Cells[1].Text;
-            Response.Redirect("/TransactionView.aspx");
-            GridView1.EditIndex = -1;
-            bind();
 
+       
         }
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            int index = Convert.ToInt32(GridView1.SelectedIndex);
+            DataTable dt = lg.getDataSourceForBidsOrOffers(Session["usr"].ToString(), "offer");
+            Session["transaction_type"] = "offer";
+            string id = dt.Rows[index]["Bid_ID"].ToString();
+            Session["bid_id"] = id;
 
+
+            Response.Redirect("/TransactionView.aspx");
+            GridView1.EditIndex = -1;
+            bind();
         }
 
         //search button event handler

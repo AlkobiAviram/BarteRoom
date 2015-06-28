@@ -43,12 +43,7 @@
      <h1>BarteRoom <small>The home for swapping your second-hand items!</small></h1>
       
         </div>
-          <asp:LinkButton ID="btnRandom" 
-            runat="server" 
-            CssClass="btn btn-primary"    
-            OnClick="btnRandom_Click">
-        <span aria-hidden="true" class="glyphicon glyphicon-refresh"></span>
-    </asp:LinkButton>
+
       </td>
     </tr>
   
