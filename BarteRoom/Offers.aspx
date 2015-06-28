@@ -25,10 +25,10 @@
                           
                            <asp:TemplateField HeaderText="Item_Image" ShowHeader="False">
                                <ItemTemplate>
-                                   <asp:LinkButton ID="LinkButton3" CommandName="Select" runat="server"><asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("Item_Image") %>' /> </asp:LinkButton>
+                                   <asp:LinkButton ID="LinkButton3" CommandName="Select" runat="server" ><asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("Item_Image") %>' /> </asp:LinkButton>
                                </ItemTemplate>
                                   <HeaderTemplate>
-                                 <asp:LinkButton ID="btnRandom3" runat="server" CssClass="btn btn-primary"    >
+                                 <asp:LinkButton ID="btnRandom3" runat="server" CssClass="btn btn-primary"  Width="100%"     >
                                 <span aria-hidden="true" class="glyphicon glyphicon-picture"></span>
                                  </asp:LinkButton><br />
                                   <asp:Label ID="Lbl1" runat="server" Text="Item image"></asp:Label>
@@ -41,7 +41,7 @@
 
                                </ItemTemplate>
                                   <HeaderTemplate>
-                                 <asp:LinkButton ID="btnRandom4" runat="server" CssClass="btn btn-primary"    >
+                                 <asp:LinkButton ID="btnRandom4" runat="server" CssClass="btn btn-primary"  Width="100%"     >
                                 <span aria-hidden="true" class="glyphicon glyphicon-user"></span>
                                  </asp:LinkButton><br />
                                   <asp:Label ID="Lbl2" runat="server" Text="Bidder"></asp:Label>
@@ -55,7 +55,7 @@
 
                                </ItemTemplate>
                                   <HeaderTemplate>
-                                 <asp:LinkButton ID="btnRandom5" runat="server" CssClass="btn btn-primary"    >
+                                 <asp:LinkButton ID="btnRandom5" runat="server" CssClass="btn btn-primary"  Width="100%"     >
                                 <span aria-hidden="true" class="glyphicon glyphicon-comment"></span>
                                  </asp:LinkButton><br />
                                   <asp:Label ID="Lbl3" runat="server" Text="Comments"></asp:Label>
@@ -73,7 +73,7 @@
 
                                </ItemTemplate>
                                   <HeaderTemplate>
-                                 <asp:LinkButton ID="btnRandom6" runat="server" CssClass="btn btn-primary"    >
+                                 <asp:LinkButton ID="btnRandom6" runat="server" CssClass="btn btn-primary"  Width="100%"     >
                                 <span aria-hidden="true" class="glyphicon glyphicon-eye-open"></span>
                                  </asp:LinkButton><br />
                                   <asp:Label ID="Lbl4" runat="server" Text="Seen"></asp:Label>
@@ -89,7 +89,7 @@
                                     <asp:LinkButton ID="LinkButton7" CommandName="Select" runat="server"><asp:Label ID="Label6" runat="server" Text='<%# Bind("Date_Created") %>' ></asp:Label></asp:LinkButton>
                                </ItemTemplate>
                                   <HeaderTemplate>
-                                 <asp:LinkButton ID="btnRandom7" runat="server" CssClass="btn btn-primary"    >
+                                 <asp:LinkButton ID="btnRandom7" runat="server" CssClass="btn btn-primary"  Width="100%"     >
                                 <span aria-hidden="true" class="glyphicon glyphicon-time"></span>
                                  </asp:LinkButton><br />
                                   <asp:Label ID="Lbl5" runat="server" Text="Date"></asp:Label>
@@ -104,7 +104,7 @@
                                 
                                 </ItemTemplate>
                                 <HeaderTemplate>
-                                 <asp:LinkButton ID="btnRandom1" runat="server" CssClass="btn btn-primary"    >
+                                 <asp:LinkButton ID="btnRandom1" runat="server" CssClass="btn btn-primary"  Width="100%"     >
                                 <span aria-hidden="true" class="glyphicon glyphicon-asterisk"></span>
                                  </asp:LinkButton><br />
                                   <asp:Label ID="Lbl6" runat="server" Text="Bid ID"></asp:Label>
@@ -122,7 +122,7 @@
                                                                                                                                                                                         
                                </ItemTemplate>
                                   <HeaderTemplate>
-                                 <asp:LinkButton ID="btnRandom2" runat="server" CssClass="btn btn-primary">
+                                 <asp:LinkButton ID="btnRandom2" runat="server" CssClass="btn btn-primary"  Width="100%" >
                                 <span aria-hidden="true" class="glyphicon glyphicon-barcode"></span>
                                  </asp:LinkButton><br />
                                   <asp:Label ID="Lbl7" runat="server" Text="Item BarCode"></asp:Label>
