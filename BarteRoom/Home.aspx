@@ -1,7 +1,7 @@
 ﻿            <%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="BarteRoom.Home1" %>       
      <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
             </asp:Content>
-            <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+            <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server" >
            <link href="css/imageSlider.css" rel="stylesheet"/>
             <style>
             .img_slider{
@@ -23,33 +23,60 @@
          .cusColumn2{
              padding-bottom:-40%;
          }
+         .cusLogo{
+             position:center;
+         }
             </style>
          
   <div  runat="server" id="welcomeHome">
-      <br /> <br /> <br /><br /><br />
+ <asp:ScriptManager ID="script2" runat="server"></asp:ScriptManager>
+<asp:UpdatePanel id="panel" runat="server">
+    <ContentTemplate>
+
+<!--############LOGO########################################## -->
+ 
 <table>
-     
-   
-    <tr class="cusColumn2">
+    <tr>
+        <td >
+       <div class="jumbotron">
+       
+     <h1>BarteRoom <small>The home for swapping your second-hand items!</small></h1>
+      
+        </div>
+          <asp:LinkButton ID="btnRandom" 
+            runat="server" 
+            CssClass="btn btn-primary"    
+            OnClick="btnRandom_Click">
+        <span aria-hidden="true" class="glyphicon glyphicon-refresh"></span>
+    </asp:LinkButton>
+      </td>
+    </tr>
+  
+    <tr >
         <td >
          <h2><asp:Label ID="Label1" runat="server" Text="Check out our latest Items"></asp:Label></h2><br />
+        </td>
+        <td>
+            
         </td>
     </tr>
 <!-----------------------------Image Silder------------------------------------------------------>
         
     
-            <tr class="cusColumn2">
+            <tr >
             
             <td style="text-align:center"  >
-            
+
          <asp:ImageButton  CssClass="img_slider" ID="slider" ImageUrl="~/img/ipad.jpg" runat="server"  OnClick="slider_Click"/>
+    
           </td> 
                 <td>
                
                 </td>
             </tr>
             <tr>
-            <td style="text-align:center" class="cusColumn1">
+            <td style="text-align:center" >
+   
          <asp:ImageButton ID="ImageButton1"  runat="server"  OnClick="ImageButton1_Click" />
            
          <asp:ImageButton ID="ImageButton2"  runat="server"  OnClick="ImageButton2_Click"/>
@@ -57,7 +84,8 @@
          <asp:ImageButton ID="ImageButton3"  runat="server"  OnClick="ImageButton3_Click"/>
 
           <asp:ImageButton ID="ImageButton4" runat="server"  OnClick="ImageButton4_Click"/>
-           </td>
+  
+          </td>
          </tr>
       
 <!-----------------------------MostViewedItems------------------------------------------------------>
@@ -99,6 +127,8 @@
         </tr>
  
 </table>
+  </ContentTemplate>
+  </asp:UpdatePanel>
 
 
 </div>

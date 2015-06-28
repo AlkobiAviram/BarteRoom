@@ -22,6 +22,24 @@ namespace BarteRoom {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl itemViewPage;
         
         /// <summary>
+        /// script2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager script2;
+        
+        /// <summary>
+        /// panel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel panel;
+        
+        /// <summary>
         /// item_pic3 control.
         /// </summary>
         /// <remarks>

@@ -26,7 +26,9 @@
 
                <link href="~/css/ImageHover.css" rel="stylesheet" type="text/css" runat="server"/>
    <div class="container" runat="server" id="itemViewPage">
-        
+         <asp:ScriptManager ID="script2" runat="server"></asp:ScriptManager>
+        <asp:UpdatePanel id="panel" runat="server">
+    <ContentTemplate>
        <table >
             <tr>
              <td class="natiColumn">
@@ -122,7 +124,8 @@
             </td>
           </tr>
        </table>
-      
+      </ContentTemplate>
+  </asp:UpdatePanel>
        
 
 </div>
