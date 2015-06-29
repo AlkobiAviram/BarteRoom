@@ -72,45 +72,6 @@
     <Content Include="css\Hover.css" />
     <Content Include="css\icons.css" />
     <Content Include="css\ImageHover.css" />
-    <Content Include="img\1.jpg" />
-    <Content Include="img\2.jpg" />
-    <Content Include="img\3.jpg" />
-    <Content Include="img\445edfe44.jpg" />
-    <Content Include="img\apple-swatch-release-socialwetalk.jpg" />
-    <Content Include="img\apple-watch-0.jpg" />
-    <Content Include="img\hjuihnini.jpg" />
-    <Content Include="img\img4.JPG" />
-    <Content Include="img\ipad-mini-retina-gallery2-2013.jpg" />
-    <Content Include="img\ipad.jpg" />
-    <Content Include="img\ipad_2.jpg" />
-    <Content Include="img\iWatch-004-angle-2.jpg" />
-    <Content Include="img\loading.gif" />
-    <Content Include="img\logo.JPG" />
-    <Content Include="img\navs.png" />
-    <Content Include="img\OriginalSize_1.jpg" />
-    <Content Include="img\OriginalSize_2.jpg" />
-    <Content Include="img\OriginalSize_3.jpg" />
-    <Content Include="img\OriginalSize_445edfe44.jpg" />
-    <Content Include="img\OriginalSize_apple-swatch-release-socialwetalk.jpg" />
-    <Content Include="img\OriginalSize_apple-watch-0.jpg" />
-    <Content Include="img\OriginalSize_hjuihnini.jpg" />
-    <Content Include="img\OriginalSize_ipad-mini-retina-gallery2-2013.jpg" />
-    <Content Include="img\OriginalSize_ipad.jpg" />
-    <Content Include="img\OriginalSize_ipad_2.jpg" />
-    <Content Include="img\OriginalSize_iWatch-004-angle-2.jpg" />
-    <Content Include="img\OriginalSize_shoei11.JPG" />
-    <Content Include="img\OriginalSize_smart-tv.jpg" />
-    <Content Include="img\OriginalSize_SmartTV1.jpg" />
-    <Content Include="img\resizeImage0.jpg" />
-    <Content Include="img\resizeImage1.jpg" />
-    <Content Include="img\resizeImage2.jpg" />
-    <Content Include="img\resizeImage3.jpg" />
-    <Content Include="img\resizeImage_tab0.jpg" />
-    <Content Include="img\resizeImage_tab1.jpg" />
-    <Content Include="img\resizeImage_tab2.jpg" />
-    <Content Include="img\resizeImage_tab3.jpg" />
-    <Content Include="img\smart-tv.jpg" />
-    <Content Include="img\SmartTV1.jpg" />
     <Content Include="Landing.html" />
     <Content Include="Mail.aspx" />
     <Content Include="mailStyle.css" />
@@ -276,7 +237,9 @@
       <DependentUpon>ItemView.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="img\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
