@@ -350,14 +350,14 @@ namespace BarteRoom
             return data.getAllMessages(usr, flag);
         }
 
-        public void addMessage(Message msg, int flag)
+        public bool addMessage(Message msg, int flag)
         {
             DateTime dt = DateTime.Now;
             string newDatetimeFormat = Logic.changeDateFormat(dt.ToString());
 
             data = new DB();
 
-            data.addMessage(msg, newDatetimeFormat, flag);
+            return data.addMessage(msg, newDatetimeFormat, flag);
         }
 
         public int notReadMsg(string usr)
@@ -372,7 +372,7 @@ namespace BarteRoom
 
             string[] tmp = date[0].Split('/');
 
-            string newFormat = tmp[2] + "-" + tmp[0] + "-" + tmp[1] + " " + date[1];
+            string newFormat = tmp[2] + "-" + tmp[1] + "-" + tmp[0] + " " + date[1];
 
             return newFormat;
         }
@@ -418,10 +418,10 @@ namespace BarteRoom
             return data.getAllSentMessages(usr);
         }
 
-        public void deleteMsg(string id)
+        public bool deleteMsg(string id)
         {
             data = new DB();
-            data.deleteMsg(id);
+            return data.deleteMsg(id);
         }
 
         public void deleteSentMsg(string id)

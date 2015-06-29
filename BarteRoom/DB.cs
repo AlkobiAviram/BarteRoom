@@ -1528,7 +1528,7 @@ namespace BarteRoom
         //this section is related to messages
 
 
-        public void addMessage(Message msg, string dt, int flag)
+        public bool addMessage(Message msg, string dt, int flag)
         {
             if (flag == 0)
             {
@@ -1550,7 +1550,7 @@ namespace BarteRoom
                 connect.Close();
             }
 
-            catch (Exception e) { }
+            catch (Exception e) { return false; }
 
             if (flag == 0)
             {
@@ -1568,6 +1568,7 @@ namespace BarteRoom
 
                 catch (Exception e) { }
             }
+            return true;
         }
 
 
@@ -1922,7 +1923,7 @@ namespace BarteRoom
             return msgID;
         }
 
-        public void deleteMsg(string id)
+        public bool deleteMsg(string id)
         {
             query = "DELETE FROM dbo.msg WHERE Id='" + id + "';";
 
@@ -1936,7 +1937,9 @@ namespace BarteRoom
                 connect.Close();
             }
 
-            catch (Exception e) { }
+            catch (Exception e) { return false; }
+
+            return true;
         }
 
         public void deleteSentMsg(string id)

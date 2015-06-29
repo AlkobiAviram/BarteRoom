@@ -235,10 +235,18 @@ namespace BarteRoom
 
             Message repMessage = new Message(from, to[0], subject, body);
 
-            logic.addMessage(repMessage, 0);
+            bool isSend = logic.addMessage(repMessage, 0);
             replayTxt.Text = "";
 
-            ClientScript.RegisterStartupScript(typeof(Page), "MessagePopUp", "alert('Message Sent!');", true);
+            if (isSend)
+            {
+                ClientScript.RegisterStartupScript(typeof(Page), "MessagePopUp", "alert('Message Sent!');", true);
+            }
+
+            else
+            {
+                ClientScript.RegisterStartupScript(typeof(Page), "MessagePopUp", "alert('Message not Sent! please try again');", true);
+            }
         }
 
         protected void sentCmd_Click(object sender, EventArgs e)
@@ -709,11 +717,14 @@ namespace BarteRoom
             if (Request.QueryString["id"] != null)
             {
                 id = Request.QueryString["id"].ToString();
-                logic.deleteMsg(id);
+                bool isDelete = logic.deleteMsg(id);
 
                 Response.Redirect("/Mail.aspx");
 
-                ClientScript.RegisterStartupScript(typeof(Page), "MessagePopUp", "alert('Message Deleteed!');", true);
+                if (isDelete)
+                {
+                    ClientScript.RegisterStartupScript(typeof(Page), "MessagePopUp", "alert('Message Deleteed!');", true);
+                }
             }
         }
 
@@ -756,8 +767,17 @@ namespace BarteRoom
 
             logic = new Logic();
 
-            logic.addMessage(newMsg, 0);
-            ClientScript.RegisterStartupScript(typeof(Page), "MessagePopUp", "alert('Message Sent!');", true);
+            bool isSend = logic.addMessage(newMsg, 0);
+
+            if (isSend)
+            {
+                ClientScript.RegisterStartupScript(typeof(Page), "MessagePopUp", "alert('Message Sent!');", true);
+            }
+
+            else
+            {
+                ClientScript.RegisterStartupScript(typeof(Page), "MessagePopUp", "alert('Message not Sent! please try again');", true);
+            }
         }
 
         protected void newDraft_Click(object sender, EventArgs e)
@@ -783,8 +803,17 @@ namespace BarteRoom
 
             logic = new Logic();
 
-            logic.addMessage(newMsg, 1);
-            ClientScript.RegisterStartupScript(typeof(Page), "MessagePopUp", "alert('Save as draft!');", true);
+            bool isSaved = logic.addMessage(newMsg, 1);
+
+            if (isSaved)
+            {
+                ClientScript.RegisterStartupScript(typeof(Page), "MessagePopUp", "alert('Save as draft!');", true);
+            }
+
+            else
+            {
+                ClientScript.RegisterStartupScript(typeof(Page), "MessagePopUp", "alert('not Save! please try again');", true);
+            }
         }
 
 
