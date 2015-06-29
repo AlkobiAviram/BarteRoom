@@ -287,7 +287,7 @@ namespace BarteRoom
             String search = SearchTextBox.Text;
 
             if(Session["wasAdvancedButtonClicked"]==null ||!(Boolean)Session["wasAdvancedButtonClicked"])
-            global_category = catagories.Text;
+            global_category = catagories.SelectedValue;
             int res = 0;
             ctagoriyLabel.Text = global_category;
 
@@ -526,11 +526,17 @@ namespace BarteRoom
             GridViewRow row = recentBids.Rows[index];
             string id = row.Cells[2].Text;
             logic.readIndex(id);
-            if (logic.getType(id) == 1)
+            int noteType = logic.getType(id);
+            if (noteType == 1)
             {
                 Session["transaction_type"] = "offer";
                 Session["bid_id"] = logic.getTrans_id(id);
                 Response.Redirect("/TransactionView.aspx");
+            }
+
+            else if (noteType == 2)
+            {
+                //Response.Redirect("")
             }
         }
 
