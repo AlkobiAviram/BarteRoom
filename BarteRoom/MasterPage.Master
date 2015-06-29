@@ -695,8 +695,6 @@
         }
 
    </script>
-    
-
 
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         

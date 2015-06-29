@@ -20,7 +20,7 @@ namespace BarteRoom
         {
             if (!IsPostBack)
             {
-               
+
                 manage.Visible = false;
 
                 if (Session["usr"] == null)
@@ -536,7 +536,7 @@ namespace BarteRoom
 
             else if (noteType == 2)
             {
-                //Response.Redirect("")
+                Response.Redirect("/MyMatches.aspx");
             }
         }
 
@@ -683,8 +683,6 @@ namespace BarteRoom
             Response.Redirect("/Mail.aspx?id=" + Server.UrlEncode(id));
         }
 
-
-  
 
         protected void seeAllMsg_Click(object sender, EventArgs e)
         {
