@@ -509,10 +509,10 @@ namespace BarteRoom
             data = new DB();
             return data.getDataSourceForMyMatches(usr);
         }
-        public void deleteMatch(string id)
+        public void deleteMatch(string bidded_item_id, string offered_item_id)
         {
             data = new DB();
-            data.deleteMatch(id);
+            data.deleteMatch(bidded_item_id,offered_item_id);
         }
         public void addAConnection(string usr, string connection)
         {

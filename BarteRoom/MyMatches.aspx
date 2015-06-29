@@ -10,7 +10,7 @@
                      
                                  <asp:TemplateField HeaderText="Delete" ShowHeader="False">
                                     <ItemTemplate>
-                                 <asp:LinkButton ID="btnRandom8"  CssClass="change"  runat="server" CommandName="Delete" CommandArgument='<%# Bind("Your_Item" ) %>'  Width="100%" >
+                                 <asp:LinkButton ID="btnRandom8"  CssClass="change"  runat="server" CommandName="Select" CommandArgument='<%#Bind("Your_Item" )%>'  Width="100%" >
                                 <span aria-hidden="true" class="glyphicon glyphicon-trash"></span>
                                  </asp:LinkButton>
                                     </ItemTemplate>
@@ -86,9 +86,36 @@
                             
 
 
+                           <asp:TemplateField HeaderText="Bidded_item_id" ShowHeader="False">
+                               <ItemTemplate>
+                                   <asp:Label ID="Label6" runat="server" Text='<%# Bind("Bidded_item_id" ) %>'></asp:Label>
+
+                               </ItemTemplate>
+                                  <HeaderTemplate>
+                                 <asp:LinkButton ID="btnRandom5" runat="server" CssClass="btn btn-primary"  Width="100%"     >
+                                <span aria-hidden="true" class="glyphicon glyphicon-time"></span>
+                                  <asp:Label ID="Lbl5" runat="server" Text="Date"></asp:Label></asp:LinkButton>
+
+                                 </HeaderTemplate>
+                                 <ItemStyle Font-Bold="True" Font-Size="0px" ForeColor="#3366CC" />
+                           </asp:TemplateField> 
 
 
+
+                            <asp:TemplateField HeaderText="Bidded_item_id" ShowHeader="False">
+                               <ItemTemplate>
+                                   <asp:Label ID="Label7" runat="server" Text='<%# Bind("Offered_item_id" ) %>'></asp:Label>
+
+                               </ItemTemplate>
+                                  <HeaderTemplate>
+                                 <asp:LinkButton ID="btnRandom5" runat="server" CssClass="btn btn-primary"  Width="100%"     >
+                                <span aria-hidden="true" class="glyphicon glyphicon-time"></span>
+                                  <asp:Label ID="Lbl8" runat="server" Text="Date"></asp:Label></asp:LinkButton>
+                            </HeaderTemplate>
+                                 <ItemStyle Font-Bold="True" Font-Size="0px" ForeColor="#3366CC" />
+                           </asp:TemplateField> 
                             </Columns>
+
                     </asp:GridView>
 
 </asp:Content>

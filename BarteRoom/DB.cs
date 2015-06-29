@@ -2173,9 +2173,10 @@ namespace BarteRoom
 
             return;
         }
-        public void  deleteMatch(string id){
+        public void deleteMatch(string bidded_item_id, string offered_item_id)
+        {
 
-            query = "delete from dbo.matches where bidded_item_id='" + id + "'); ";
+            query = "delete from dbo.matches where bidded_item_id='" + bidded_item_id + "' and offered_item_id='" + offered_item_id + "';";
 
 
 
@@ -2198,19 +2199,20 @@ namespace BarteRoom
             DataColumn dt1 = new DataColumn("Partner_usr");
             DataColumn dt2 = new DataColumn("His_Item");
             DataColumn dt3 = new DataColumn("Date");
-
+            DataColumn dt4 = new DataColumn("Bidded_item_id");
+            DataColumn dt5 = new DataColumn("Offered_item_id");
             dtable.Columns.Add(dt);
             dtable.Columns.Add(dt1);
             dtable.Columns.Add(dt2);
             dtable.Columns.Add(dt3);
-
-
+            dtable.Columns.Add(dt4);
+            dtable.Columns.Add(dt5);
 
             query =
  
-            "select im1.path as yours ,i1.usr as other,im2.path as his,m.datetime "+
+            "select im1.path as yours ,i1.usr as other,im2.path as his,m.datetime as time,m.bidded_item_id,m.offered_item_id "+
             "from matches m,items i1,images im1,images im2 "+
-            "where im1.path=(select path from images img,items i where img.item_id=m.bidded_item_id and img.item_id=i.id  and img.isProfile=1 and i.usr='"+usr+"') "+
+            "where im1.path=(select path from images img,items i where img.item_id=m.bidded_item_id and img.item_id=i.id  and img.isProfile=1 and i.usr='gili') "+
             "and im2.path=(select path from images where item_id=m.offered_item_id and isProfile=1 ) "+
             "and  i1.id=m.offered_item_id";
 
@@ -2228,12 +2230,13 @@ namespace BarteRoom
             
             while (rdr.Read() )
             {
-                object[] RowValues = { "", "", "", "" };
+                object[] RowValues = { "", "", "", "", "", "" };
                 RowValues[0] = rdr[0].ToString();
                 RowValues[1] = rdr[1].ToString();
                 RowValues[2] = rdr[2].ToString();
                 RowValues[3] = rdr[3].ToString();
-
+                RowValues[4] = rdr[4].ToString();
+                RowValues[5] = rdr[5].ToString();
 
 
 

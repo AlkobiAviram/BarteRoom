@@ -38,8 +38,8 @@ namespace BarteRoom
             if (e.CommandName == "Delete")
             {
 
-                string delete_id = e.CommandArgument.ToString();
-                lg.deleteMatch(delete_id);
+              //  string delete_id = e.CommandArgument.ToString();
+                //lg.deleteMatch(delete_id);
 
 
             }
@@ -52,18 +52,24 @@ namespace BarteRoom
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            DataTable dt = lg.getDataSourceForMyMatches(Session["usr"].ToString());
+            int index = Convert.ToInt32(GridView1.SelectedIndex);
+            string bidded_item_id = dt.Rows[index]["Bidded_item_id"].ToString();
+            string offered_item_id = dt.Rows[index]["Offered_item_id"].ToString();
+            lg.deleteMatch(bidded_item_id,offered_item_id);
+            
+            bind();
         }
 
         protected void GridView1_RowDeleted(object sender, GridViewDeletedEventArgs e)
         {
-
+            
         }
 
         protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
 
-            bind();
+           
         }
 
   
@@ -77,14 +83,7 @@ namespace BarteRoom
 
         protected void GridView1_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
-            DataTable dt = lg.getDataSourceForUsr(Session["usr"].ToString());
-            int index = Convert.ToInt32(e.NewSelectedIndex);
-            string id = dt.Rows[index]["id"].ToString();
-            lg.AddView(id);
-            Response.Redirect("/ItemView.aspx?" + "id=" + Server.UrlEncode(id));
-            GridView1.EditIndex = -1;
-            bind();
-
+      
         }
 
     }
