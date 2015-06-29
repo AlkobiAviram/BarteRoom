@@ -11,6 +11,11 @@ namespace BarteRoom
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            ((TextBox)Master.FindControl("SearchTextBox")).Visible = false;
+            ((DropDownList)Master.FindControl("catagories")).Visible = false;
+            ((Button)Master.FindControl("Button1")).Visible = false;
+            ((LinkButton)Master.FindControl("AdvancedSearch")).Visible = false;
+            ((GridView)Master.FindControl("homeGridView")).Visible = false;
             (Master.FindControl("navigation_bar")).Visible = false;
         }
     }

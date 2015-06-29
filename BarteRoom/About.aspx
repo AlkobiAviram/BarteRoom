@@ -65,7 +65,7 @@
         <div class="container">
         <h1>Terms of Use</h1>
                <ul> 
-                 <li class="list-group-item"><a  href="TermsOfUse.aspx"><label>Terms of Use</label></a></li>
+                   <asp:HyperLink ID="termsLink" CssClass="change" NavigateUrl="/TermsOfUse.aspx" runat="server">Terms of Use</asp:HyperLink>
                 </ul>
         </div>
     </section>

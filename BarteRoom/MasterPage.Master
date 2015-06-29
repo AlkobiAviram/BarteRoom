@@ -153,7 +153,7 @@
                                        <td class="note-SignInstyle"></td>
                                        <td>
                                             <asp:Label ID="SignInLabel1" runat="server" Font-Size="Medium" Text="Please "></asp:Label>
-                                            <asp:LinkButton ID="noteSignInButton" Font-Size="Medium" CssClass="change" runat="server" OnClick="noteSignInButton_Click">Login</asp:LinkButton>
+                                           <asp:HyperLink ID="noteSignInButton" Font-Size="Medium" CssClass="change" NavigateUrl="#login" data-toggle="modal" runat="server">login</asp:HyperLink>
                                             <asp:Label ID="SignInLabel2" runat="server" Font-Size="Medium" Text=" to view notifications."></asp:Label>
                                        </td>
                                    </tr>
@@ -225,7 +225,7 @@
                                        <td class="note-SignInstyle"></td>
                                        <td>
                                             <asp:Label ID="signInMsg1" runat="server" Font-Size="Medium" Text="Please "></asp:Label>
-                                            <asp:LinkButton ID="msgLinkButton" Font-Size="Medium" CssClass="change" runat="server" OnClick="noteSignInButton_Click">Login</asp:LinkButton>
+                                           <asp:HyperLink ID="msgLinkButton" Font-Size="Medium" CssClass="change" NavigateUrl="#login" data-toggle="modal" runat="server">login</asp:HyperLink>
                                             <asp:Label ID="signInMsg2" runat="server" Font-Size="Medium" Text=" to view messages."></asp:Label>
                                        </td>
                                    </tr>
@@ -390,9 +390,10 @@
                      <div class="modal-header">
                          <h3>Login</h3>
                      </div>
+
                      <div class="modal-body">
                          
-                         <span><asp:ValidationSummary ID="LoginValidationSummary" DisplayMode="BulletList" runat="server" ForeColor="Red" ValidationGroup="LoginGroup" /></span>
+                         <span><asp:ValidationSummary ID="LoginValidationSummary" DisplayMode="List" runat="server" ForeColor="Red" ValidationGroup="LoginGroup" /></span>
                          <span>UserName</span>
                          <div class="input-group">
                           <span class="input-group-addon" id="basic_addon1"></span>
@@ -476,7 +477,7 @@
                      <div class="modal-body">
                          
                    
-                         <asp:ValidationSummary ID="SignUpValidationSummary" runat="server" DisplayMode="BulletList" ValidationGroup="SignUpGroup" ForeColor="Red" />
+                         <asp:ValidationSummary ID="SignUpValidationSummary" runat="server" DisplayMode="List" ValidationGroup="SignUpGroup" ForeColor="Red" />
                    
                          <span>UserName</span>
                          <div class="input-group">
@@ -542,7 +543,7 @@
                      </div>
                      <div class="modal-body">
                        
-                         <span><asp:ValidationSummary ID="SendValidationSummary" runat="server" ValidationGroup="SendGroup" ForeColor="Red"/></span>
+                         <span><asp:ValidationSummary ID="SendValidationSummary" DisplayMode="List" runat="server" ValidationGroup="SendGroup" ForeColor="Red"/></span>
                     
                           <div class="input-group">
                           <span class="input-group-addon" id="basic_addon2"></span>

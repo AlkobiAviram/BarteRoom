@@ -655,11 +655,6 @@ namespace BarteRoom
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "openregisterModal();", true);
         }
 
-        protected void noteSignInButton_Click(object sender, EventArgs e)
-        {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Popup", "openloginModal();", true);
-        }
-
         protected void msgReadMarkCmd_Click(object sender, EventArgs e)
         {
             logic = new Logic();

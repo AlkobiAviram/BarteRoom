@@ -2,10 +2,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+    <div class="termsPage">
         <h1>Terms Of Use</h1>
               
         need to add Terms
-
+    </div>
 </asp:Content>
 

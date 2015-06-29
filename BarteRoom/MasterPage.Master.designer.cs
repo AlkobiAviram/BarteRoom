@@ -208,7 +208,7 @@ namespace BarteRoom {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton noteSignInButton;
+        protected global::System.Web.UI.WebControls.HyperLink noteSignInButton;
         
         /// <summary>
         /// SignInLabel2 control.
@@ -271,7 +271,7 @@ namespace BarteRoom {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton msgLinkButton;
+        protected global::System.Web.UI.WebControls.HyperLink msgLinkButton;
         
         /// <summary>
         /// signInMsg2 control.
