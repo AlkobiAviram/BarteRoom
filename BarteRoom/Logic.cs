@@ -504,7 +504,16 @@ namespace BarteRoom
             data = new DB();
             data.addAMatch(mtch);
         }
-
+        public DataTable getDataSourceForMyMatches(string usr)
+        {
+            data = new DB();
+            return data.getDataSourceForMyMatches(usr);
+        }
+        public void deleteMatch(string id)
+        {
+            data = new DB();
+            data.deleteMatch(id);
+        }
         public void addAConnection(string usr, string connection)
         {
             data = new DB();

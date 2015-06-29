@@ -11,13 +11,10 @@
                         <asp:GridView ID="GridView1" BackColor="White"  CssClass="table table-responsive table-hover"  runat="server" AllowSorting="True"  AllowPaging="True"  AutoGenerateColumns="False" GridLines="None" OnRowCommand="GridView1_RowCommand" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowDeleted="GridView1_RowDeleted" OnRowDeleting="GridView1_RowDeleting" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating" OnRowUpdated="GridView1_RowUpdated" OnSelectedIndexChanging="GridView1_SelectedIndexChanging" >
                             <Columns>
                      
-                                
-                   
-
 
                                 <asp:TemplateField HeaderText="Delete" ShowHeader="False">
                                     <ItemTemplate>
-                                 <asp:LinkButton ID="btnRandom8"  CssClass="change"  runat="server" CommandName="Delete" CommandArgument='<%# Bind("id" ) %>'  Width="100%" >
+                                 <asp:LinkButton ID="btnRandom8"  CssClass="change"  runat="server" CommandName="Delete" CommandArgument='<%# Bind("" ) %>'  Width="100%" >
                                 <span aria-hidden="true" class="glyphicon glyphicon-trash"></span>
                                  </asp:LinkButton>
                                     </ItemTemplate>

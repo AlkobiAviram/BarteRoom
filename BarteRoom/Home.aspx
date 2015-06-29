@@ -116,7 +116,7 @@
          <h2><asp:Label ID="Label3" runat="server" Text="Browse with Categories"></asp:Label></h2><br />
 
          <div id="cats" runat="server">
-                    
+             <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />      
           </div>
            </td>
         </tr>

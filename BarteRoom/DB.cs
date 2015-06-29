@@ -2170,9 +2170,85 @@ namespace BarteRoom
 
             return;
         }
+        public void  deleteMatch(string id){
 
-       
+            query = "delete from dbo.matches where bidded_item_id='" + id + "'); ";
 
+
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+                command.ExecuteNonQuery();
+                connect.Close();
+            }
+
+            catch (Exception e) { }
+
+        }
+       public DataTable getDataSourceForMyMatches(string usr)
+       {
+            DataTable dtable = new DataTable();
+            DataColumn dt = new DataColumn("Your_item");
+            DataColumn dt1 = new DataColumn("Partner_usr");
+            DataColumn dt2 = new DataColumn("His_Item");
+            DataColumn dt3 = new DataColumn("Date");
+
+            dtable.Columns.Add(dt);
+            dtable.Columns.Add(dt1);
+            dtable.Columns.Add(dt2);
+            dtable.Columns.Add(dt3);
+
+
+
+            query =
+ 
+            "select im1.path as yours ,i1.usr as other,im2.path as his,m.datetime "+
+            "from matches m,items i1,images im1,images im2 "+
+            "where im1.path=(select path from images img,items i where img.item_id=m.bidded_item_id and img.item_id=i.id  and img.isProfile=1 and i.usr='"+usr+"') "+
+            "and im2.path=(select path from images where item_id=m.offered_item_id and isProfile=1 ) "+
+            "and  i1.id=m.offered_item_id";
+
+            try
+            {
+                connect.Open();
+
+                command = new SqlCommand(query, connect);
+                rdr = command.ExecuteReader();
+
+
+            
+
+            
+            
+            while (rdr.Read() )
+            {
+                object[] RowValues = { "", "", "", "" };
+                RowValues[0] = rdr[0].ToString();
+                RowValues[1] = rdr[1].ToString();
+                RowValues[2] = rdr[2].ToString();
+                RowValues[3] = rdr[3].ToString();
+
+
+
+
+                DataRow dRow;
+                dRow = dtable.Rows.Add(RowValues);
+                dtable.AcceptChanges();
+                
+            }
+        }
+            catch (Exception e) { }
+            connect.Close();
+
+
+
+
+
+            return dtable;
+        }
 
 
 
