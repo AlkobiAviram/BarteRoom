@@ -109,6 +109,7 @@ namespace BarteRoom
 
         protected void Confirm_cmd_Click(object sender, EventArgs e)
         {
+            chooseOneItem.Visible = false;
             string checked_itemId="";
             //checking which cell selected
             foreach (GridViewRow i in GridView1.Rows)
@@ -116,11 +117,24 @@ namespace BarteRoom
                 if (((RadioButton)i.FindControl("rdio_items")).Checked)
                     checked_itemId = i.Cells[4].Text;
             }
-            lg.addAMatch(trns.Item_id, checked_itemId);
+            if (checked_itemId == "")
+            {
+                chooseOneItem.Visible = true;
+                return;
+
+            }
+            //adding a new match
+            Match mtch = new Match(Session["usr"].ToString(), trns.Item_id, checked_itemId);
+            lg.addAMatch(mtch);
+            //removing the trasction
+            lg.removeTransaction(trns.Transaction_id);
+
             lg.addAConnection(trns.Owner, trns.Bidder);
             lg.addAConnection(trns.Bidder, trns.Owner);
 
-            lg.addNote(trns.Bidder, 2, trns.Item_id, "You got a new offer", trns.Owner);
+            lg.addNote(trns.Bidder, 2, trns.Item_id, "You got a new Match!", trns.Owner);
+            Response.Redirect("/MyMatches.aspx");
+
         }
 
         //search button event handler

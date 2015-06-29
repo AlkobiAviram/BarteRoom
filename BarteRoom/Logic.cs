@@ -372,7 +372,7 @@ namespace BarteRoom
 
             string[] tmp = date[0].Split('/');
 
-            string newFormat = tmp[2] + "-" + tmp[1] + "-" + tmp[0] + " " + date[1];
+            string newFormat = tmp[2] + "-" + tmp[0] + "-" + tmp[1] + " " + date[1];
 
             return newFormat;
         }
@@ -499,10 +499,10 @@ namespace BarteRoom
             data.markBidAsRead(t_id);
         }
 
-        public void addAMatch(string bidded_item_id, string offered_item_id)
+        public void addAMatch(Match mtch)
         {
             data = new DB();
-            data.addAMatch(bidded_item_id, offered_item_id);
+            data.addAMatch(mtch);
         }
 
         public void addAConnection(string usr, string connection)

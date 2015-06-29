@@ -228,6 +228,7 @@
     <Compile Include="MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
     </Compile>
+    <Compile Include="Match.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="MyMatches.aspx.cs">
       <DependentUpon>MyMatches.aspx</DependentUpon>

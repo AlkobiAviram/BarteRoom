@@ -220,6 +220,24 @@ namespace BarteRoom {
         protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
+        /// chooseOneItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl chooseOneItem;
+        
+        /// <summary>
+        /// Lbl3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Lbl3;
+        
+        /// <summary>
         /// error1 control.
         /// </summary>
         /// <remarks>

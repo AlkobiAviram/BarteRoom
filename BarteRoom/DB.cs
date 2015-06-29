@@ -2170,10 +2170,16 @@ namespace BarteRoom
 
             return;
         }
-        public void addAMatch(string bidded_item_id, string offered_item_id)
+
+       
+
+
+
+
+        public void addAMatch(Match mtch)
         {
 
-            query = "insert into dbo.matches values('" + bidded_item_id + "','" + offered_item_id + "'); ";
+            query = "insert into dbo.matches values('" + mtch.Bidded_item + "','" + mtch.Offered_item + "','" + mtch.Date + "');";
                     
 
 

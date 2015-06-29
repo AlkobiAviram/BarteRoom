@@ -130,6 +130,8 @@
                         <asp:Label ID="Label2" runat="server" Text="Confirm Offer"></asp:Label></asp:LinkButton> 
                        
                     </p>
+                       <div class="alert alert-danger" visible="false" id="chooseOneItem" runat="server" role="alert">
+                       <asp:Label ID="Lbl3" Text="You must choose one item!" runat="server"></asp:Label></div>
                        <div class="alert alert-danger" id="error1" runat="server" role="alert">
                        <asp:Label ID="confirm_label" Text="Note:By confirming the offer ,You commite to the Transaction" runat="server"></asp:Label></div>
                   </td>
