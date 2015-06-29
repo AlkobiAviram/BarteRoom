@@ -136,6 +136,7 @@
     <Content Include="Content\style.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Icon.png" />
+    <Content Include="MyMatches.aspx" />
     <Content Include="Offers.aspx">
       <BrowseToURL>~/Offeres.aspx</BrowseToURL>
     </Content>
@@ -228,6 +229,13 @@
       <DependentUpon>MasterPage.Master</DependentUpon>
     </Compile>
     <Compile Include="Message.cs" />
+    <Compile Include="MyMatches.aspx.cs">
+      <DependentUpon>MyMatches.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MyMatches.aspx.designer.cs">
+      <DependentUpon>MyMatches.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Offers.aspx.cs">
       <DependentUpon>Offers.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

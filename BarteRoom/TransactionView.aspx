@@ -114,16 +114,24 @@
                   <td>
                 <h2><asp:Label ID="BidOrOfferHeader" Text="" runat="server"></asp:Label></h2>
                    <p>
-                       <asp:Button ID="cancel_cmd" runat="server" Text="Cancel Bid" CssClass=" btn btn-success" OnClick="cancel_cmd_Click"/>      
+                       <asp:LinkButton ID="cancel_cmd"  CssClass="btn change"  runat="server" Width="100%" OnClick="cancel_cmd_Click"  ValidationGroup="addGroup">
+                        <span aria-hidden="true" class="glyphicon glyphicon-remove-sign"></span>
+                        <asp:Label ID="Lbl1" runat="server" Text="Cancel Bid"></asp:Label></asp:LinkButton> 
                 </p>
+                      <div runat="server" visible="false" id="bidRemoved_alert" class="alert alert-success" role="alert">The bid has been canceled!</div>
                     <p>
-                        <asp:Button ID="BackToList" runat="server" Text="<< Back to list" CssClass=" btn btn-primary" OnClick="BackToList_Click"/>
+                        <asp:LinkButton ID="BackToList"  CssClass="btn change"  runat="server" Width="100%" OnClick="BackToList_Click"  ValidationGroup="addGroup">
+                        <span aria-hidden="true" class="glyphicon glyphicon-arrow-left"></span>
+                        <asp:Label ID="Label1" runat="server" Text="Back to list"></asp:Label></asp:LinkButton> 
                     </p>
                     <p>
-                        <asp:Button ID="Confirm_cmd" runat="server" Text="Confirm Offer" CssClass=" btn btn-primary" OnClick="Confirm_cmd_Click"/>
-                        <asp:Label ID="confirm_label" Text="Note:By confirming the offer ,You commite to the Transaction" runat="server"></asp:Label>
+                        <asp:LinkButton ID="Confirm_cmd"  CssClass="btn change"  runat="server" Width="100%" OnClick="Confirm_cmd_Click"  ValidationGroup="addGroup">
+                        <span aria-hidden="true" class="glyphicon glyphicon-check"></span>
+                        <asp:Label ID="Label2" runat="server" Text="Confirm Offer"></asp:Label></asp:LinkButton> 
+                       
                     </p>
-         
+                       <div class="alert alert-danger" id="error1" runat="server" role="alert">
+                       <asp:Label ID="confirm_label" Text="Note:By confirming the offer ,You commite to the Transaction" runat="server"></asp:Label></div>
                   </td>
               </tr>    
       <!--

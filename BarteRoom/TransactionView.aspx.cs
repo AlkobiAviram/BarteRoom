@@ -43,7 +43,7 @@ namespace BarteRoom
                 OwnerOrBidderInformationHeader.Text = "Owner Information";
                 Confirm_cmd.Visible = false;
                 confirm_label.Visible = false;
-
+                Lbl1.Text = "Withdraw bid";
             }
             else
             {
@@ -53,6 +53,8 @@ namespace BarteRoom
                 OwnerOrBidderInformationHeader.Text = "Bidder Information";
                 Confirm_cmd.Visible = true;
                 confirm_label.Visible = true;
+                Lbl1.Text = "Decline offer";
+
             }
 
 
@@ -84,12 +86,25 @@ namespace BarteRoom
         protected void cancel_cmd_Click(object sender, EventArgs e)
         {
             lg.removeTransaction(trns.Transaction_id);
-            Response.Redirect("/Bids.aspx");
+            bidRemoved_alert.Visible = true;
+            if (Session["transaction_type"].ToString() == "bid")
+            {
+                    Response.Redirect("/Bids.aspx");
+
+            }
+            else
+            Response.Redirect("/Offers.aspx");
         }
 
         protected void BackToList_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/BarterList.aspx");
+            if (Session["transaction_type"].ToString() == "bid")
+            {
+                Response.Redirect("/Bids.aspx");
+
+            }
+            else
+                Response.Redirect("/Offers.aspx");
         }
 
         protected void Confirm_cmd_Click(object sender, EventArgs e)
@@ -105,7 +120,7 @@ namespace BarteRoom
             lg.addAConnection(trns.Owner, trns.Bidder);
             lg.addAConnection(trns.Bidder, trns.Owner);
 
-            lg.addNote(trns.Bidder, 2, trns.Item_id, "You are get a new offer", trns.Owner);
+            lg.addNote(trns.Bidder, 2, trns.Item_id, "You got a new offer", trns.Owner);
         }
 
         //search button event handler
