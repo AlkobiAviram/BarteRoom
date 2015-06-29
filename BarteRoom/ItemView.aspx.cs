@@ -21,7 +21,7 @@ namespace BarteRoom
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            //searech button event catch
+            //search button event catch
             ((Button)Master.FindControl("Button1")).Click += new EventHandler(this.searchBtn_Click);
             ((LinkButton)Master.FindControl("AdvancedSearch")).Click += new EventHandler(this.searchBtn_Click);
             (Master.FindControl("navigation_bar")).Visible = false;
@@ -94,7 +94,7 @@ namespace BarteRoom
                     offer_cmd.Visible = false;
                     makeBidHeader.Visible = false;
                     //checking for offers
-                      if (lg.isItemAlreadyBiddedByUsrOrOfferedToUsr(id, Session["usr"].ToString(), "offer")) //this means that the user who logged in has an offer on that item
+                      if (lg.isItemAlreadyOfferedByUser(id, Session["usr"].ToString())) //this means that the user who logged in has an offer on that item
                          {
                              edit_cmd.Visible = false;
                              offer_cmd.Visible = false;
@@ -109,7 +109,7 @@ namespace BarteRoom
 
 
                 }
-                else if (lg.isItemAlreadyBiddedByUsrOrOfferedToUsr(id, Session["usr"].ToString(), "bid")) //this means that the user who logged in bidded before on that item
+                else if (lg.isItemBiddedByUser(id, Session["usr"].ToString())) //this means that the user who logged in bidded before on that item
                 {
                     edit_cmd.Visible = false;
                     offer_cmd.Visible = false;

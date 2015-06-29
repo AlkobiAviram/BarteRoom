@@ -14,7 +14,7 @@ namespace BarteRoom
     {
         private HttpCookie cookie;
         private Logic logic;
-        private string global_category;
+        private string global_category="All Categories";
        
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -62,6 +62,9 @@ namespace BarteRoom
                     SendLastRequired.Visible = true;
                 }
             }
+              advancedBind();
+                navBar();
+            
                 if (Session["usr"] != null)
                 {
                     int notRead_Msg = 0;
@@ -116,11 +119,7 @@ namespace BarteRoom
                     }
                     
                 }
-                else
-                { 
-                advancedBind();
-                navBar(); 
-                }
+                
         }
      
          
@@ -369,14 +368,15 @@ namespace BarteRoom
 
                 TableRow tr = new TableRow();
                 TableCell tCell = new TableCell();
-                for (int i = 0; i < dt.Rows.Count; i++)
+                for (int i = 1; i < dt.Rows.Count; i++)
                 {
                     DataRow dr = dt.Rows[i];
-                    Button bt = new Button();
+                    LinkButton bt = new LinkButton();
                     bt.Text = dr[0].ToString();
                     bt.ID = str+"cat" + i;
                     bt.Visible = true;
                     bt.Click += new EventHandler(bt_Click);
+                    tCell.Controls.Add(new LiteralControl("&nbsp"));
                     tCell.Controls.Add(bt);
 
                     tCell.CssClass = "toppad naticell";

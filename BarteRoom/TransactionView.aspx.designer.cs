@@ -256,6 +256,24 @@ namespace BarteRoom {
         protected global::System.Web.UI.WebControls.Label confirm_label;
         
         /// <summary>
+        /// alreadyOffered control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl alreadyOffered;
+        
+        /// <summary>
+        /// Lbl4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Lbl4;
+        
+        /// <summary>
         /// contactUs control.
         /// </summary>
         /// <remarks>

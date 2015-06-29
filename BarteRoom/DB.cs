@@ -473,7 +473,7 @@ namespace BarteRoom
         {
 
             LinkedList<string> imgs = new LinkedList<string>();
-            query = "select path from dbo.images where item_id='"+item_id+"';";
+            query = "select path from dbo.images where item_id='"+item_id+"' and isProfile=1;";
             try
             {
                 connect.Open();
@@ -672,7 +672,7 @@ namespace BarteRoom
             }
 
             catch (Exception e) { return false; }
-            addNote(transaction.Owner, 1, transaction.Item_id, "You have a new BID", transaction.Date, transaction.Bidder);
+            addNote(transaction.Owner, 1, transaction.Item_id, "You have a new Offer!", transaction.Date, transaction.Bidder);
             return true;
 
         }
@@ -793,18 +793,18 @@ namespace BarteRoom
         public int numOfResults(String usr, String search, String catagory)
         {
             int numOf = 0;
-
-            if (catagory.Equals("All Categories"))
-            {
-                query = "select count(*) from dbo.items where ([name] LIKE '%'+'" + search + "'+'%')  AND (usr != '" + usr + "');";
-            }
-
-            else
-            {
-                query = "select count(*) from dbo.items where ([name] LIKE '%'+'" + search + "'+'%')  AND (usr != '" + usr + "') AND ( ([class] = '" + catagory + "') OR ([sub_class] = '" + catagory + "') );";
-            }
             try
             {
+
+                if (catagory.Equals("All Categories"))
+                {
+                    query = "select count(*) from dbo.items where ([name] LIKE '%'+'" + search + "'+'%')  AND (usr != '" + usr + "');";
+                }
+
+                else
+                {
+                    query = "select count(*) from dbo.items where ([name] LIKE '%'+'" + search + "'+'%')  AND (usr != '" + usr + "') AND ( ([class] = '" + catagory + "') OR ([sub_class] = '" + catagory + "') );";
+                }
                 connect.Open();
 
 
@@ -813,9 +813,7 @@ namespace BarteRoom
                 numOf = Convert.ToInt32(command.ExecuteScalar().ToString());
                 connect.Close();
             }
-
             catch (Exception e) { }
-
             return numOf;
         }
 
@@ -1162,12 +1160,34 @@ namespace BarteRoom
             return bids;
         }
 
-        public Boolean isItemAlreadyBiddedByUsrOrOfferedToUsr(string item_id, string usr, string type)
+        public Boolean isItemAlreadyOfferedByUser(string item_id,string usr)
         {
-            if (type == "bid")
-                query = "select COUNT(*) from dbo.transactions where item_id='" + item_id + "' and bidder='" + usr + "';";
-            else
+        
                 query = "select COUNT(*) from dbo.transactions where item_id='" + item_id + "' and owner='" + usr + "';";
+          
+
+            int num = 0;
+            try
+            {
+                connect.Open();
+
+
+                command = new SqlCommand(query, connect);
+
+                num = Convert.ToInt32(command.ExecuteScalar().ToString());
+                connect.Close();
+            }
+
+            catch (Exception e) { }
+            if (num == 0)
+                return false;
+            return true;
+        }
+        public Boolean isItemBiddedByUser(string item_id, string usr)
+        {
+
+            query = "select COUNT(*) from dbo.transactions where item_id='" + item_id + "' and bidder='" + usr + "';";
+
 
             int num = 0;
             try

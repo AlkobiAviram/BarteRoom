@@ -72,6 +72,7 @@
     <Content Include="css\Hover.css" />
     <Content Include="css\icons.css" />
     <Content Include="css\ImageHover.css" />
+    <Content Include="img\img4.JPG" />
     <Content Include="Landing.html" />
     <Content Include="Mail.aspx" />
     <Content Include="mailStyle.css" />
@@ -237,9 +238,7 @@
       <DependentUpon>ItemView.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="img\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

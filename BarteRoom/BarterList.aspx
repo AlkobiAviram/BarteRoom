@@ -14,7 +14,7 @@
 
                                 <asp:TemplateField HeaderText="Delete" ShowHeader="False">
                                     <ItemTemplate>
-                                 <asp:LinkButton ID="btnRandom8"  CssClass="change"  runat="server" CommandName="Delete" CommandArgument='<%# Bind("" ) %>'  Width="100%" >
+                                 <asp:LinkButton ID="btnRandom8"  CssClass="change"  runat="server" CommandName="Delete" CommandArgument='<%# Bind("id") %>'  Width="100%" >
                                 <span aria-hidden="true" class="glyphicon glyphicon-trash"></span>
                                  </asp:LinkButton>
                                     </ItemTemplate>

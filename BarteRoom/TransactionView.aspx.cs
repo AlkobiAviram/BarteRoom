@@ -110,6 +110,7 @@ namespace BarteRoom
         protected void Confirm_cmd_Click(object sender, EventArgs e)
         {
             chooseOneItem.Visible = false;
+            alreadyOffered.Visible = false;
             string checked_itemId="";
             //checking which cell selected
             foreach (GridViewRow i in GridView1.Rows)
@@ -123,10 +124,17 @@ namespace BarteRoom
                 return;
 
             }
+            Boolean isItemAlreadyOffered=lg.isItemAlreadyOfferedByUser(checked_itemId,Session["usr"].ToString());
+            if (isItemAlreadyOffered)
+            {
+                chooseOneItem.Visible = true;
+                return;
+
+            }
             //adding a new match
             Match mtch = new Match(Session["usr"].ToString(), trns.Item_id, checked_itemId);
             lg.addAMatch(mtch);
-            //removing the trasction
+            //removing the transction
             lg.removeTransaction(trns.Transaction_id);
 
             lg.addAConnection(trns.Owner, trns.Bidder);

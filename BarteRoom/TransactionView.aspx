@@ -134,6 +134,8 @@
                        <asp:Label ID="Lbl3" Text="You must choose one item!" runat="server"></asp:Label></div>
                        <div class="alert alert-danger" id="error1" runat="server" role="alert">
                        <asp:Label ID="confirm_label" Text="Note:By confirming the offer ,You commite to the Transaction" runat="server"></asp:Label></div>
+                       <div class="alert alert-danger" id="alreadyOffered" runat="server" role="alert">
+                       <asp:Label ID="Lbl4" Text="You already offered that item to someone else!" runat="server"></asp:Label></div>
                   </td>
               </tr>    
       <!--

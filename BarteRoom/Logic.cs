@@ -245,11 +245,17 @@ namespace BarteRoom
             data = new DB();
             data.addTransaction(transaction);
         }
-        public Boolean isItemAlreadyBiddedByUsrOrOfferedToUsr(string item_id, string usr, string type)
+        public Boolean isItemAlreadyOfferedByUser(string item_id, string usr)
         {
             data = new DB();
-            return data.isItemAlreadyBiddedByUsrOrOfferedToUsr(item_id, usr, type);
+            return data.isItemAlreadyOfferedByUser(item_id, usr);
         }
+        public Boolean isItemBiddedByUser(string item_id, string usr)
+        {
+            data = new DB();
+            return data.isItemBiddedByUser(item_id, usr);
+        }
+
         public DataTable getDataSourceForSearch(String usr, String search, String catagory)
         {
             data = new DB();
@@ -372,7 +378,7 @@ namespace BarteRoom
 
             string[] tmp = date[0].Split('/');
 
-            string newFormat = tmp[2] + "-" + tmp[1] + "-" + tmp[0] + " " + date[1];
+            string newFormat = tmp[2] + "-" + tmp[0] + "-" + tmp[1] + " " + date[1];
 
             return newFormat;
         }

@@ -23,6 +23,7 @@ namespace BarteRoom
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             //search and advanced button event catch
             ((Button)Master.FindControl("Button1")).Click += new EventHandler(this.searchBtn_Click);
             ((LinkButton)Master.FindControl("AdvancedSearch")).Click += new EventHandler(this.searchBtn_Click);
