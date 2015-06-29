@@ -34,58 +34,77 @@ namespace BarteRoom
             ((LinkButton)Master.FindControl("MyAccount")).BackColor = Color.Gainsboro;
             ((LinkButton)Master.FindControl("AddItem")).BackColor = Color.Gainsboro;
 
-            
-
-
             if (!IsPostBack)
             {
-              
                 
-                //updating the subclasses droplist
-                
-               
             }
-            bind();
+            bind(); 
             error1.Visible = false;
             error2.Visible = false;
             error3.Visible = false;
         }
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+       
 
+   
+            if (e.CommandName == "Select")
+            {
+                string str=e.CommandArgument.ToString();
+                lg.deleteImage(Session["add_item"].ToString(), str);
+                upload_cmd_Click(null,e);
+          
+            }
+        }
         private void bind()
         {
-            try
+            if (lg.numOfImages(Session["add_item"].ToString()) > 0)
             {
-                DataTable table = new DataTable();
-                DataTable dt = lg.getImagesOfItem(Session["add_item"].ToString());
-                for (int i = 0; i < dt.Rows.Count; i++)
-                {
-                    ///creating images:
-                    ImageButton ib = new ImageButton();
-                    ib.ID="ib"+i;
-                    ib.ImageUrl = dt.Rows[i]["Images"].ToString();
-                    ib.Click += new ImageClickEventHandler(this.img_Click);
-                    images.Controls.Add(new LiteralControl("&nbsp"));
-                    images.Controls.Add(ib);
-                }
-        
+                deleteLabel.Visible = true;
             }
-            catch { }
+            else
+                deleteLabel.Visible = false;
+            DataTable table = new DataTable();
+            DataTable dt = lg.getImagesOfItem(Session["add_item"].ToString());
+
+            //rotating the table:
+
+            //Get all the rows and change into columns
+            for (int i = 0; i <= dt.Rows.Count; i++)
+            {
+                table.Columns.Add(Convert.ToString(i));
+                if (GridView1.Columns.Count <= i)
+                {
+                   // ImageField img_fld = new ImageField();
+                    //img_fld.DataImageUrlField = Convert.ToString(i);
+                    TemplateField tfield = new TemplateField();
+                    tfield.ItemTemplate = new LinkColumn(Convert.ToString(i),i);
+                    GridView1.Columns.Add(tfield);
+                }
+            }
+            DataRow dr;
+            //get all the columns and make it as rows
+            dr = table.NewRow();
+            for (int j = 0; j < dt.Rows.Count; j++)
+            {
+
+                dr[j] = dt.Rows[j][0];
+
+
+            }
+            table.Rows.Add(dr);
+            GridView1.DataSource = table;
+            GridView1.DataBind();
+
                
-           
         }
         
-        protected void img_Click(object sender, EventArgs e)
+      
+        protected void GridView1_SelectedIndexChanged(object sender,EventArgs e)
         {
-            string image_path=((ImageButton)sender).ImageUrl;
-            string control_id=((ImageButton)sender).ID;
-            FindControl(control_id).Dispose();
-            lg.deleteImage(Session["add_item"].ToString(), image_path);
+       
+            
         }
-        protected void linkBtn_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void BindDropDownListToDataTable()
         {
 
@@ -150,7 +169,7 @@ namespace BarteRoom
 
 
         }
-        static System.Drawing.Image FixedSize(System.Drawing.Image imgPhoto, int Width, int Height)
+        public static System.Drawing.Image FixedSize(System.Drawing.Image imgPhoto, int Width, int Height)
         {
             int sourceWidth = imgPhoto.Width;
             int sourceHeight = imgPhoto.Height;
@@ -245,13 +264,14 @@ namespace BarteRoom
                     //saving original size image
                     string path = Server.MapPath("~/img/OriginalSize_" + file_name);
                     image_upload.PostedFile.SaveAs(path);
-
+                    image_upload.Dispose();
 
 
                     //saving display size copy
                     Bitmap target = FixedSize(System.Drawing.Image.FromFile(path), 225, 225) as Bitmap;
                     path = Server.MapPath("~/img/" + file_name);
                     target.Save(path);
+                    target.Dispose();
                     int numOfPictures = lg.numOfImages(Session["add_item"].ToString());
                     int isProfile;
                     if (numOfPictures == 0)
@@ -262,6 +282,7 @@ namespace BarteRoom
                         isProfile=0;
                     Imag img = new Imag(Session["add_item"].ToString(), "img/" + file_name, isProfile);
                     lg.addImage(img);
+                  
                 }
                }
             catch (Exception ex)
@@ -272,23 +293,7 @@ namespace BarteRoom
           
             
         }
-        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-      
-
-            if (e.CommandName == "Delete")
-            {
-             
-
-
-
-            }
-
-
-
-
-        
-        }
+  
 
       
         
@@ -318,5 +323,41 @@ namespace BarteRoom
         {
             BindDropDownListToDataTable();
         }
+    }
+    //new custom templatefield class
+    class LinkColumn : ITemplate
+    {
+
+        private string column_name;//column name to bind from datatable
+        private int index;
+        public LinkColumn(string column_name,int index)
+        {
+         this.column_name=column_name;
+         this.index = index;
+        }
+        public void InstantiateIn(System.Web.UI.Control container)
+        {
+            ImageButton link = new ImageButton();
+            link.ID = column_name;
+            link.DataBinding += new EventHandler(link_DataBinding);
+            container.Controls.Add(link);
+        }
+        protected void link_DataBinding(object sender, EventArgs e)
+        {
+            try
+            {
+                ImageButton lnk = (ImageButton)sender;
+                GridViewRow container = (GridViewRow)lnk.NamingContainer;
+                object dataValue = DataBinder.Eval(container.DataItem, column_name);
+                if (dataValue != DBNull.Value)
+                {
+                    lnk.ImageUrl = dataValue.ToString();
+                    lnk.CommandName = "Select";
+                    lnk.CommandArgument = dataValue.ToString();
+                }
+            }
+            catch { };
+        }
+     
     }
 }

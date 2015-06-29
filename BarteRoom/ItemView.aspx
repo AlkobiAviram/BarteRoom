@@ -36,8 +36,10 @@
              <span class=" zoom_img .customSpan"  >
              <asp:Image id="item_pic3"   runat="server"/>
              </span >
+                 <!--
              <asp:FileUpload ID="newImage" runat="server" />
             <asp:Label ID="uploadNewImageLabel" Text="Upload new image" runat="server" />
+                 -->
 
            <asp:LinkButton ID="edit_cmd"  CssClass="btn change"  runat="server" Width="100%" Text="Edit"  OnClick="edit_cmd_Click"  ValidationGroup="addGroup">
           <span aria-hidden="true" class="glyphicon glyphicon-edit"></span>

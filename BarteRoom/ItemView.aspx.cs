@@ -248,64 +248,6 @@ namespace BarteRoom
             edit_cmd.Visible = true;
 
 
-
-            //upload new image:
-            Boolean fileOK = false;
-            if (newImage.HasFile)
-            {
-                String fileExtension =
-                    System.IO.Path.GetExtension(newImage.FileName).ToLower();
-                String[] allowedExtensions = { ".gif", ".png", ".jpeg", ".jpg" };
-                for (int i = 0; i < allowedExtensions.Length; i++)
-                {
-                    if (fileExtension == allowedExtensions[i])
-                    {
-                        fileOK = true;
-                    }
-                }
-            }
-
-            if (fileOK)
-            {
-                try
-                {
-                    string file_name = newImage.FileName;
-
-                    //saving original  size image
-                    string path = Server.MapPath("~/img/OriginalSize_" + file_name);
-                    newImage.PostedFile.SaveAs(path);
-
-
-
-                    //saving display size copy
-                    Bitmap target = FixedSize(System.Drawing.Image.FromFile(path), 225, 225) as Bitmap;
-                    path = Server.MapPath("~/img/" + file_name);
-                    target.Save(path);
-                  
-
-                    lg.addImage(new Imag(Request.QueryString["id"].ToString(), "img/" + file_name,0));
-                    
-                    Response.Redirect("/BarterList.aspx");
-
-                }
-                catch (Exception ex)
-                {
-                }
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             Response.Redirect("/ItemView.aspx?id="+id);
        
         }
@@ -513,6 +455,53 @@ namespace BarteRoom
             Session["transaction_type"] = bid_type;
             Session["bid_id"] = bid_id;
             Response.Redirect("/TransactionView.aspx");
+        }
+
+        protected void Upload_cmd_Click(object sender, EventArgs e)
+        {
+               //upload new image:
+            Boolean fileOK = false;
+            if (newImage.HasFile)
+            {
+                String fileExtension =
+                    System.IO.Path.GetExtension(newImage.FileName).ToLower();
+                String[] allowedExtensions = { ".gif", ".png", ".jpeg", ".jpg" };
+                for (int i = 0; i < allowedExtensions.Length; i++)
+                {
+                    if (fileExtension == allowedExtensions[i])
+                    {
+                        fileOK = true;
+                    }
+                }
+            }
+
+            if (fileOK)
+            {
+                try
+                {
+                    string file_name = newImage.FileName;
+
+                    //saving original  size image
+                    string path = Server.MapPath("~/img/OriginalSize_" + file_name);
+                    newImage.PostedFile.SaveAs(path);
+
+
+
+                    //saving display size copy
+                    Bitmap target = FixedSize(System.Drawing.Image.FromFile(path), 225, 225) as Bitmap;
+                    path = Server.MapPath("~/img/" + file_name);
+                    target.Save(path);
+
+
+                    lg.addImage(new Imag(Request.QueryString["id"].ToString(), "img/" + file_name, 0));
+
+
+                }
+                catch (Exception ex)
+                {
+                }
+                bind();
+            }
         }
 
     }

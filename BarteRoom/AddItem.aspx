@@ -70,8 +70,8 @@
 
           
             
-            <tr>
-            <td>   
+            <tr >
+            <td colspan="3">   
                 <br /> 
           <label>Upload Photo</label>
           <br />
@@ -81,10 +81,12 @@
           <span aria-hidden="true" class="glyphicon glyphicon-cloud-upload"></span>
            <asp:Label ID="Label1" runat="server" Text="Upload Image"></asp:Label></asp:LinkButton>
           <br />
-             <div id="images" runat="server">
+               <asp:GridView ID="GridView1" CssClass="table table-responsive table-hover" HorizontalAlign="Center" GridLines="None" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnRowCommand="GridView1_RowCommand"  OnRowDeleted="GridView1_RowDeleted" OnRowDeleting="GridView1_RowDeleting"  >
+  
 
-             </div>
-           </td > 
+             </asp:GridView>
+             <asp:Label ID="deleteLabel" Visible="false" runat="server" Text="Click on an image to delete"></asp:Label>
+           </td> 
             </tr>
              
     
