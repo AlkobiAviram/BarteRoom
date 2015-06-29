@@ -33,6 +33,10 @@
             margin-right: 7px;
         }
 
+        .auto-style27 {
+            width: 13px;
+        }
+
     </style>
 
 </asp:Content>
@@ -106,9 +110,9 @@
                             <tr>
                                 <td class="auto-style11">&nbsp;</td>
                                 <td class="auto-style23">
-                                    <asp:RequiredFieldValidator ID="newMsgRequired" runat="server" ForeColor="Red" ControlToValidate="newMsgTxt" ErrorMessage="Your message body is empty" Display="None" ValidationGroup="sendGroup"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="newMsgRequired" runat="server" ForeColor="Red" ControlToValidate="newMsgTxt" ErrorMessage="message body is empty" Display="None" ValidationGroup="sendGroup"></asp:RequiredFieldValidator>
                                     <asp:RequiredFieldValidator ID="noConnection" ControlToValidate="connectionsList" ForeColor="Red" runat="server" ErrorMessage="You don't have any connections" Display="None" ValidationGroup="sendGroup"></asp:RequiredFieldValidator>
-                                    <asp:ValidationSummary ID="newMsgSummary" ValidationGroup="sendGroup" DisplayMode="BulletList" runat="server" />
+                                    <asp:ValidationSummary ID="newMsgSummary" ForeColor="Red" ValidationGroup="sendGroup" DisplayMode="BulletList" runat="server" />
                                 </td>
                             </tr>
                         </table>
@@ -119,7 +123,7 @@
                     <div class="msgView" visible="false" runat="server" id="msgViewID">
                         <table class="nav-justified">
                             <tr>
-                                <td class="auto-style11">&nbsp;</td>
+                                <td class="auto-style27">&nbsp;</td>
                                 <td class="auto-style5">
 
                                     <asp:Label ID="msgSubView" Font-Bold="true" Font-Size="22px" runat="server" Text="Label"></asp:Label>
@@ -147,7 +151,7 @@
                                 <td class="auto-style11">&nbsp;</td>
                                 <td>
 
-                                    <asp:TextBox ID="msgViewTxt" TextMode="MultiLine" class="form-control" Font-Size="18px" ReadOnly="true" Height="400px" runat="server" Width="832px"></asp:TextBox>
+                                    <asp:TextBox ID="msgViewTxt" TextMode="MultiLine" class="form-control" BackColor="White" Font-Size="18px" ReadOnly="true" Height="400px" runat="server" Width="832px"></asp:TextBox>
 
                                 </td>
                          
@@ -178,7 +182,7 @@
                             <tr>
                                 <td class="auto-style11">&nbsp;</td>
                                 <td>
-                                    <asp:RequiredFieldValidator ID="msg_body_Required" ControlToValidate="replayTxt" ForeColor="Red" runat="server" ErrorMessage="Your message is empty!" ValidationGroup="replyGroup" Display="Dynamic"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="msg_body_Required" ControlToValidate="replayTxt" ForeColor="Red" runat="server" ErrorMessage="message body is empty!" ValidationGroup="replyGroup" Display="Dynamic"></asp:RequiredFieldValidator>
                                 </td>
                             </tr>
                         </table>
