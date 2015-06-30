@@ -2229,36 +2229,17 @@ namespace BarteRoom
             dtable.Columns.Add(dt5);
 
             query =
- 
-            "select im1.path,i1.usr,im2.path,m.datetime "+
-            "from images im1,images im2,items i1,matches m "+
 
-            "where im1.path=(select im3.path from images im3,matches m1,items i2 "+
-            "where im3.item_id=m1.bidded_item_id and i2.id=im3.item_id and i2.usr='"+usr+"' " +
-            "group by im3.path) " +
-
-
-            "and i1.usr=(select t.owner from transactions t,matches m2 " +
-            "where t.item_id=m2.offered_item_id " +
-            "group by t.owner) " +
-
-
-            "and im2.path=(select im4.path from images im4,matches m3,items i3 " +
-            "where im4.item_id=m3.offered_item_id and i3.id=im4.item_id and i3.usr=i1.usr " +
-            "group by im4.path)";
+            "select m.bidded_item_id,m.bidded_item_id,m.offered_item_id,m.datetime,m.bidded_item_id,m.offered_item_id "
+            +"from matches m,items i "
+            +"where i.usr='"+ usr +"'" + " and (i.Id=m.bidded_item_id or I.id=m.offered_item_id)";
 
             try
             {
                 connect.Open();
 
                 command = new SqlCommand(query, connect);
-                rdr = command.ExecuteReader();
-
-
-            
-
-            
-            
+                rdr = command.ExecuteReader();  
             while (rdr.Read() )
             {
                 object[] RowValues = { "", "", "", "", "", "" };
@@ -2276,9 +2257,34 @@ namespace BarteRoom
                 dtable.AcceptChanges();
                 
             }
-        }
-            catch (Exception e) { }
             connect.Close();
+            
+            try
+            {
+                for (int i = 0; i < dtable.Rows.Count;i++ )
+                {
+                    dtable.Rows[i][1] = getPartner(usr, dtable.Rows[i][0].ToString(), dtable.Rows[i][2].ToString());
+                    string bidded_id = dtable.Rows[i][0].ToString();
+                    string offered_id = dtable.Rows[i][2].ToString();
+                    if (isItemAlreadyOfferedByUser(usr, bidded_id))
+                    {
+                        dtable.Rows[i][2] = setImagePath(offered_id);
+                        dtable.Rows[i][0] = setImagePath(bidded_id);
+                    }
+                    else
+                    {
+                        dtable.Rows[i][0] = setImagePath(offered_id);
+                        dtable.Rows[i][2] = setImagePath(bidded_id);
+                    }
+                }
+            }
+            catch { };
+           
+
+        }
+            catch (Exception e) { connect.Close(); }
+
+             
 
 
 
@@ -2288,7 +2294,26 @@ namespace BarteRoom
         }
 
 
+       public string getPartner(string usr, string bidded_item_id, string offered_item_id)
+       {
+           string partner = "";
+           query = "select i.usr from items i where i.usr<>'"+usr+"' and ((i.Id = '"+bidded_item_id+"') or (i.Id ='"+offered_item_id+"')) group by i.usr";
 
+           try
+           {
+               connect.Open();
+
+               command = new SqlCommand(query, connect);
+               rdr = command.ExecuteReader();
+               if (rdr.Read())
+                   partner = rdr[0].ToString();
+               connect.Close();
+           }
+
+           catch (Exception e) { }
+
+           return partner;
+       }
         public void addAMatch(Match mtch)
         {
 
