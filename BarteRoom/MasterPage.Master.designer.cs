@@ -148,6 +148,15 @@ namespace BarteRoom {
         protected global::System.Web.UI.WebControls.LinkButton MyMail;
         
         /// <summary>
+        /// MyMatches control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton MyMatches;
+        
+        /// <summary>
         /// LogOut control.
         /// </summary>
         /// <remarks>

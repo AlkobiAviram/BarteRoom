@@ -95,6 +95,7 @@
                           <li><asp:LinkButton ID="MyBids" runat="server" OnClick="MyBids_Click">My Bids</asp:LinkButton></li>
                           <li><asp:LinkButton ID="MyOffers" runat="server" OnClick="MyOffers_Click">My Offers</asp:LinkButton></li>
                           <li><asp:LinkButton ID="MyMail" runat="server" OnClick="MyMail_Click">My Mail</asp:LinkButton></li>
+                           <li><asp:LinkButton ID="MyMatches" runat="server" OnClick="MyMatches_Click">My Matches</asp:LinkButton></li>
                           <li><asp:LinkButton ID="LogOut" runat="server" OnClick="LogOut_Click">LogOut</asp:LinkButton></li>
 
                       </ul>  

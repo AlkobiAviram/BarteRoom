@@ -227,6 +227,11 @@ namespace BarteRoom
         {
             Response.Redirect("/Mail.aspx");
         }
+
+        protected void MyMatches_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/MyMatches.aspx");
+        }
         protected void LogOut_Click(object sender, EventArgs e)
         {
             cookie = Request.Cookies["userLogin"];

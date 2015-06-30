@@ -2230,11 +2230,22 @@ namespace BarteRoom
 
             query =
  
-            "select im1.path as yours ,i1.usr as other,im2.path as his,m.datetime as time,m.bidded_item_id,m.offered_item_id "+
-            "from matches m,items i1,images im1,images im2 "+
-            "where im1.path=(select path from images img,items i where img.item_id=m.bidded_item_id and img.item_id=i.id  and img.isProfile=1 and i.usr='gili') "+
-            "and im2.path=(select path from images where item_id=m.offered_item_id and isProfile=1 ) "+
-            "and  i1.id=m.offered_item_id";
+            "select im1.path,i1.usr,im2.path,m.datetime "+
+            "from images im1,images im2,items i1,matches m "+
+
+            "where im1.path=(select im3.path from images im3,matches m1,items i2 "+
+            "where im3.item_id=m1.bidded_item_id and i2.id=im3.item_id and i2.usr='"+usr+"' " +
+            "group by im3.path) " +
+
+
+            "and i1.usr=(select t.owner from transactions t,matches m2 " +
+            "where t.item_id=m2.offered_item_id " +
+            "group by t.owner) " +
+
+
+            "and im2.path=(select im4.path from images im4,matches m3,items i3 " +
+            "where im4.item_id=m3.offered_item_id and i3.id=im4.item_id and i3.usr=i1.usr " +
+            "group by im4.path)";
 
             try
             {
